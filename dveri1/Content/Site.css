@@ -1,17 +1,16 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+  background-image: url('fon.jpg');
+ width:100%;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+div.body{
+    width:92%;
+    min-width:1200px;
+     padding-left: 40px;
+    padding-right: 40px;
+    min-height:500px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -22,3 +21,303 @@ select,
 textarea {
     max-width: 280px;
 }
+ 
+a {
+    color:blue;
+    text-decoration-line:none;
+}
+a:hover
+{
+    color:darkblue;
+}
+
+div{
+    color:blue;
+}
+/*по товару*/
+div.allspisok{
+    display:inline-block;
+}
+ div.shortproduct{
+    display:block;
+     float:left;
+     height:400px;
+     width:220px;
+     margin:10px 0px 0px 65px;
+     text-align:center;
+ }
+ div.shortproduct:hover{
+      opacity:0.7;
+ }
+
+
+
+div.productlist{
+    height:initial;
+}
+/*для скидки*/
+ .percent{
+                top: -197px;
+                right: -120px;
+               
+                position:relative;
+                font-size: 30px;
+                color: #fff;
+                background: red;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                border-radius: 50%;
+                line-height: 50px;
+                z-index:5;
+            }
+
+
+
+/*-----------------------------ffffffffffff-------float---------------------------*/
+.fll{
+    float:left;
+}
+.flr{
+    float:right;
+}
+/*-----------------mmmmmmmmmmmm-----------margin------------------------------------------*/
+.mr10{
+    margin-right:10px;
+}
+.mt10{
+    margin-top:10px;
+}
+.mt20{
+    margin-top:20px;
+}
+div.brand{
+    margin-left:30px;
+    max-width:600px;
+   font-size:1.0em;
+    display:inline-block;
+}
+div.timeworktop{
+      margin-left:150px;
+   }
+div.contacts{
+      margin-left:120px;
+   }
+div.content-body{
+    margin-top:128px;
+  
+    height:100%;
+ }
+
+div.navigationfixedtop {
+    margin-top:-143px;
+     /*width:inherit;*/
+    min-width:1200px;
+    position: fixed;
+    display: block;
+    height:135px;
+    background-image: url('fon.jpg');
+   
+    z-index:10;
+}
+div.navigation-menu{
+    margin-top:110px;
+}
+ div.footer{
+     width:inherit;
+     height:100px;
+ }
+
+/*--------------------------------------меню---------------------меню---------------меню------------------------------------------*/
+
+#menu{
+	width:inherit;
+	height:51px;
+	background:url(images/fm_menu_bg.jpg) repeat-x;
+    margin-top:90px;
+}
+	#menu ul{
+		width:80%;
+		margin:0 auto;
+		list-style:none;
+	}
+		#menu li{
+			list-style:none;
+			display:block;
+			float:left;
+			font-size:11px;
+			font-weight:bold;
+			height:51px;
+			line-height:51px;
+			margin:0 5px;
+		}
+			#menu li a{
+				display:block;
+				float:left;
+				height:51px;				
+				color:#99a2b7;
+				text-decoration:none;
+				text-transform:uppercase;
+				padding:0 20px;				
+			}
+				#menu li a:hover{	
+					background:url(images/fm_hover_bg.jpg) repeat-x;
+					color:#fff;
+				}
+					#menu li a:hover span, #menu li .current span{
+						background:url(images/fm_hover_pointer.jpg) no-repeat top;
+						height:51px;
+						display:block;
+						float:left;
+					}
+					#menu li .current{
+						display:block;
+						float:left;
+						height:51px;				
+						background:url(images/fm_hover_bg.jpg) repeat-x;
+						color:#fff;
+						text-decoration:none;
+						text-transform:uppercase;
+						padding:0 20px;		
+					}
+
+/*===========================================слайдер======================================================*/
+ *{        
+        padding:0;
+        margin:0;
+        list-style-type:none;
+      }
+#slider {
+    background: url('ControlSlider/background.png');
+   width:inherit;
+    min-width: 1200px;
+    height: 200px;
+    /*margin: 50px auto;*/
+    position: relative;
+     margin-top:10px;
+}
+
+ #mask{
+      width:inherit;
+    min-width: 1200px;
+        /*width:100%;*/
+        height:100%;
+        position:absolute;
+        overflow:hidden;
+      }
+      .fleche{
+        position:absolute;
+        top:145px;
+        cursor:pointer;
+      }
+      #fleche_gauche{
+        /*left:-17px;*/
+        left:-1px;
+      }
+      #fleche_droite{
+        /*right: -17px;*/
+         right: -1px;
+      }
+      #image_container{
+        position:absolute;
+        width:800%;
+        height:100%;
+        /* La transition sur tout les navigateurs */
+           /* Chrome */ 
+          -webkit-transition-property:all;
+          -webkit-transition-duration:1s;
+
+           /* Firefox */ 
+          -moz-transition-property:all;
+          -moz-transition-duration:1s;
+          
+           /* Opera */ 
+          transition-property:all;
+          transition-duration:1s;
+
+      }
+      
+      /* Les diffГ©rentes positions du slider */
+      .image1 #image_container{
+        left:0;
+      }
+      .image2 #image_container{
+        left:-100%;
+      }
+      .image3 #image_container{
+        left:-200%;
+      }
+      .image4 #image_container{
+        left:-300%;
+      }
+       .image5 #image_container{
+        left:-400%;
+      }
+         .image6 #image_container{
+        left:-500%;
+      }
+           .image7 #image_container{
+        left:-600%;
+      }
+             .image8 #image_container{
+        left:-700%;
+      }
+
+    
+      
+      /* Les images */
+      #image_container li{
+        float:left;
+      }
+      
+      /* L'encart Bleu */
+#encart {
+    position: absolute;
+    top: 170px;
+      /*background: url('ControlSlider/text.png');*/
+        width: inherit;
+   min-width:1200px;
+     
+    height: 20px;
+}
+      
+      #bouton{
+        position:relative;
+        width:244px;
+        height:55px;
+        margin: 390px 0px 0px 40px;
+        cursor:pointer;
+      }
+      
+      /* Les points de navigation */
+      #dots{
+        width:130px;
+        margin:auto;
+      }
+      
+      /* les points, avec leur background non selectionnГ© */
+        #dots li {
+            float: left;
+            margin: 0px 2px;
+            background: url('ControlSlider/empty-dot.png');
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+        }
+      /* Point au survol */
+        #dots li:hover {
+            background: url('ControlSlider/selected-dot.png');
+        }
+      
+      /* Point "selectionnГ©". De la mГЄme maniГЁre que l'image, on change en fonction de la classe de slider */
+.image1 #dots li.button-1, .image2 #dots li.button-2, .image3 #dots li.button-3, .image4 #dots li.button-4, .image5 #dots li.button-5, .image6 #dots li.button-6, .image7 #dots li.button-7, .image8 #dots li.button-8, .image9 #dots li.button-9 {
+  
+    background: url('ControlSlider/selected-dot.png');
+}
+
+      /* Un eyecandy */
+      #glass{
+        position:absolute;
+        top:0px;
+        left:0px;
+      }

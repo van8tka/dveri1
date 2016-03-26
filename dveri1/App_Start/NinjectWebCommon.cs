@@ -61,6 +61,7 @@ namespace dveri1.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            System.Web.Mvc.DependencyResolver.SetResolver(new dveri1.Infrastructure.NinjectControllerFactory(kernel));
         }        
     }
 }

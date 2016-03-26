@@ -1,0 +1,46 @@
+﻿@using DALdv1
+@model  IEnumerable<VhodnyeDveri>
+
+    <div class="paramlist">
+
+    </div>
+    <div class="allspisok">
+        @foreach (var i in Model)
+        {
+            if (i.Publicaciya == true)
+            {
+                <div class="shortproduct">
+                    <div class="imageshort">
+                       @if (i.Skidka == null || i.Skidka == 0)
+                        {
+                            <img src="~/Content/imageDefault.jpg" height="220px" width="110px" />
+                       }
+                       else
+                       {
+                              <span class="percent">@i.Skidka%</span>
+                            <img src="~/Content/imageDefault.jpg" height="220px" width="110px" />
+                          
+                        }
+                    </div>
+                   <div>
+                       <p>@i.Nazvanie</p>
+                       <label>Производитель:</label>
+                       <p>@i.Proizvoditel</p>
+                       <p>@i.Strana</p>
+                       @if (i.Skidka == null || i.Skidka == 0)
+                       {
+                           <p style="color:green; font-size:large">@i.Cena руб.</p>
+                       }
+                       else
+                       {
+                        <p style="color:black; font-size:large"><strike>@i.Cena руб.</strike></p>
+                        <p style="color:green; font-size:large">@i.CenaSoSkidcoy руб.</p>
+                       }                    
+                   </div>
+                  
+                </div>
+            }
+
+        }
+    </div>
+

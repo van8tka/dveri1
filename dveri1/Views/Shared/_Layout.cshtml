@@ -3,40 +3,72 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    <title>@ViewBag.Title</title>
+    @*  *@
+    <link href="~/Content/Site.css" rel="stylesheet" />
+   
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body class="body-content">
+    <div class="body">
+        <div class="navigationfixedtop">
+            <div class="content mt20">
+                <div class="brand fll">
+                    <div class="fll mr10">
+                        <a href="/Home/Index"> <img src="~/Content/logo1.png" alt="" style="width:35px;height:35px;" /></a>
+                    </div>
+                    <div class="fll mr10" style="max-width:400px;">
+                        <a href="/Home/Index">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                    </div>
+                </div>
+
+                <div class="timeworktop fll">
+                    <div> Время работы: </div>
+                    <div>c 9.00 до 21.00 без выхоных</div>
+                </div>
+
+                <div class="contacts fll">
+                    <div>
+                        МТС: +375(33)-343-56-77
+                    </div>
+                    <div>
+                        Vel: +375(29)-356-56-77
+                    </div>
+                    <div>
+                        email: luxevrostroy@gmail.com
+                    </div>
+                </div>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div style="background:#fff;color:#666;font:12px/18px Tahoma, Arial, Helvetica, sans-serif;">
+                <div id="menu">
+                    <ul>
+                        <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Входные двери", "Index", "Home", new { @class = "current" })</li>
+                        <li>@Html.ActionLink("Межкомнатные двери", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Фурнитура", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Доставка и оплата", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Отзывы", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        <div class="content-body">
+            @RenderBody()
+            <hr />
+            <div class="footer">
+                <p>&copy; @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</p>
+            </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+
+        @RenderSection("scripts", required: false)
+    </div>
 </body>
 </html>

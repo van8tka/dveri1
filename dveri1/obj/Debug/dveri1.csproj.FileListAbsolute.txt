@@ -16,7 +16,6 @@ D:\GitHub\dveri1\dveri1\bin\dveri1.dll
 D:\GitHub\dveri1\dveri1\bin\dveri1.pdb
 D:\GitHub\dveri1\dveri1\bin\Antlr3.Runtime.dll
 D:\GitHub\dveri1\dveri1\bin\DALdv1.dll
-D:\GitHub\dveri1\dveri1\bin\Domain.dll
 D:\GitHub\dveri1\dveri1\bin\Microsoft.AI.Agent.Intercept.dll
 D:\GitHub\dveri1\dveri1\bin\Microsoft.AI.DependencyCollector.dll
 D:\GitHub\dveri1\dveri1\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -36,7 +35,6 @@ D:\GitHub\dveri1\dveri1\bin\System.Web.WebPages.dll
 D:\GitHub\dveri1\dveri1\bin\System.Web.WebPages.Razor.dll
 D:\GitHub\dveri1\dveri1\bin\WebGrease.dll
 D:\GitHub\dveri1\dveri1\bin\EntityFramework.dll
-D:\GitHub\dveri1\dveri1\bin\Domain.pdb
 D:\GitHub\dveri1\dveri1\bin\DALdv1.pdb
 D:\GitHub\dveri1\dveri1\bin\Microsoft.AI.DependencyCollector.xml
 D:\GitHub\dveri1\dveri1\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -54,6 +52,17 @@ D:\GitHub\dveri1\dveri1\bin\System.Web.WebPages.Razor.xml
 D:\GitHub\dveri1\dveri1\bin\Antlr3.Runtime.pdb
 D:\GitHub\dveri1\dveri1\bin\Newtonsoft.Json.xml
 D:\GitHub\dveri1\dveri1\bin\EntityFramework.xml
-D:\GitHub\dveri1\dveri1\obj\Debug\dveri1.csprojResolveAssemblyReference.cache
 D:\GitHub\dveri1\dveri1\obj\Debug\dveri1.dll
 D:\GitHub\dveri1\dveri1\obj\Debug\dveri1.pdb
+D:\GitHub\dveri1\dveri1\bin\EntityFramework.SqlServer.dll
+D:\GitHub\dveri1\dveri1\bin\Ninject.dll
+D:\GitHub\dveri1\dveri1\bin\Ninject.Web.Common.dll
+D:\GitHub\dveri1\dveri1\bin\Ninject.Web.Mvc.dll
+D:\GitHub\dveri1\dveri1\bin\WebActivatorEx.dll
+D:\GitHub\dveri1\dveri1\bin\EntityFramework.SqlServer.xml
+D:\GitHub\dveri1\dveri1\bin\Ninject.xml
+D:\GitHub\dveri1\dveri1\bin\Ninject.Web.Common.xml
+D:\GitHub\dveri1\dveri1\bin\Ninject.Web.Mvc.xml
+D:\GitHub\dveri1\dveri1\bin\Domain2.dll
+D:\GitHub\dveri1\dveri1\bin\Domain2.pdb
+D:\GitHub\dveri1\dveri1\obj\Debug\dveri1.csprojResolveAssemblyReference.cache

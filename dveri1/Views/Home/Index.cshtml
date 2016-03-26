@@ -1,31 +1,98 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model dveri1.Models.ForMainBannerModel
+@{
+    ViewBag.Title = "Входные двери";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
+    <!-- Непосредственный код слайдера -->
+<div id="slider">
+     <div id="mask">
+        <ul id="image_container">
+            @foreach (string i in Model.FileName)
+            {
+                <li><img src="~/Content/MainSlider/@i" style="width:1200px;height:195px"></li>
+            }
+        </ul>
+    </div>
+    <img src="~/Content/ControlSlider/glass.png"  id="glass" style="width:1200px;height:200px"/>
+    @*переключатель слайдов*@
+       @*<div id="encart">
+      
+        <ul id="dots">
+            @for (int i = 1; i <= Model.CountFile; i++)
+            {
+                <li class="button-@i" onClick="changeImage(@i)"></li>
+            }
+           
+        </ul>
+    </div>*@
+      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="prevImage()" />
+    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="nextImage()" />
+   </div>
+<div class="productlist">
+    @Html.Action("ProductList")
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+    <script>
+        var secDuration = 4;
+        var image = 1;
+        var maxImages = @Model.CountFile;
+        var slider = document.getElementById('slider');
+        var timeout
+        var flag=false;
+
+        function changeImage(requiredImage) {
+
+            if (!requiredImage && requiredImage != 0)
+            {
+
+                if(image < maxImages && !flag)
+                {
+                    image++;
+                }
+                else
+                {
+                    if(image==maxImages)
+                    {
+                        flag=true;
+                        image--;
+                    }
+                    else
+                        if(flag)
+                        {
+                            image--;
+                            if(image==1)
+                            {flag=false;}
+                        }
+
+                }
+            }
+            else
+            {
+                if(requiredImage > maxImages)
+                {
+                    image = 1;
+                }
+                else
+                    if(requiredImage < 1)
+                    {
+                        image = maxImages;
+                    }
+                    else
+                    {
+                        image = requiredImage;
+                    }
+            }
+            slider.className = "image"+image;
+            clearTimeout(timeout)
+            timeout = setTimeout("changeImage()",secDuration*1000);
+        }
+        function nextImage(){
+            changeImage(image+1);
+        }
+        function prevImage(){
+            changeImage(image-1);
+        }
+        changeImage(1);
+    </script>
