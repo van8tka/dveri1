@@ -19,9 +19,14 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-        public ActionResult Index()
+
+
+        public int PageSize = 4;
+
+        [HttpGet]
+        public ActionResult Index(int page = 1)
         {
-            ForMainBannerModel model = new ForMainBannerModel();
+            ForMainModel model = new ForMainModel();
             string domainpath = Server.MapPath("~/Content/MainSlider");
             //получаем путь 
             var dir = new DirectoryInfo(domainpath);
@@ -35,14 +40,82 @@ namespace dveri1.Controllers
             }
             model.FileName = item;
             model.CountFile = item.Count();
+
+
+            int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
+            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+            model.PagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                TotalItems = TotalItemsProduct,
+                ItemsPerPage = PageSize
+
+            };
+           
+            if (Request.IsAjaxRequest())
+            {
+                 return RedirectToAction("ProductList",new { id = page });
+            }
             return View(model);
-        }
 
-        public ActionResult ProductList()
+        }
+        
+
+
+
+
+            //ForMainBannerModel model = new ForMainBannerModel();
+            //string domainpath = Server.MapPath("~/Content/MainSlider");
+            ////получаем путь 
+            //var dir = new DirectoryInfo(domainpath);
+            ////получаем список файлов
+            //FileInfo[] fileNames = dir.GetFiles("*.*");
+            //List<string> item = new List<string>();
+            ////добавляем их в список
+            //foreach (var file in fileNames)
+            //{
+            //    item.Add(file.Name);
+            //}
+            //model.FileName = item;
+            //model.CountFile = item.Count();
+            //return View(model);
+       
+
+
+
+
+
+    public ActionResult ProductList(int id)
+    {
+            int page = id;
+        ForMainModel model = new ForMainModel();
+        int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
+        model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+        model.PagingInfo = new PagingInfo
         {
-            IEnumerable<VhodnyeDveri> mod = dataManager.VhodnyeDvRepository.GetVhodnyeDv();
-            return PartialView(mod);
-        }
+            CurrentPage = page,
+            TotalItems = TotalItemsProduct,
+            ItemsPerPage = PageSize
 
+        };
+        return PartialView(model);
     }
+
+
+
+
+    //ProductListViewModel model = new ProductListViewModel();
+    //int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Publicaciya==true).Count();
+    //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x=>x.Id).Where(x=>x.Publicaciya == true).Skip((page-1)*PageSize).Take(PageSize);
+    //model.PagingInfo = new PagingInfo
+    //{
+    //    CurrentPage = page,
+    //    TotalItems = TotalItemsProduct,
+    //    ItemsPerPage = PageSize
+
+    //};
+    //return PartialView(model);
+    //}
+
+}
 }

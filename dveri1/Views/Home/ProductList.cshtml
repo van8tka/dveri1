@@ -1,15 +1,12 @@
-﻿@using DALdv1
-@model  IEnumerable<VhodnyeDveri>
-
+﻿@using dveri1.HtmlHelpers;
+@model dveri1.Models.ForMainModel
+  
     <div class="paramlist">
-
     </div>
     <div class="allspisok">
-        @foreach (var i in Model)
+        @foreach (var i in Model.ListVhodnDv)
         {
-            if (i.Publicaciya == true)
-            {
-                <div class="shortproduct">
+              <div class="shortproduct">
                     <div class="imageshort">
                        @if (i.Skidka == null || i.Skidka == 0)
                         {
@@ -24,7 +21,6 @@
                     </div>
                    <div>
                        <p>@i.Nazvanie</p>
-                       <label>Производитель:</label>
                        <p>@i.Proizvoditel</p>
                        <p>@i.Strana</p>
                        @if (i.Skidka == null || i.Skidka == 0)
@@ -39,8 +35,7 @@
                    </div>
                   
                 </div>
-            }
-
-        }
+          }
     </div>
+   
 

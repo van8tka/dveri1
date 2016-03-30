@@ -1,4 +1,4 @@
-﻿@model dveri1.Models.ForMainBannerModel
+﻿@model dveri1.Models.ForMainModel
 @{
     ViewBag.Title = "Входные двери";
 }
@@ -30,8 +30,33 @@
     <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="nextImage()" />
    </div>
 <div class="productlist">
-    @Html.Action("ProductList")
+    @Html.Partial("ProductList")
 </div>
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x, PageSize = Model.PagingInfo.ItemsPerPage }))
+</div>
+
+<script type="text/javascript">
+  
+        jQuery(function($) {
+            $('.td').click(function(e) {      
+                e.preventDefault();
+                //console.log(e.target.getAttribute('value') );
+                var url = $(this).attr('href');
+                $('.productlist').load(url);
+                @*$.ajax(
+                    {    
+                        data: e.target.getAttribute('value'),
+                        url: '@Url.Action("Index", "Home", new {page =  data})',                  
+                        success: function(data) {
+                            $('.productlist').html(data);
+                        }
+                    });*@
+            })
+        })
+	
+</script>
 
 
     <script>
