@@ -203,6 +203,7 @@
     <Content Include="Content\ControlSlider\text.png" />
     <Content Include="Content\fon.jpg" />
     <Content Include="Content\imageDefault.jpg" />
+    <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\MainSlider\sl1.jpg" />
     <Content Include="Content\MainSlider\sl2.jpg" />

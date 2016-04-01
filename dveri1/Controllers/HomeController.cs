@@ -21,11 +21,12 @@ namespace dveri1.Controllers
         }
 
 
-        public int PageSize = 4;
+        public int PageSize = 32;
 
         [HttpGet]
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(int? id)
         {
+            int page = id??1;
             ForMainModel model = new ForMainModel();
             string domainpath = Server.MapPath("~/Content/MainSlider");
             //получаем путь 
@@ -41,7 +42,6 @@ namespace dveri1.Controllers
             model.FileName = item;
             model.CountFile = item.Count();
 
-
             int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
             model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
             model.PagingInfo = new PagingInfo
@@ -51,10 +51,14 @@ namespace dveri1.Controllers
                 ItemsPerPage = PageSize
 
             };
-           
+
             if (Request.IsAjaxRequest())
             {
-                 return RedirectToAction("ProductList",new { id = page });
+
+                for(int i = 1;i<100000000;i++)
+                { }
+                return RedirectToAction("ProductList", new { page });
+
             }
             return View(model);
 
@@ -84,38 +88,35 @@ namespace dveri1.Controllers
 
 
 
-
-    public ActionResult ProductList(int id)
-    {
-            int page = id;
-        ForMainModel model = new ForMainModel();
-        int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
-        model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
-        model.PagingInfo = new PagingInfo
-        {
-            CurrentPage = page,
-            TotalItems = TotalItemsProduct,
-            ItemsPerPage = PageSize
-
-        };
-        return PartialView(model);
+            [HttpGet]
+    public ActionResult ProductList(int page = 1)
+    {          
+            ForMainModel model = new ForMainModel();
+            int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
+            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+          
+            model.PagingInfo = new PagingInfo
+            {
+                CurrentPage = page,
+                TotalItems = TotalItemsProduct,
+                ItemsPerPage = PageSize
+            };        
+            return PartialView(model);
     }
+       
 
+        //ProductListViewModel model = new ProductListViewModel();
+        //int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Publicaciya==true).Count();
+        //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x=>x.Id).Where(x=>x.Publicaciya == true).Skip((page-1)*PageSize).Take(PageSize);
+        //model.PagingInfo = new PagingInfo
+        //{
+        //    CurrentPage = page,
+        //    TotalItems = TotalItemsProduct,
+        //    ItemsPerPage = PageSize
 
+        //};
+        //return PartialView(model);
+        //}
 
-
-    //ProductListViewModel model = new ProductListViewModel();
-    //int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Publicaciya==true).Count();
-    //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x=>x.Id).Where(x=>x.Publicaciya == true).Skip((page-1)*PageSize).Take(PageSize);
-    //model.PagingInfo = new PagingInfo
-    //{
-    //    CurrentPage = page,
-    //    TotalItems = TotalItemsProduct,
-    //    ItemsPerPage = PageSize
-
-    //};
-    //return PartialView(model);
-    //}
-
-}
+    }
 }

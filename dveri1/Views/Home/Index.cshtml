@@ -26,36 +26,53 @@
            
         </ul>
     </div>*@
-      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="prevImage()" />
-    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="nextImage()" />
+      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="        prevImage()" />
+    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="        nextImage()" />
    </div>
-<div class="productlist">
+<div class="productlist" id="listproduct">
     @Html.Partial("ProductList")
+ </div>
+
+<div id="loading" style="text-align:center;visibility:hidden;margin-top:-7em">
+    <img src="~/Content/loading.gif" style="width:50px;height:50px;"/>
 </div>
 
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x, PageSize = Model.PagingInfo.ItemsPerPage }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
 
+@*замена pagingLinks на кнопку показать еще*@
 <script type="text/javascript">
-  
-        jQuery(function($) {
-            $('.td').click(function(e) {      
-                e.preventDefault();
-                //console.log(e.target.getAttribute('value') );
-                var url = $(this).attr('href');
-                $('.productlist').load(url);
-                @*$.ajax(
-                    {    
-                        data: e.target.getAttribute('value'),
-                        url: '@Url.Action("Index", "Home", new {page =  data})',                  
-                        success: function(data) {
-                            $('.productlist').html(data);
+    $(document).ready(function(){
+         $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
+           '</div>  '));
+        var page = 1;     
+        $('.showadd').click(
+        function loadItems() {   
+            var totalpages = $(".showadd").val();  
+             if (page > 0 && page<totalpages) {
+                page++;
+                $('#loading').css("visibility","visible")              
+                $.ajax({
+                    type: 'GET',
+                    url: '/Home/Index/' + page,
+                    success: function (data) {
+                        if (data != '') {
+                            $("#listproduct").append(data);
                         }
-                    });*@
-            })
-        })
-	
+                        else {
+                            page = 1;
+                        }
+                       $('#loading').css("visibility","hidden")
+                    }
+                });
+             }
+             if(page==totalpages)
+             {
+                 $('.addpage').replaceWith($('<div class="emtypage" </div>  '));
+             }
+        }  )
+    })
 </script>
 
 

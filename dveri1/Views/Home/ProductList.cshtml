@@ -1,8 +1,6 @@
 ﻿@using dveri1.HtmlHelpers;
 @model dveri1.Models.ForMainModel
   
-    <div class="paramlist">
-    </div>
     <div class="allspisok">
         @foreach (var i in Model.ListVhodnDv)
         {
@@ -15,7 +13,7 @@
                        else
                        {
                               <span class="percent">@i.Skidka%</span>
-                            <img src="~/Content/imageDefault.jpg" height="220px" width="110px" />
+                              <img src="~/Content/imageDefault.jpg" height="220px" width="110px" />
                           
                         }
                     </div>
@@ -32,10 +30,10 @@
                         <p style="color:black; font-size:large"><strike>@i.Cena руб.</strike></p>
                         <p style="color:green; font-size:large">@i.CenaSoSkidcoy руб.</p>
                        }                    
-                   </div>
-                  
+                   </div>                
                 </div>
+               
           }
     </div>
-   
+ 
 
