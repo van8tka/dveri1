@@ -54,37 +54,29 @@ namespace dveri1.Controllers
 
             if (Request.IsAjaxRequest())
             {
-
-                for(int i = 1;i<100000000;i++)
-                { }
-                return RedirectToAction("ProductList", new { page });
-
+                 return RedirectToAction("ProductList", new { page });
             }
             return View(model);
 
         }
-        
+        //метод загрузки первого изображения в списке товара
+        public FileContentResult GetImage(int id)
+        {
+            FotoVhodnyhDverey foto = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id).OrderBy(x=>x.Idfoto).FirstOrDefault();
 
-
-
-
-            //ForMainBannerModel model = new ForMainBannerModel();
-            //string domainpath = Server.MapPath("~/Content/MainSlider");
-            ////получаем путь 
-            //var dir = new DirectoryInfo(domainpath);
-            ////получаем список файлов
-            //FileInfo[] fileNames = dir.GetFiles("*.*");
-            //List<string> item = new List<string>();
-            ////добавляем их в список
-            //foreach (var file in fileNames)
-            //{
-            //    item.Add(file.Name);
-            //}
-            //model.FileName = item;
-            //model.CountFile = item.Count();
-            //return View(model);
-       
-
+            if (foto!= null)
+            { return File(foto.Imaging, foto.MimeType); }
+            else
+            {//изображение по умолчанию
+                FileStream fs = null;
+                fs = new FileStream(Server.MapPath("~/Content/imageDefault.jpg"), FileMode.Open);
+                byte[] sizebyte = new byte[fs.Length];
+                string ImagType = "image/jpg";
+                fs.Read(sizebyte, 0, (int)fs.Length);
+                fs.Close();
+                return File(sizebyte,ImagType);
+            }
+        }
 
 
 
@@ -104,19 +96,6 @@ namespace dveri1.Controllers
             return PartialView(model);
     }
        
-
-        //ProductListViewModel model = new ProductListViewModel();
-        //int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Publicaciya==true).Count();
-        //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x=>x.Id).Where(x=>x.Publicaciya == true).Skip((page-1)*PageSize).Take(PageSize);
-        //model.PagingInfo = new PagingInfo
-        //{
-        //    CurrentPage = page,
-        //    TotalItems = TotalItemsProduct,
-        //    ItemsPerPage = PageSize
-
-        //};
-        //return PartialView(model);
-        //}
 
     }
 }
