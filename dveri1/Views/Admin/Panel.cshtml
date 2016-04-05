@@ -50,7 +50,7 @@
                 <td>@i.Cena</td>
                 <td>@i.Skidka</td>
                <td> @Html.DisplayFor(modelItem=>i.Publicaciya)</td>
-                <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id }, new { @class = "tablebut", style = "width:100px" })<br />@Html.ActionLink("Изменить фото", "FotoVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>
+                <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })<br />@Html.ActionLink("Изменить фото", "FotoVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>
             </tr>
         }
     </table>

@@ -73,7 +73,7 @@ div.productlist{
 }
 /*для скидки*/
  .percent{
-                top: -197px;
+                top: -219px;
                 right: -120px;
                
                 position:relative;
@@ -745,14 +745,14 @@ textarea.form-control {
 }
 
 div.alertmessage{
-    background-color:lightgreen;
+    background-color:red;
     color:black;
-    font-size:1.5em;
+    font-size:1.2em;
    position:fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 80px;   
+  height: 20px;   
   text-align:center;
   z-index:5;
 }

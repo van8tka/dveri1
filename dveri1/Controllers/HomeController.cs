@@ -68,18 +68,11 @@ namespace dveri1.Controllers
             { return File(foto.Imaging, foto.MimeType); }
             else
             {//изображение по умолчанию
-                FileStream fs = null;
-                fs = new FileStream(Server.MapPath("~/Content/imageDefault.jpg"), FileMode.Open);
-                byte[] sizebyte = new byte[fs.Length];
-                string ImagType = "image/jpg";
-                fs.Read(sizebyte, 0, (int)fs.Length);
-                fs.Close();
-                return File(sizebyte,ImagType);
+                return null;
             }
         }
 
-
-
+      
             [HttpGet]
     public ActionResult ProductList(int page = 1)
     {          

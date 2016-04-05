@@ -7,16 +7,28 @@
               <div class="shortproduct">
                     <div class="imageshort">
                        @if (i.Skidka == null || i.Skidka == 0)
-                      {
-                          <img class="img-thumbnail" style="width:110px;height:240px" src="@Url.Action("GetImage", "Home",new { i.Id })" />
-
-                            @*<img src="~/Content/imageDefault.jpg" height="220px" width="110px" />*@
+                       {
+                            if (i.FotoVhodnyhDvereys.FirstOrDefault() == null)
+                               {
+                                <img src="~/Content/imageDefault.jpg" height="240px" width="110px" />
+                               }
+                               else
+                               {
+                                <img class="img-thumbnail" style="width:110px;height:240px" src="@Url.Action("GetImage", "Home", new { i.Id })" />
+                           }
                        }
                        else
                        {
-                              <span class="percent">@i.Skidka%</span>
-                            <img class="img-thumbnail" style="width:110px;height:240px" src="@Url.Action("GetImage", "Home",new { i.Id })" />
-
+                           if (i.FotoVhodnyhDvereys.FirstOrDefault() == null)
+                           {
+                            <span class="percent">@i.Skidka%</span>
+                            <img src="~/Content/imageDefault.jpg" height="240px" width="110px" />
+                           }
+                           else
+                           {
+                            <span class="percent">@i.Skidka%</span>
+                            <img class="img-thumbnail" style="width:110px;height:240px" src="@Url.Action("GetImage", "Home", new { i.Id })" />
+                           }
                        }
                     </div>
                    <div>

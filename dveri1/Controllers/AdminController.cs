@@ -33,6 +33,7 @@ namespace dveri1.Controllers
                 ItemsPerPage = PageSize
 
             };
+           
             return View(model);
         }
         
@@ -117,5 +118,26 @@ namespace dveri1.Controllers
                 item.Delete();
             }
         }
+        [HttpGet]
+        public ActionResult DellVhDv(int id, int page = 1)
+        {
+            try
+            {
+                dataManager.VhodnyeDvRepository.DeleteVhodnyeDv(id);
+                TempData["message"] = "Товар удален из базы данных!";
+                return RedirectToAction("Panel", new { page });
+            }
+            catch
+            {
+                return RedirectToAction("Exception");
+            }
+          
+        }
+
+        public ActionResult Exception()
+        {
+            return View();
+        }
+
     }
 }
