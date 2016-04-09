@@ -9,6 +9,8 @@ using dveri1.Models;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace dveri1.Controllers
 {
@@ -70,28 +72,37 @@ namespace dveri1.Controllers
                     Directory.CreateDirectory(domainpath);
                 }
 
-                int idfot;
-                    FotoVhodnyhDverey ft = dataManager.VhodnyeDvRepository.GetFotoVhDv().LastOrDefault();
-                if (ft == null)
-                    idfot = 0;
-                else
-                    idfot = ft.Idfoto;
+              
                 //проход по списку загружаемых файлов и если есть, добавление в БД
                 foreach (var image in fileUpload)
                 {
+                   
                     if (image != null)
                     {
-                        string fileName = Path.GetFileName(image.FileName);
-                                 string path = Path.Combine(domainpath, fileName);
-                                   image.SaveAs(path);
+                        //получим ID последнего фото
+                        int idfot;
+                        FotoVhodnyhDverey ft = dataManager.VhodnyeDvRepository.GetFotoVhDv().LastOrDefault();
+                        if (ft == null)
+                            idfot = 0;
+                        else
+                            idfot = ft.Idfoto;
+
+                        string path = Path.Combine(domainpath, image.FileName);
+                        image.SaveAs(path);
+                        
                         //изменим разрешение файла
-                        Bitmap myBitmap = new Bitmap(Image.FromFile(path), new Size(350, 600));
+                        Image img = Image.FromFile(path);
+                        Bitmap myBitmap = new Bitmap(img, new Size(350, 600));
                         Graphics myGraphic = Graphics.FromImage(myBitmap);
+                        //теперь нарисуем логотип
+                        Image imgLogo = Image.FromFile(Server.MapPath("~/Content/logoinAllImage.png"));
+                        //в метод DRAW передали изобр для наложения координата X и Y и размер изобра W и H
+                         myGraphic.DrawImage(imgLogo,0, 0, 220,270);
+                        //новое имя и сохраним
                         string newfilename = "evrostroy" + (idfot + 1).ToString() + ".jpg";
                         string newfilepath = domainpath + newfilename;
                         myBitmap.Save(newfilepath, ImageFormat.Jpeg);
-                        //теперь запишем файл в базу данных
-
+                       //теперь запишем файл в базу данных
                         FileStream fs = null;
                         fs = new FileStream(newfilepath, FileMode.Open);
                         model.ImageData = new byte[fs.Length];
@@ -99,8 +110,19 @@ namespace dveri1.Controllers
                         fs.Read(model.ImageData, 0, (int)fs.Length);
                         dataManager.VhodnyeDvRepository.CreateFotoVhDv(1, iddver, model.ImageMimeType, model.ImageData);
                         fs.Close();
-                    }
+                      
+                        myBitmap.Dispose();
+                        myGraphic.Dispose();
+                        img.Dispose();
+                        imgLogo.Dispose();
+                        myBitmap = null;
+                        myGraphic = null;
+                        img = null;
+                        imgLogo = null;
+                       fs = null;
+                       }
                 }
+                 fileUpload = null;
                 //удалим файлы из временной папки
                 DellAllFiles();
                 return RedirectToAction("Panel");
@@ -115,7 +137,7 @@ namespace dveri1.Controllers
             FileInfo[] fileNames = dir.GetFiles("*.*");
             foreach (var item in fileNames)
             {
-                item.Delete();
+                   item.Delete();
             }
         }
         [HttpGet]

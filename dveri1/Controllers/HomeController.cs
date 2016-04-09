@@ -19,12 +19,16 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-
+        //сортировка
+        //int sort 
+        //    1-по возрастанию,
+        //    2-по убыванию,
+        //    0-по номеру(по умолчанию)
 
         public int PageSize = 32;
-
+        //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, int sort=0)
         {
             int page = id??1;
             ForMainModel model = new ForMainModel();
@@ -41,9 +45,11 @@ namespace dveri1.Controllers
             }
             model.FileName = item;
             model.CountFile = item.Count();
-
+            model.Sort = sort;
             int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
-            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+            //вызлв метода сортировки
+            model.ListVhodnDv = SortirDveri(page,sort);
+            //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
             model.PagingInfo = new PagingInfo
             {
                 CurrentPage = page,
@@ -54,7 +60,7 @@ namespace dveri1.Controllers
 
             if (Request.IsAjaxRequest())
             {
-                 return RedirectToAction("ProductList", new { page });
+                 return RedirectToAction("ProductList", new { page,sort });
             }
             return View(model);
 
@@ -74,12 +80,11 @@ namespace dveri1.Controllers
 
       
             [HttpGet]
-    public ActionResult ProductList(int page = 1)
+    public ActionResult ProductList(int page = 1, int sort = 0)
     {          
             ForMainModel model = new ForMainModel();
             int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
-            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
-          
+            model.ListVhodnDv = SortirDveri(page,sort);
             model.PagingInfo = new PagingInfo
             {
                 CurrentPage = page,
@@ -88,7 +93,32 @@ namespace dveri1.Controllers
             };        
             return PartialView(model);
     }
-       
+      //метод возврата списка отсортированных дверей
+      public IEnumerable<VhodnyeDveri> SortirDveri(int page,int s)
+        {
+            IEnumerable<VhodnyeDveri> temp = null;
+            switch (s)
+            {
+                case 0:
+                    {
+                        temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                        break;
+                    }
+                case 1:
+                    {
+                        temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                        break;
+                    }
+                case 2:
+                    {
+                        temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                        break;
+                    }
+               default:
+                    break;
+            }
+            return temp;
+        }
 
     }
 }

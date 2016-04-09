@@ -12,6 +12,9 @@ namespace dveri1.Models
         public int CountFile { get; set; }
         public IEnumerable<VhodnyeDveri> ListVhodnDv { get; set; }
         public PagingInfo PagingInfo { get; set; }
-
+        //для сортировки 0-по индексу(пл умолчанию)
+        //1-по возрастанию
+        //    2-по убыванию
+        public int Sort { get; set; }
     }
 }

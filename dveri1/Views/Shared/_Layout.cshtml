@@ -63,15 +63,17 @@
 
         <div class="content-body">
             @RenderBody()
-            <hr />
-            <div class="footer">
-                <p>&copy; @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</p>
-            </div>
+                    
         </div>
-
+        <hr /> 
+        <div class="footer">
+            @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия
+        </div>
+       
         @Scripts.Render("~/bundles/jquery")
 
         @RenderSection("scripts", required: false)
     </div>
+   
 </body>
 </html>

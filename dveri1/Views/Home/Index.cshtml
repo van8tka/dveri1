@@ -26,40 +26,74 @@
            
         </ul>
     </div>*@
-      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="        prevImage()" />
-    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="        nextImage()" />
+      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="prevImage()" />
+    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="nextImage()" />
    </div>
 <div class="productlist" id="listproduct">
+    <div class="leftMainMenu">
+       @switch (Model.Sort)
+       {
+           case 0:
+               {
+                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton" })
+                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton" })
+                   break;
+               }
+           case 1:
+               {
+                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton act" })
+                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton" })
+                   break;
+               }
+           case 2:
+               {
+                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton" })
+                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton act" })
+                           break;
+                       }
+                   default:
+               break;
+               
+               }
+    </div>
+
+
     @Html.Partial("ProductList")
  </div>
+<div style="clear:both">
 
+</div>
 <div id="loading" style="text-align:center;visibility:hidden;margin-top:-7em">
     <img src="~/Content/loading.gif" style="width:50px;height:50px;"/>
 </div>
 
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x, PageSize = Model.PagingInfo.ItemsPerPage }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x,sort=Model.Sort, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
 
 @*замена pagingLinks на кнопку показать еще*@
 <script type="text/javascript">
     $(document).ready(function(){
-         $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
+        $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
            '</div>  '));
-        var page = 1;     
+           var page = 1;     
         $('.showadd').click(
-        function loadItems() {   
-            var totalpages = $(".showadd").val();  
-             if (page > 0 && page<totalpages) {
-                page++;
-                $('#loading').css("visibility","visible")              
-                $.ajax({
-                    type: 'GET',
-                    url: '/Home/Index/' + page,
+        function loadItems() {
+               var totalpages = $(".showadd").val();
+
+               var temp = "?sort=";
+
+               if (page > 0 && page<totalpages) {
+                   page++;
+                 //анимация загрузки
+                $('#loading').css("visibility","visible")
+                  $.ajax({
+                   type: 'GET',
+                    url: '/Home/Index/' + page+temp+@Model.Sort,
                     success: function (data) {
-                        if (data != '') {
+                           if (data != '') {
                             $("#listproduct").append(data);
-                        }
+                           }
                         else {
                             page = 1;
                         }
@@ -75,7 +109,7 @@
     })
 </script>
 
-
+@*//скрипт для слайдера*@
     <script>
         var secDuration = 4;
         var image = 1;
