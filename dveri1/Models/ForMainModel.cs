@@ -16,5 +16,8 @@ namespace dveri1.Models
         //1-по возрастанию
         //    2-по убыванию
         public int Sort { get; set; }
+        //для выбора товара по брэнду
+        public IEnumerable<string> Brand { get; set; }
+        public string CurrentBrand { get; set; }
     }
 }

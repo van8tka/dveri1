@@ -15,6 +15,7 @@
         </ul>
     </div>
     <img src="~/Content/ControlSlider/glass.png"  id="glass" style="width:1200px;height:200px"/>
+   
     @*переключатель слайдов*@
        @*<div id="encart">
       
@@ -26,37 +27,52 @@
            
         </ul>
     </div>*@
-      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="prevImage()" />
-    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="nextImage()" />
+      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="        prevImage()" />
+    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="        nextImage()" />
    </div>
 <div class="productlist" id="listproduct">
     <div class="leftMainMenu">
-       @switch (Model.Sort)
-       {
-           case 0:
-               {
-                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton" })
-                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton" })
-                   break;
-               }
-           case 1:
-               {
-                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton act" })
-                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton" })
-                   break;
-               }
-           case 2:
-               {
-                @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 1 }, new { @class = "leftMenuButton" })
-                @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = Model.PagingInfo.CurrentPage, sort = 2 }, new { @class = "leftMenuButton act" })
-                           break;
-                       }
-                   default:
-               break;
-               
-               }
-    </div>
+        <div>
+            @switch (Model.Sort)
+            {
+                case 0:
+                    {
+                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1,brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        break;
+                    }
+                case 1:
+                    {
+                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
+                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        break;
+                    }
+                case 2:
+                    {
+                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
+                        break;
+                    }
+                default:
+                    break;
 
+            }
+        </div>
+        <div style="padding-left:45px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none">
+            Выбор брэнда:
+        </div>
+        <div>
+            @Html.ActionLink("ВЕСЬ ТОВАР", "Index", "Home", new { sort = 0, brand = "весьтовар"}, new { @class = "leftMenuButton весьтовар" })
+            @foreach(var i in Model.Brand)
+            {
+                if (i != null)
+                {
+                    @Html.ActionLink(i, "Index", "Home", new { sort = 0, brand = i }, new { @class = "leftMenuButton "+i})
+                }               
+            }
+        </div>
+    </div>
+  
 
     @Html.Partial("ProductList")
  </div>
@@ -68,7 +84,7 @@
 </div>
 
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x,sort=Model.Sort, PageSize = Model.PagingInfo.ItemsPerPage }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x,sort=Model.Sort,brand = Model.CurrentBrand, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
 
 @*замена pagingLinks на кнопку показать еще*@
@@ -76,21 +92,26 @@
     $(document).ready(function(){
         $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
            '</div>  '));
-           var page = 1;     
+        var page = 1;
+        //выделение текущего брэнда
+    
+        $('.@Model.CurrentBrand').addClass("act");
+
         $('.showadd').click(
         function loadItems() {
                var totalpages = $(".showadd").val();
 
                var temp = "?sort=";
-
+               var temp2 = "&brand=";
                if (page > 0 && page<totalpages) {
                    page++;
                  //анимация загрузки
                 $('#loading').css("visibility","visible")
-                  $.ajax({
-                   type: 'GET',
-                    url: '/Home/Index/' + page+temp+@Model.Sort,
-                    success: function (data) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/Home/Index/' + page + temp + @Model.Sort + temp2 +'@Model.CurrentBrand',
+
+                       success: function (data) {
                            if (data != '') {
                             $("#listproduct").append(data);
                            }
