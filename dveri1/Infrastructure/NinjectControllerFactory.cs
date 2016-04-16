@@ -23,6 +23,7 @@ namespace dveri1.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IVhodnyeDvRepository>().To<EfVhodnyeDvRepository>();
+            kernel.Bind<ISliderRepository>().To<EfSliderRepository>();
         }
 
         public object GetService(Type serviceType)

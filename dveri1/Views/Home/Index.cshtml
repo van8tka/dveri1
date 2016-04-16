@@ -3,19 +3,19 @@
     ViewBag.Title = "Входные двери";
 }
 
-
     <!-- Непосредственный код слайдера -->
 <div id="slider">
      <div id="mask">
         <ul id="image_container">
-            @foreach (string i in Model.FileName)
-            {
-                <li><img src="~/Content/MainSlider/@i" style="width:1200px;height:195px"></li>
-            }
+               @foreach(var item in Model.SliderImg)
+               {
+                    @Html.Raw("<img style='width:1211px; height:190px;margin-left:-15px;margin-top:-5px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+               }
+          
         </ul>
     </div>
     <img src="~/Content/ControlSlider/glass.png"  id="glass" style="width:1200px;height:200px"/>
-   
+  
     @*переключатель слайдов*@
        @*<div id="encart">
       
@@ -72,8 +72,6 @@
             }
         </div>
     </div>
-  
-
     @Html.Partial("ProductList")
  </div>
 <div style="clear:both">
@@ -130,7 +128,7 @@
     })
 </script>
 
-@*//скрипт для слайдера*@
+@*//скрипт для слайдера главного*@
     <script>
         var secDuration = 4;
         var image = 1;
@@ -193,3 +191,4 @@
         }
         changeImage(1);
     </script>
+

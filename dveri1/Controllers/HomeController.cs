@@ -32,19 +32,10 @@ namespace dveri1.Controllers
         {
             int page = id??1;
             ForMainModel model = new ForMainModel();
-            string domainpath = Server.MapPath("~/Content/MainSlider");
-            //получаем путь 
-            var dir = new DirectoryInfo(domainpath);
-            //получаем список файлов
-            FileInfo[] fileNames = dir.GetFiles("*.*");
-            List<string> item = new List<string>();
-            //добавляем их в список
-            foreach (var file in fileNames)
-            {
-                item.Add(file.Name);
-            }
-            model.FileName = item;
-            model.CountFile = item.Count();
+          
+           model.SliderImg = dataManager.SliderRepository.GetSliderMainImg();
+            model.CountFile = model.SliderImg.Count();            
+
             model.Sort = sort;
             int TotalItemsProduct;
             if (brand == "весьтовар")

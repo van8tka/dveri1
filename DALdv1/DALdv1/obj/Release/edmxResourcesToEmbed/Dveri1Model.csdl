@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbdveri1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FotoFyrnitury">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+    </Key>
+    <Property Name="IdFoto" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Furnitura" Relationship="Self.FK_FotoFyrnitury_Furnitura" FromRole="FotoFyrnitury" ToRole="Furnitura" />
+  </EntityType>
+  <EntityType Name="FotoMegkomnDverey">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+    </Key>
+    <Property Name="IdFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="MegkomnatnyeDveri" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="FotoMegkomnDverey" ToRole="MegkomnatnyeDveri" />
+  </EntityType>
+  <EntityType Name="FotoVhodnyhDverey">
+    <Key>
+      <PropertyRef Name="Idfoto" />
+    </Key>
+    <Property Name="Idfoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="VhodnyeDveri" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="FotoVhodnyhDverey" ToRole="VhodnyeDveri" />
+  </EntityType>
+  <EntityType Name="Furnitura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Proizvoditel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Strana" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Material" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Pokrytie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TyporazmerCilindra" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TypKrepega" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RecomendTolschinaDvPolotna" Type="Int32" />
+    <Property Name="TypPlanki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Megosevoe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DopZapirIznutri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <Property Name="Skidka" Type="Int32" />
+    <Property Name="CenaSoSkidkoy" Type="Int32" />
+    <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
+    <Property Name="TypFurnitury" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="FotoFyrnituries" Relationship="Self.FK_FotoFyrnitury_Furnitura" FromRole="Furnitura" ToRole="FotoFyrnitury" />
+  </EntityType>
+  <EntityType Name="MegkomnatnyeDveri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Proizvoditel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Strana" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Material" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Pokrytie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Karkas" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TypDveri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <Property Name="Skidka" Type="Int32" />
+    <Property Name="CenaSoSkidkoy" Type="Int32" />
+    <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
+  </EntityType>
+  <EntityType Name="SliderMainImg">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="VhodnyeDveri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazvanie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Proizvoditel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Strana" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Napolnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Yplotnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TolschinaMetalla" Type="Int32" />
+    <Property Name="Furnitura" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Petli" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OtdelkaSnarugi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OtdelkaVnutri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TolschinaDvPolotna" Type="Int32" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <Property Name="Skidka" Type="Int32" />
+    <Property Name="CenaSoSkidcoy" Type="Int32" />
+    <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FotoVhodnyhDvereys" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="FotoVhodnyhDverey" />
+  </EntityType>
+  <Association Name="FK_FotoFyrnitury_Furnitura">
+    <End Role="Furnitura" Type="Self.Furnitura" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FotoFyrnitury" Type="Self.FotoFyrnitury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Furnitura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FotoFyrnitury">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FotoMegkomnDverey_MegkomnatnyeDveri">
+    <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FotoMegkomnDverey" Type="Self.FotoMegkomnDverey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MegkomnatnyeDveri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FotoMegkomnDverey">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FotoVhodnyhDverey_VhodnyeDveri">
+    <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FotoVhodnyhDverey" Type="Self.FotoVhodnyhDverey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VhodnyeDveri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FotoVhodnyhDverey">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FotoFyrnituries" EntityType="Self.FotoFyrnitury" />
+    <EntitySet Name="FotoMegkomnDvereys" EntityType="Self.FotoMegkomnDverey" />
+    <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
+    <EntitySet Name="Furnituras" EntityType="Self.Furnitura" />
+    <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
+    <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
+    <AssociationSet Name="FK_FotoFyrnitury_Furnitura" Association="Self.FK_FotoFyrnitury_Furnitura">
+      <End Role="Furnitura" EntitySet="Furnituras" />
+      <End Role="FotoFyrnitury" EntitySet="FotoFyrnituries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FotoMegkomnDverey_MegkomnatnyeDveri" Association="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri">
+      <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveris" />
+      <End Role="FotoMegkomnDverey" EntitySet="FotoMegkomnDvereys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FotoVhodnyhDverey_VhodnyeDveri" Association="Self.FK_FotoVhodnyhDverey_VhodnyeDveri">
+      <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
+      <End Role="FotoVhodnyhDverey" EntitySet="FotoVhodnyhDvereys" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

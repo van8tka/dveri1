@@ -46,11 +46,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DALdv1">
-      <HintPath>..\..\..\Visual\DALdv1\DALdv1\bin\Debug\DALdv1.dll</HintPath>
+    <Reference Include="DALdv1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DALdv1\DALdv1\bin\Release\DALdv1.dll</HintPath>
     </Reference>
-    <Reference Include="Domain2">
-      <HintPath>..\..\..\Visual\Domain2\Domain2\bin\Debug\Domain2.dll</HintPath>
+    <Reference Include="Domain2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Domain2\Domain2\bin\Release\Domain2.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -192,6 +194,7 @@
     <Compile Include="Models\ForMainModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
+    <Compile Include="Models\SliderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,11 +210,6 @@
     <Content Include="Content\imageDefault.jpg" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
-    <Content Include="Content\MainSlider\sl1.jpg" />
-    <Content Include="Content\MainSlider\sl2.jpg" />
-    <Content Include="Content\MainSlider\sl3.jpg" />
-    <Content Include="Content\MainSlider\sl4.jpg" />
-    <Content Include="Content\MainSlider\sl6.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -252,6 +250,7 @@
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\CreateVhDv.cshtml" />
     <Content Include="Views\Admin\Exception.cshtml" />
+    <Content Include="Views\Admin\SliderMain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

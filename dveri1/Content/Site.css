@@ -311,10 +311,10 @@ div.navigation-menu{
         left:0;
       }
       .image2 #image_container{
-        left:-100%;
+        left:-102%;
       }
       .image3 #image_container{
-        left:-200%;
+        left:-202%;
       }
       .image4 #image_container{
         left:-300%;
@@ -349,7 +349,7 @@ div.navigation-menu{
      
     height: 20px;
 }
-      
+ 
       #bouton{
         position:relative;
         width:244px;

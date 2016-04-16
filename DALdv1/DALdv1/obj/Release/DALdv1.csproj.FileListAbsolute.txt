@@ -1,0 +1,9 @@
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\DALdv1.dll.config
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\DALdv1.dll
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\DALdv1.pdb
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\EntityFramework.dll
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\EntityFramework.SqlServer.dll
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\EntityFramework.xml
+D:\GitHub\dveri1\DALdv1\DALdv1\bin\Release\EntityFramework.SqlServer.xml
+D:\GitHub\dveri1\DALdv1\DALdv1\obj\Release\DALdv1.dll
+D:\GitHub\dveri1\DALdv1\DALdv1\obj\Release\DALdv1.pdb

@@ -39,13 +39,13 @@ namespace dveri1.Controllers
             return View(model);
         }
         
-
+//------------------------------создание нового товара--------------------------------------------------------
         [HttpGet]
         public ActionResult CreateVhDv()
         {
             return View();
         }
-
+//------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
         [HttpPost]
         public ActionResult CreateVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
@@ -71,8 +71,7 @@ namespace dveri1.Controllers
                 {
                     Directory.CreateDirectory(domainpath);
                 }
-
-              
+             
                 //проход по списку загружаемых файлов и если есть, добавление в БД
                 foreach (var image in fileUpload)
                 {
@@ -110,7 +109,7 @@ namespace dveri1.Controllers
                         fs.Read(model.ImageData, 0, (int)fs.Length);
                         dataManager.VhodnyeDvRepository.CreateFotoVhDv(1, iddver, model.ImageMimeType, model.ImageData);
                         fs.Close();
-                      
+                      //освобождаем занятый ресурс
                         myBitmap.Dispose();
                         myGraphic.Dispose();
                         img.Dispose();
@@ -140,6 +139,7 @@ namespace dveri1.Controllers
                    item.Delete();
             }
         }
+        //------------------------------контроллер удаления товара---------------------------------------------
         [HttpGet]
         public ActionResult DellVhDv(int id, int page = 1)
         {
@@ -152,13 +152,98 @@ namespace dveri1.Controllers
             catch
             {
                 return RedirectToAction("Exception");
+            }          
+        }
+        //------------------------------------------------контроллер главного слайдера--------------------------------------------------------
+        [HttpGet]
+        public ActionResult SliderMain()
+        {
+            SliderModel model = new SliderModel();
+            model.SliderMI = dataManager.SliderRepository.GetSliderMainImg();
+            model.CountSlide = model.SliderMI.Count();
+           return View(model);
+        }
+        [HttpPost]
+        public ActionResult SliderMain(IEnumerable<HttpPostedFileBase> fileUpload=null)
+        {
+            SliderModel model = new SliderModel();
+            string domainpath = Server.MapPath("~/Content/ImageTemp/");
+            int i = 0;
+            bool BreakAddFiles = false;
+            int countImage = dataManager.SliderRepository.GetSliderMainImg().Count();
+            if(countImage >=8)
+            {
+                TempData["message"] = "Слайдер содержит 8 изображений или более, для добавления другого изображения необходимо удалить старые изображения.";
+                return RedirectToAction("SliderMain");
             }
+            else
+            {
+                foreach (var image in fileUpload)
+                {
+                    if (image != null)
+                    {
+                        if(countImage==8)
+                        {
+                            TempData["message"] = "Слайдер содержит 8 изображений, добавлено только " +i+ " изображения";
+                            BreakAddFiles = true;
+                            break;
+                        }
+                        countImage++;
+                        i++;
+                        //получим ID последнего фото                  
+                        string path = Path.Combine(domainpath, image.FileName);
+                        image.SaveAs(path);
+                        //изменим разрешение файла
+                        Image img = Image.FromFile(path);
+                        Bitmap myBitmap = new Bitmap(img, new Size(1200, 200));
+                        Graphics myGraphic = Graphics.FromImage(myBitmap);
+                        //теперь нарисуем логотип
+                        //новое имя и сохраним
+                        string newfilename = "evrostroySlMAin" + i.ToString() + ".jpg";
+                        string newfilepath = domainpath + newfilename;
+                        myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                        //теперь запишем файл в базу данных
+                        FileStream fs = null;
+                        fs = new FileStream(newfilepath, FileMode.Open);
+                        model.ImgDataSlider = new byte[fs.Length];
+                        model.MimeTypeSlider = "image/jpg";
+                        fs.Read(model.ImgDataSlider, 0, (int)fs.Length);
+                        dataManager.SliderRepository.CreateSliderMainImg(model.MimeTypeSlider, model.ImgDataSlider);
+                        fs.Close();
+                        //освобождаем занятый ресурс
+                        myBitmap.Dispose();
+                        myGraphic.Dispose();
+                        img.Dispose();
+                        myBitmap = null;
+                        myGraphic = null;
+                        img = null;
+                        fs = null;
+                    }
+                }
+                fileUpload = null;
+                //удалим файлы из временной папки
+                DellAllFiles();
+                if(!BreakAddFiles)
+                {
+                    TempData["message"] = "Изображения слайдера добавлены!";
+                }
+                return RedirectToAction("SliderMain");
+            }          
           
         }
+//-----------------------------------------------контроллер удаления слайда-------------------------------------------------------------------
+public ActionResult DellSlide(int id)
+        {
+            dataManager.SliderRepository.DellSliderMainImg(id);
+            TempData["message"] = "Изображение удалено из базы данных!";
+            return RedirectToAction("SliderMain");
+        }
 
+
+//-------------------------------------------------контроллер исключений Exception------------------------------------------------------------
         public ActionResult Exception()
         {
-            return View();
+                   return View();
         }
 
     }

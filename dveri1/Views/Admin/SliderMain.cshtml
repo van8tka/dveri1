@@ -1,0 +1,34 @@
+﻿@model dveri1.Models.SliderModel
+@{
+    ViewBag.Title = "Главный слайдер";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="tablecontent">
+    @using (Html.BeginForm("SliderMain", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { <div class="form-group">
+          <h3> Изображения главного слайдера (добавляйте изображения формата 1200px*200px или кратные им для корректного отображения):</h3><br />
+        <div style="position:relative">
+            @foreach (var item in Model.SliderMI)
+            {
+            <div style="margin:20px;">
+                @Html.Raw("<img style='width:1000px; height:200px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+                <br />
+                @Html.ActionLink("Удалить изображение "+item.Id, "DellSlide", "Admin", new { id = item.Id }, new { @class = "tablebut", style = "width:170px" })
+             </div>
+            }
+            @for (int i = 0; i < 8-Model.CountSlide; i++)
+            {
+                <input type="file" name="fileUpload[@i]" /><br />
+            }
+       </div>
+    </div>
+        if (Model.CountSlide < 8)
+        {
+            <div style="margin-bottom:20px">
+                <input type="submit" value="Сохранить" class="showadd" />
+                @Html.ActionLink("Отменить", "Panel")
+            </div>
+        }
+    }
+</div>
+
