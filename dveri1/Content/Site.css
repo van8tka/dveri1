@@ -338,7 +338,7 @@ div.navigation-menu{
       #image_container li{
         float:left;
       }
-      
+                       
       /* L'encart Bleu */
 #encart {
     position: absolute;
@@ -350,6 +350,13 @@ div.navigation-menu{
     height: 20px;
 }
  
+  #featured {
+            width: 270px;
+            height: 450px;
+            /*background: #009cff url('orbit/loading.gif') no-repeat center center;*/
+            overflow: hidden;
+        }
+
       #bouton{
         position:relative;
         width:244px;
@@ -480,7 +487,7 @@ div.navigationleftfixed{
     height:100%;
    min-height:1000px;
     background-color:lightgray;
-    margin-top:-15px;
+    margin-top:-25px;
     margin-left:-10px;
 }
 ul.menuleft{

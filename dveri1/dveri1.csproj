@@ -208,8 +208,22 @@
     <Content Include="Content\ControlSlider\text.png" />
     <Content Include="Content\fon.jpg" />
     <Content Include="Content\imageDefault.jpg" />
+    <Content Include="Content\ImageTemp\1.jpg" />
+    <Content Include="Content\ImageTemp\2.jpg" />
+    <Content Include="Content\ImageTemp\3.jpg" />
+    <Content Include="Content\ImageTemp\4.jpg" />
+    <Content Include="Content\ImageTemp\5.jpg" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
+    <Content Include="Content\orbit.css" />
+    <Content Include="Content\orbit\bullets.png" />
+    <Content Include="Content\orbit\left-arrow.png" />
+    <Content Include="Content\orbit\loading.gif" />
+    <Content Include="Content\orbit\mask-black.png" />
+    <Content Include="Content\orbit\pause-black.png" />
+    <Content Include="Content\orbit\right-arrow.png" />
+    <Content Include="Content\orbit\rotator-black.png" />
+    <Content Include="Content\orbit\timer-black.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -223,6 +237,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.orbit.js" />
+    <Content Include="Scripts\jquery.orbit.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -251,11 +267,11 @@
     <Content Include="Views\Admin\CreateVhDv.cshtml" />
     <Content Include="Views\Admin\Exception.cshtml" />
     <Content Include="Views\Admin\SliderMain.cshtml" />
+    <Content Include="Views\Admin\SliderLeft.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Content\ImageTemp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

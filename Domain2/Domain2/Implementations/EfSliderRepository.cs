@@ -15,6 +15,7 @@ namespace Domain2.Implementations
         {
             this.context = context;
         }
+        //главный слайдер
         public void CreateSliderMainImg(string Type, byte[] Image)
         {
             SliderMainImg sl = new SliderMainImg()
@@ -38,5 +39,36 @@ namespace Domain2.Implementations
         {
             return context.SliderMainImgs;
         }
+
+        //==============================боковой слайдер===================================
+        public void CreateSliderLeftImg(string Type, byte[] Image)
+        {
+            SliderLeftImg sl = new SliderLeftImg()
+            {
+                Id = 0,
+                MimeType = Type,
+                Imaging = Image
+            };
+            context.SliderLeftImgs.Add(sl);
+            context.SaveChanges();
+        }
+
+        public void DellSliderLeftImg(int id)
+        {
+            context.SliderLeftImgs.Remove(context.SliderLeftImgs.Where(x => x.Id == id).FirstOrDefault());
+            context.SaveChanges();
+
+        }
+
+        public IEnumerable<SliderLeftImg> GetSliderLeftImg()
+        {
+            return context.SliderLeftImgs;
+        }
+
+
+
+
+
+
     }
 }

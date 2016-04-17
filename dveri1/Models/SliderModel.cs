@@ -9,6 +9,7 @@ namespace dveri1.Models
     public class SliderModel
     {
         public IEnumerable<SliderMainImg> SliderMI { get; set; }
+        public IEnumerable<SliderLeftImg> SliderLI { get; set; }
         public string MimeTypeSlider { get; set; }
         public byte[] ImgDataSlider { get; set; }
         public int CountSlide { get; set; }

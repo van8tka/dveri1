@@ -238,9 +238,91 @@ public ActionResult DellSlide(int id)
             TempData["message"] = "Изображение удалено из базы данных!";
             return RedirectToAction("SliderMain");
         }
+        //------------------------------------------------контроллер боковогослайдера--------------------------------------------------------
+        [HttpGet]
+        public ActionResult SliderLeft()
+        {
+            SliderModel model = new SliderModel();
+            model.SliderLI = dataManager.SliderRepository.GetSliderLeftImg();
+            model.CountSlide = model.SliderLI.Count(); 
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult SliderLeft(IEnumerable<HttpPostedFileBase> fileUpload = null)
+        {
+            SliderModel model = new SliderModel();
+            string domainpath = Server.MapPath("~/Content/ImageTemp/");
+            int i = 0;
+            bool BreakAddFiles = false;
+            int countImage = dataManager.SliderRepository.GetSliderLeftImg().Count();
+            if (countImage >= 8)
+            {
+                TempData["message"] = "Слайдер содержит 8 изображений или более, для добавления другого изображения необходимо удалить старые изображения.";
+                return RedirectToAction("SliderLeft");
+            }
+            else
+            {
+                foreach (var image in fileUpload)
+                {
+                    if (image != null)
+                    {
+                        if (countImage == 8)
+                        {
+                            TempData["message"] = "Слайдер содержит 8 изображений, добавлено только " + i + " изображения";
+                            BreakAddFiles = true;
+                            break;
+                        }
+                        countImage++;
+                        i++;
+                        //получим ID последнего фото                  
+                        string path = Path.Combine(domainpath, image.FileName);
+                        image.SaveAs(path);
+                        //изменим разрешение файла
+                        Image img = Image.FromFile(path);
+                        Bitmap myBitmap = new Bitmap(img, new Size(200, 400));
+                        Graphics myGraphic = Graphics.FromImage(myBitmap);
+                        //новое имя и сохраним
+                        string newfilename = "evrostroySlLeft" + i.ToString() + ".jpg";
+                        string newfilepath = domainpath + newfilename;
+                        myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                        //теперь запишем файл в базу данных
+                        FileStream fs = null;
+                        fs = new FileStream(newfilepath, FileMode.Open);
+                        model.ImgDataSlider = new byte[fs.Length];
+                        model.MimeTypeSlider = "image/jpg";
+                        fs.Read(model.ImgDataSlider, 0, (int)fs.Length);
+                        dataManager.SliderRepository.CreateSliderLeftImg(model.MimeTypeSlider, model.ImgDataSlider);
+                        fs.Close();
+                        //освобождаем занятый ресурс
+                        myBitmap.Dispose();
+                        myGraphic.Dispose();
+                        img.Dispose();
+                        myBitmap = null;
+                        myGraphic = null;
+                        img = null;
+                        fs = null;
+                    }
+                }
+                fileUpload = null;
+                //удалим файлы из временной папки
+                DellAllFiles();
+                if (!BreakAddFiles)
+                {
+                    TempData["message"] = "Изображения слайдера добавлены!";
+                }
+                return RedirectToAction("SliderLeft");
+            }
 
+        }
+        //-----------------------------------------------контроллер удаления бокового слайда-------------------------------------------------------------------
+        public ActionResult DellSlideLeft(int id)
+        {
+            dataManager.SliderRepository.DellSliderLeftImg(id);
+            TempData["message"] = "Изображение удалено из базы данных!";
+            return RedirectToAction("SliderLeft");
+        }
 
-//-------------------------------------------------контроллер исключений Exception------------------------------------------------------------
+        //-------------------------------------------------контроллер исключений Exception------------------------------------------------------------
         public ActionResult Exception()
         {
                    return View();

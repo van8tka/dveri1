@@ -34,8 +34,8 @@ namespace dveri1.Controllers
             ForMainModel model = new ForMainModel();
           
            model.SliderImg = dataManager.SliderRepository.GetSliderMainImg();
-            model.CountFile = model.SliderImg.Count();            
-
+            model.CountFile = model.SliderImg.Count();
+            model.SliderLeftImg = dataManager.SliderRepository.GetSliderLeftImg();
             model.Sort = sort;
             int TotalItemsProduct;
             if (brand == "весьтовар")

@@ -20,5 +20,6 @@ namespace dveri1.Models
         public IEnumerable<string> Brand { get; set; }
         public string CurrentBrand { get; set; }
         public IEnumerable<SliderMainImg> SliderImg { get; set; }
+        public IEnumerable<SliderLeftImg> SliderLeftImg { get; set; }
     }
 }

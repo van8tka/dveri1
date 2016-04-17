@@ -76,6 +76,14 @@
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="Publicaciya" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="SliderLeftImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="SliderMainImg">
           <Key>
             <PropertyRef Name="Id" />
@@ -165,6 +173,7 @@
           <EntitySet Name="FotoVhodnyhDverey" EntityType="Self.FotoVhodnyhDverey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Furnitura" EntityType="Self.Furnitura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MegkomnatnyeDveri" EntityType="Self.MegkomnatnyeDveri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />
@@ -262,6 +271,14 @@
           <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
         </EntityType>
+        <EntityType Name="SliderLeftImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="SliderMainImg">
           <Key>
             <PropertyRef Name="Id" />
@@ -352,6 +369,7 @@
           <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
           <EntitySet Name="Furnituras" EntityType="Self.Furnitura" />
           <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
+          <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
@@ -447,6 +465,15 @@
                 <ScalarProperty Name="CenaSoSkidkoy" ColumnName="CenaSoSkidkoy" />
                 <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
                 <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderLeftImgs">
+            <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImg">
+              <MappingFragment StoreEntitySet="SliderLeftImg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="Imaging" ColumnName="Imaging" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

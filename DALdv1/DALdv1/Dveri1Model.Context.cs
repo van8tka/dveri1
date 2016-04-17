@@ -30,6 +30,7 @@ namespace DALdv1
         public virtual DbSet<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }
         public virtual DbSet<Furnitura> Furnituras { get; set; }
         public virtual DbSet<MegkomnatnyeDveri> MegkomnatnyeDveris { get; set; }
+        public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VhodnyeDveri> VhodnyeDveris { get; set; }
