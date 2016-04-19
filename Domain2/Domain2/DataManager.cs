@@ -12,11 +12,13 @@ namespace Domain2
         //туту будут описаны связи
         private IVhodnyeDvRepository vhodnDvRepository;
         private ISliderRepository sliderRepository;
+        private IContactRepository contactRepository;
   
-        public DataManager(IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository)
+        public DataManager(IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
             this.vhodnDvRepository = vhodnDvRepository;
             this.sliderRepository = sliderRepository;
+           this.contactRepository = contactRepository;
         }
         //св-ва через которые будет происх вызов
         public IVhodnyeDvRepository VhodnyeDvRepository
@@ -26,6 +28,10 @@ namespace Domain2
         public ISliderRepository SliderRepository
         {
             get { return sliderRepository; }
+        }
+        public IContactRepository ContactRepository
+        {
+            get { return contactRepository; }
         }
 
     }

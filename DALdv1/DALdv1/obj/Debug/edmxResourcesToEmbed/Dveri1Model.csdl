@@ -1,5 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbdveri1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adresa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdresName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumberSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="FotoFyrnitury">
     <Key>
       <PropertyRef Name="IdFoto" />
@@ -54,6 +69,14 @@
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <Property Name="TypFurnitury" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FotoFyrnituries" Relationship="Self.FK_FotoFyrnitury_Furnitura" FromRole="Furnitura" ToRole="FotoFyrnitury" />
+  </EntityType>
+  <EntityType Name="GrafikWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TimeWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="MegkomnatnyeDveri">
     <Key>
@@ -169,10 +192,13 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adresas" EntityType="Self.Adresa" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
     <EntitySet Name="FotoFyrnituries" EntityType="Self.FotoFyrnitury" />
     <EntitySet Name="FotoMegkomnDvereys" EntityType="Self.FotoMegkomnDverey" />
     <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
     <EntitySet Name="Furnituras" EntityType="Self.Furnitura" />
+    <EntitySet Name="GrafikWorks" EntityType="Self.GrafikWork" />
     <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
     <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />

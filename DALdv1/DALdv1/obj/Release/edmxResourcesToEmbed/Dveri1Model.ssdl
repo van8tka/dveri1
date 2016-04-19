@@ -1,5 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbdveri1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adresa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdresName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeSv" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumberSv" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="FotoFyrnitury">
     <Key>
       <PropertyRef Name="IdFoto" />
@@ -50,6 +65,14 @@
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
     <Property Name="TypFurnitury" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GrafikWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TimeWork" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="MegkomnatnyeDveri">
     <Key>
@@ -163,10 +186,13 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="dbdveri1ModelStoreContainer">
+    <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoFyrnitury" EntityType="Self.FotoFyrnitury" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoMegkomnDverey" EntityType="Self.FotoMegkomnDverey" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoVhodnyhDverey" EntityType="Self.FotoVhodnyhDverey" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Furnitura" EntityType="Self.Furnitura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GrafikWork" EntityType="Self.GrafikWork" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MegkomnatnyeDveri" EntityType="Self.MegkomnatnyeDveri" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />

@@ -184,12 +184,14 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CreateVhMod.cs" />
     <Compile Include="Models\ForMainModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -268,6 +270,14 @@
     <Content Include="Views\Admin\Exception.cshtml" />
     <Content Include="Views\Admin\SliderMain.cshtml" />
     <Content Include="Views\Admin\SliderLeft.cshtml" />
+    <Content Include="Views\Contact\AdminContact.cshtml" />
+    <Content Include="Views\Contact\CreateContact.cshtml" />
+    <Content Include="Views\Contact\CreateGrafik.cshtml" />
+    <Content Include="Views\Contact\CreateAdres.cshtml" />
+    <Content Include="Views\Contact\ChangeContact.cshtml" />
+    <Content Include="Views\Contact\ChangeGrafik.cshtml" />
+    <Content Include="Views\Contact\ChangeAdres.cshtml" />
+    <Content Include="Views\Home\ContactOnPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

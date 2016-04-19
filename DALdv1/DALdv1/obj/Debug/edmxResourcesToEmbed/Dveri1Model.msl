@@ -1,6 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="dbdveri1ModelStoreContainer" CdmEntityContainer="dbdveri1Entities1">
+    <EntitySetMapping Name="Adresas">
+      <EntityTypeMapping TypeName="dbdveri1Model.Adresa">
+        <MappingFragment StoreEntitySet="Adresa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AdresName" ColumnName="AdresName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="dbdveri1Model.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeSv" ColumnName="TypeSv" />
+          <ScalarProperty Name="NumberSv" ColumnName="NumberSv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="FotoFyrnituries">
       <EntityTypeMapping TypeName="dbdveri1Model.FotoFyrnitury">
         <MappingFragment StoreEntitySet="FotoFyrnitury">
@@ -53,6 +70,15 @@
           <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
           <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
           <ScalarProperty Name="TypFurnitury" ColumnName="TypFurnitury" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrafikWorks">
+      <EntityTypeMapping TypeName="dbdveri1Model.GrafikWork">
+        <MappingFragment StoreEntitySet="GrafikWork">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NameDay" ColumnName="NameDay" />
+          <ScalarProperty Name="TimeWork" ColumnName="TimeWork" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

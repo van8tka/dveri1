@@ -155,10 +155,15 @@ namespace dveri1.Controllers
                     default:
                         break;
                 }
-            }
-         
+            }       
             return temp;
         }
-
+ public ActionResult ContactOnPanel()
+        {
+            ContactModel model = new ContactModel();
+            model.ContactList = dataManager.ContactRepository.GetContacts();
+            model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
+            return PartialView(model);
+        }
     }
 }

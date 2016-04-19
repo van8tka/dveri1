@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adresa.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dveri1Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +79,9 @@
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Furnitura.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GrafikWork.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="MegkomnatnyeDveri.cs">
