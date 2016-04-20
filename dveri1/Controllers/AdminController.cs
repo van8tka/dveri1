@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using dveri1.DopMethod;
 
 namespace dveri1.Controllers
 {
@@ -25,18 +26,26 @@ namespace dveri1.Controllers
         // GET: Admin
         public ActionResult Panel(int page = 1)
         {
-            ForMainModel model = new ForMainModel();
-            int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
-            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
-            model.PagingInfo = new PagingInfo
+            try
             {
-                CurrentPage = page,
-                TotalItems = TotalItemsProduct,
-                ItemsPerPage = PageSize
+                ForMainModel model = new ForMainModel();
+                int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
+                model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                model.PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    TotalItems = TotalItemsProduct,
+                    ItemsPerPage = PageSize
 
-            };
-           
-            return View(model);
+                };
+                     return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/Panel-", er);
+                return View("Error");
+            }
+         
         }
         
 //------------------------------создание нового товара--------------------------------------------------------
@@ -49,6 +58,8 @@ namespace dveri1.Controllers
         [HttpPost]
         public ActionResult CreateVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
+            try
+            {        
             int? CenaSoSkidkoy=null;
             if (ModelState.IsValid)
             {       
@@ -122,23 +133,20 @@ namespace dveri1.Controllers
                        }
                 }
                  fileUpload = null;
-                //удалим файлы из временной папки
-                DellAllFiles();
+                    //удалим файлы из временной папки
+                    string dompath = Server.MapPath("~/Content/ImageTemp/");
+                   DellFilesFromDomain.DellAllFiles(dompath);
                 return RedirectToAction("Panel");
             }
             return View(model);
-        }
-        //метод удаления файлов из каталога
-        private void DellAllFiles()
-        {
-            string domainpath = Server.MapPath("~/Content/ImageTemp/");
-            var dir = new DirectoryInfo(domainpath);
-            FileInfo[] fileNames = dir.GetFiles("*.*");
-            foreach (var item in fileNames)
+            }
+            catch (Exception er)
             {
-                   item.Delete();
+                ClassLog.Write("Admin/CreateVhDv-", er);
+                return View("Error");
             }
         }
+   
         //------------------------------контроллер удаления товара---------------------------------------------
         [HttpGet]
         public ActionResult DellVhDv(int id, int page = 1)
@@ -149,24 +157,35 @@ namespace dveri1.Controllers
                 TempData["message"] = "Товар удален из базы данных!";
                 return RedirectToAction("Panel", new { page });
             }
-            catch
+            catch (Exception er)
             {
-                return RedirectToAction("Exception");
-            }          
-        }
+                ClassLog.Write("Admin/DellVhDv-", er);
+                return View("Error");
+            }
+       }
         //------------------------------------------------контроллер главного слайдера--------------------------------------------------------
         [HttpGet]
         public ActionResult SliderMain()
         {
-            SliderModel model = new SliderModel();
-            model.SliderMI = dataManager.SliderRepository.GetSliderMainImg();
-            model.CountSlide = model.SliderMI.Count();
-           return View(model);
+            try
+            {
+               SliderModel model = new SliderModel();
+                model.SliderMI = dataManager.SliderRepository.GetSliderMainImg();
+                model.CountSlide = model.SliderMI.Count();
+               return View(model);
+             }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SliderMain-", er);
+                return View("Error");
+            }
         }
         [HttpPost]
         public ActionResult SliderMain(IEnumerable<HttpPostedFileBase> fileUpload=null)
         {
-            SliderModel model = new SliderModel();
+            try
+            {
+             SliderModel model = new SliderModel();
             string domainpath = Server.MapPath("~/Content/ImageTemp/");
             int i = 0;
             bool BreakAddFiles = false;
@@ -222,34 +241,57 @@ namespace dveri1.Controllers
                 }
                 fileUpload = null;
                 //удалим файлы из временной папки
-                DellAllFiles();
+                DellFilesFromDomain.DellAllFiles(domainpath);
                 if(!BreakAddFiles)
                 {
                     TempData["message"] = "Изображения слайдера добавлены!";
                 }
                 return RedirectToAction("SliderMain");
-            }          
-          
+            }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SliderMain-", er);
+                return View("Error");
+            }
         }
 //-----------------------------------------------контроллер удаления слайда-------------------------------------------------------------------
 public ActionResult DellSlide(int id)
         {
-            dataManager.SliderRepository.DellSliderMainImg(id);
-            TempData["message"] = "Изображение удалено из базы данных!";
-            return RedirectToAction("SliderMain");
+            try
+            {
+                dataManager.SliderRepository.DellSliderMainImg(id);
+                TempData["message"] = "Изображение удалено из базы данных!";
+                return RedirectToAction("SliderMain");
+             }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/DellSlide-", er);
+                return View("Error");
+            }
         }
         //------------------------------------------------контроллер боковогослайдера--------------------------------------------------------
         [HttpGet]
         public ActionResult SliderLeft()
         {
-            SliderModel model = new SliderModel();
-            model.SliderLI = dataManager.SliderRepository.GetSliderLeftImg();
-            model.CountSlide = model.SliderLI.Count(); 
-            return View(model);
+            try
+            {
+                SliderModel model = new SliderModel();
+                model.SliderLI = dataManager.SliderRepository.GetSliderLeftImg();
+                model.CountSlide = model.SliderLI.Count();
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SliderLeft-", er);
+                return View("Error");
+            }
         }
         [HttpPost]
         public ActionResult SliderLeft(IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
+            try
+            {
             SliderModel model = new SliderModel();
             string domainpath = Server.MapPath("~/Content/ImageTemp/");
             int i = 0;
@@ -305,28 +347,36 @@ public ActionResult DellSlide(int id)
                 }
                 fileUpload = null;
                 //удалим файлы из временной папки
-                DellAllFiles();
+               DellFilesFromDomain.DellAllFiles(domainpath);
                 if (!BreakAddFiles)
                 {
                     TempData["message"] = "Изображения слайдера добавлены!";
                 }
                 return RedirectToAction("SliderLeft");
             }
-
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SliderLeft-", er);
+                return View("Error");
+            }
         }
         //-----------------------------------------------контроллер удаления бокового слайда-------------------------------------------------------------------
         public ActionResult DellSlideLeft(int id)
         {
-            dataManager.SliderRepository.DellSliderLeftImg(id);
-            TempData["message"] = "Изображение удалено из базы данных!";
-            return RedirectToAction("SliderLeft");
+            try
+            {
+                dataManager.SliderRepository.DellSliderLeftImg(id);
+                TempData["message"] = "Изображение удалено из базы данных!";
+                return RedirectToAction("SliderLeft");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/DellSlideLeft-", er);
+                return View("Error");
+            }
         }
 
-        //-------------------------------------------------контроллер исключений Exception------------------------------------------------------------
-        public ActionResult Exception()
-        {
-                   return View();
-        }
-
+    
     }
 }

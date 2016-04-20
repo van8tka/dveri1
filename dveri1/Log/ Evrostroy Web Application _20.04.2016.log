@@ -1,0 +1,6 @@
+[20.04.2016 17:07:49.738] Admin/Panel System.DivideByZeroException: Attempted to divide by zero.
+   at dveri1.Controllers.AdminController.Panel(Int32 page) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 43
+[20.04.2016 17:23:06.251] [dveri1.Controllers.AdminController.Panel()] Attempted to divide by zero.
+[20.04.2016 17:35:44.714] [dveri1.Controllers.HomeController.Index()] Attempted to divide by zero.
+[20.04.2016 17:43:46.237] [System.Data.Entity.Utilities.Check.NotNull()] Value cannot be null.
+Parameter name: entity

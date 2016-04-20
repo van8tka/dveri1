@@ -186,6 +186,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DopMethod\ClassLog.cs" />
+    <Compile Include="DopMethod\DellFilesFromDomain.cs" />
+    <Compile Include="DopMethod\SendMsg.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
