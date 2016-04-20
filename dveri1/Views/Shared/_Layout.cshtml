@@ -16,7 +16,7 @@
 
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="body-content">
+<body>
     <div class="body">
         <div class="navigationfixedtop">
             <div class="content mt20">
@@ -29,34 +29,18 @@
                     </div>
                 </div>
                 @Html.Action("ContactOnPanel", "Home")        
-                @*<div class="timeworktop fll">
-                    <div> Время работы: </div>
-                    <div>c 9.00 до 21.00 без выхоных</div>
-                </div>
-
-                <div class="contacts fll">
-                    <div>
-                        МТС: +375(33)-343-56-77
-                    </div>
-                    <div>
-                        Vel: +375(29)-356-56-77
-                    </div>
-                    <div>
-                        email: luxevrostroy@gmail.com
-                    </div>
-                </div>*@
-
+             
             </div>
             <div style="background:#fff;color:#666;font:12px/18px Tahoma, Arial, Helvetica, sans-serif;">
                 <div id="menu">
                     <ul>
-                        <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Входные двери", "Index", "Home", new { @class = "current" })</li>
-                        <li>@Html.ActionLink("Межкомнатные двери", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Фурнитура", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Доставка и оплата", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Отзывы", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Главная", "Index", "Home",null, new { @class = "mainmen m1" })</li>
+                        <li>@Html.ActionLink("Входные двери", "Index", "Home", null, new { @class = "mainmen m2 current" })</li>
+                        <li>@Html.ActionLink("Межкомнатные двери", "Contact", "Home", null, new { @class = "mainmen m3" })</li>
+                        <li>@Html.ActionLink("Фурнитура", "Contact", "Home", null, new { @class = "mainmen m4" })</li>
+                        <li>@Html.ActionLink("Доставка и оплата", "Contact", "Home", null, new { @class = "mainmen m5" })</li>
+                        <li>@Html.ActionLink("Отзывы", "Contact", "Home", null, new { @class = "mainmen m6" })</li>
+                        <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "mainmen m7" })</li>
                         <li>@Html.ActionLink("Админ", "Panel", "Admin")</li>
                     </ul>
                 </div>
@@ -69,7 +53,9 @@
         </div>
         <hr /> 
         <div class="footer">
-            @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия
+            <div class="fll" style="width:350px;"> @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</div>
+            @Html.Action("ContactOnPanel", "Home")
+            
         </div>
        
         @Scripts.Render("~/bundles/jquery")

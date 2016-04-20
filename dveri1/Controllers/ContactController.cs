@@ -15,6 +15,24 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
+        [HttpGet]
+        public ActionResult ContactPage()
+        {
+            ContactModel mod = new ContactModel();
+            mod.AdresList = dataManager.ContactRepository.GetAdres();
+            mod.ContactList = dataManager.ContactRepository.GetContacts();
+            mod.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
+            return View(mod);
+        }
+        //[HttpPost]
+        //public ActionResult ContactPage()
+        //{
+        //    return View()
+        //}
+
+
+
+
         // GET: Contact
         public ActionResult AdminContact()
         {

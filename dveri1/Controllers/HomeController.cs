@@ -158,8 +158,11 @@ namespace dveri1.Controllers
             }       
             return temp;
         }
+        //вызов сведений о контактах в layout
  public ActionResult ContactOnPanel()
         {
+            ViewBag.Count = 0;
+            ViewBag.Count1 = 0;
             ContactModel model = new ContactModel();
             model.ContactList = dataManager.ContactRepository.GetContacts();
             model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();

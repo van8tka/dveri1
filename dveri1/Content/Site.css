@@ -1,6 +1,7 @@
 ﻿body {
   background-image: url('fon.jpg');
  width:100%;
+  margin: 0 auto;
 }
 
 div.body{
@@ -9,10 +10,8 @@ div.body{
     /*min-width:1200px;*/
      /*padding-left: 40px;
     padding-right: 40px;*/
-    min-height:500px;
- 
+    min-height:500px; 
     margin: 0 auto;
-  
 }
 
 .dl-horizontal dt {
@@ -163,27 +162,29 @@ div.brand{
     display:inline-block;
 }
 div.timeworktop{
-      margin-left:150px;
+      margin-left:65px;
+      min-width:280px;
    }
 div.contacts{
-      margin-left:120px;
+      margin-left:40px;
+      min-width:330px;
    }
 div.content-body{
-    margin-top:128px;
-  
+    margin-top:155px;  
     height:auto;
     padding-bottom:40px;
+    width:1200px;
  }
 
 div.navigationfixedtop {
-    margin-top:-143px;
-     /*width:inherit;*/
+    margin-top:-173px;
+     width:inherit;
     min-width:1200px;
     position: fixed;
     display: block;
-    height:135px;
-    background-image: url('fon.jpg');
-   
+    /*height:135px;*/
+    height:170px;
+    background-image: url('fon.jpg');  
     z-index:10;
 }
 div.navigation-menu{
@@ -191,19 +192,39 @@ div.navigation-menu{
 }
  div.footer{
   /*min-width:1200px;*/
-     height:50px;
-     padding: 0 0 10px 30px
+    display: inline-block;
+    height: auto;
+    min-height: 50px;
+    width: 100%;
+    color:azure;
+     
  }
-
-
+ div.content{
+    display: block;
+    width: 100%;
+    height: 100px;
+  }
+ div.contactpage{
+     display:inline-block;
+     min-height:400px;
+     min-width:1200px;
+     text-align:center; 
+     padding:0 10px 0 10px;
+ }
+ div.contactsdata{
+     font-size:1.1em;
+   width:33.3%;
+   float:left;
+ }
 /*--------------------------------------меню---------------------меню---------------меню------------------------------------------*/
 
 #menu{
-	width:inherit;
+	width:100%;
 	height:51px;
 	background:url(images/fm_menu_bg.jpg) repeat-x;
-    margin-top:90px;
+    /*margin-top:100px;*/
       list-style-type: none;
+      position:absolute;
 }
 	#menu ul{
 		width:80%;

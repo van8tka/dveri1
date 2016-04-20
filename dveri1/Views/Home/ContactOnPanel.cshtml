@@ -1,20 +1,39 @@
 ﻿@model dveri1.Models.ContactModel
-<div class="timeworktop fll">
-    <div> Время работы: </div>
-    @foreach (var i in Model.GrafikWorkList)
-    {
-        <div style="display:block">
-            <div class="fll">@i.NameDay: </div>
-            <div class="fll">@i.TimeWork </div>
-        </div>
-    }
-</div>
-<div class="contacts fll">
-    @foreach (var z in Model.ContactList)
-    {
-        <div style="display:block">
-            <div class="fll">@z.TypeSv: </div>
-            <div class="fll">@z.NumberSv </div>
-        </div>
-    }    
-</div>
+
+    <div class="timeworktop fll">
+        <div style="width:auto;font-style:italic"> Время работы: </div>
+      
+        @foreach (var i in Model.GrafikWorkList)
+        {
+            if (ViewBag.Count > 3)
+            {
+                break;
+            }
+            else
+            {
+                ViewBag.Count++;
+                <div style="display:block;width:60%">
+                    <div class="fll">@i.NameDay: </div>
+                    <div>@i.TimeWork </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="contacts fll">
+        <div style="width:auto;font-style:italic"> Контакты: </div>
+        @foreach (var z in Model.ContactList)
+        {//для ограничения вывода количества контактов не более четырех
+            if (ViewBag.Count1 > 3)
+            {
+                break;
+            }
+            else
+            {
+                ViewBag.Count1++;
+                <div style="display:block;width:60%">
+                    <div class="fll">@z.TypeSv: </div>
+                    <div>@z.NumberSv </div>
+                </div>
+            }
+        }
+    </div>
