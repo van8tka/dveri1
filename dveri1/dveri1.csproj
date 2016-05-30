@@ -185,7 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VhodnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
     <Compile Include="DopMethod\DellFilesFromDomain.cs" />
     <Compile Include="DopMethod\SendMsg.cs" />
@@ -197,6 +197,7 @@
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CreateVhMod.cs" />
     <Compile Include="Models\ForMainModel.cs" />
+    <Compile Include="Models\KartochkaTovaraModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
@@ -242,6 +243,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.imageLens.js" />
     <Content Include="Scripts\jquery.orbit.js" />
     <Content Include="Scripts\jquery.orbit.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -265,8 +267,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ProductList.cshtml" />
+    <Content Include="Views\VhodnyeDveri\ProductList.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\CreateVhDv.cshtml" />
@@ -280,8 +281,13 @@
     <Content Include="Views\Contact\ChangeContact.cshtml" />
     <Content Include="Views\Contact\ChangeGrafik.cshtml" />
     <Content Include="Views\Contact\ChangeAdres.cshtml" />
-    <Content Include="Views\Home\ContactOnPanel.cshtml" />
+    <Content Include="Views\VhodnyeDveri\ContactOnPanel.cshtml" />
     <Content Include="Views\Contact\ContactPage.cshtml" />
+    <Content Include="Views\VhodnyeDveri\TovarPage.cshtml" />
+    <Content Include="Views\VhodnyeDveri\VhodnyeDveriIndex.cshtml" />
+    <Content Include="Views\VhodnyeDveri\ImgTov.cshtml" />
+    <Content Include="Views\VhodnyeDveri\HarakteristikaTovara.cshtml" />
+    <Content Include="Views\VhodnyeDveri\OpisanieTov.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

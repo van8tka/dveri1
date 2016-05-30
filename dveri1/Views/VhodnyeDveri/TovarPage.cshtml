@@ -1,0 +1,85 @@
+﻿
+@model dveri1.Models.KartochkaTovaraModel
+    @{
+    ViewBag.Title = Model.Tovar.Nazvanie;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/Scripts/jquery.imageLens.js")
+<div class="cartochkatovara">
+    <div style="height:40px;">
+    Хлебные крошки будут здеся)    
+    </div>
+     <div class="ferstsect">    
+        <div class="sectionfoto"> 
+            @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
+            {
+
+            }
+            else
+            {
+                <div class="BigPersent">
+                    Скидка @Model.Tovar.Skidka%
+                </div>
+            }
+           @if (Model.FotoTovara.Count() == 0)
+            {
+                <img class='MainFoto' style="margin-left:130px; margin-top:30px;" src="~/Content/imageDefault.jpg" />
+            }
+            else
+            {
+                <div id="sliderVert">
+                    <ul class="sliderVertUl">
+                        @foreach (var i in Model.FotoTovara)
+                        {
+                            <li>@Html.Raw("<img class='spisFoto' id=" + i.Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Imaging) + "\"/>") </li>
+                        }                  
+                    </ul>
+                </div>
+            <div class="sliderMainFoto">   
+                 @Html.Raw("<img class='MainFoto lp' id=" + Model.FotoTovara.ElementAt(0).Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.FotoTovara.ElementAt(0).Imaging) + "\"/>")
+             </div>
+           
+           }
+</div>
+        <div class="sectionhartk">
+            <h2 class="nametovar">@Model.Tovar.Proizvoditel @Model.Tovar.Nazvanie</h2>         
+            <hr style="float: left;height: 3px; width: 100%;">
+            <div>
+                @Html.Partial("HarakteristikaTovara")
+            </div>
+        </div>
+    </div>
+
+<div class="secondsect">
+    <div class="sectionabout">
+        <span style="color:black;font-size:x-large; font-weight:700">Описание товара:</span>
+        <hr style="height:3px;">
+        <div class="opisanie">
+             @Model.Tovar.Opisanie
+        </div>
+    </div>
+    <div class="sectiondop">
+
+    </div>
+</div>
+   
+</div>
+
+  
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //обработка фото по которому кликнули
+      $('.spisFoto').click(function () {       
+          var id = $(this).attr('id');
+          //загрузка частичного представления с фото
+          $('.sliderMainFoto').load('ImgTov/' + id)
+     });
+});
+</script>
+  
+<script type="text/javascript">  
+    //лупа
+        $('.lp').imageLens({ lensSize: 200, borderSize: 1 }); 
+</script>
+

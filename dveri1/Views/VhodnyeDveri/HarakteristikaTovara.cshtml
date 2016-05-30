@@ -1,0 +1,37 @@
+﻿@model dveri1.Models.KartochkaTovaraModel
+<div>
+    <span class="pr">Код товара:</span>
+    <span class="valtov">@Model.Tovar.Id</span>
+    <br />
+    @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
+    {
+        <div>
+            <span class="pr">Цена:</span>
+            <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> @Model.Tovar.Cena руб.</span><span style="color:gray"> /шт </span>
+        </div>
+    }
+    else
+    {
+        <div>
+            <span class="pr">Цена: </span>
+            <span class="valpr" style="color:black; font-size:medium"><strike> @Model.Tovar.Cena руб.</strike></span><span style="color:gray"> /шт </span>
+        </div>
+        <div>
+            <span  class="pr">Цена со скидкой: </span>
+            <span  class="valpr" style="color:red; font-size:x-large; font-weight:800;">@Model.Tovar.CenaSoSkidcoy руб.</span><span style="color:gray"> /шт </span>
+            <span style="color:white;background-color:orangered"> @Model.Tovar.Skidka% off </span>
+        </div>
+    }
+
+</div>
+<div>
+    <div id="raz">
+        <div id="tab1">
+            <span>Характеристики</span>
+            @Html.Partial("OpisanieTov")
+        </div>
+        <div id="tab2"><span>Доставка</span>2 вкладка</div>
+        <div id="tab3"><span>Оплата</span>3 вкладка</div>
+        <div id="tab4"><span>Отзывы</span>4 вкладка</div>
+    </div>
+</div>

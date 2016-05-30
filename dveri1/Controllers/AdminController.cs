@@ -102,7 +102,7 @@ namespace dveri1.Controllers
                         
                         //изменим разрешение файла
                         Image img = Image.FromFile(path);
-                        Bitmap myBitmap = new Bitmap(img, new Size(350, 600));
+                        Bitmap myBitmap = new Bitmap(img, new Size(420, 720));
                         Graphics myGraphic = Graphics.FromImage(myBitmap);
                         //теперь нарисуем логотип
                         Image imgLogo = Image.FromFile(Server.MapPath("~/Content/logoinAllImage.png"));

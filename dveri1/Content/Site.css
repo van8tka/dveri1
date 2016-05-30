@@ -114,19 +114,47 @@ div.allspisok{
  .percent{
                 top: -219px;
                 right: -120px;
-               
+             background-image: -webkit-gradient(linear, center top, center bottom, from(#ff7e4d 20%), to(#bd0502 66%));
+background-image: -webkit-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -moz-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -o-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -ms-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
                 position:relative;
                 font-size: 30px;
                 color: #fff;
-                background: red;
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
                 text-align: center;
-                border-radius: 50%;
+                border-radius:50%;
                 line-height: 50px;
                 z-index:5;
+                padding:4px;
             }
+ .BigPersent{
+     border: 0px solid black;
+border-radius: 50%;
+background-image: -webkit-gradient(linear, center top, center bottom, from(#ff7e4d 20%), to(#bd0502 66%));
+background-image: -webkit-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -moz-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -o-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -ms-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
+-webkit-box-shadow: -20px 15px 5px rgba(0,0,0,0.29), inset 0 1px 0 rgba(255,3,2,0);
+-moz-box-shadow: -20px 15px 5px rgba(0,0,0,0.29), inset 0 1px 0 rgba(255,3,2,0);
+box-shadow: -20px 15px 5px rgba(0,0,0,0.29), inset 0 1px 0 rgba(255,3,2,0);
+color:white;
+ text-align: center;
+ z-index:5;
+ width:140px;
+ font-size:28px;
+ float:right;
+ padding:5px;
+ position:absolute;
+ margin-left:350px;
+ margin-top:2px;
 
+ }
 
 
 /*-----------------------------ffffffffffff-------float---------------------------*/
@@ -170,17 +198,17 @@ div.contacts{
       min-width:330px;
    }
 div.content-body{
-    margin-top:155px;  
+    margin-top:-20px;  
     height:auto;
     padding-bottom:40px;
     width:1200px;
  }
 
 div.navigationfixedtop {
-    margin-top:-173px;
+    /*margin-top:-173px;*/
      width:inherit;
-    min-width:1200px;
-    position: fixed;
+    /*min-width:1200px;*/
+    /*position: fixed;*/
     display: block;
     /*height:135px;*/
     height:170px;
@@ -219,7 +247,7 @@ div.navigation-menu{
 /*--------------------------------------меню---------------------меню---------------меню------------------------------------------*/
 
 #menu{
-	width:100%;
+	width:1200px;
 	height:51px;
 	background:url(images/fm_menu_bg.jpg) repeat-x;
     /*margin-top:100px;*/
@@ -828,3 +856,178 @@ div.alertmessage{
   text-align:center;
   z-index:5;
 }
+/*======================================карточка товара===============================================================================*/
+div.cartochkatovara{
+    display:inline-block;
+    width:100%;
+    background-color:red;
+}
+h2.nametovar{
+    float:left;
+    margin-left:5px;
+    width:98%;
+   }
+div.ferstsect{
+    display:inline-block;
+    width:100%;
+    background-color:white;
+    min-height:650px;
+}
+
+div.sectionabout{
+    background-color:#F5F5F5;
+    text-align:center;
+}
+div.opisanie{
+    text-align:justify;
+    color:black;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:large;
+}
+div.opisanie:first-line{
+    margin-left:20px;
+}
+
+div.sectionfoto{
+    width:45%;
+    display:inline-block;
+    float:left;
+    background-color:white;
+    height:565px;
+}
+div #sliderVert{
+    float:left;
+    background-color:whitesmoke;
+    display:inline-block;
+    margin:10px;
+}
+div.sectionhartk{
+    width:55%;
+    height:500px;
+    float:left;
+    background-color:white;
+   
+}
+img.spisFoto{
+    width:49px;
+    height:84px;
+    margin-bottom:10px;
+}
+   ul.sliderVertUl {  
+    padding: 15px; /* Отступ слева в браузере Firefox, Safari, Chrome */
+  margin-top:15px;
+     }
+  ul.sliderVertUl li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+  div.sliderMainFoto{
+      /*background-color:moccasin;*/
+      display:inline-block;
+      margin:20px;     
+  }
+  img.MainFoto{
+      margin-left:30px;
+      width:300px;
+      height:520px;
+  }
+  span.pr{
+      width:100px;
+  }
+  span.valtov{
+      color:black;
+      font-size:large;
+  }
+  
+  div.blhar{
+      margin:3px;
+  }
+  /*делаем tab (вкладки на css)*/
+  #raz { /* корпус */ 
+  position: relative;
+ min-height: 420px;
+  border-top: 30px solid #fff;
+  margin-top:10px;
+ }
+#raz > div { /* вкладка */ 
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  visibility: collapse;
+  transition: 0s 9999999s;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 5px;
+}
+#raz > div:before { /* рамка вкладки */ 
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: #808080 solid 1px;
+  border-top: none;
+}
+#raz > div:hover, #raz > div:nth-of-type(1) {
+  visibility: visible;
+  transition: 0s;
+  background-color:azure;
+}
+#raz:hover > div:not(:hover) {
+  visibility: hidden;
+  transition: 0s;
+}
+#raz > div > span { /* кнопка */ 
+  position: absolute;
+  top: -30px;
+  line-height: 30px;
+  height: 30px;
+  width: 25%; /* 4 вкладки, а значит 100/4 */ 
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid rgb(128,128,128);
+  border-left-color: rgba(0,0,0,0);
+  visibility: visible;
+  transition: 0s 9999999s;
+  cursor: pointer;
+  color:black;
+}
+  
+ 
+#raz > div:nth-of-type(1) > span {left: 0; border-left-color: rgb(128,128,128);}
+#raz > div:nth-of-type(2) > span {left: 25%;}
+#raz > div:nth-of-type(3) > span {left: 50%;}
+#raz > div:nth-of-type(4) > span {left: 75%;}
+#raz > div:hover > span {
+  border-bottom-color: rgba(0,0,0,0);
+  transition:  0s;
+  background-color:azure;
+}
+    #raz > div:nth-of-type(1):hover > span {
+        border-bottom-color: rgba(0,0,0,0);
+        transition: 0s;
+        background-color:azure;
+    }
+      #raz > div:nth-of-type(1):before > span {
+        border-bottom-color: white;
+        transition: 0s;
+        background-color:azure;
+    }
+#raz:hover > div:not(:hover) > span {
+  border-bottom-color: rgba(128,128,128,.99);
+  transition:  0s; 
+  background-color:white;
+}
+/* появляется нижняя граница у первой кнопки */ 
+#raz > div:not(:nth-of-type(1)):not(:hover):after { 
+  content: "";
+  left: 0;
+  position: absolute;
+  top: -1px;
+  width: 25%;
+  border-top: 1px solid rgb(128,128,128);
+ }

@@ -11,12 +11,12 @@ using dveri1.DopMethod;
 
 namespace dveri1.Controllers
 {
-    public class HomeController : Controller
+    public class VhodnyeDveriController : Controller
     {
 
         private DataManager dataManager;
 
-        public HomeController(DataManager dataManager)
+        public VhodnyeDveriController(DataManager dataManager)
         {
             this.dataManager = dataManager;
         }
@@ -29,7 +29,7 @@ namespace dveri1.Controllers
         public int PageSize = 32;
         //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult Index(int? id, int sort=0, string brand="весьтовар")
+        public ActionResult VhodnyeDveriIndex(int? id, int sort=0, string brand="весьтовар")
         {
             try
             {
@@ -73,7 +73,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Home/Index-", er);
+                ClassLog.Write("VhodnyeDveri/VhodnyeDveriIndex-", er);
                 return View("Error");
             }
         }
@@ -92,7 +92,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Home/GetImage-", er);
+                ClassLog.Write("VhodnyeDveri/GetImage-", er);
                 return null;
             }
         }
@@ -125,7 +125,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Home/ProductList-", er);
+                ClassLog.Write("VhodnyeDveri/ProductList-", er);
                 return View("Error");
             }
         }
@@ -185,7 +185,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Home/SortirDveri-", er);
+                ClassLog.Write("VhodnyeDveri/SortirDveri-", er);
                 return null;
             }
         }
@@ -203,9 +203,35 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Home/ContactOnPanel-", er);
+                ClassLog.Write("VhodnyeDveri/ContactOnPanel-", er);
                 return View("Error");
             }
         }
+        //==========================================карточка товара==============================================================================
+        [HttpGet]
+        public ActionResult TovarPage(int id)
+        {
+            KartochkaTovaraModel model = new KartochkaTovaraModel();
+            model.Tovar = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+            model.FotoTovara = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
+            return View(model);
+        }
+
+//акшен для возврата частичного представления с данными кликнутого фото в карточке товара
+        public ActionResult ImgTov(int id)
+        {
+            try
+            {
+                FotoVhodnyhDverey foto = dataManager.VhodnyeDvRepository.GetFotoVhDv().Where(x => x.Idfoto == id).FirstOrDefault();
+                return View(foto);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/ImgTov-", er);
+                return View("Error");
+            }
+        }
+
+      
     }
 }

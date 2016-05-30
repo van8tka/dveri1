@@ -3,33 +3,33 @@
     ViewBag.Title = "Входные двери";
 }
 
-    <!-- Непосредственный код слайдера -->
+<!-- Непосредственный код слайдера -->
 <div id="slider">
-     <div id="mask">
+    <div id="mask">
         <ul id="image_container">
-               @foreach(var item in Model.SliderImg)
-               {
-                    @Html.Raw("<img style='width:1211px; height:190px;margin-left:-15px;margin-top:-5px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
-               }
-          
+            @foreach (var item in Model.SliderImg)
+            {
+                @Html.Raw("<img style='width:1211px; height:190px;margin-left:-15px;margin-top:-5px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+            }
+
         </ul>
     </div>
-    <img src="~/Content/ControlSlider/glass.png"  id="glass" style="width:1200px;height:200px"/>
-  
+    <img src="~/Content/ControlSlider/glass.png" id="glass" style="width:1200px;height:200px" />
+
     @*переключатель слайдов*@
-       @*<div id="encart">
-      
-        <ul id="dots">
-            @for (int i = 1; i <= Model.CountFile; i++)
-            {
-                <li class="button-@i" onClick="changeImage(@i)"></li>
-            }
-           
-        </ul>
-    </div>*@
-      <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick="        prevImage()" />
-    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick="        nextImage()" />
-   </div>
+    @*<div id="encart">
+
+            <ul id="dots">
+                @for (int i = 1; i <= Model.CountFile; i++)
+                {
+                    <li class="button-@i" onClick="changeImage(@i)"></li>
+                }
+
+            </ul>
+        </div>*@
+    <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick=" prevImage()" />
+    <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick=" nextImage()" />
+</div>
 <div class="productlist" id="listproduct">
     <div class="leftMainMenu">
         <div>
@@ -37,20 +37,20 @@
             {
                 case 0:
                     {
-                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1,brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
-                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
                         break;
                     }
                 case 1:
                     {
-                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
-                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
+                        @Html.ActionLink("Цена по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
                         break;
                     }
                 case 2:
                     {
-                        @Html.ActionLink("Цена по возрастанию", "Index", "Home", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
-                        @Html.ActionLink("Цена по убыванию", "Index", "Home", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
+                        @Html.ActionLink("Цена по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                        @Html.ActionLink("Цена по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
                         break;
                     }
                 default:
@@ -58,49 +58,49 @@
 
             }
         </div>
-       @*меню выбора брэнда*@
+        @*меню выбора брэнда*@
         <div style="padding-left:45px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none">
             Выбор брэнда:
         </div>
         <div>
-            @Html.ActionLink("ВЕСЬ ТОВАР", "Index", "Home", new { sort = 0, brand = "весьтовар"}, new { @class = "leftMenuButton весьтовар" })
-            @foreach(var i in Model.Brand)
+            @Html.ActionLink("ВХОДНЫЕ ДВЕРИ ВЕСЬ СПИСОК", "VhodnyeDveriIndex", "VhodnyeDveri", new { sort = 0, brand = "весьтовар" }, new { @class = "leftMenuButton весьтовар" })
+            @foreach (var i in Model.Brand)
             {
                 if (i != null)
                 {
-                    @Html.ActionLink(i, "Index", "Home", new { sort = 0, brand = i }, new { @class = "leftMenuButton "+i})
-                }               
+                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new { sort = 0, brand = i }, new { @class = "leftMenuButton " + i })
+                }
             }
         </div>
-@*слайдер левый боковой orbit*@
+        @*слайдер левый боковой orbit*@
         <div class="LeftSlider mt20">
             <div id="featured">
-                @foreach(var item in Model.SliderLeftImg)
+                @foreach (var item in Model.SliderLeftImg)
                 {
-                    @Html.Raw("<img style='width:200px;height:400px' src=\"data:image/jpeg;base64,"+Convert.ToBase64String(item.Imaging)+"\" />")
+                    @Html.Raw("<img style='width:200px;height:400px' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
                 }
-              </div>
+            </div>
         </div>
     </div>
     @Html.Partial("ProductList")
- </div>
+</div>
 <div style="clear:both">
 
 </div>
 @*появляется при догрузке страницы*@
 <div id="loading" style="text-align:center;visibility:hidden;margin-top:-7em">
-    <img src="~/Content/loading.gif" style="width:50px;height:50px;"/>
+    <img src="~/Content/loading.gif" style="width:50px;height:50px;" />
 </div>
 @*разбиение на страничный режим*@
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { id = x,sort=Model.Sort,brand = Model.CurrentBrand, PageSize = Model.PagingInfo.ItemsPerPage }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("VhodnyeDveriIndex", new { id = x, sort = Model.Sort, brand = Model.CurrentBrand, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery.orbit.js")
 
-@*замена pagingLinks на кнопку показать еще*@
-<script type="text/javascript">
+    @*замена pagingLinks на кнопку показать еще*@
+    <script type="text/javascript">
     $(document).ready(function(){
         //скрипт слайдера левого (орбит)
         $(window).load(function() {
@@ -117,13 +117,13 @@
             });
 
         });
-        
+
 
         $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
            '</div>  '));
         var page = 1;
         //выделение текущего брэнда
-    
+
         $('.@Model.CurrentBrand').addClass("act");
 
         $('.showadd').click(
@@ -138,7 +138,7 @@
                 $('#loading').css("visibility","visible")
                 $.ajax({
                     type: 'GET',
-                    url: '/Home/Index/' + page + temp + @Model.Sort + temp2 +'@Model.CurrentBrand',
+                    url: '/VhodnyeDveri/VhodnyeDveriIndex/' + page + temp + @Model.Sort + temp2 +'@Model.CurrentBrand',
 
                        success: function (data) {
                            if (data != '') {
@@ -153,13 +153,13 @@
              }
              if(page==totalpages)
              {
-                 $('.addpage').replaceWith($('<div class="emtypage" </div>  '));
+                 $('.addpage').replaceWith($('<div class="emtypage"> </div>  '));
              }
         }  )
     })
-</script>
+    </script>
 
-@*//скрипт для слайдера главного*@
+    @*//скрипт для слайдера главного*@
     <script>
         var secDuration = 4;
         var image = 1;

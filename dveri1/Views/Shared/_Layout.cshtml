@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @*  *@
+  
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/orbit.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -12,9 +12,8 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
   
- 
-
-    @Scripts.Render("~/bundles/modernizr")
+     
+      @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="body">
@@ -22,24 +21,24 @@
             <div class="content mt20">
                 <div class="brand fll">
                     <div class="fll mr10">
-                        <a href="/Home/Index"> <img src="~/Content/logo1.png" alt="" style="width:35px;height:35px;" /></a>
+                        <a href="/VhodnyeDveri/VhodnyeDveriIndex"> <img src="~/Content/logo1.png" alt="" style="width:35px;height:35px;" /></a>
                     </div>
                     <div class="fll mr10" style="max-width:400px;">
-                        <a href="/Home/Index">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                        <a href="/VhodnyeDveri/VhodnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
                     </div>
                 </div>
-                @Html.Action("ContactOnPanel", "Home")        
+                @Html.Action("ContactOnPanel", "VhodnyeDveri")        
              
             </div>
             <div style="background:#fff;color:#666;font:12px/18px Tahoma, Arial, Helvetica, sans-serif;">
                 <div id="menu">
                     <ul>
-                        <li>@Html.ActionLink("Главная", "Index", "Home",null, new { @class = "mainmen m1" })</li>
-                        <li>@Html.ActionLink("Входные двери", "Index", "Home", null, new { @class = "mainmen m2 current" })</li>
-                        <li>@Html.ActionLink("Межкомнатные двери", "Contact", "Home", null, new { @class = "mainmen m3" })</li>
-                        <li>@Html.ActionLink("Фурнитура", "Contact", "Home", null, new { @class = "mainmen m4" })</li>
-                        <li>@Html.ActionLink("Доставка и оплата", "Contact", "Home", null, new { @class = "mainmen m5" })</li>
-                        <li>@Html.ActionLink("Отзывы", "Contact", "Home", null, new { @class = "mainmen m6" })</li>
+                        <li>@Html.ActionLink("Главная", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "mainmen m1" })</li>
+                        <li>@Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "mainmen m2 current" })</li>
+                        <li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m3" })</li>
+                        <li>@Html.ActionLink("Фурнитура", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m4" })</li>
+                        <li>@Html.ActionLink("Доставка и оплата", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m5" })</li>
+                        <li>@Html.ActionLink("Отзывы", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m6" })</li>
                         <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "mainmen m7" })</li>
                         <li>@Html.ActionLink("Админ", "Panel", "Admin")</li>
                     </ul>
@@ -54,7 +53,7 @@
         <hr /> 
         <div class="footer">
             <div class="fll" style="width:350px;"> @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</div>
-            @Html.Action("ContactOnPanel", "Home")
+            @Html.Action("ContactOnPanel", "VhodnyeDveri")
             
         </div>
        

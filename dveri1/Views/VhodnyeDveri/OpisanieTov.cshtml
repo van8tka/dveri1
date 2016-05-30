@@ -1,0 +1,54 @@
+﻿@model dveri1.Models.KartochkaTovaraModel
+<div>
+    <div class="blhar">
+        <span class="pr">Фирма производитель:</span>
+        <span class="valtov"> @Model.Tovar.Proizvoditel.</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Страна производитель:</span>
+        <span class="valtov"> @Model.Tovar.Strana</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Цвет двери:</span>
+        <span class="valtov"> @Model.Tovar.Cvet</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Наполнитель:</span>
+        <span class="valtov"> @Model.Tovar.Napolnitel</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Уплотнитель:</span>
+        <span class="valtov"> @Model.Tovar.Yplotnitel</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Толщина металла:</span>
+        <span class="valtov"> @Model.Tovar.TolschinaMetalla мм.</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Фурнитура:</span>
+        <span class="valtov"> @Model.Tovar.Furnitura</span>
+    </div>
+    @if (Model.Tovar.Petli == "" || Model.Tovar.Petli == null)
+    {
+
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Петли:</span>
+            <span class="valtov"> @Model.Tovar.Petli</span>
+        </div>
+    }
+    <div class="blhar">
+        <span class="pr">Отделка внутри:</span>
+        <span class="valtov"> @Model.Tovar.OtdelkaVnutri</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Отделка снаружи:</span>
+        <span class="valtov"> @Model.Tovar.OtdelkaSnarugi</span>
+    </div>
+    <div class="blhar">
+        <span class="pr">Толщина дверного полотна:</span>
+        <span class="valtov"> @Model.Tovar.TolschinaDvPolotna мм.</span>
+    </div>
+</div>
