@@ -30,6 +30,9 @@
     <img src="~/Content/ControlSlider/fleche-gauche.png" id="fleche_gauche" class="fleche" onClick=" prevImage()" />
     <img src="~/Content/ControlSlider/fleche-droite.png" id="fleche_droite" class="fleche" onClick=" nextImage()" />
 </div>
+<div>
+    @Html.Action("BreadCrumbs", "VhodnyeDveri", new {mainmodel = Model,namepart = "Входные двери" })
+</div>
 <div class="productlist" id="listproduct">
     <div class="leftMainMenu">
         <div>

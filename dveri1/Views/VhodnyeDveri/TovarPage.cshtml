@@ -7,7 +7,7 @@
 @Scripts.Render("~/Scripts/jquery.imageLens.js")
 <div class="cartochkatovara">
     <div style="height:40px;">
-    Хлебные крошки будут здеся)    
+        @Html.Action("BreadCrumbs", "VhodnyeDveri", new {kmod=Model,namepart = "Входные двери" })
     </div>
      <div class="ferstsect">    
         <div class="sectionfoto"> 
@@ -42,7 +42,7 @@
            }
 </div>
         <div class="sectionhartk">
-            <h2 class="nametovar">@Model.Tovar.Proizvoditel @Model.Tovar.Nazvanie</h2>         
+            <h2 class="nametovar">@Model.Tovar.Nazvanie</h2>         
             <hr style="float: left;height: 3px; width: 100%;">
             <div>
                 @Html.Partial("HarakteristikaTovara")
@@ -51,13 +51,19 @@
     </div>
 
 <div class="secondsect">
+    @if (Model.Tovar.Opisanie == "" || Model.Tovar.Opisanie == null)
+    {
+    }
+    else
+    {
     <div class="sectionabout">
-        <span style="color:black;font-size:x-large; font-weight:700">Описание товара:</span>
+        <span style="color:black;font-size:x-large; font-weight:700">Описание входных дверей:</span>
         <hr style="height:3px;">
         <div class="opisanie">
              @Model.Tovar.Opisanie
         </div>
     </div>
+    }
     <div class="sectiondop">
 
     </div>

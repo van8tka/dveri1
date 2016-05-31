@@ -231,7 +231,36 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //хлебные крошки
+        public ActionResult BreadCrumbs(ForMainModel mainmod = null,KartochkaTovaraModel kmod = null, string namepart = null)
+        {
+            try
+            {
+                ModelBreadCrumbs mod = new ModelBreadCrumbs();
+                if (namepart != null)
+                {
+                    mod.NamePartSite = namepart;
+                }
+                if (mainmod.Brand != null&& mainmod.Brand.First()!="весьтовар")
+                {
+                    mod.NameCategory = mainmod.Brand.First();
+                }
+                else
+                {
+                    if (kmod.Tovar != null)
+                    {
+                        mod.NameCategory = kmod.Tovar.Proizvoditel;
+                        mod.NameProduct = kmod.Tovar.Nazvanie;
+                    }
+                }
+                return View(mod);
+            }
+            catch(Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/BreadCrumbs-", er);
+                return View("Error");
+            }
+        }
 
-      
     }
 }

@@ -198,6 +198,7 @@
     <Compile Include="Models\CreateVhMod.cs" />
     <Compile Include="Models\ForMainModel.cs" />
     <Compile Include="Models\KartochkaTovaraModel.cs" />
+    <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
@@ -288,6 +289,7 @@
     <Content Include="Views\VhodnyeDveri\ImgTov.cshtml" />
     <Content Include="Views\VhodnyeDveri\HarakteristikaTovara.cshtml" />
     <Content Include="Views\VhodnyeDveri\OpisanieTov.cshtml" />
+    <Content Include="Views\VhodnyeDveri\BreadCrumbs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

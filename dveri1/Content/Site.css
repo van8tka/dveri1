@@ -48,7 +48,7 @@ div.productlist{
     padding-bottom:60px;
     width:1200px;
     display:inline-block;
-      margin-top:20px;
+     
 }
 div.leftMainMenu{
   
@@ -1022,7 +1022,7 @@ img.spisFoto{
   transition:  0s; 
   background-color:white;
 }
-/* появляется нижняя граница у первой кнопки */ 
+/* появляется нижняя граница у первой кнопки tabov*/ 
 #raz > div:not(:nth-of-type(1)):not(:hover):after { 
   content: "";
   left: 0;
@@ -1031,3 +1031,79 @@ img.spisFoto{
   width: 25%;
   border-top: 1px solid rgb(128,128,128);
  }
+
+
+/*=========================      хлебные     крошки          ===========================/**/
+
+div.breadcrumbs a {
+    display:block;
+    float:left;
+    height:14px;
+    background:#3498db;
+    text-align:center;
+    padding:4px 15px 6px 14px;
+    position:relative;
+    margin:0 7px 0 10px;
+    font-size:14px;
+    text-decoration:none;
+    color:#fff;
+}
+/*создадим треугольник после прямоугольника*/
+div.breadcrumbs a:after{
+    content:"";
+    border-top:12px solid transparent;
+    border-bottom:12px solid transparent;
+    border-left: 12px solid #3498db;
+    position:absolute;
+    right: -12px;top:0;
+    z-index:1;
+}
+div.breadcrumbs a:before {
+    content:"";
+    border-bottom: 12px solid #3498db;
+    border-top: 12px solid #3498db;
+    border-left:12px solid transparent;
+    position:absolute;
+   
+    top:0;
+    left:-12px;
+}
+div.breadcrumbs a:hover{
+    background:#1a55cf;
+}
+div.breadcrumbs a:hover:after{
+ border-left: 12px solid #1a55cf;
+}
+    div.breadcrumbs a:hover:before {
+        border-bottom: 12px solid #1a55cf;
+        border-top: 12px solid #1a55cf;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

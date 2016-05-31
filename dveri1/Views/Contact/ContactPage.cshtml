@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<div>
+    @Html.Action("BreadCrumbs","VhodnyeDveri", new { namepart = "Контакты"})
+</div>
 <div class="contactpage">
     <h2>Контактные данные</h2>
     <div class="contactsdata">
