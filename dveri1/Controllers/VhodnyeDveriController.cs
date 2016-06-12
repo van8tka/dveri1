@@ -255,12 +255,138 @@ namespace dveri1.Controllers
                 }
                 return View(mod);
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 ClassLog.Write("VhodnyeDveri/BreadCrumbs-", er);
                 return View("Error");
             }
         }
 
-    }
+        //===============================купить двери===================================================
+        [HttpGet]
+        public ActionResult BuyDveri(int id, string type)
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = id;
+                model.Type = type;
+                if (type == "входные двери")
+                {
+                    model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                }
+                if (type == "межкомнатные двери")
+                {
+                    //model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/BuyDveri-", er);
+                return View("Error");
+            }
+
+        }
+        [HttpPost]
+        public ActionResult BuyDveri(ModelBuyDveri model)
+        {
+            try
+            {
+                 if(ModelState.IsValid)
+                {                   
+                    dataManager.KlientRepository.CreateKlient(model.IdDveri, model.KlientName, model.KlientPhone, model.KlientAdres, model.KlientQuestion, model.Type);
+                    //создание и отправка сообщение админу
+                    string body;
+                    string them = "Evrostroy - сообщение от клиента: "+ model.KlientName+", тел. "+model.KlientPhone;
+                    string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+                    
+                    VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
+                    body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
+                    "\r\n" + "Цена: " + vhd.Cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + vhd.CenaSoSkidcoy;
+                   if(SendMsg.Message(body, them, adres))
+                    {
+                        TempData["messageklient"] = "Ваше сообщение отправлено, менеджер перезвонит Вам в течении 15 минут!";
+                    }
+                    else
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
+                    }
+                    return RedirectToAction("TovarPage", new {id=model.IdDveri});
+                }
+                else
+                {
+                    return View(model);
+                }                
+            }
+            catch (Exception er)
+            {
+               ClassLog.Write("VhodnyeDveri/BuyDveri-", er);
+               return View("Error");
+           }
+      }
+        //для модального окна покупки
+        [HttpGet]
+        public ActionResult BuyDveriModal(int id, string type)
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = id;
+                model.Type = type;
+                if (type == "входные двери")
+                {
+                    model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                }
+                if (type == "межкомнатные двери")
+                {
+                    //model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/BuyDveriModal-", er);
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult BuyDveriModal(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    dataManager.KlientRepository.CreateKlient(model.IdDveri, model.KlientName, model.KlientPhone, model.KlientAdres, model.KlientQuestion, model.Type);
+                    //создание и отправка сообщение админу
+                    string body;
+                    string them = "Evrostroy - сообщение от клиента: " + model.KlientName + ", тел. " + model.KlientPhone;
+                    string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+
+                    VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
+                    body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
+                    "\r\n" + "Цена: " + vhd.Cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + vhd.CenaSoSkidcoy;
+                    if (SendMsg.Message(body, them, adres))
+                    {
+                        TempData["messageklient"] = "Ваше сообщение отправлено, менеджер перезвонит Вам в течении 15 минут!";
+                    }
+                    else
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
+                    }
+                    return RedirectToAction("TovarPage", new { id = model.IdDveri });
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/BuyDveri-", er);
+                return View("Error");
+            }
+        }
+        }
 }

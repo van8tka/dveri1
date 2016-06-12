@@ -71,7 +71,10 @@
    
 </div>
 
-  
+  @if (TempData["messageklient"] != null)
+            {
+    <div class="alertmessage">@TempData["messageklient"]</div>
+  }
 
 <script type="text/javascript">
     $(document).ready(function () {

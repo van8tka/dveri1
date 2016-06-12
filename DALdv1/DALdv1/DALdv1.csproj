@@ -84,6 +84,9 @@
     <Compile Include="GrafikWork.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Klient.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="MegkomnatnyeDveri.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
@@ -92,9 +95,6 @@
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SliderMainImg.cs">
-      <DependentUpon>Dveri1Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="VhodnyeDveri.cs">

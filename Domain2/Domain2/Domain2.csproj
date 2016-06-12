@@ -30,8 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DALdv1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="DALdv1">
       <HintPath>..\..\DALdv1\DALdv1\bin\Release\DALdv1.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -55,9 +54,11 @@
   <ItemGroup>
     <Compile Include="DataManager.cs" />
     <Compile Include="Implementations\EfContactRepository.cs" />
+    <Compile Include="Implementations\EfKlientRepository.cs" />
     <Compile Include="Implementations\EfSliderRepository.cs" />
     <Compile Include="Implementations\EfVhodnyeDvRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\IKlientRepository.cs" />
     <Compile Include="Interfaces\ISliderRepository.cs" />
     <Compile Include="Interfaces\IVhodnyeDvRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

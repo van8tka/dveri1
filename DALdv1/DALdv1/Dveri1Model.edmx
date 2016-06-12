@@ -79,6 +79,19 @@
           <Property Name="NameDay" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TimeWork" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdDveri" Type="int" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="1050" />
+          <Property Name="TypDveri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateMessage" Type="datetime" />
+        </EntityType>
         <EntityType Name="MegkomnatnyeDveri">
           <Key>
             <PropertyRef Name="Id" />
@@ -114,16 +127,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="VhodnyeDveri">
           <Key>
@@ -198,10 +201,10 @@
           <EntitySet Name="FotoVhodnyhDverey" EntityType="Self.FotoVhodnyhDverey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Furnitura" EntityType="Self.Furnitura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GrafikWork" EntityType="Self.GrafikWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MegkomnatnyeDveri" EntityType="Self.MegkomnatnyeDveri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FotoFyrnitury_Furnitura" Association="Self.FK_FotoFyrnitury_Furnitura">
             <End Role="Furnitura" EntitySet="Furnitura" />
@@ -299,6 +302,19 @@
           <Property Name="NameDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TimeWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdDveri" Type="Int32" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
+          <Property Name="TypDveri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateMessage" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="MegkomnatnyeDveri">
           <Key>
             <PropertyRef Name="Id" />
@@ -335,16 +351,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="VhodnyeDveri">
           <Key>
@@ -420,10 +426,10 @@
           <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
           <EntitySet Name="Furnituras" EntityType="Self.Furnitura" />
           <EntitySet Name="GrafikWorks" EntityType="Self.GrafikWork" />
+          <EntitySet Name="Klients" EntityType="Self.Klient" />
           <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
           <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
           <AssociationSet Name="FK_FotoFyrnitury_Furnitura" Association="Self.FK_FotoFyrnitury_Furnitura">
             <End Role="Furnitura" EntitySet="Furnituras" />
@@ -525,6 +531,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Klients">
+            <EntityTypeMapping TypeName="dbdveri1Model.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="IdDveri" ColumnName="IdDveri" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="TypDveri" ColumnName="TypDveri" />
+                <ScalarProperty Name="DateMessage" ColumnName="DateMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MegkomnatnyeDveris">
             <EntityTypeMapping TypeName="dbdveri1Model.MegkomnatnyeDveri">
               <MappingFragment StoreEntitySet="MegkomnatnyeDveri">
@@ -561,17 +581,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MimeType" ColumnName="MimeType" />
                 <ScalarProperty Name="Imaging" ColumnName="Imaging" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="dbdveri1Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

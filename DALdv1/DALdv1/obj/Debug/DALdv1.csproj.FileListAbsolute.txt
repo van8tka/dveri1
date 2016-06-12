@@ -15,6 +15,5 @@ D:\GitHub\dveri1\DALdv1\DALdv1\bin\Debug\EntityFramework.dll
 D:\GitHub\dveri1\DALdv1\DALdv1\bin\Debug\EntityFramework.SqlServer.dll
 D:\GitHub\dveri1\DALdv1\DALdv1\bin\Debug\EntityFramework.xml
 D:\GitHub\dveri1\DALdv1\DALdv1\bin\Debug\EntityFramework.SqlServer.xml
-D:\GitHub\dveri1\DALdv1\DALdv1\obj\Debug\DALdv1.csprojResolveAssemblyReference.cache
 D:\GitHub\dveri1\DALdv1\DALdv1\obj\Debug\DALdv1.dll
 D:\GitHub\dveri1\DALdv1\DALdv1\obj\Debug\DALdv1.pdb

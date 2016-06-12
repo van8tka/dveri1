@@ -14,8 +14,7 @@ namespace dveri1.DopMethod
             try
             {
                              
-               ClassLog.Write("Создание сообщения для отправки");
-             
+               ClassLog.Write("Создание сообщения для отправки");            
                 MailMessage message = new MailMessage();
               
              

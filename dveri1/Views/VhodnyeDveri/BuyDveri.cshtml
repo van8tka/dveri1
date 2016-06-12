@@ -1,0 +1,33 @@
+﻿@model dveri1.Models.ModelBuyDveri
+@{
+    ViewBag.Title = "Купить входные двери";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("BuyDveri", "VhodnyeDveri"))
+{
+    <div style="text-align:center;">
+        <h2>Купить входные двери - @Model.DvName</h2>
+        <h3>Заполните инофрмацию о себе, и наш менеджер перезвонит Вам в течении 15 минут.</h3>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Type)
+            @Html.HiddenFor(m => m.IdDveri)
+            <label>Имя</label>
+            @Html.ValidationMessageFor(m => m.KlientName)
+            @Html.TextBoxFor(m => m.KlientName, null, new { @class = "form-control ma" })
+            <label>Номер телефона*</label>
+            @Html.ValidationMessageFor(m => m.KlientPhone)
+            @Html.TextBoxFor(m => m.KlientPhone, null, new { @class = "form-control ma" })
+            <label>Адрес</label>
+            @Html.TextBoxFor(m => m.KlientAdres, null, new { @class = "form-control ma" })
+            <label>Задайте интересующий Вас вопрос, или напишите любое сообщение нашему менеджеру:</label>
+            @Html.TextAreaFor(m => m.KlientQuestion, new { @class = "form-control ma", rows = 5 })
+        </div>
+        <strong style="font-size:small">* - поле обязательно для заполнения!</strong><br />
+        <input type="submit" value="Отправить" class="butbyu ma" />
+        @Html.ActionLink("Отменить","TovarPage","VhodnyeDveri",new {id = Model.IdDveri }, new { @class="butcancel"})
+    </div>
+  
+}
+
+
+

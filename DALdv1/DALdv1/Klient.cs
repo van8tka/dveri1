@@ -12,12 +12,15 @@ namespace DALdv1
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Klient
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Adres { get; set; }
+        public int IdDveri { get; set; }
+        public string Question { get; set; }
+        public string TypDveri { get; set; }
+        public Nullable<System.DateTime> DateMessage { get; set; }
     }
 }

@@ -13,14 +13,20 @@ namespace Domain2
         private IVhodnyeDvRepository vhodnDvRepository;
         private ISliderRepository sliderRepository;
         private IContactRepository contactRepository;
+        private IKlientRepository klientRepository;
   
-        public DataManager(IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
+            this.klientRepository = klientRepository;
             this.vhodnDvRepository = vhodnDvRepository;
             this.sliderRepository = sliderRepository;
            this.contactRepository = contactRepository;
         }
         //св-ва через которые будет происх вызов
+        public IKlientRepository KlientRepository
+        {
+            get { return klientRepository; }
+        }
         public IVhodnyeDvRepository VhodnyeDvRepository
         {
             get { return vhodnDvRepository; }
