@@ -293,6 +293,7 @@
     <Content Include="Views\VhodnyeDveri\BreadCrumbs.cshtml" />
     <Content Include="Views\VhodnyeDveri\BuyDveri.cshtml" />
     <Content Include="Views\VhodnyeDveri\BuyDveriModal.cshtml" />
+    <Content Include="Views\Shared\ViewBuy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
