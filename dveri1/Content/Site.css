@@ -128,7 +128,7 @@ background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
                 text-align: center;
                 border-radius:50%;
                 line-height: 50px;
-                z-index:5;
+                z-index:3;
                 padding:4px;
             }
  .BigPersent{
@@ -145,7 +145,7 @@ background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
 box-shadow: -20px 15px 5px rgba(0,0,0,0.29), inset 0 1px 0 rgba(255,3,2,0);
 color:white;
  text-align: center;
- z-index:5;
+ z-index:3;
  width:140px;
  font-size:28px;
  float:right;
@@ -1175,6 +1175,7 @@ img.spisFoto:hover{
 @keyframes pulsate {
   50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
 }
+
 /*//================кнопка ОТМЕНИТЬ===========================*/
 .butcancel {
   position: relative;
@@ -1215,6 +1216,24 @@ img.spisFoto:hover{
 }
 
 /*модальное окно*/
+
+#modal_form_fastbuy{
+	width: 700px; 
+	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
+	border-radius: 5px;
+	border: 3px #000 solid;
+	background: #fff;
+	position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+	top: 45%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+	left: 50%; /* пoлoвинa экрaнa слевa */
+	margin-top: -300px;
+	margin-left: -200px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+	display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+	opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+	z-index: 7; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+	padding: 30px 10px;
+}
+
 #modal_form {
 	width: 700px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
@@ -1232,7 +1251,7 @@ img.spisFoto:hover{
 	padding: 30px 10px;
 }
 /* Кнoпкa зaкрыть для тех ктo в тaнке) */
-#modal_form #modal_close {
+ #modal_close {
     border: 1px #000 solid;
 	padding:1px 4px;
     border-radius:3px;
@@ -1244,7 +1263,7 @@ img.spisFoto:hover{
       color:white;
     background-color:	#8B8989;
 }
-#modal_form #modal_close:hover {
+#modal_close:hover {
       background-color: #FF4500;
 }
 /* Пoдлoжкa */
@@ -1262,7 +1281,108 @@ img.spisFoto:hover{
 	cursor:pointer;
 	display:none; /* в oбычнoм сoстoянии её нет) */
 }
-
+/*кнопка быстрой покупки*/
+.butfastbyu {
+  position: relative;
+  display: inline-block;
+  font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: rgb(245,245,245);
+  text-shadow: 0 -1px rgba(0,0,0,.1);
+  text-decoration: none;
+  user-select: none;
+  padding: .3em 1em;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background:#ff4500 linear-gradient(#eee9e9, #ff0000);
+  box-shadow: inset #ff4500 0 -1px 1px, inset 0 1px 1px #ffa07a,  #ff0000 0 0 0 1px, rgba(0,0,0,.3) 0 2px 5px;
+  -webkit-animation: pulsate 1.2s linear infinite;
+  animation: pulsate 1.2s linear infinite;
+  width:180px;
+}
+.butfastbyu:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  cursor: pointer;
+   box-shadow: inset #ff4500 0 -2px 2px, inset 0 2px 2px #ffa07a,  #ff0000 0 0 0 2px, rgba(0,0,0,.3) 0 2px 5px;
+}
+.butfastbyu:active {
+  top: 1px;
+  color: #fff;
+  text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.3), 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+@-webkit-keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+@keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+/*заказать звонок*/
+  .butcallmain { 
+     width: 150px; 
+     height: 60px; 
+     line-height: 30px; 
+     color: white; 
+     text-decoration: none; 
+     font-size: 14px; 
+     font-family: helvetica, arial; 
+     font-weight: bold; 
+     display: block; 
+     text-align: center; 
+     position: fixed; 
+     z-index:4;
+     top:10px;
+     right:20px;  
+     /* BACKGROUND GRADIENTS */
+     background: #014464; 
+     background: -moz-linear-gradient(top, #0D658E, #0C577A 50%, #014D71 51%, #003E5C); 
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0E658E), color-stop(.5, #0C577A), color-stop(.5, #014D71), to(#003E5C));  
+  
+     /* BORDER RADIUS */
+     -moz-border-radius: 10px; 
+     -webkit-border-radius: 10px; 
+     border-radius: 10px; 
+  
+     border: 1px solid #368DBE; 
+     border-top: 1px solid #c3d6df; 
+  
+     /* TEXT SHADOW */
+  
+     text-shadow: 1px 1px 1px black; 
+  
+     /* BOX SHADOW */
+     -moz-box-shadow: 0 1px 3px black; 
+     -webkit-box-shadow: 0 1px 3px black; 
+     box-shadow: 0 1px 3px black; 
+    } 
+  
+    /* WHILE HOVERED */
+    .butcallmain:hover { 
+        background: #014464; 
+        background: -moz-linear-gradient(top, #0c5f85, #0b5273 50%, #024869 51%, #003853); 
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c5f85), color-stop(.5, #0b5273), color-stop(.51, #024869), to(#003853)); 
+    } 
+  
+    /* WHILE BEING CLICKED */
+    .butcallmain:active { 
+        -moz-box-shadow: 0 2px 6px black; 
+        -webkit-box-shadow: 0 2px 6px black; 
+    } 
+    /* FONT GLYPH (MOSTLY FOR FUN) */
+    .butcallmain:before {
+        font-family: EfonRegular;
+        content:url('glyphicons-443-earphone.png');
+        color: #09232F;
+        font-size: 20px;
+        float: left;
+        margin-top:20px;
+        margin-left: 15px;
+        margin-right: 25px;
+        text-shadow: 0 1px 0 #4190AF;
+    } 
 
 
 

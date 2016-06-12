@@ -321,11 +321,17 @@ namespace dveri1.Controllers
             string body;
             string them = "Cообщение от клиента: " + model.KlientName + ", тел. " + model.KlientPhone;
             string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+            if(model.IdDveri!=9999)
+            {
+                VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
 
-            VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
-
-            body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
-            "\r\n" + "Цена: " + vhd.Cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + vhd.CenaSoSkidcoy;
+                body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
+                "\r\n" + "Цена: " + vhd.Cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + vhd.CenaSoSkidcoy;
+            }
+            else
+            {
+                body = "Перезвоните на номер " + model.KlientPhone;
+            }         
             if (SendMsg.Message(body, them, adres))
             { return true; }
             else
@@ -334,7 +340,7 @@ namespace dveri1.Controllers
 
 
         //===========================для модального окна покупки=====================
-        //[HttpGet]
+        [HttpGet]
         public ActionResult BuyDveriModal(int id, string type)
         {
             try
@@ -382,5 +388,130 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //быстрая покупка, только для ввода номера телефона или просто перезвоните мне
+        [HttpGet]
+        public ActionResult FastBuyDveri(int id, string type)
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = id;
+                model.Type = type;
+                if (id == 9999)
+                {
+                    model.KlientName = "Перезвоните мне";
+                }
+                else
+                {
+                    model.KlientName = "Быстрая покупка";
+                    if (type == "входные двери")
+                    {
+                        model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                    }
+                }
+               
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/BuyDveriModal-", er);
+                return View("Error");
+            }
+        }
+        [HttpPost]
+        public ActionResult FastBuyDveri(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщегия админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        TempData["messageklient"] = "Ваше сообщение отправлено, менеджер перезвонит Вам в течении 15 минут!";
+                    }
+                    else
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
+                    }
+                    if(model.IdDveri==9999)
+                    {
+                        return RedirectToAction("VhodnyeDveriIndex");
+                    }
+                    else
+                    {
+                        return RedirectToAction("TovarPage", new { id = model.IdDveri });
+                    }
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/FastBuyDveri-", er);
+                return View("Error");
+            }
+        }
+        //для модального окна быстрой покупки
+        //===========================для модального окна покупки=====================
+        [HttpGet]
+        public ActionResult FastBuyDveriModal(int id, string type)
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = id;
+                model.Type = type;
+               if(id==9999)
+                {
+                    model.KlientName = "Перезвоните мне";
+                }
+               else
+                {
+                    model.KlientName = "Быстрая покупка";
+                    if (type == "входные двери")
+                    {
+                        model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
+                    }
+                }               
+              
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/FastBuyDveriModal-", er);
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult FastBuyDveriModal(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщения админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        return Json("Наш менеджер перезвонит Вам в течении 15 минут! Спасибо что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json("При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!", JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/FastBuyDveriModel-", er);
+                return View("Error");
+            }
+        }
+
     }
 }
