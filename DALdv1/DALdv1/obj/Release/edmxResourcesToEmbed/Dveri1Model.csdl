@@ -15,6 +15,13 @@
     <Property Name="TypeSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NumberSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
+  <EntityType Name="Dostavka">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dostavka1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="FotoFyrnitury">
     <Key>
       <PropertyRef Name="IdFoto" />
@@ -89,7 +96,7 @@
     <Property Name="IdDveri" Type="Int32" Nullable="false" />
     <Property Name="Question" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
     <Property Name="TypDveri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateMessage" Type="DateTime" Precision="3" />
+    <Property Name="DateMessage" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="MegkomnatnyeDveri">
     <Key>
@@ -111,6 +118,13 @@
     <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
+  </EntityType>
+  <EntityType Name="Oplata">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Oplata1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SliderLeftImg">
     <Key>
@@ -197,6 +211,7 @@
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresas" EntityType="Self.Adresa" />
     <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Dostavkas" EntityType="Self.Dostavka" />
     <EntitySet Name="FotoFyrnituries" EntityType="Self.FotoFyrnitury" />
     <EntitySet Name="FotoMegkomnDvereys" EntityType="Self.FotoMegkomnDverey" />
     <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
@@ -204,6 +219,7 @@
     <EntitySet Name="GrafikWorks" EntityType="Self.GrafikWork" />
     <EntitySet Name="Klients" EntityType="Self.Klient" />
     <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
+    <EntitySet Name="Oplatas" EntityType="Self.Oplata" />
     <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
     <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />

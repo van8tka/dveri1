@@ -54,6 +54,9 @@
     <Compile Include="Contact.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Dostavka.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dveri1Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +91,9 @@
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="MegkomnatnyeDveri.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oplata.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

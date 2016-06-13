@@ -42,7 +42,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/Panel-", er);
+                ClassLog.Write("Admin/Panel-"+ er);
                 return View("Error");
             }
          
@@ -142,7 +142,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/CreateVhDv-", er);
+                ClassLog.Write("Admin/CreateVhDv-"+ er);
                 return View("Error");
             }
         }
@@ -159,7 +159,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/DellVhDv-", er);
+                ClassLog.Write("Admin/DellVhDv-"+ er);
                 return View("Error");
             }
        }
@@ -176,7 +176,7 @@ namespace dveri1.Controllers
              }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/SliderMain-", er);
+                ClassLog.Write("Admin/SliderMain-"+ er);
                 return View("Error");
             }
         }
@@ -251,7 +251,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/SliderMain-", er);
+                ClassLog.Write("Admin/SliderMain-"+ er);
                 return View("Error");
             }
         }
@@ -266,7 +266,7 @@ public ActionResult DellSlide(int id)
              }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/DellSlide-", er);
+                ClassLog.Write("Admin/DellSlide-"+ er);
                 return View("Error");
             }
         }
@@ -283,7 +283,7 @@ public ActionResult DellSlide(int id)
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/SliderLeft-", er);
+                ClassLog.Write("Admin/SliderLeft-"+ er);
                 return View("Error");
             }
         }
@@ -357,7 +357,7 @@ public ActionResult DellSlide(int id)
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/SliderLeft-", er);
+                ClassLog.Write("Admin/SliderLeft-"+ er);
                 return View("Error");
             }
         }
@@ -372,11 +372,42 @@ public ActionResult DellSlide(int id)
             }
             catch (Exception er)
             {
-                ClassLog.Write("Admin/DellSlideLeft-", er);
+                ClassLog.Write("Admin/DellSlideLeft-"+ er);
+                return View("Error");
+            }
+        }
+        //-------------------------------action обработки сведений доставки---------------------------------
+        [HttpGet]
+       public ActionResult SvedenijaDostavka()
+        {
+            try
+            {
+                //возвращаем один текст сведений о доставке
+                OplDostModel model = new OplDostModel();
+                model.DostInfo = dataManager.OplDostRepository.GetDostavka().FirstOrDefault().Dostavka1;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SvedenijaDostavka-"+ er);
+                return View("Error");
+            }
+        }
+        [HttpPost, ValidateInput(false)]
+       public ActionResult SvedenijaDostavka(OplDostModel model)
+        {
+            try
+            {
+                dataManager.OplDostRepository.CreateDostavka(0, model.DostInfo);
+                TempData["message"] = "Информация о доставке обновлена!";
+                return View(model);  
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SvedenijaDostavka-"+ er);
                 return View("Error");
             }
         }
 
-    
     }
 }

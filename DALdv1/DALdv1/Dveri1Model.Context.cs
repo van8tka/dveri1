@@ -27,6 +27,7 @@ namespace DALdv1
     
         public virtual DbSet<Adresa> Adresas { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Dostavka> Dostavkas { get; set; }
         public virtual DbSet<FotoFyrnitury> FotoFyrnituries { get; set; }
         public virtual DbSet<FotoMegkomnDverey> FotoMegkomnDvereys { get; set; }
         public virtual DbSet<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }
@@ -34,6 +35,7 @@ namespace DALdv1
         public virtual DbSet<GrafikWork> GrafikWorks { get; set; }
         public virtual DbSet<Klient> Klients { get; set; }
         public virtual DbSet<MegkomnatnyeDveri> MegkomnatnyeDveris { get; set; }
+        public virtual DbSet<Oplata> Oplatas { get; set; }
         public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
         public virtual DbSet<VhodnyeDveri> VhodnyeDveris { get; set; }

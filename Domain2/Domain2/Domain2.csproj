@@ -55,10 +55,12 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="Implementations\EfContactRepository.cs" />
     <Compile Include="Implementations\EfKlientRepository.cs" />
+    <Compile Include="Implementations\EfOplataDostavkaRepository.cs" />
     <Compile Include="Implementations\EfSliderRepository.cs" />
     <Compile Include="Implementations\EfVhodnyeDvRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IKlientRepository.cs" />
+    <Compile Include="Interfaces\IOplataDostavkaRepository.cs" />
     <Compile Include="Interfaces\ISliderRepository.cs" />
     <Compile Include="Interfaces\IVhodnyeDvRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

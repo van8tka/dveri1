@@ -200,6 +200,7 @@
     <Compile Include="Models\KartochkaTovaraModel.cs" />
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
+    <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
@@ -233,6 +234,9 @@
     <Content Include="Content\orbit\right-arrow.png" />
     <Content Include="Content\orbit\rotator-black.png" />
     <Content Include="Content\orbit\timer-black.png" />
+    <Content Include="Content\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Content\tinymce\license.txt" />
+    <Content Include="Content\tinymce\tinymce.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -300,6 +304,7 @@
     <Content Include="Views\VhodnyeDveri\FastBuyDveri.cshtml" />
     <Content Include="Views\Shared\ViewFastBuy.cshtml" />
     <Content Include="Views\VhodnyeDveri\FastBuyDveriModal.cshtml" />
+    <Content Include="Views\Admin\SvedenijaDostavka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

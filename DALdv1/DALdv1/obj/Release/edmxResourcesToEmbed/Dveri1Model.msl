@@ -18,6 +18,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Dostavkas">
+      <EntityTypeMapping TypeName="dbdveri1Model.Dostavka">
+        <MappingFragment StoreEntitySet="Dostavka">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Dostavka1" ColumnName="Dostavka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="FotoFyrnituries">
       <EntityTypeMapping TypeName="dbdveri1Model.FotoFyrnitury">
         <MappingFragment StoreEntitySet="FotoFyrnitury">
@@ -114,6 +122,14 @@
           <ScalarProperty Name="CenaSoSkidkoy" ColumnName="CenaSoSkidkoy" />
           <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
           <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oplatas">
+      <EntityTypeMapping TypeName="dbdveri1Model.Oplata">
+        <MappingFragment StoreEntitySet="Oplata">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Oplata1" ColumnName="Oplata" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

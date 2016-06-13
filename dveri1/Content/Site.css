@@ -24,9 +24,10 @@ div.pager a:hover {background-color:silver;}
 div.pager a.selected {background-color:#353535; color: white;}
 
 /* Set width on the form input elements since they're 100% wide by default */
+/*textarea*/
 input,
-select,
-textarea {
+select
+ {
     max-width: 280px;
 }
  
@@ -63,6 +64,7 @@ div.allspisok{
     height:initial;
     width:960px;
 }
+/*//на каждый товар в списке*/
  div.shortproduct{
     display:block;
      float:left;
@@ -76,8 +78,39 @@ div.allspisok{
     margin-bottom:1px;
     }
  div.shortproduct:hover{
-      opacity:0.7;
+      /*opacity:0.7;*/
+      border: 1px solid gray;
+      border-radius:3px;
+      box-shadow:1px 3px 6px black;
+       height:398px;
+       width:208px;
+      
  }
+ div.imageshort{
+     display:block;
+     width:inherit;
+ }
+ img.img-thumbnail{
+     width:110px;
+     height:240px;
+     margin-top:15px;
+ }
+ /*//для отображения текста в редакторе админа*/
+ textarea.areas{
+    width:960px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 15px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+ }
+
  a.leftMenuButton{
       /*background-color:#4682B4;*/
       background:url(images/fm_hover_bg.jpg) repeat-x;
@@ -107,20 +140,24 @@ div.allspisok{
       opacity:1;
  }
 
- 
+ div.blockpercent{
+    z-index:3;
+    position:absolute;
+    margin-left:115px;  
+ }
 
 
 /*для скидки*/
  .percent{
-                top: -219px;
-                right: -120px;
+                /*top: -219px;
+                right: -120px;*/
              background-image: -webkit-gradient(linear, center top, center bottom, from(#ff7e4d 20%), to(#bd0502 66%));
 background-image: -webkit-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: -moz-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: -o-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: -ms-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
-                position:relative;
+                /*position:relative;*/
                 font-size: 30px;
                 color: #fff;
                 width: 55px;
@@ -128,7 +165,7 @@ background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
                 text-align: center;
                 border-radius:50%;
                 line-height: 50px;
-                z-index:3;
+                /*z-index:3;*/
                 padding:4px;
             }
  .BigPersent{

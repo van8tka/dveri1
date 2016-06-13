@@ -20,6 +20,13 @@
           <Property Name="TypeSv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NumberSv" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dostavka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dostavka" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="FotoFyrnitury">
           <Key>
             <PropertyRef Name="IdFoto" />
@@ -90,7 +97,7 @@
           <Property Name="IdDveri" Type="int" Nullable="false" />
           <Property Name="Question" Type="nvarchar" MaxLength="1050" />
           <Property Name="TypDveri" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DateMessage" Type="datetime" />
+          <Property Name="DateMessage" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="MegkomnatnyeDveri">
           <Key>
@@ -111,6 +118,13 @@
           <Property Name="CenaSoSkidkoy" Type="int" />
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="Publicaciya" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oplata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oplata" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="SliderLeftImg">
           <Key>
@@ -196,6 +210,7 @@
         <EntityContainer Name="dbdveri1ModelStoreContainer">
           <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dostavka" EntityType="Self.Dostavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FotoFyrnitury" EntityType="Self.FotoFyrnitury" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FotoMegkomnDverey" EntityType="Self.FotoMegkomnDverey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FotoVhodnyhDverey" EntityType="Self.FotoVhodnyhDverey" Schema="dbo" store:Type="Tables" />
@@ -203,6 +218,7 @@
           <EntitySet Name="GrafikWork" EntityType="Self.GrafikWork" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MegkomnatnyeDveri" EntityType="Self.MegkomnatnyeDveri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oplata" EntityType="Self.Oplata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />
@@ -238,6 +254,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumberSv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dostavka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dostavka1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FotoFyrnitury">
           <Key>
@@ -313,7 +336,7 @@
           <Property Name="IdDveri" Type="Int32" Nullable="false" />
           <Property Name="Question" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
           <Property Name="TypDveri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateMessage" Type="DateTime" Precision="3" />
+          <Property Name="DateMessage" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="MegkomnatnyeDveri">
           <Key>
@@ -335,6 +358,13 @@
           <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
+        </EntityType>
+        <EntityType Name="Oplata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oplata1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SliderLeftImg">
           <Key>
@@ -421,6 +451,7 @@
         <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adresas" EntityType="Self.Adresa" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Dostavkas" EntityType="Self.Dostavka" />
           <EntitySet Name="FotoFyrnituries" EntityType="Self.FotoFyrnitury" />
           <EntitySet Name="FotoMegkomnDvereys" EntityType="Self.FotoMegkomnDverey" />
           <EntitySet Name="FotoVhodnyhDvereys" EntityType="Self.FotoVhodnyhDverey" />
@@ -428,6 +459,7 @@
           <EntitySet Name="GrafikWorks" EntityType="Self.GrafikWork" />
           <EntitySet Name="Klients" EntityType="Self.Klient" />
           <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
+          <EntitySet Name="Oplatas" EntityType="Self.Oplata" />
           <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
           <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
@@ -464,6 +496,14 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeSv" ColumnName="TypeSv" />
                 <ScalarProperty Name="NumberSv" ColumnName="NumberSv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dostavkas">
+            <EntityTypeMapping TypeName="dbdveri1Model.Dostavka">
+              <MappingFragment StoreEntitySet="Dostavka">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Dostavka1" ColumnName="Dostavka" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -563,6 +603,14 @@
                 <ScalarProperty Name="CenaSoSkidkoy" ColumnName="CenaSoSkidkoy" />
                 <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
                 <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oplatas">
+            <EntityTypeMapping TypeName="dbdveri1Model.Oplata">
+              <MappingFragment StoreEntitySet="Oplata">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Oplata1" ColumnName="Oplata" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

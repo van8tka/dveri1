@@ -21,6 +21,6 @@ namespace DALdv1
         public int IdDveri { get; set; }
         public string Question { get; set; }
         public string TypDveri { get; set; }
-        public Nullable<System.DateTime> DateMessage { get; set; }
+        public System.DateTime DateMessage { get; set; }
     }
 }

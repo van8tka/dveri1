@@ -15,6 +15,13 @@
     <Property Name="TypeSv" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NumberSv" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Dostavka">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dostavka" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="FotoFyrnitury">
     <Key>
       <PropertyRef Name="IdFoto" />
@@ -85,7 +92,7 @@
     <Property Name="IdDveri" Type="int" Nullable="false" />
     <Property Name="Question" Type="nvarchar" MaxLength="1050" />
     <Property Name="TypDveri" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DateMessage" Type="datetime" />
+    <Property Name="DateMessage" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="MegkomnatnyeDveri">
     <Key>
@@ -106,6 +113,13 @@
     <Property Name="CenaSoSkidkoy" Type="int" />
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oplata">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Oplata" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="SliderLeftImg">
     <Key>
@@ -191,6 +205,7 @@
   <EntityContainer Name="dbdveri1ModelStoreContainer">
     <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dostavka" EntityType="Self.Dostavka" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoFyrnitury" EntityType="Self.FotoFyrnitury" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoMegkomnDverey" EntityType="Self.FotoMegkomnDverey" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FotoVhodnyhDverey" EntityType="Self.FotoVhodnyhDverey" Schema="dbo" store:Type="Tables" />
@@ -198,6 +213,7 @@
     <EntitySet Name="GrafikWork" EntityType="Self.GrafikWork" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MegkomnatnyeDveri" EntityType="Self.MegkomnatnyeDveri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oplata" EntityType="Self.Oplata" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />

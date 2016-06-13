@@ -26,6 +26,7 @@ namespace dveri1.Infrastructure
             kernel.Bind<ISliderRepository>().To<EfSliderRepository>();
             kernel.Bind<IContactRepository>().To<EfContactRepository>();
             kernel.Bind<IKlientRepository>().To<EfKlientRepository>();
+            kernel.Bind<IOplataDostavkaRepository>().To<EfOplataDostavkaRepository>();
         }
 
         public object GetService(Type serviceType)

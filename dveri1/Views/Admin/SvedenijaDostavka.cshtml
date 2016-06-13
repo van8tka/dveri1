@@ -1,0 +1,29 @@
+﻿@model dveri1.Models.OplDostModel
+@{
+    ViewBag.Title = "информация о доставке";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode:"textareas"
+    });
+</script>
+<div style="margin-left:250px;">
+  <div style="text-align:center">
+      <h2>Сведения о доставке</h2>
+    </div>  
+    <div style="width:960px;height:auto;border:2px solid gray;border-radius:5px;box-shadow:0 2px 6px black; padding:10px;">
+          @Html.Raw(Model.DostInfo)
+    </div>
+    @using (Html.BeginForm("SvedenijaDostavka"))
+    {
+        <div class="mb20 mt20">
+            <label>Изменить сведения о доставке:</label>
+            @Html.TextAreaFor(m => m.DostInfo, new { @class = "areas", rows = 12 })
+        </div>
+       
+        <input type="submit" value="Сохранить" class="addostavka"/>
+    }
+</div>
