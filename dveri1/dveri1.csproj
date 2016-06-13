@@ -305,6 +305,8 @@
     <Content Include="Views\Shared\ViewFastBuy.cshtml" />
     <Content Include="Views\VhodnyeDveri\FastBuyDveriModal.cshtml" />
     <Content Include="Views\Admin\SvedenijaDostavka.cshtml" />
+    <Content Include="Views\Admin\SvedenijaOplata.cshtml" />
+    <Content Include="Views\VhodnyeDveri\OplataDostavka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

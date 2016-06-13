@@ -38,8 +38,16 @@
             <span>Характеристики</span>
             @Html.Partial("OpisanieTov")
         </div>
-        <div id="tab2"><span>Доставка</span>2 вкладка</div>
-        <div id="tab3"><span>Оплата</span>3 вкладка</div>
+        <div id="tab2"><span>Доставка</span>
+            <div class="dostavka">
+                @Html.Raw(Model.InfoDostavka)
+            </div>
+        </div>
+        <div id="tab3"><span>Оплата</span>
+            <div class="oplata">
+                 @Html.Raw(Model.InfoOplata)
+            </div>
+        </div>
         <div id="tab4"><span>Отзывы</span>4 вкладка</div>
     </div>
 </div>

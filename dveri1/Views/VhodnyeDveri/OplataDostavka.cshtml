@@ -1,0 +1,13 @@
+﻿@model dveri1.Models.OplDostModel
+@{
+    ViewBag.Title = "Сведения о доставке и оплате";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dostavka">
+    @Html.Raw(Model.DostInfo)
+</div>
+<div class="oplata">
+    @Html.Raw(Model.OplInfo)
+</div>
+

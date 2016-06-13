@@ -11,7 +11,6 @@ namespace dveri1.Models
     {
         //[AllowHtml]
         public string DostInfo { get; set; }
-        public Dostavka DostavkaProp { get; set; }
-        public Oplata OplataProp { get; set; }
+        public string OplInfo { get; set; }
     }
 }

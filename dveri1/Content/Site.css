@@ -495,7 +495,7 @@ div.navigation-menu{
 
       /*===================================кнопка дозагрузки страницы=========================================*/
 .showadd {
-    width: 160px;
+    width: 170px;
 	height: 29px;
 	/*width: 120px;
 	height: 32px;*/
@@ -1421,8 +1421,17 @@ img.spisFoto:hover{
         margin-right: 1px;
         text-shadow: 0 1px 0 #4190AF;
     } 
-
-
+    /*//доставка и оплата*/
+    div.dostavka{
+        font-size:large;
+        background-color:white;
+        padding:20px;
+    }
+    div.oplata{
+        font-size:large;
+        background-color:	#F0FFFF;
+        padding:20px;
+    }
 
 
 

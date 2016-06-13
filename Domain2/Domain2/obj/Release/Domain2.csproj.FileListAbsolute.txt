@@ -9,4 +9,3 @@ D:\GitHub\dveri1\Domain2\Domain2\bin\Release\EntityFramework.xml
 D:\GitHub\dveri1\Domain2\Domain2\bin\Release\EntityFramework.SqlServer.xml
 D:\GitHub\dveri1\Domain2\Domain2\obj\Release\Domain2.dll
 D:\GitHub\dveri1\Domain2\Domain2\obj\Release\Domain2.pdb
-D:\GitHub\dveri1\Domain2\Domain2\obj\Release\Domain2.csprojResolveAssemblyReference.cache

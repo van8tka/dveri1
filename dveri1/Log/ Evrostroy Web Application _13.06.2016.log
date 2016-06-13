@@ -21,3 +21,13 @@
    at System.Linq.Queryable.Last[TSource](IQueryable`1 source)
    at Domain2.Implementations.EfOplataDostavkaRepository.CreateDostavka(Int32 id, String d) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfOplataDostavkaRepository.cs:line 20
    at dveri1.Controllers.AdminController.SvedenijaDostavka(OplDostModel model) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 401
+[13.06.2016 21:59:18.086] Admin/SvedenijaOplata-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.AdminController.SvedenijaOplata() in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 420
+[13.06.2016 22:04:41.930] Admin/SvedenijaOplata-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.AdminController.SvedenijaOplata() in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 420
+[13.06.2016 22:13:02.101] Admin/SvedenijaOplata-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfOplataDostavkaRepository.CreateOplata(Int32 id, String o) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfOplataDostavkaRepository.cs:line 33
+   at dveri1.Controllers.AdminController.SvedenijaOplata(OplDostModel model) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 443
+[13.06.2016 22:15:23.959] Admin/SvedenijaOplata-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfOplataDostavkaRepository.CreateOplata(Int32 id, String o) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfOplataDostavkaRepository.cs:line 33
+   at dveri1.Controllers.AdminController.SvedenijaOplata(OplDostModel model) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 443

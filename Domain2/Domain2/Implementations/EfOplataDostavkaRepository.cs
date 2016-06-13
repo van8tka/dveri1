@@ -22,9 +22,11 @@ namespace Domain2.Implementations
                 Id = id,
                 Dostavka1 = d
             };
-           int iddel = context.Dostavkas.FirstOrDefault().Id;         
-            DellDostavka(iddel);
-            context.SaveChanges();
+          Dostavka dosta = context.Dostavkas.FirstOrDefault();
+            if(dosta!=null)
+            {
+                DellDostavka(dosta.Id);
+            }             
             context.Dostavkas.Add(dost);       
             context.SaveChanges();
         }
@@ -36,10 +38,12 @@ namespace Domain2.Implementations
                 Id = id,
                 Oplata1 = o
             };
-            if(id==0)
+           Oplata opla = context.Oplatas.FirstOrDefault();
+            if(opla!=null)
             {
-                context.Oplatas.Add(opl);
-            }
+                DellOplata(opla.Id);
+            }          
+            context.Oplatas.Add(opl);
             context.SaveChanges();
         }
 

@@ -7,5 +7,7 @@ namespace dveri1.Models
     {
         public VhodnyeDveri Tovar { get; set; }
         public IEnumerable<FotoVhodnyhDverey> FotoTovara { get; set; }
+        public string InfoDostavka { get; set; }
+        public string InfoOplata { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/VhodnyeDveriIndex-", er);
+                ClassLog.Write("VhodnyeDveri/VhodnyeDveriIndex-" + er);
                 return View("Error");
             }
         }
@@ -92,7 +92,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/GetImage-", er);
+                ClassLog.Write("VhodnyeDveri/GetImage-" + er);
                 return null;
             }
         }
@@ -125,7 +125,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/ProductList-", er);
+                ClassLog.Write("VhodnyeDveri/ProductList-" + er);
                 return View("Error");
             }
         }
@@ -185,7 +185,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/SortirDveri-", er);
+                ClassLog.Write("VhodnyeDveri/SortirDveri-" + er);
                 return null;
             }
         }
@@ -203,7 +203,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/ContactOnPanel-", er);
+                ClassLog.Write("VhodnyeDveri/ContactOnPanel-" + er);
                 return View("Error");
             }
         }
@@ -211,10 +211,22 @@ namespace dveri1.Controllers
         [HttpGet]
         public ActionResult TovarPage(int id)
         {
-            KartochkaTovaraModel model = new KartochkaTovaraModel();
-            model.Tovar = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
-            model.FotoTovara = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
-            return View(model);
+            try
+            {
+                KartochkaTovaraModel model = new KartochkaTovaraModel();
+                model.Tovar = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                model.FotoTovara = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
+                OplDostModel md = new OplDostModel();
+                md = InfaDostOplata();
+                model.InfoDostavka = md.DostInfo;
+                model.InfoOplata = md.OplInfo;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/ TovarPage-"+ er);
+                return View("Error");
+            }           
         }
 
 //акшен для возврата частичного представления с данными кликнутого фото в карточке товара
@@ -227,7 +239,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/ImgTov-", er);
+                ClassLog.Write("VhodnyeDveri/ImgTov-" + er);
                 return View("Error");
             }
         }
@@ -257,7 +269,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/BreadCrumbs-", er);
+                ClassLog.Write("VhodnyeDveri/BreadCrumbs-" + er);
                 return View("Error");
             }
         }
@@ -279,7 +291,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/BuyDveri-", er);
+                ClassLog.Write("VhodnyeDveri/BuyDveri-" + er);
                 return View("Error");
             }
 
@@ -308,7 +320,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-               ClassLog.Write("VhodnyeDveri/BuyDveri-", er);
+               ClassLog.Write("VhodnyeDveri/BuyDveri-" + er);
                return View("Error");
            }
       }
@@ -356,7 +368,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/BuyDveriModal-", er);
+                ClassLog.Write("VhodnyeDveri/BuyDveriModal-" + er);
                 return View("Error");
             }
         }
@@ -384,7 +396,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/BuyDveriModel-", er);
+                ClassLog.Write("VhodnyeDveri/BuyDveriModel-" + er);
                 return View("Error");
             }
         }
@@ -414,7 +426,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/BuyDveriModal-", er);
+                ClassLog.Write("VhodnyeDveri/BuyDveriModal-" + er);
                 return View("Error");
             }
         }
@@ -449,7 +461,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/FastBuyDveri-", er);
+                ClassLog.Write("VhodnyeDveri/FastBuyDveri-" + er);
                 return View("Error");
             }
         }
@@ -480,7 +492,7 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/FastBuyDveriModal-", er);
+                ClassLog.Write("VhodnyeDveri/FastBuyDveriModal-" + er);
                 return View("Error");
             }
         }
@@ -508,10 +520,48 @@ namespace dveri1.Controllers
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/FastBuyDveriModel-", er);
+                ClassLog.Write("VhodnyeDveri/FastBuyDveriModel-" + er);
                 return View("Error");
             }
         }
-
+        //оплата и доставка
+        public ActionResult OplataDostavka()
+        {
+            try
+            {
+                OplDostModel model = new OplDostModel();
+                model = InfaDostOplata();
+                return View(model);
+            }           
+             catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/FastBuyDveriModel-" + er);
+                return View("Error");
+            }
+        }
+        //метод определения наличия информации о доставке и оплате
+        private OplDostModel InfaDostOplata()
+        {
+            OplDostModel model = new OplDostModel();
+            Oplata op = dataManager.OplDostRepository.GetOplata().FirstOrDefault();
+            if (op != null)
+            {
+                model.OplInfo = op.Oplata1;
+            }
+            else
+            {
+                model.OplInfo = "нет информации об оплате";
+            }
+            Dostavka dos = dataManager.OplDostRepository.GetDostavka().FirstOrDefault();
+            if (dos != null)
+            {
+                model.DostInfo = dos.Dostavka1;
+            }
+            else
+            {
+                model.DostInfo = "нет информации о доставке";
+            }
+            return model;
+        }
     }
 }

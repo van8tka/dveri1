@@ -393,6 +393,7 @@ public ActionResult DellSlide(int id)
                 return View("Error");
             }
         }
+        //для разрешения ввода html кода
         [HttpPost, ValidateInput(false)]
        public ActionResult SvedenijaDostavka(OplDostModel model)
         {
@@ -408,6 +409,46 @@ public ActionResult DellSlide(int id)
                 return View("Error");
             }
         }
-
+        //-------------------------------action обработки сведений об оплате---------------------------------
+        [HttpGet]
+        public ActionResult SvedenijaOplata()
+        {
+            try
+            {
+                //возвращаем один текст сведений о доставке
+                OplDostModel model = new OplDostModel();
+                Oplata opl = dataManager.OplDostRepository.GetOplata().FirstOrDefault();
+                if (opl != null)
+                {
+                    model.OplInfo = opl.Oplata1;
+                }
+                else
+                {
+                    model.OplInfo = "информация об оплате отсутствует";
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SvedenijaOplata-" + er);
+                return View("Error");
+            }
+        }
+        //для разрешения ввода html кода
+        [HttpPost, ValidateInput(false)]
+        public ActionResult SvedenijaOplata(OplDostModel model)
+        {
+            try
+            {
+                dataManager.OplDostRepository.CreateOplata(0, model.OplInfo);
+                TempData["message"] = "Информация об оплате обновлена!";
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/SvedenijaOplata-" + er);
+                return View("Error");
+            }
+        }
     }
 }

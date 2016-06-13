@@ -1,6 +1,6 @@
 ﻿@model dveri1.Models.OplDostModel
 @{
-    ViewBag.Title = "Информация о доставке";
+    ViewBag.Title = "Информация об оплате";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
@@ -11,22 +11,22 @@
     });
 </script>
 <div style="margin-left:250px;">
-  <div style="text-align:center">
-      <h2>Сведения о доставке</h2>
-    </div>  
-    <div style="width:960px;height:auto;border:2px solid gray;border-radius:5px;box-shadow:0 2px 6px black; padding:10px;">
-          @Html.Raw(Model.DostInfo)
+    <div style="text-align:center">
+        <h2>Сведения об оплате</h2>
     </div>
-    @using (Html.BeginForm("SvedenijaDostavka"))
+    <div style="width:960px;height:auto;border:2px solid gray;border-radius:5px;box-shadow:0 2px 6px black; padding:10px;">
+        @Html.Raw(Model.OplInfo)
+    </div>
+    @using (Html.BeginForm("SvedenijaOplata"))
     {
         <div class="mb20 mt20">
             <div style="text-align:center">
-                <label>Изменить сведения о доставке:</label>
+                <label>Изменить сведения об оплате:</label>
             </div>
-           
-            @Html.TextAreaFor(m => m.DostInfo, new { @class = "areas", rows = 12 })
+            @Html.TextAreaFor(m => m.OplInfo, new { @class = "areas", rows = 12 })
         </div>
-       
-        <input type="submit" value="Сохранить изменения" class="showadd mb30"/>
+
+        <input type="submit" value="Сохранить изменения" class="showadd mb30" />
     }
 </div>
+
