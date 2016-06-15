@@ -16,9 +16,17 @@
     <div class="body-admin">
         <div class="navigationleftfixed" style="z-index:4">
             <div style="text-align:center;margin-top:20px">
-                @Html.ActionLink("ЕВРОСТОРОЙ", "VhodnyeDveriIndex", "VhodnyeDveri")
+                <div>
+                    @Html.ActionLink("ЕВРОСТОРОЙ", "VhodnyeDveriIndex", "VhodnyeDveri")
+                </div>
+              
+                <div class="mt10">
+                    @Html.ActionLink("Выход", "LogOff", "Account", null, new { @class = "showadd" })
+                </div>             
             </div>
-           
+
+        
+
           <ul class="menuleft">
               <li>
                   @Html.ActionLink("Входные двери","Panel","Admin")
@@ -43,6 +51,9 @@
               </li>
               <li>
                   @Html.ActionLink("Контакты", "AdminContact", "Contact")
+              </li>
+              <li>
+                  @Html.ActionLink("Пользователи", "UserPage", "Admin")
               </li>
           </ul>
          

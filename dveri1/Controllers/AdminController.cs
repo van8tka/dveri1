@@ -24,6 +24,7 @@ namespace dveri1.Controllers
         }
         int PageSize = 32;
         // GET: Admin
+        [Authorize]
         public ActionResult Panel(int page = 1)
         {
             try
@@ -47,14 +48,15 @@ namespace dveri1.Controllers
             }
          
         }
-        
-//------------------------------создание нового товара--------------------------------------------------------
+        [Authorize]
+        //------------------------------создание нового товара--------------------------------------------------------
         [HttpGet]
         public ActionResult CreateVhDv()
         {
             return View();
         }
-//------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
+        //------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
+        [Authorize]
         [HttpPost]
         public ActionResult CreateVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
@@ -146,8 +148,9 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-   
+
         //------------------------------контроллер удаления товара---------------------------------------------
+        [Authorize]
         [HttpGet]
         public ActionResult DellVhDv(int id, int page = 1)
         {
@@ -164,6 +167,7 @@ namespace dveri1.Controllers
             }
        }
         //------------------------------------------------контроллер главного слайдера--------------------------------------------------------
+        [Authorize]
         [HttpGet]
         public ActionResult SliderMain()
         {
@@ -180,6 +184,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult SliderMain(IEnumerable<HttpPostedFileBase> fileUpload=null)
         {
@@ -255,8 +260,9 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-//-----------------------------------------------контроллер удаления слайда-------------------------------------------------------------------
-public ActionResult DellSlide(int id)
+        //-----------------------------------------------контроллер удаления слайда-------------------------------------------------------------------
+        [Authorize]
+        public ActionResult DellSlide(int id)
         {
             try
             {
@@ -271,6 +277,7 @@ public ActionResult DellSlide(int id)
             }
         }
         //------------------------------------------------контроллер боковогослайдера--------------------------------------------------------
+        [Authorize]
         [HttpGet]
         public ActionResult SliderLeft()
         {
@@ -287,6 +294,7 @@ public ActionResult DellSlide(int id)
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult SliderLeft(IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
@@ -362,6 +370,7 @@ public ActionResult DellSlide(int id)
             }
         }
         //-----------------------------------------------контроллер удаления бокового слайда-------------------------------------------------------------------
+        [Authorize]
         public ActionResult DellSlideLeft(int id)
         {
             try
@@ -377,6 +386,7 @@ public ActionResult DellSlide(int id)
             }
         }
         //-------------------------------action обработки сведений доставки---------------------------------
+        [Authorize]
         [HttpGet]
        public ActionResult SvedenijaDostavka()
         {
@@ -393,6 +403,7 @@ public ActionResult DellSlide(int id)
                 return View("Error");
             }
         }
+        [Authorize]
         //для разрешения ввода html кода
         [HttpPost, ValidateInput(false)]
        public ActionResult SvedenijaDostavka(OplDostModel model)
@@ -410,6 +421,7 @@ public ActionResult DellSlide(int id)
             }
         }
         //-------------------------------action обработки сведений об оплате---------------------------------
+        [Authorize]
         [HttpGet]
         public ActionResult SvedenijaOplata()
         {
@@ -435,6 +447,7 @@ public ActionResult DellSlide(int id)
             }
         }
         //для разрешения ввода html кода
+        [Authorize]
         [HttpPost, ValidateInput(false)]
         public ActionResult SvedenijaOplata(OplDostModel model)
         {
@@ -450,5 +463,44 @@ public ActionResult DellSlide(int id)
                 return View("Error");
             }
         }
+        [Authorize]
+        public ActionResult UserPage()
+        {
+            try
+            {
+                IEnumerable<User> us = dataManager.UserRepository.GetUsers();
+                return View(us);
+            }         
+             catch (Exception er)
+            {
+                ClassLog.Write("Admin/UserPage-" + er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        public ActionResult DeleteUser(int id)
+        {
+            try
+            {
+                int z = dataManager.UserRepository.GetUsers().Count();
+                if(z!=1)
+                {
+                    dataManager.UserRepository.DeleteUser(id);
+                    TempData["message"] = "Пользователь удален!";
+                } 
+                else
+                {
+                    TempData["message"] = "Невозможно удалить последнего пользователя!";
+                }            
+                return RedirectToAction("UserPage");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/DeleteUser-" + er);
+                return View("Error");
+            }
+        }
+      
     }
+
 }

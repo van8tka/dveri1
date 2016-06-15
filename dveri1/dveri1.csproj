@@ -116,6 +116,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -183,6 +187,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\VhodnyeDveriController.cs" />
@@ -200,11 +205,13 @@
     <Compile Include="Models\KartochkaTovaraModel.cs" />
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
+    <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CustomMembershipProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ControlSlider\background.png" />
@@ -307,6 +314,9 @@
     <Content Include="Views\Admin\SvedenijaDostavka.cshtml" />
     <Content Include="Views\Admin\SvedenijaOplata.cshtml" />
     <Content Include="Views\VhodnyeDveri\OplataDostavka.cshtml" />
+    <Content Include="Views\Admin\UserPage.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

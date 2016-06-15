@@ -103,6 +103,12 @@
     <Compile Include="SliderMainImg.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="VhodnyeDveri.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

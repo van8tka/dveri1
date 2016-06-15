@@ -142,6 +142,24 @@
     <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="VhodnyeDveri">
     <Key>
       <PropertyRef Name="Id" />
@@ -222,6 +240,8 @@
     <EntitySet Name="Oplatas" EntityType="Self.Oplata" />
     <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
     <AssociationSet Name="FK_FotoFyrnitury_Furnitura" Association="Self.FK_FotoFyrnitury_Furnitura">
       <End Role="Furnitura" EntitySet="Furnituras" />

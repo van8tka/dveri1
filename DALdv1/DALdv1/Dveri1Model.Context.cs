@@ -38,6 +38,8 @@ namespace DALdv1
         public virtual DbSet<Oplata> Oplatas { get; set; }
         public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<VhodnyeDveri> VhodnyeDveris { get; set; }
     }
 }

@@ -15,16 +15,22 @@ namespace Domain2
         private IContactRepository contactRepository;
         private IKlientRepository klientRepository;
         private IOplataDostavkaRepository opldostRepository;
+        private IUserRepository userRepository;
 
-        public DataManager(IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
             this.klientRepository = klientRepository;
             this.vhodnDvRepository = vhodnDvRepository;
             this.sliderRepository = sliderRepository;
             this.contactRepository = contactRepository;
             this.opldostRepository = opldostRepository;
+            this.userRepository = userRepository;
         }
         //св-ва через которые будет происх вызов
+        public IUserRepository UserRepository
+        {
+            get { return userRepository; }
+        }
         public IOplataDostavkaRepository OplDostRepository
         {
             get { return opldostRepository; }
