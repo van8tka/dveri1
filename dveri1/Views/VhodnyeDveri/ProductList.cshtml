@@ -10,11 +10,11 @@
                         {
                             if (i.FotoVhodnyhDvereys.FirstOrDefault() == null)
                             {
-                                <img class="img-thumbnail" src="~/Content/imageDefault.jpg" />
+                                <img class="img-thumbnail" src="~/Content/imageDefault.jpg" alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует" />
                             }
                             else
                             {
-                                <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })" />
+                                <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })"  alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
                             }
                         }
                         else
@@ -24,14 +24,14 @@
                                 <div class="blockpercent">
                                     <span class="percent">@i.Skidka%</span>
                                 </div>
-                                    <img class="img-thumbnail" src="~/Content/imageDefault.jpg" />
+                                    <img class="img-thumbnail" src="~/Content/imageDefault.jpg"  alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует"/>
                                     }
                                     else
                                     {
                                 <div class="blockpercent">
                                       <span class="percent">@i.Skidka%</span>
                                  </div>
-                                    <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })" />
+                                    <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })"  alt="фото @i.Nazvanie" title="фото @i.Nazvanie"/>
                                     }
                                     }
                                 </div>

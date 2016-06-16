@@ -36,6 +36,7 @@ namespace DALdv1
         public virtual DbSet<Klient> Klients { get; set; }
         public virtual DbSet<MegkomnatnyeDveri> MegkomnatnyeDveris { get; set; }
         public virtual DbSet<Oplata> Oplatas { get; set; }
+        public virtual DbSet<SeoVhodnuhDverei> SeoVhodnuhDvereis { get; set; }
         public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

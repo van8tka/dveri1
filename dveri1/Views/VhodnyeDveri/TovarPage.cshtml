@@ -1,7 +1,7 @@
 ﻿
 @model dveri1.Models.KartochkaTovaraModel
     @{
-    ViewBag.Title = Model.Tovar.Nazvanie;
+    ViewBag.Title = "Купить "+ Model.Tovar.Nazvanie;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Scripts.Render("~/Scripts/jquery.imageLens.js")
@@ -23,7 +23,7 @@
             }
            @if (Model.FotoTovara.Count() == 0)
             {
-                <img class='MainFoto' style="margin-left:130px; margin-top:30px;" src="~/Content/imageDefault.jpg" />
+                <img class='MainFoto' style="margin-left:130px; margin-top:30px;" src="~/Content/imageDefault.jpg" alt="фото @Model.Tovar.Nazvanie отсутствует" title="фото @Model.Tovar.Nazvanie отсутствует" />
             }
             else
             {
@@ -31,12 +31,12 @@
                     <ul class="sliderVertUl">
                         @foreach (var i in Model.FotoTovara)
                         {
-                            <li>@Html.Raw("<img class='spisFoto' id=" + i.Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Imaging) + "\"/>") </li>
+                            <li>@Html.Raw("<img class='spisFoto' alt= \"фото " + Model.Tovar.Nazvanie + "\" title=\"фото " + Model.Tovar.Nazvanie + "\" id=" + i.Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Imaging) + "\"/>") </li>
                         }                  
                     </ul>
                 </div>
             <div class="sliderMainFoto">   
-                 @Html.Raw("<img class='MainFoto lp' id=" + Model.FotoTovara.ElementAt(0).Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.FotoTovara.ElementAt(0).Imaging) + "\"/>")
+                 @Html.Raw("<img class='MainFoto lp'  alt= \"фото " + Model.Tovar.Nazvanie + "\" title=\"фото " + Model.Tovar.Nazvanie + "\" id=" + Model.FotoTovara.ElementAt(0).Idfoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.FotoTovara.ElementAt(0).Imaging) + "\" />")
              </div>
            
            }

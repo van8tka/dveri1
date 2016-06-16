@@ -78,22 +78,24 @@ namespace dveri1.Controllers
                     model.Yplotnitel, model.TolschinaMetala, model.Furnitura, model.Petli, model.OtdSnarugi,model.OtdVnutri,model.TolschinaDvPolotna,
                     model.Cena,model.Skidka,CenaSoSkidkoy,model.Opisanie,model.Publicaciya);
                 int iddver = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Last().Id;
+                    //метод создания элементов сео единицы товара
+                    dataManager.VhodnyeDvRepository.CreateSeoVhDveri(iddver, model.TitleVhDv, model.KeywordsVhDv, model.DescriptionVhDv);
                 //метод изменения размера изображения и сохраненния в буфере
                 string domainpath = Server.MapPath("~/Content/ImageTemp/");
                 if(!Directory.Exists(domainpath))
                 {
                     Directory.CreateDirectory(domainpath);
                 }
-             
-                //проход по списку загружаемых файлов и если есть, добавление в БД
-                foreach (var image in fileUpload)
+                   
+                    //проход по списку загружаемых файлов и если есть, добавление в БД
+                    foreach (var image in fileUpload)
                 {
                    
                     if (image != null)
                     {
-                        //получим ID последнего фото
-                        int idfot;
-                        FotoVhodnyhDverey ft = dataManager.VhodnyeDvRepository.GetFotoVhDv().LastOrDefault();
+                            //получим ID последнего фото
+                            int idfot;
+                            FotoVhodnyhDverey ft = dataManager.VhodnyeDvRepository.GetFotoVhDv().LastOrDefault();
                         if (ft == null)
                             idfot = 0;
                         else
@@ -138,7 +140,8 @@ namespace dveri1.Controllers
                     //удалим файлы из временной папки
                     string dompath = Server.MapPath("~/Content/ImageTemp/");
                    DellFilesFromDomain.DellAllFiles(dompath);
-                return RedirectToAction("Panel");
+                   
+                    return RedirectToAction("Panel");
             }
             return View(model);
             }

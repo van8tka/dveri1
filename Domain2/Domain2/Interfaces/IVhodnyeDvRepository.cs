@@ -19,6 +19,6 @@ namespace Domain2.Interfaces
         IEnumerable<FotoVhodnyhDverey> GetFotoVhDvByID(int id);
         void CreateFotoVhDv(int id, int iddv, string Type, byte[] Image);
         void DeleteFotoVhDv(int idfoto);
-      
+        void CreateSeoVhDveri(int id, string title, string keywords, string description);    
     }
 }

@@ -39,5 +39,6 @@ namespace DALdv1
         public bool Publicaciya { get; set; }
     
         public virtual ICollection<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }
+        public virtual SeoVhodnuhDverei SeoVhodnuhDverei { get; set; }
     }
 }

@@ -126,6 +126,16 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Oplata1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="SeoVhodnuhDverei">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TitleDveri" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
+    <Property Name="KeywordsDveri" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionDveri" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VhodnyeDveri" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="SeoVhodnuhDverei" ToRole="VhodnyeDveri" />
+  </EntityType>
   <EntityType Name="SliderLeftImg">
     <Key>
       <PropertyRef Name="Id" />
@@ -183,6 +193,7 @@
     <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="FotoVhodnyhDvereys" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="FotoVhodnyhDverey" />
+    <NavigationProperty Name="SeoVhodnuhDverei" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="SeoVhodnuhDverei" />
   </EntityType>
   <Association Name="FK_FotoFyrnitury_Furnitura">
     <End Role="Furnitura" Type="Self.Furnitura" Multiplicity="1">
@@ -226,6 +237,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SeoVhodnuhDverei_VhodnyeDveri">
+    <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SeoVhodnuhDverei" Type="Self.SeoVhodnuhDverei" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VhodnyeDveri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SeoVhodnuhDverei">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresas" EntityType="Self.Adresa" />
     <EntitySet Name="Contacts" EntityType="Self.Contact" />
@@ -238,6 +263,7 @@
     <EntitySet Name="Klients" EntityType="Self.Klient" />
     <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
     <EntitySet Name="Oplatas" EntityType="Self.Oplata" />
+    <EntitySet Name="SeoVhodnuhDvereis" EntityType="Self.SeoVhodnuhDverei" />
     <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -254,6 +280,10 @@
     <AssociationSet Name="FK_FotoVhodnyhDverey_VhodnyeDveri" Association="Self.FK_FotoVhodnyhDverey_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
       <End Role="FotoVhodnyhDverey" EntitySet="FotoVhodnyhDvereys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeoVhodnuhDverei_VhodnyeDveri" Association="Self.FK_SeoVhodnuhDverei_VhodnyeDveri">
+      <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
+      <End Role="SeoVhodnuhDverei" EntitySet="SeoVhodnuhDvereis" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

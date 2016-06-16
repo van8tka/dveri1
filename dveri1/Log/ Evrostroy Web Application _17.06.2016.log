@@ -1,0 +1,6 @@
+[17.06.2016 00:09:26.185] Admin/CreateVhDv-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateSeoVhDveri(Int32 id, String title, String keywords, String description) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 107
+   at dveri1.Controllers.AdminController.CreateVhDv(CreateVhMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 82
+[17.06.2016 00:13:45.856] Admin/CreateVhDv-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateSeoVhDveri(Int32 id, String title, String keywords, String description) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 107
+   at dveri1.Controllers.AdminController.CreateVhDv(CreateVhMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 82

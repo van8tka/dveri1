@@ -133,6 +133,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SeoVhodnuhDvereis">
+      <EntityTypeMapping TypeName="dbdveri1Model.SeoVhodnuhDverei">
+        <MappingFragment StoreEntitySet="SeoVhodnuhDverei">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TitleDveri" ColumnName="TitleDveri" />
+          <ScalarProperty Name="KeywordsDveri" ColumnName="KeywordsDveri" />
+          <ScalarProperty Name="DescriptionDveri" ColumnName="DescriptionDveri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SliderLeftImgs">
       <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImg">
         <MappingFragment StoreEntitySet="SliderLeftImg">

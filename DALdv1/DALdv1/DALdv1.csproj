@@ -97,6 +97,9 @@
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeoVhodnuhDverei.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SliderLeftImg.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

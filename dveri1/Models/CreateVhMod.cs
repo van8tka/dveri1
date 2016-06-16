@@ -48,6 +48,16 @@ namespace dveri1.Models
         [Display(Name = "Описание")]
         [DataType(DataType.MultilineText)]
         public string Opisanie { get; set; }
+        //для сео оптимизации
+        [Display(Name = "<title>")]
+        public string TitleVhDv { get; set; }
+        [Display(Name = "<keywords>")]
+        public string KeywordsVhDv { get; set; }
+        [Display(Name = "<description>")]
+        public string DescriptionVhDv { get; set; }
+
+
+
 
         public string ImageMimeType{ get; set; }
         public byte[] ImageData{get;set;}

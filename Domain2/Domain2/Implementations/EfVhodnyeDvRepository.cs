@@ -99,5 +99,30 @@ namespace Domain2.Implementations
             context.VhodnyeDveris.Add(temp);
             context.SaveChanges();
         }
+        public void CreateSeoVhDveri(int id, string title, string keywords, string description)
+        {
+           
+            if (context.SeoVhodnuhDvereis.Find(id) != null)
+            {
+                SeoVhodnuhDverei se = context.SeoVhodnuhDvereis.Where(i => i.Id == id).FirstOrDefault();
+                se.TitleDveri = title;
+                se.KeywordsDveri = keywords;
+                se.DescriptionDveri = description;
+                context.Entry(se).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges(); 
+            }
+            else
+            {
+                SeoVhodnuhDverei se = new SeoVhodnuhDverei
+                {
+                    Id = id,
+                    TitleDveri = title,
+                    KeywordsDveri = keywords,
+                    DescriptionDveri = description
+                };
+                context.SeoVhodnuhDvereis.Add(se);
+                context.SaveChanges();
+            }
+        }
     }
 }
