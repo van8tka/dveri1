@@ -58,7 +58,7 @@ namespace dveri1.Models
 
 
 
-
+        public IEnumerable<FotoVhodnyhDverey> FotoVhDvList { get; set; } 
         public string ImageMimeType{ get; set; }
         public byte[] ImageData{get;set;}
     }

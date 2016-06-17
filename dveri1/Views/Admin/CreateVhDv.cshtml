@@ -17,15 +17,15 @@
             @Html.HiddenFor(m => m.ID)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                if (property.PropertyName == "ID" || property.PropertyName == "ImageData"||property.PropertyName=="ImageMimeType")
+                if (property.PropertyName == "ID" || property.PropertyName == "ImageData"||property.PropertyName=="ImageMimeType"|| property.PropertyName == "FotoVhDvList")
                 {
                 }
                 else
-                { 
+                {
                     <div class="form-group">
                         <label>@(property.DisplayName ?? property.PropertyName)</label>
-                        @if (property.PropertyName == "Opisanie")
-                        {
+                       @if (property.PropertyName == "Opisanie" || property.PropertyName == "DescriptionVhDv")
+                       {
                             @Html.TextArea(property.PropertyName, null,
                                 new { @class = "form-control", rows = 5 })                           
                         }

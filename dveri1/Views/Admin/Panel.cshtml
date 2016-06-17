@@ -31,14 +31,14 @@
         @foreach (var i in Model.ListVhodnDv)
         {
             <tr>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@Html.ActionLink(i.Id.ToString(),"ChangeVhDv","Admin", new {id=i.Id })</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@Html.ActionLink(i.Nazvanie, "ChangeVhDv", "Admin", new { id = i.Id })</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.Proizvoditel</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.Strana</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.Napolnitel</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.Yplotnitel</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.TolschinaMetalla</td>
-                <td onclick="location.href='/Admin/ChangeVhDv?Length=@i.Id'">@i.Furnitura</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@Html.ActionLink(i.Id.ToString(), "EditVhDv", "Admin", new {id=i.Id },null)</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@Html.ActionLink(i.Nazvanie, "EditVhDv", "Admin", new { id = i.Id },null)</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.Proizvoditel</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.Strana</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.Napolnitel</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.Yplotnitel</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.TolschinaMetalla</td>
+                <td onclick="location.href='/Admin/EditVhDv?Length=@i.Id'">@i.Furnitura</td>
                 @*<td>Наполнитель</td>
                 <td>Уплотнитель</td>
                 <td>Толщина металла</td>
@@ -50,7 +50,9 @@
                 <td>@i.Cena</td>
                 <td>@i.Skidka</td>
                <td> @Html.DisplayFor(modelItem=>i.Publicaciya)</td>
-                <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })<br />@Html.ActionLink("Изменить фото", "FotoVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>
+                <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })
+                <br />
+                @Html.ActionLink("Изменить фото", "FotoVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>
             </tr>
         }
     </table>

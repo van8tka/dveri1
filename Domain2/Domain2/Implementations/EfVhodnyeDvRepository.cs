@@ -124,5 +124,9 @@ namespace Domain2.Implementations
                 context.SaveChanges();
             }
         }
+       public IEnumerable<SeoVhodnuhDverei> GetSeoVhDv()
+        {
+            return context.SeoVhodnuhDvereis;
+        }
     }
 }

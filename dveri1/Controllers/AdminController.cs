@@ -151,6 +151,81 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //-----------------------------------контроллер изменения товара---------------------------------------------
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditVhDv(int id)
+        {
+            try
+            {
+                CreateVhMod model = new CreateVhMod();
+                VhodnyeDveri v = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                model.Cena = v.Cena;
+                model.Cvet = v.Cvet;            
+                model.Furnitura = v.Furnitura;
+                model.ID = id;            
+                model.Napolnitel = v.Napolnitel;
+                model.Nazvanie = v.Nazvanie;
+                model.Opisanie = v.Opisanie;
+                model.OtdSnarugi = v.OtdelkaSnarugi;
+                model.OtdVnutri = v.OtdelkaVnutri;
+                model.Petli = v.Petli;
+                model.Proizvoditel = v.Proizvoditel;
+                model.Publicaciya = v.Publicaciya;
+                model.Skidka = v.Skidka;
+                model.StranaProizv = v.Strana;              
+                model.TolschinaDvPolotna = v.TolschinaDvPolotna;
+                model.TolschinaMetala = v.TolschinaMetalla;
+                model.Yplotnitel = v.Yplotnitel;
+                model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
+                if(dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(z=>z.Id==id).FirstOrDefault()!=null)
+                {
+                    model.TitleVhDv = v.SeoVhodnuhDverei.TitleDveri;
+                    model.KeywordsVhDv = v.SeoVhodnuhDverei.KeywordsDveri;
+                    model.DescriptionVhDv = v.SeoVhodnuhDverei.DescriptionDveri;
+                }              
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/EditVhDv-" + er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                   //изменить Domain2 на изменение данных о товаре
+                }
+                return View(model);
+            }
+             catch (Exception er)
+            {
+                ClassLog.Write("Admin/EditVhDv-" + er);
+                return View("Error");
+            }
+        }
+
+        //удаление фотографии товара
+        [Authorize]
+        public ActionResult DellFotoVhDv(int idf, int idt)
+        {
+            try
+            {
+                dataManager.VhodnyeDvRepository.DeleteFotoVhDv(idf);
+                return RedirectToAction("EditVhDv", new { id = idt });
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/DellVhDv-" + er);
+                return View("Error");
+            }
+        }
 
         //------------------------------контроллер удаления товара---------------------------------------------
         [Authorize]
