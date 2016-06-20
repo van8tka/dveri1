@@ -9,5 +9,8 @@ namespace dveri1.Models
         public IEnumerable<FotoVhodnyhDverey> FotoTovara { get; set; }
         public string InfoDostavka { get; set; }
         public string InfoOplata { get; set; }
+        public string TitleD { get; set; }
+        public string KeyD { get; set; }
+        public string DescrD { get; set; }
     }
 }

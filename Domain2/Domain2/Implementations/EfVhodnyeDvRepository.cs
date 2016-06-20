@@ -34,7 +34,7 @@ namespace Domain2.Implementations
 
         public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, int? tmet, string furn, string petli, string osn, string ovn, int? tdpol, int cena, int? skidka, int? csskid, string opis, bool publ)
         {
-            if(id==1)
+            if (id == 0)
             {
                 VhodnyeDveri vd = new VhodnyeDveri()
                 {
@@ -58,6 +58,30 @@ namespace Domain2.Implementations
                     Publicaciya = publ
                 };
                 SaveVhodnyeDv(vd);
+            }
+            else
+            {
+                VhodnyeDveri vd = context.VhodnyeDveris.Where(x => x.Id == id).FirstOrDefault();             
+                vd.Id = id;
+                vd.Nazvanie = naz;
+                vd.Proizvoditel = pr;
+                vd.Strana = strpr;
+                vd.Cvet = cvet;
+                vd.Napolnitel = napoln;
+                vd.Yplotnitel = yplotnit;
+                vd.TolschinaMetalla = tmet;
+                vd.Furnitura = furn;
+                vd.Petli = petli;
+                vd.OtdelkaSnarugi = osn;
+                vd.OtdelkaVnutri = ovn;
+                vd.TolschinaDvPolotna = tdpol;
+                vd.Cena = cena;
+                vd.Skidka = skidka;
+                vd.CenaSoSkidcoy = csskid;
+                vd.Opisanie = opis;
+                vd.Publicaciya = publ;
+                context.Entry(vd).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
             }
         }
 

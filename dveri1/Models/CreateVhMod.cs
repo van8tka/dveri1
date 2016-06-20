@@ -12,6 +12,7 @@ namespace dveri1.Models
         [Required(ErrorMessage ="Введите название товара")]
         [Display(Name = "Название")]
         public string Nazvanie { get; set; }
+        [Required(ErrorMessage = "Введите название товара")]
         [Display(Name = "Производитель")]
         public string Proizvoditel { get; set; }
         [Display(Name = "Страна производитель")]

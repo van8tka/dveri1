@@ -16,6 +16,7 @@ namespace DALdv1
     {
         public VhodnyeDveri()
         {
+            this.CommentVhDveris = new HashSet<CommentVhDveri>();
             this.FotoVhodnyhDvereys = new HashSet<FotoVhodnyhDverey>();
         }
     
@@ -38,6 +39,7 @@ namespace DALdv1
         public string Opisanie { get; set; }
         public bool Publicaciya { get; set; }
     
+        public virtual ICollection<CommentVhDveri> CommentVhDveris { get; set; }
         public virtual ICollection<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }
         public virtual SeoVhodnuhDverei SeoVhodnuhDverei { get; set; }
     }

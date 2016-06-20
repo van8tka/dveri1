@@ -13,6 +13,11 @@ div.body{
     min-height:500px; 
     margin: 0 auto;
 }
+div.head{
+    font-size:0.7em;
+    display:block;
+    text-align:center;
+}
 
 .dl-horizontal dt {
     white-space: normal;
@@ -1174,6 +1179,9 @@ img.spisFoto:hover{
 .breadcrumbs a:hover::after{
  border-left-color: #fff;
  }
+div.breadcrumbsonpage{
+    display:block;float:left;width:100%;
+}
 
   /*===========кнопка быстрая покупка двери===============*/
   div.boxbutton{
@@ -1470,15 +1478,32 @@ img.spisFoto:hover{
     /*//доставка и оплата*/
     div.dostavka{
         font-size:large;
-        background-color:white;
+      
         padding:20px;
+          margin-bottom:10px;
+          height:353px;
+          overflow-y: scroll;
     }
     div.oplata{
         font-size:large;
-        background-color:	#F0FFFF;
+     
         padding:20px;
+        height:350px;
+          overflow-y: scroll;
     }
-
+     div.dostavkamain{
+        font-size:large;
+        background-color:white;
+        padding:20px;
+          margin-bottom:10px;
+          height:auto;
+    }
+    div.oplatamain{
+        font-size:large;
+        background-color:	#FfFFFF;
+        padding:20px;
+        height:auto;
+    }
 
 
 

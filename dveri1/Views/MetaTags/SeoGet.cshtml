@@ -1,0 +1,36 @@
+﻿@model dveri1.Models.ModelSeoMain
+@{
+    ViewBag.Title = "Настройка title, keywords, description для сео";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent">
+    <h2>Правка title, keywords, description для главных страниц и страниц категорий товара.</h2>
+   <table class="table_dark" style="font-size:0.9em;width:980px;">
+        <tr>
+            <th>Страница</th>
+            <th>Title</th>
+            <th>Keywords</th>
+            <th>H1(Заголовок страницы)</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model.SeoList)
+        {
+            <tr>
+                <td>@Html.ActionLink(i.Page, "CreateSeo", "MetaTags", new { id = i.ID }, null)</td>
+                <td>@i.Title</td>
+                <td>@i.Keywords</td>
+                <td>@i.Header</td>
+                <td>@i.Description</td>
+                <td>@Html.ActionLink("Удалить", "DellSeo", "MetaTags", new { id = i.ID }, new { @class = "tablebut", style = "width:100px" })</td>
+            </tr>
+        }
+    </table>
+    <div style="margin:1em;">
+        @Html.ActionLink("Добавить", "CreateSeo", "MetaTags", new { @class = "tablebut", style = "width:150px"})
+    </div>
+    <hr />
+</div>
+
+

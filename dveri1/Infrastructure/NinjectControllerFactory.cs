@@ -28,6 +28,7 @@ namespace dveri1.Infrastructure
             kernel.Bind<IKlientRepository>().To<EfKlientRepository>();
             kernel.Bind<IOplataDostavkaRepository>().To<EfOplataDostavkaRepository>();
             kernel.Bind<IUserRepository>().To<EfUserRepository>();
+            kernel.Bind<ISeoMainRepository>().To<EfSeoMainRepository>();
         }
 
         public object GetService(Type serviceType)

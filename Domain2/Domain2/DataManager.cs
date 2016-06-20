@@ -16,8 +16,9 @@ namespace Domain2
         private IKlientRepository klientRepository;
         private IOplataDostavkaRepository opldostRepository;
         private IUserRepository userRepository;
+        private ISeoMainRepository seoMainRepository;
 
-        public DataManager(IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
             this.klientRepository = klientRepository;
             this.vhodnDvRepository = vhodnDvRepository;
@@ -25,8 +26,13 @@ namespace Domain2
             this.contactRepository = contactRepository;
             this.opldostRepository = opldostRepository;
             this.userRepository = userRepository;
+            this.seoMainRepository = seoMainRepository;
         }
         //св-ва через которые будет происх вызов
+        public ISeoMainRepository SeoMainRepository
+        {
+            get { return seoMainRepository; }
+        }
         public IUserRepository UserRepository
         {
             get { return userRepository; }

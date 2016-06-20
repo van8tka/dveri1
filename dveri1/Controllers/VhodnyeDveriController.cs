@@ -43,10 +43,50 @@ namespace dveri1.Controllers
                 if (brand == "весьтовар")
                 {
                     TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage("Входные двери");
+                    if (s != null)
+                    {
+                        model.SeoTitle = s.Title;
+                        model.SeoKey = s.Keywords;
+                        model.SeoDesc = s.Description;
+                        if (s.Header != null)
+                        {
+                            model.SeoHead = s.Header;
+                        }
+                        else
+                        {
+                            model.SeoHead = "Входные двери от лучших производителей! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
+                        }
+                    }
+                    else
+                    {
+                        model.SeoTitle = "Купить входные металлические двери в Минске с бесплатной доставкой";
+                        model.SeoHead = "Входные двери от лучших производителей! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
+                    }
                 }
                 else
                 {
                     TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(brand);
+                    if (s != null)
+                    {
+                        model.SeoTitle = s.Title;
+                        model.SeoKey = s.Keywords;
+                        model.SeoDesc = s.Description;
+                        if (s.Header != null)
+                        {
+                            model.SeoHead = s.Header;
+                        }
+                        else
+                        {
+                            model.SeoHead = "Входные двери от производителя "+brand+"! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
+                        }
+                    }
+                    else
+                    {
+                        model.SeoTitle = "Купить входные двери фирмы "+brand;
+                        model.SeoHead = "Входные двери от производителя " + brand + "! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
+                    }
                 }
                 //вызлв метода сортировки
 
@@ -220,6 +260,25 @@ namespace dveri1.Controllers
                 md = InfaDostOplata();
                 model.InfoDostavka = md.DostInfo;
                 model.InfoOplata = md.OplInfo;
+                SeoVhodnuhDverei se = dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(x => x.Id == id).FirstOrDefault();
+                if (se!= null)
+                {
+                    if(se.TitleDveri!=null&&se.TitleDveri!="")
+                    {
+                        model.TitleD = se.TitleDveri;
+                    }
+                    else
+                    {
+                        model.TitleD = "купить " + model.Tovar.Nazvanie;
+                    }
+                    model.KeyD = se.KeywordsDveri;
+                    model.DescrD = se.DescriptionDveri;
+                }
+                else
+                {
+                    model.TitleD = "купить " + model.Tovar.Nazvanie;
+                }
+                    
                 return View(model);
             }
             catch (Exception er)
@@ -531,6 +590,26 @@ namespace dveri1.Controllers
             {
                 OplDostModel model = new OplDostModel();
                 model = InfaDostOplata();
+                SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage("Доставка и оплата");
+                if (s != null)
+                {
+                    model.SeoTitle = s.Title;
+                    model.SeoKey = s.Keywords;
+                    model.SeoDesc = s.Description;
+                    if(s.Header!=null)
+                    {
+                        model.SeoHead = s.Header;
+                    }
+                    else
+                    {
+                        model.SeoHead = "Информация о доставке товаров и об оплате";
+                    }
+                }
+                else
+                {
+                    model.SeoTitle = "Оплата и доставка входных дверей в Минске компанией Люксеврострой";
+                    model.SeoHead = "Информация о доставке товаров и об оплате";
+                }
                 return View(model);
             }           
              catch (Exception er)

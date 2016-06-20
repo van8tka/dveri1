@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
     <title>@ViewBag.Title</title>
   
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -41,7 +43,7 @@
                         <li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m3" })</li>
                       @*  <li>@Html.ActionLink("Фурнитура", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m4" })</li>*@
                         <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "mainmen m5" })</li>
-                        <li>@Html.ActionLink("Отзывы", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m6" })</li>
+                        <li>@Html.ActionLink("Отзывы", "GetAllComment", "Comment", null, new { @class = "mainmen m6" })</li>
                         <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "mainmen m7" })</li>
                         <li>@Html.ActionLink("Админ", "Panel", "Admin")</li>
                     </ul>

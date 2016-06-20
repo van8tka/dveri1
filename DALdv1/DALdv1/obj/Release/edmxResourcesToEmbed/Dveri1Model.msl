@@ -9,6 +9,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CommentCompanies">
+      <EntityTypeMapping TypeName="dbdveri1Model.CommentCompany">
+        <MappingFragment StoreEntitySet="CommentCompany">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentVhDveris">
+      <EntityTypeMapping TypeName="dbdveri1Model.CommentVhDveri">
+        <MappingFragment StoreEntitySet="CommentVhDveri">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDdv" ColumnName="IDdv" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Contacts">
       <EntityTypeMapping TypeName="dbdveri1Model.Contact">
         <MappingFragment StoreEntitySet="Contact">
@@ -130,6 +161,18 @@
         <MappingFragment StoreEntitySet="Oplata">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Oplata1" ColumnName="Oplata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeoMains">
+      <EntityTypeMapping TypeName="dbdveri1Model.SeoMain">
+        <MappingFragment StoreEntitySet="SeoMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

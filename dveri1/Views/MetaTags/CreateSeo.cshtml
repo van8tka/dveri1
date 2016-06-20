@@ -1,0 +1,38 @@
+﻿@model dveri1.Models.ModelSeoMain
+@{
+    ViewBag.Title = "Добавление(изменение) данных страницы";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent" style="text-align:center;color:black;">
+    <h2>Добавление (изменение) информации о странице</h2>
+    <hr />
+    @using (Html.BeginForm("CreateSeo", "MetaTags", FormMethod.Post))
+    {
+        <div class="fieldset">
+            @Html.HiddenFor(m => m.Id)
+            @Html.LabelFor(m => m.Page)
+            @Html.ValidationMessageFor(m => m.Page)
+            @Html.TextBoxFor(m => m.Page, new { @class = "form-control" })
+            @Html.LabelFor(m=>m.SeoTitle)
+            @Html.ValidationMessageFor(m => m.SeoTitle)
+            @Html.TextBoxFor(m => m.SeoTitle, new { @class = "form-control" })
+            @Html.LabelFor(m => m.SeoKey)
+            @Html.ValidationMessageFor(m => m.SeoKey)
+            @Html.TextBoxFor(m => m.SeoKey, new { @class = "form-control" })
+            @Html.LabelFor(m => m.SeoHead)
+            @Html.ValidationMessageFor(m => m.SeoHead)
+            @Html.TextBoxFor(m => m.SeoHead, new { @class = "form-control" })
+            @Html.LabelFor(m => m.SeoDesc)
+            @Html.ValidationMessageFor(m => m.SeoDesc)
+            @Html.TextAreaFor(m=>m.SeoDesc,new { @class = "form-control", rows = 5 })
+        </div>
+
+        <div style="margin-top:20px">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "SeoGet","MetaTags")
+        </div>
+
+    }
+
+</div>

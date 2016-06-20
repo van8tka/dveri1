@@ -189,7 +189,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\MetaTagsController.cs" />
     <Compile Include="Controllers\VhodnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
     <Compile Include="DopMethod\DellFilesFromDomain.cs" />
@@ -205,6 +207,8 @@
     <Compile Include="Models\KartochkaTovaraModel.cs" />
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
+    <Compile Include="Models\ModelComment.cs" />
+    <Compile Include="Models\ModelSeoMain.cs" />
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
@@ -318,6 +322,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Admin\EditVhDv.cshtml" />
+    <Content Include="Views\MetaTags\SeoGet.cshtml" />
+    <Content Include="Views\MetaTags\CreateSeo.cshtml" />
+    <Content Include="Views\Comment\GetAllComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

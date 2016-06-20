@@ -12,6 +12,10 @@ namespace dveri1.Models
         public IEnumerable<Adresa> AdresList { get; set; }
         public IEnumerable<Contact> ContactList { get; set; }
         public IEnumerable<GrafikWork> GrafikWorkList { get; set; }
+        public string SeoKey { get; set; }
+        public string SeoTitle { get; set; }
+        public string SeoDesc { get; set; }
+        public string SeoHead { get; set; }
     }
     public class CreateContactModel
     {

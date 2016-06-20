@@ -1,14 +1,19 @@
 ﻿@model dveri1.Models.ContactModel
 @{
-    ViewBag.Title = "Контакты";
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div>
     @Html.Action("BreadCrumbs","VhodnyeDveri", new { namepart = "Контакты"})
 </div>
+
 <div class="contactpage">
-    <h2>Контактные данные</h2>
+    <div style="font-size:0.9em;">
+        <h1>@Model.SeoHead</h1>
+    </div>
     <div class="contactsdata">
         <h3 style="width:auto;font-style:italic"> Время работы: </h3>
 

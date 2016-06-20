@@ -22,7 +22,7 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-        int PageSize = 32;
+        int PageSize = 250;
         // GET: Admin
         [Authorize]
         public ActionResult Panel(int page = 1)
@@ -51,9 +51,40 @@ namespace dveri1.Controllers
         [Authorize]
         //------------------------------создание нового товара--------------------------------------------------------
         [HttpGet]
-        public ActionResult CreateVhDv()
+        public ActionResult CreateVhDv(int id=0)
         {
+            if(id!=0)
+            {
+                CreateVhMod model = new CreateVhMod();
+                VhodnyeDveri v = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                model.Cena = v.Cena;
+                model.Cvet = v.Cvet;
+                model.Furnitura = v.Furnitura;
+                model.ID = id;
+                model.Napolnitel = v.Napolnitel;
+                model.Nazvanie = v.Nazvanie;
+                model.Opisanie = v.Opisanie;
+                model.OtdSnarugi = v.OtdelkaSnarugi;
+                model.OtdVnutri = v.OtdelkaVnutri;
+                model.Petli = v.Petli;
+                model.Proizvoditel = v.Proizvoditel;
+                model.Publicaciya = v.Publicaciya;
+                model.Skidka = v.Skidka;
+                model.StranaProizv = v.Strana;
+                model.TolschinaDvPolotna = v.TolschinaDvPolotna;
+                model.TolschinaMetala = v.TolschinaMetalla;
+                model.Yplotnitel = v.Yplotnitel;
+                model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
+                if (dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(z => z.Id == id).FirstOrDefault() != null)
+                {
+                    model.TitleVhDv = v.SeoVhodnuhDverei.TitleDveri;
+                    model.KeywordsVhDv = v.SeoVhodnuhDverei.KeywordsDveri;
+                    model.DescriptionVhDv = v.SeoVhodnuhDverei.DescriptionDveri;
+                }
+                return View(model);
+            }
             return View();
+           
         }
         //------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
         [Authorize]
@@ -64,8 +95,7 @@ namespace dveri1.Controllers
             {        
             int? CenaSoSkidkoy=null;
             if (ModelState.IsValid)
-            {       
-                              
+            {                                     
                 TempData["message"]="Новый товар добавлен в базу данных!";
                 if(model.Skidka!=null)
                 {
@@ -74,7 +104,7 @@ namespace dveri1.Controllers
                         CenaSoSkidkoy = model.Cena - model.Cena * model.Skidka / 100;
                     }
                 }
-                dataManager.VhodnyeDvRepository.CreateVhodnyeDv(1, model.Nazvanie, model.Proizvoditel, model.StranaProizv, model.Cvet, model.Napolnitel,
+                dataManager.VhodnyeDvRepository.CreateVhodnyeDv(0, model.Nazvanie, model.Proizvoditel, model.StranaProizv, model.Cvet, model.Napolnitel,
                     model.Yplotnitel, model.TolschinaMetala, model.Furnitura, model.Petli, model.OtdSnarugi,model.OtdVnutri,model.TolschinaDvPolotna,
                     model.Cena,model.Skidka,CenaSoSkidkoy,model.Opisanie,model.Publicaciya);
                 int iddver = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Last().Id;
@@ -140,7 +170,11 @@ namespace dveri1.Controllers
                     //удалим файлы из временной папки
                     string dompath = Server.MapPath("~/Content/ImageTemp/");
                    DellFilesFromDomain.DellAllFiles(dompath);
-                   
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(model.Proizvoditel);
+                    if(s==null)
+                    {
+                        dataManager.SeoMainRepository.CreateSeo(0, "Купить входные двери фирмы "+model.Proizvoditel,null, null, model.Proizvoditel,null);
+                    }
                     return RedirectToAction("Panel");
             }
             return View(model);
@@ -198,12 +232,90 @@ namespace dveri1.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
-                {
-                   //изменить Domain2 на изменение данных о товаре
-                }
+                int? CenaSoSkidkoy = null;
+                    if (ModelState.IsValid)
+                    {
+
+                        TempData["message"] = "Товар изменен в базе данных!";
+                        if (model.Skidka != null)
+                        {
+                            if (model.Skidka != 0)
+                            {
+                                CenaSoSkidkoy = model.Cena - model.Cena * model.Skidka / 100;
+                            }
+                        }
+                         dataManager.VhodnyeDvRepository.CreateVhodnyeDv((int)model.ID, model.Nazvanie, model.Proizvoditel, model.StranaProizv, model.Cvet, model.Napolnitel,
+                            model.Yplotnitel, model.TolschinaMetala, model.Furnitura, model.Petli, model.OtdSnarugi, model.OtdVnutri, model.TolschinaDvPolotna,
+                            model.Cena, model.Skidka, CenaSoSkidkoy, model.Opisanie, model.Publicaciya);
+                       
+                        //метод создания элементов сео единицы товара
+                        dataManager.VhodnyeDvRepository.CreateSeoVhDveri((int)model.ID, model.TitleVhDv, model.KeywordsVhDv, model.DescriptionVhDv);
+                        //метод изменения размера изображения и сохраненния в буфере
+                        string domainpath = Server.MapPath("~/Content/ImageTemp/");
+                        if (!Directory.Exists(domainpath))
+                        {
+                            Directory.CreateDirectory(domainpath);
+                        }
+
+                        //проход по списку загружаемых файлов и если есть, добавление в БД
+                        foreach (var image in fileUpload)
+                        {
+
+                            if (image != null)
+                            {
+                                //получим ID последнего фото
+                                int idfot;
+                                FotoVhodnyhDverey ft = dataManager.VhodnyeDvRepository.GetFotoVhDv().LastOrDefault();
+                                if (ft == null)
+                                    idfot = 0;
+                                else
+                                    idfot = ft.Idfoto;
+
+                                string path = Path.Combine(domainpath, image.FileName);
+                                image.SaveAs(path);
+
+                                //изменим разрешение файла
+                                Image img = Image.FromFile(path);
+                                Bitmap myBitmap = new Bitmap(img, new Size(420, 720));
+                                Graphics myGraphic = Graphics.FromImage(myBitmap);
+                                //теперь нарисуем логотип
+                                Image imgLogo = Image.FromFile(Server.MapPath("~/Content/logoinAllImage.png"));
+                                //в метод DRAW передали изобр для наложения координата X и Y и размер изобра W и H
+                                myGraphic.DrawImage(imgLogo, 0, 0, 220, 270);
+                                //новое имя и сохраним
+                                string newfilename = "evrostroy" + (idfot + 1).ToString() + ".jpg";
+                                string newfilepath = domainpath + newfilename;
+                                myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                                //теперь запишем файл в базу данных
+                                FileStream fs = null;
+                                fs = new FileStream(newfilepath, FileMode.Open);
+                                model.ImageData = new byte[fs.Length];
+                                model.ImageMimeType = "image/jpg";
+                                fs.Read(model.ImageData, 0, (int)fs.Length);
+                                dataManager.VhodnyeDvRepository.CreateFotoVhDv(1, (int)model.ID, model.ImageMimeType, model.ImageData);
+                                fs.Close();
+                                //освобождаем занятый ресурс
+                                myBitmap.Dispose();
+                                myGraphic.Dispose();
+                                img.Dispose();
+                                imgLogo.Dispose();
+                                myBitmap = null;
+                                myGraphic = null;
+                                img = null;
+                                imgLogo = null;
+                                fs = null;
+                            }
+                        }
+                        fileUpload = null;
+                        model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID((int)model.ID);
+                        //удалим файлы из временной папки
+                        string dompath = Server.MapPath("~/Content/ImageTemp/");
+                        DellFilesFromDomain.DellAllFiles(dompath);
+                        return View(model);
+                    }
+                model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID((int)model.ID);
                 return View(model);
-            }
+                }
              catch (Exception er)
             {
                 ClassLog.Write("Admin/EditVhDv-" + er);
@@ -578,6 +690,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+       
       
     }
 

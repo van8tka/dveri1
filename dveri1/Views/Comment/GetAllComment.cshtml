@@ -1,0 +1,22 @@
+﻿@model dveri1.Models.ModelComment
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div class="breadcrumbsonpage">
+        @Html.Action("BreadCrumbs", "VhodnyeDveri", new { namepart = "Отзывы" })
+    </div>
+    <div class="head">
+        <h1>@Model.SeoHead</h1>
+    </div>
+   <div>
+      
+   </div>
+</div>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m6").addClass("current")
+</script>
