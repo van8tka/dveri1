@@ -1505,18 +1505,70 @@ div.breadcrumbsonpage{
         height:auto;
     }
 
+  /*================================выбор количества звезд и все для страницы отзывов=========================================*/
+.rating-hide {
+   display:none;
+}
+  dl.star-rating ol {
+  margin-left:100px;
+  padding: 0;
+  list-style: none;
+  width: 240px;
+  height: 48px;
+  position: relative;
+   background: url('ImgComment/starwhite.png');
+}
+  dl.star-rating li {
+  margin: 0;
+  padding: 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+ dl.star-rating li label {
+  display: block;
+  width: 48px;
+  height: 48px;
+  text-indent: -9999px;
+  position: absolute;
+  text-decoration: none;
+  z-index: 10;
+  }
+ dl.star-rating li label:hover {
+ background: url('ImgComment/stargold.png') left center;
+  left: 0;
+  z-index: 2;
+}
+ dl.star-rating label.star1 {
+  left: 0;
+}
+  dl.star-rating label.star1:hover {
+  width: 48px;
+}
+dl.star-rating label.star2 {
+  left: 48px;
+}
+dl.star-rating label.star2:hover {
+  width: 96px;
+}
+dl.star-rating label.star3 {
+  left: 96px;
+}
+dl.star-rating label.star3:hover {
+  width: 144px;
+}
+dl.star-rating label.star4 {
+  left: 144px;
+}
+dl.star-rating label.star4:hover {
+  width: 192px;
+}
+dl.star-rating label.star5 {
+  left: 192px;
+}
+dl.star-rating label.star5:hover {
+  width: 240px;
+}
+label.current{
+     background: url('ImgComment/stargold.png');
+}
 
 

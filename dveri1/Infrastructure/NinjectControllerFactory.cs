@@ -22,6 +22,7 @@ namespace dveri1.Infrastructure
 
         private void AddBindings()
         {
+            kernel.Bind<ICommentRepository>().To<EfCommentRepository>();
             kernel.Bind<IVhodnyeDvRepository>().To<EfVhodnyeDvRepository>();
             kernel.Bind<ISliderRepository>().To<EfSliderRepository>();
             kernel.Bind<IContactRepository>().To<EfContactRepository>();
