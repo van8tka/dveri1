@@ -22,14 +22,13 @@
             <div>
                 @*радиобаттоны сделали невидимыми, а но к ним привязали label  и по клику по лэйбу срабатывает значение как по
     радиобаттону и передается в ModelStars чтобы выбранный рейтинг подсвечивался используется JS*@
-                <label class="mt10">Выберите колличество звезд:</label>
-               @Html.RadioButton("Model.Stars", 1, false, new { @class = "rating-hide", id = "idrb1" })
-               @Html.RadioButton("Model.Stars", 2, false, new { @class = "rating-hide", id = "idrb2" })
-               @Html.RadioButton("Model.Stars", 3, false, new { @class = "rating-hide", id = "idrb3" })
-               @Html.RadioButton("Model.Stars", 4, false, new { @class = "rating-hide", id = "idrb4" })
-               @Html.RadioButton("Model.Stars", 5, true, new { @class = "rating-hide", id = "idrb5" })
-              
-
+                <label class="mt10">Выберите колличество звезд*:</label>
+               @Html.RadioButtonFor(m=>m.Stars,1, new { @class = "rating-hide", id = "idrb1" })
+               @Html.RadioButtonFor(m => m.Stars, 2, new { @class = "rating-hide", id = "idrb2" })
+               @Html.RadioButtonFor(m => m.Stars, 3, new { @class = "rating-hide", id = "idrb3" })
+               @Html.RadioButtonFor(m => m.Stars, 4, new { @class = "rating-hide", id = "idrb4" })
+               @Html.RadioButtonFor(m => m.Stars, 5, new { @class = "rating-hide", id = "idrb5" })
+             
                 <dl class="star-rating">
                     <dd>
                         <ol>
@@ -49,10 +48,17 @@
             @Html.ValidationMessageFor(m => m.Comm)
             @Html.TextAreaFor(m => m.Comm, new { @class = "form-control", rows=5})
         </div>
-
+        <p style="font-size:small">Поле отмеченное звездочкой заполнить обязательно!</p>
         <div style="margin-top:20px">
-            <input type="submit" value="Добавить отзыв" class="showadd" />
-            @Html.ActionLink("Отменить", "VhodnyeDveriIndex","VhodnyeDveri")
+            <input type="submit" value="Добавить отзыв" class="showadd"/>
+            @if (Model.IdDv == 0)
+            {
+                @Html.ActionLink("Отменить", "VhodnyeDveriIndex", "VhodnyeDveri")
+            }
+            else
+            {
+                @Html.ActionLink("Отменить", "TovarPage", "VhodnyeDveri", new {id=Model.IdDv},null)
+            }
         </div>
 
     }
@@ -105,3 +111,7 @@
         });
     }); 
   </script>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m6").addClass("current")
+</script>

@@ -256,6 +256,8 @@ namespace dveri1.Controllers
                 KartochkaTovaraModel model = new KartochkaTovaraModel();
                 model.Tovar = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
                 model.FotoTovara = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
+                //отбираем коментарии к товару по ID с указанной публикацией, сортироуем по дате (сначала последние(свежие), и отбираем 1-ые 100 комментов)
+                model.CommentVhDvList = dataManager.CommentRepository.GetCommentVhDv().Where(x => x.IDdv == id && x.Public == true).OrderByDescending(z=>z.Date).Take(100);
                 OplDostModel md = new OplDostModel();
                 md = InfaDostOplata();
                 model.InfoDostavka = md.DostInfo;
@@ -392,7 +394,8 @@ namespace dveri1.Controllers
             string body;
             string them = "Cообщение от клиента: " + model.KlientName + ", тел. " + model.KlientPhone;
             string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
-            if(model.IdDveri!=9999)
+            //проверяем если нет такой двери
+            if (model.IdDveri!=9999)
             {
                 VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
 

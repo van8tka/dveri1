@@ -48,10 +48,14 @@
                  @Html.Raw(Model.InfoOplata)
             </div>
         </div>
-        <div id="tab4"><span>Отзывы</span>4 вкладка</div>
-        <div style="overflow-y: scroll;">
-
+        <div id="tab4">
+            <span>Отзывы (всего: @Model.CommentVhDvList.Count())</span>
+            <div class="oplata">
+                @*Вставим partialview))*@
+                @Html.Partial("CommentForDveriView")
+            </div>
         </div>
+        
     </div>
 </div>
 @*делаем модальное окно для оформления товара*@

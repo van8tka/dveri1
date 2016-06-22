@@ -14,6 +14,7 @@ namespace dveri1.Models
         public string SeoDesc { get; set; }
         public string SeoHead { get; set; }
         public IEnumerable<CommentCompany> CommentCompList { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
     public class ModelCommentCreate
     {
@@ -30,7 +31,6 @@ namespace dveri1.Models
         public string Comm { get; set; }
         public string Resp { get; set; }
         [Display(Name = "Заголовок к коментарию")]
-        [Required]
         public string Head { get; set; }
         public bool Publish { get; set; }
         public int Stars { get; set; }
