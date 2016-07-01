@@ -36,4 +36,7 @@ namespace dveri1.Models
         public int Stars { get; set; }
         public DateTime Date { get; set; }
     }
+    public class ModelCommentVhDv{
+        public IEnumerable<CommentVhDveri> CommentVhDvList { get; set; }
+    }
 }

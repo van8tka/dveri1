@@ -119,7 +119,7 @@ namespace dveri1.Controllers
                         //отправим сообщение админу на емаил
                         //получим инфу о дверях
                         string namedv = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(model.IdDv).Nazvanie;
-                        string body = "Отзыв о вх. дверях N: "+model.IdDv+" название: "+namedv+"Количество звезд: " + model.Stars + "\r\n" + "Заголовок: " + model.Head + "\r\n" + "Коментарий: " + model.Comm;
+                        string body = "Отзыв о вх. дверях N: "+model.IdDv+" название: "+namedv+ "\r\n" + "Количество звезд: " + model.Stars + "\r\n" + "Заголовок: " + model.Head + "\r\n" + "Коментарий: " + model.Comm;
                         string them = "Отзыв о входных дверях, от клиента: " + model.Name + ", e-mail " + model.Email;
                         //получаем адрес администратора указанный в контаках с пизнаком e-mail
                         string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
@@ -175,5 +175,157 @@ namespace dveri1.Controllers
             }
             return Head;
         }
+        //вывод всех коментов компании
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminCommentCompany()
+        {
+            ModelComment model = new ModelComment();
+            model.CommentCompList = dataManager.CommentRepository.GetCommetCompany().OrderByDescending(x=>x.Date);
+            return View(model);
+        }
+        //вывод всех коментов о входных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminCommentVhDv()
+        {
+            ModelCommentVhDv model = new ModelCommentVhDv();
+            model.CommentVhDvList = dataManager.CommentRepository.GetCommentVhDv().OrderByDescending(x => x.Date); 
+            return View(model);
+        }
+        //удаление коментов о входных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminDellCommentVhDv(int id)
+        {
+            try
+            {
+                dataManager.CommentRepository.DellComVhDv(id);
+                return RedirectToAction("AdminCommentVhDv");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminDellVhDv" + er);
+                return View("Error");
+            }
+        }
+        //удаление коментов о компании 
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminDellCommentCompany(int id)
+        {
+            try
+            {
+                dataManager.CommentRepository.DellComCop(id);
+                return RedirectToAction("AdminCommentCompany");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminDellCommentCompany" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о компании 
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminEditCommentCompany(int id)
+        {
+            try
+            {
+                ModelCommentCreate model = new ModelCommentCreate();
+                CommentCompany cc = dataManager.CommentRepository.GetCommetCompany().Where(x => x.ID == id).FirstOrDefault();
+                model.Id = cc.ID;
+                model.Name = cc.Name;
+                model.Publish = cc.Public;
+                model.Resp = cc.Response;
+                model.Stars = cc.Stars;
+                model.Email = cc.E_mail;
+                model.Comm = cc.Comment;
+                model.Date = cc.Date;
+                model.Head = cc.Heading;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentCompany" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о компании 
+        [Authorize]
+        [HttpPost]
+        public ActionResult AdminEditCommentCompany(ModelCommentCreate model)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    if(model.IdDv == 0)
+                    {
+                        dataManager.CommentRepository.CreateCommentCompany(model.Id, model.Name, model.Email, model.Comm, model.Resp, model.Head, model.Publish, model.Stars, model.Date);
+                        TempData["message"] = "Комментарий изменен!";
+                        return RedirectToAction("AdminCommentCompany");
+                    }
+                }              
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentCompany(post)" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о входных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminEditCommentVhDv(int id)
+        {
+            try
+            {
+                ModelCommentCreate model = new ModelCommentCreate();
+                CommentVhDveri cc = dataManager.CommentRepository.GetCommentVhDv().Where(x => x.ID == id).FirstOrDefault();
+                model.Id = cc.ID;
+                model.IdDv = cc.IDdv;
+                model.Name = cc.Name;
+                model.Publish = cc.Public;
+                model.Resp = cc.Response;
+                model.Stars = cc.Stars;
+                model.Email = cc.E_mail;
+                model.Comm = cc.Comment;
+                model.Date = cc.Date;
+                model.Head = cc.Heading;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentVhDv" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о входных дверях
+        [Authorize]
+        [HttpPost]
+        public ActionResult AdminEditCommentVhDv(ModelCommentCreate model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (model.IdDv != 0)
+                    {
+                        dataManager.CommentRepository.CreateCommentVhDv(model.Id,model.IdDv, model.Name, model.Email, model.Comm, model.Resp, model.Head, model.Publish, model.Stars, model.Date);
+                        TempData["message"] = "Комментарий изменен!";
+                        return RedirectToAction("AdminCommentVhDv");
+                    }
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentVhDv(post)" + er);
+                return View("Error");
+            }
+        }
+
     }
 }

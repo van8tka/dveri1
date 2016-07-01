@@ -13,6 +13,12 @@ namespace dveri1
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           // routes.MapRoute(
+           //    name: "vhodnyedveri",
+           //    url: "{controller}/{action}/{brand}/{sort}/{id}/",
+           //    defaults: new { id = UrlParameter.Optional, sort = UrlParameter.Optional, brand = UrlParameter.Optional }
+           //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

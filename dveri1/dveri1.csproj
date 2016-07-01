@@ -332,6 +332,11 @@
     <Content Include="Views\Comment\GetAllComment.cshtml" />
     <Content Include="Views\Comment\CreateComment.cshtml" />
     <Content Include="Views\VhodnyeDveri\CommentForDveriView.cshtml" />
+    <Content Include="Views\Comment\AdminCommentCompany.cshtml" />
+    <Content Include="Views\Comment\AdminCommentVhDv.cshtml" />
+    <Content Include="Views\Comment\AdminEditCommentCompany.cshtml" />
+    <Content Include="Views\Comment\AdminEditCommentVhDv.cshtml" />
+    <Content Include="Views\Comment\PartialEditComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

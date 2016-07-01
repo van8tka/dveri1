@@ -208,6 +208,9 @@ color:white;
 .flr{
     float:right;
 }
+.tac{
+    text-align:center;
+}
 /*-----------------mmmmmmmmmmmm-----------margin------------------------------------------*/
 .ma{
     margin:auto;

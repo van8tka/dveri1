@@ -31,13 +31,13 @@
         @foreach (var i in Model.ListVhodnDv)
         {
             <tr>
-                <td>@Html.ActionLink(i.Id.ToString(), "EditVhDv", "Admin", new {id=i.Id },null)</td>
+                <td class="tac">@Html.ActionLink(i.Id.ToString(), "EditVhDv", "Admin", new {id=i.Id },null)</td>
                 <td>@Html.ActionLink(i.Nazvanie, "EditVhDv", "Admin", new { id = i.Id },null)</td>
                 <td>@i.Proizvoditel</td>
                 <td>@i.Strana</td>
                 <td>@i.Napolnitel</td>
                 <td>@i.Yplotnitel</td>
-                <td>@i.TolschinaMetalla</td>
+                <td class="tac">@i.TolschinaMetalla</td>
                 <td>@i.Furnitura</td>
                 @*<td>Наполнитель</td>
                 <td>Уплотнитель</td>
@@ -48,8 +48,8 @@
                 <td>Отделка внутри</td>
                 <td>Толщина дверного полотна</td>*@
                 <td>@i.Cena</td>
-                <td>@i.Skidka</td>
-               <td> @Html.DisplayFor(modelItem=>i.Publicaciya)</td>
+                <td class="tac">@i.Skidka</td>
+               <td class="tac"> @Html.DisplayFor(modelItem=>i.Publicaciya)</td>
                 <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })
                 <br />
                 @Html.ActionLink("Создать на основе", "CreateVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>

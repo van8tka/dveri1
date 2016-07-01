@@ -1,0 +1,22 @@
+﻿@model dveri1.Models.ModelCommentCreate
+@{
+    ViewBag.Title = "Редактирование отзыва о компании";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent" style="text-align:center">
+    <h2>Редактирование отзыва</h2>
+    @using (Html.BeginForm("AdminEditCommentCompany", "Comment", FormMethod.Post))
+    {
+        @Html.Partial("PartialEditComment")
+        <p style="font-size:small">Поле отмеченное звездочкой заполнить обязательно!</p>
+        <div class="mt20 mb20">
+            <input type="submit" value="Сохранить" class="showadd" />
+        
+                @Html.ActionLink("Отменить", "AdminCommentCompany", "Comment")
+        
+        </div>
+
+    }
+</div>
+

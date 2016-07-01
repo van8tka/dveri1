@@ -1,0 +1,32 @@
+﻿@model dveri1.Models.ModelCommentCreate
+<div class="fieldset">
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.IdDv)
+    @Html.HiddenFor(m => m.Date)
+
+    @Html.LabelFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Email)
+    @Html.ValidationMessageFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Head)
+    @Html.ValidationMessageFor(m => m.Head)
+    @Html.TextBoxFor(m => m.Head, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Comm)
+    @Html.ValidationMessageFor(m => m.Comm)
+    @Html.TextAreaFor(m => m.Comm, new { @class = "form-control", rows = 5 })
+
+    <label>Отзыв администратора</label>
+    @Html.TextAreaFor(m => m.Resp, new { @class = "form-control", rows = 5 })
+
+    <label>Количество звезд*</label>
+    @Html.TextBoxFor(m => m.Stars, new { @class = "form-control" })
+
+    <label>Публикация отзыва</label>
+    @Html.CheckBoxFor(m => m.Publish, new { @class = "form-control" })
+
+</div>
