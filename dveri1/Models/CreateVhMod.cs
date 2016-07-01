@@ -38,17 +38,18 @@ namespace dveri1.Models
         [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода толщины металла(допускает только цифры)!")]
         public int? TolschinaDvPolotna { get; set; }
         [Display(Name = "Цена")]
-        [Required(ErrorMessage = "Введите цену товара!")]
-        [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода цены товара!")]
-        public int Cena { get; set; }
+        //[Required(ErrorMessage = "Введите цену товара!")]
+        //[RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода цены товара!")]
+        public int? Cena { get; set; }
         [Display(Name = "Скидка в процентах")]
         [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода скидки товара(допускает только цифры)!")]
         public int? Skidka { get; set; }
         [Display(Name = "Публикация")]
         public bool Publicaciya { get; set; }
         [Display(Name = "Описание")]
-        [DataType(DataType.MultilineText)]
         public string Opisanie { get; set; }
+        [Display(Name = "Дополнительные характеристики")]
+        public string DopChar { get; set; }
         //для сео оптимизации
         [Display(Name = "<title>")]
         public string TitleVhDv { get; set; }

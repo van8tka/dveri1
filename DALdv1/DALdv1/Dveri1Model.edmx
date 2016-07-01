@@ -142,11 +142,12 @@
           <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
           <Property Name="TypDveri" Type="nvarchar" MaxLength="250" />
           <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="250" />
-          <Property Name="Cena" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="int" />
           <Property Name="Skidka" Type="int" />
           <Property Name="CenaSoSkidkoy" Type="int" />
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="Publicaciya" Type="bit" Nullable="false" />
+          <Property Name="DopCharacteristics" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Oplata">
           <Key>
@@ -226,11 +227,12 @@
           <Property Name="OtdelkaSnarugi" Type="nvarchar" MaxLength="250" />
           <Property Name="OtdelkaVnutri" Type="nvarchar" MaxLength="250" />
           <Property Name="TolschinaDvPolotna" Type="int" />
-          <Property Name="Cena" Type="int" Nullable="false" />
+          <Property Name="Cena" Type="int" />
           <Property Name="Skidka" Type="int" />
           <Property Name="CenaSoSkidcoy" Type="int" />
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="Publicaciya" Type="bit" Nullable="false" />
+          <Property Name="DopCharacteristics" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_CommentVhDveri_VhodnyeDveri">
           <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">
@@ -491,11 +493,12 @@
           <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TypDveri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Cena" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Int32" />
           <Property Name="Skidka" Type="Int32" />
           <Property Name="CenaSoSkidkoy" Type="Int32" />
           <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
+          <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
         </EntityType>
         <EntityType Name="Oplata">
@@ -577,11 +580,12 @@
           <Property Name="OtdelkaSnarugi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="OtdelkaVnutri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TolschinaDvPolotna" Type="Int32" />
-          <Property Name="Cena" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Int32" />
           <Property Name="Skidka" Type="Int32" />
           <Property Name="CenaSoSkidcoy" Type="Int32" />
           <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
+          <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentVhDveris" Relationship="Self.FK_CommentVhDveri_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="CommentVhDveri" />
           <NavigationProperty Name="FotoVhodnyhDvereys" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="FotoVhodnyhDverey" />
           <NavigationProperty Name="SeoVhodnuhDverei" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="SeoVhodnuhDverei" />
@@ -856,6 +860,7 @@
                 <ScalarProperty Name="CenaSoSkidkoy" ColumnName="CenaSoSkidkoy" />
                 <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
                 <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+                <ScalarProperty Name="DopCharacteristics" ColumnName="DopCharacteristics" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -948,6 +953,7 @@
                 <ScalarProperty Name="CenaSoSkidcoy" ColumnName="CenaSoSkidcoy" />
                 <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
                 <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+                <ScalarProperty Name="DopCharacteristics" ColumnName="DopCharacteristics" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

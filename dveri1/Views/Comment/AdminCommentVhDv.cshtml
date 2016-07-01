@@ -39,7 +39,7 @@
                 <td>@i.Heading</td>
                 <td>@i.Comment</td>
                 <td>@i.Response</td>
-                <td class="tac"> @Html.CheckBoxFor(modelItem => i.Public)</td>
+                <td class="tac"> @Html.CheckBoxFor(modelItem => i.Public, new {@class="chpubliccomvhdv", id = i.ID })</td>
                 <td>
                     @Html.ActionLink("Удалить", "AdminDellCommentVhDv", "Comment", new { id = i.ID }, new { @class = "tablebut", style = "width:60px" })
                 </td>
@@ -48,6 +48,20 @@
     </table>
 
 </div>
+<script type="text/javascript">
+    //определяем Id кликнутого элемента
+    $('.chpubliccomvhdv').click(function () {
+        var id = $(this).attr('id');
+        var temp = "?list=комментарийвходныхдверей";
+             $.ajax({//и вызываем ajax функцию
+                type: 'GET',
+                url: '/Admin/ChangePublic/' + id+temp,
+                success: function (data) {
+                }
+            });
 
+        });
+
+</script>
 
 

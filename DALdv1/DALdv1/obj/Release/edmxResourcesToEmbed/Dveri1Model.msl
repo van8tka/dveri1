@@ -153,6 +153,7 @@
           <ScalarProperty Name="CenaSoSkidkoy" ColumnName="CenaSoSkidkoy" />
           <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
           <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+          <ScalarProperty Name="DopCharacteristics" ColumnName="DopCharacteristics" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -245,6 +246,7 @@
           <ScalarProperty Name="CenaSoSkidcoy" ColumnName="CenaSoSkidcoy" />
           <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
           <ScalarProperty Name="Publicaciya" ColumnName="Publicaciya" />
+          <ScalarProperty Name="DopCharacteristics" ColumnName="DopCharacteristics" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

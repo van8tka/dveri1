@@ -49,7 +49,7 @@
                 <td>Толщина дверного полотна</td>*@
                 <td>@i.Cena</td>
                 <td class="tac">@i.Skidka</td>
-               <td class="tac"> @Html.DisplayFor(modelItem=>i.Publicaciya)</td>
+               <td class="tac"> @Html.CheckBoxFor(modelItem=>i.Publicaciya, new { @class="chpublick",id = i.Id, value = i.Id})</td>
                 <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })
                 <br />
                 @Html.ActionLink("Создать на основе", "CreateVhDv", "Admin", new {id=i.Id}, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })</td>
@@ -61,3 +61,19 @@
 <div class="pager">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("Panel", new { page = x, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
+@*//скрипт для обработки чекбоксов для публикации*@
+<script type="text/javascript">
+    //определяем Id кликнутого элемента
+    $('.chpublick').click(function () {
+        var id = $(this).attr('id');
+        var temp = "?list=входныедвери";
+             $.ajax({//и вызываем ajax функцию
+                type: 'GET',
+                url: '/Admin/ChangePublic/' + id+temp,
+                success: function (data) {      
+                }
+            });
+
+        });   
+
+</script>

@@ -4,7 +4,18 @@
     ViewBag.Title = "Редактирование входных дверей";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "opareas"
+    });
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "dopchar"
+    });
+</script>
 
 <div class="tablecontent" style="text-align:center;color:black;">
     <h4>
@@ -24,13 +35,21 @@
                 {
                     <div class="form-group">
                         <label>@(property.DisplayName ?? property.PropertyName)</label>
-                        @if (property.PropertyName == "Opisanie"||property.PropertyName == "DescriptionVhDv")
+                        @if (property.PropertyName == "DescriptionVhDv")
                         {
                             @Html.TextArea(property.PropertyName, null,
                                 new { @class = "form-control", rows = 5 })
                         }
                         else
                         {
+                            if (property.PropertyName == "Opisanie")
+                            {
+                                @Html.TextArea(property.PropertyName, null, new { @class = "opareas", rows = 8 })
+                            }
+                            if (property.PropertyName == "DopChar")
+                            {
+                                @Html.TextArea(property.PropertyName, null, new { @class = "dopchar", rows = 8 })
+                            }
                             if (property.PropertyName == "Publicaciya")
                             {
                                 @Html.CheckBox(property.PropertyName,
@@ -38,8 +57,12 @@
                             }
                             else
                             {
-                                @Html.TextBox(property.PropertyName, null,
+                                if (property.PropertyName != "Opisanie" && property.PropertyName != "DopChar")
+                                {
+                                    @Html.TextBox(property.PropertyName, null,
                                 new { @class = "form-control" })
+                                }
+
                             }
 
                         }

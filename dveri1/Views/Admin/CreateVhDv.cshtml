@@ -4,7 +4,18 @@
     ViewBag.Title = "Добавление входных дверей";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+        tinyMCE.init({
+            mode: "specific_textareas",
+            editor_selector: "opisareas"           
+        });
+        tinyMCE.init({
+            mode: "specific_textareas",
+            editor_selector: "dopcharareas"
+        });
+</script>
 
 <div class="tablecontent" style="text-align:center;color:black;">
 <h4>
@@ -24,25 +35,36 @@
                 {
                     <div class="form-group">
                         <label>@(property.DisplayName ?? property.PropertyName)</label>
-                       @if (property.PropertyName == "Opisanie" || property.PropertyName == "DescriptionVhDv")
+                       @if (property.PropertyName == "DescriptionVhDv")
                        {
                             @Html.TextArea(property.PropertyName, null,
-                                new { @class = "form-control", rows = 5 })                           
-                        }
-                        else
+                               new { @class = "form-control", rows = 5 })
+                       }
+                       else
+                       {
+                        if (property.PropertyName == "Opisanie")
                         {
-                            if (property.PropertyName == "Publicaciya")
-                            {
-                                @Html.CheckBox(property.PropertyName,
-                                new { @class = "form-control" })                            
-                            }
-                            else
-                            {
-                                @Html.TextBox(property.PropertyName, null,
-                                new { @class = "form-control" })                             
-                            }
-
+                            @Html.TextArea(property.PropertyName, null, new { @class = "opisareas", rows = 8})
                         }
+                        if (property.PropertyName == "DopChar")
+                        {
+                         @Html.TextArea(property.PropertyName, null, new { @class = "dopcharareas", rows = 8 })
+                        }
+                           if (property.PropertyName == "Publicaciya")
+                           {
+                                @Html.CheckBox(property.PropertyName,
+                                    new { @class = "form-control" })
+                           }
+                           else
+                           {
+                               if (property.PropertyName != "Opisanie" && property.PropertyName != "DopChar")
+                               {
+                                @Html.TextBox(property.PropertyName, null,new { @class = "form-control" })
+                               }
+
+                           }
+
+                       }
                         @Html.ValidationMessage(property.PropertyName)
                     </div>
                 }

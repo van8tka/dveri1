@@ -29,11 +29,12 @@ namespace DALdv1
         public string Cvet { get; set; }
         public string TypDveri { get; set; }
         public string VnytrenneeNapolnenie { get; set; }
-        public int Cena { get; set; }
+        public Nullable<int> Cena { get; set; }
         public Nullable<int> Skidka { get; set; }
         public Nullable<int> CenaSoSkidkoy { get; set; }
         public string Opisanie { get; set; }
         public bool Publicaciya { get; set; }
+        public string DopCharacteristics { get; set; }
     
         public virtual ICollection<FotoMegkomnDverey> FotoMegkomnDvereys { get; set; }
     }

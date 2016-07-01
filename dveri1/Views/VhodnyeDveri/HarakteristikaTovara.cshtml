@@ -9,8 +9,15 @@
     @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
     {
         <div>
-            <span class="pr">Цена:</span>
-            <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> @Model.Tovar.Cena руб.</span><span style="color:gray"> /шт </span>
+            @if (Model.Tovar.Cena == 0 || Model.Tovar.Cena == null)
+            {
+                <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> Цену уточняйте у менеджера.</span>
+            }
+            else
+            {
+                <span class="pr">Цена:</span>
+                <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> @Model.Tovar.Cena руб.</span><span style="color:gray"> /шт </span>
+            }          
         </div>
     }
     else

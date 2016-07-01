@@ -137,11 +137,12 @@
     <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
     <Property Name="TypDveri" Type="nvarchar" MaxLength="250" />
     <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="250" />
-    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="Cena" Type="int" />
     <Property Name="Skidka" Type="int" />
     <Property Name="CenaSoSkidkoy" Type="int" />
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
+    <Property Name="DopCharacteristics" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Oplata">
     <Key>
@@ -221,11 +222,12 @@
     <Property Name="OtdelkaSnarugi" Type="nvarchar" MaxLength="250" />
     <Property Name="OtdelkaVnutri" Type="nvarchar" MaxLength="250" />
     <Property Name="TolschinaDvPolotna" Type="int" />
-    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="Cena" Type="int" />
     <Property Name="Skidka" Type="int" />
     <Property Name="CenaSoSkidcoy" Type="int" />
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
+    <Property Name="DopCharacteristics" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_CommentVhDveri_VhodnyeDveri">
     <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">

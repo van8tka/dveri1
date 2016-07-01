@@ -32,7 +32,7 @@ namespace Domain2.Implementations
             }
         }
 
-        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, int? tmet, string furn, string petli, string osn, string ovn, int? tdpol, int cena, int? skidka, int? csskid, string opis, bool publ)
+        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, int? tmet, string furn, string petli, string osn, string ovn, int? tdpol, int? cena, int? skidka, int? csskid, string opis, bool publ, string dopchar)
         {
             if (id == 0)
             {
@@ -55,7 +55,8 @@ namespace Domain2.Implementations
                     Skidka = skidka,
                     CenaSoSkidcoy = csskid,
                     Opisanie = opis,
-                    Publicaciya = publ
+                    Publicaciya = publ,
+                    DopCharacteristics = dopchar
                 };
                 SaveVhodnyeDv(vd);
             }
@@ -80,6 +81,7 @@ namespace Domain2.Implementations
                 vd.CenaSoSkidcoy = csskid;
                 vd.Opisanie = opis;
                 vd.Publicaciya = publ;
+                vd.DopCharacteristics = dopchar;
                 context.Entry(vd).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }

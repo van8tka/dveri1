@@ -1,75 +1,75 @@
 ﻿@model dveri1.Models.KartochkaTovaraModel
-<div>
-@if (Model.Tovar.Proizvoditel == "" || Model.Tovar.Proizvoditel == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Фирма производитель:</span>
-        <span class="valtov"> @Model.Tovar.Proizvoditel</span>
-    </div>
-}
- @if (Model.Tovar.Strana == "" || Model.Tovar.Strana == null)
- {
- }
- else
- {
-    <div class="blhar">
-        <span class="pr">Страна производитель:</span>
-        <span class="valtov"> @Model.Tovar.Strana</span>
-    </div>
- }
-@if (Model.Tovar.Cvet == "" || Model.Tovar.Cvet == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Цвет двери:</span>
-        <span class="valtov"> @Model.Tovar.Cvet</span>
-    </div>
-}
-@if (Model.Tovar.Napolnitel == "" || Model.Tovar.Napolnitel == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Наполнитель:</span>
-        <span class="valtov"> @Model.Tovar.Napolnitel</span>
-    </div>
-}
-@if (Model.Tovar.Yplotnitel == "" || Model.Tovar.Yplotnitel == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Уплотнитель:</span>
-        <span class="valtov"> @Model.Tovar.Yplotnitel</span>
-    </div>
-}
-@if (Model.Tovar.TolschinaMetalla == 0 || Model.Tovar.TolschinaMetalla == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Толщина металла:</span>
-        <span class="valtov"> @Model.Tovar.TolschinaMetalla мм.</span>
-    </div>
-}
-@if (Model.Tovar.Furnitura == "" || Model.Tovar.Furnitura == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Фурнитура:</span>
-        <span class="valtov"> @Model.Tovar.Furnitura</span>
-    </div>
-}
+<div class="charakteritics">
+    @if (Model.Tovar.Proizvoditel == "" || Model.Tovar.Proizvoditel == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Фирма производитель:</span>
+            <span class="valtov"> @Model.Tovar.Proizvoditel</span>
+        </div>
+    }
+    @if (Model.Tovar.Strana == "" || Model.Tovar.Strana == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Страна производитель:</span>
+            <span class="valtov"> @Model.Tovar.Strana</span>
+        </div>
+    }
+    @if (Model.Tovar.Cvet == "" || Model.Tovar.Cvet == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Цвет двери:</span>
+            <span class="valtov"> @Model.Tovar.Cvet</span>
+        </div>
+    }
+    @if (Model.Tovar.Napolnitel == "" || Model.Tovar.Napolnitel == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Наполнитель:</span>
+            <span class="valtov"> @Model.Tovar.Napolnitel</span>
+        </div>
+    }
+    @if (Model.Tovar.Yplotnitel == "" || Model.Tovar.Yplotnitel == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Уплотнитель:</span>
+            <span class="valtov"> @Model.Tovar.Yplotnitel</span>
+        </div>
+    }
+    @if (Model.Tovar.TolschinaMetalla == 0 || Model.Tovar.TolschinaMetalla == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Толщина металла:</span>
+            <span class="valtov"> @Model.Tovar.TolschinaMetalla мм.</span>
+        </div>
+    }
+    @if (Model.Tovar.Furnitura == "" || Model.Tovar.Furnitura == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Фурнитура:</span>
+            <span class="valtov"> @Model.Tovar.Furnitura</span>
+        </div>
+    }
     @if (Model.Tovar.Petli == "" || Model.Tovar.Petli == null)
     {
     }
@@ -80,34 +80,46 @@ else
             <span class="valtov"> @Model.Tovar.Petli</span>
         </div>
     }
-@if (Model.Tovar.OtdelkaVnutri == "" || Model.Tovar.OtdelkaVnutri == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Отделка внутри:</span>
-        <span class="valtov"> @Model.Tovar.OtdelkaVnutri</span>
-    </div>
-}
-@if (Model.Tovar.OtdelkaSnarugi == "" || Model.Tovar.OtdelkaSnarugi == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Отделка снаружи:</span>
-        <span class="valtov"> @Model.Tovar.OtdelkaSnarugi</span>
-    </div>
-}
-@if (Model.Tovar.TolschinaDvPolotna == 0 || Model.Tovar.TolschinaDvPolotna == null)
-{
-}
-else
-{
-    <div class="blhar">
-        <span class="pr">Толщина дверного полотна:</span>
-        <span class="valtov"> @Model.Tovar.TolschinaDvPolotna мм.</span>
-    </div>
-}
-</div>
+    @if (Model.Tovar.OtdelkaVnutri == "" || Model.Tovar.OtdelkaVnutri == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Отделка внутри:</span>
+            <span class="valtov"> @Model.Tovar.OtdelkaVnutri</span>
+        </div>
+    }
+    @if (Model.Tovar.OtdelkaSnarugi == "" || Model.Tovar.OtdelkaSnarugi == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Отделка снаружи:</span>
+            <span class="valtov"> @Model.Tovar.OtdelkaSnarugi</span>
+        </div>
+    }
+    @if (Model.Tovar.TolschinaDvPolotna == 0 || Model.Tovar.TolschinaDvPolotna == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Толщина дверного полотна:</span>
+            <span class="valtov"> @Model.Tovar.TolschinaDvPolotna мм.</span>
+        </div>
+    }
+
+    @if (Model.Tovar.DopCharacteristics == null || Model.Tovar.DopCharacteristics == "")
+    {
+
+    }
+    else
+    {
+        <div class="blhar dopchar">
+            <h4>Дополнительные характеристики:</h4>
+            @Html.Raw(Model.Tovar.DopCharacteristics)
+        </div>
+    }
+    </div>  

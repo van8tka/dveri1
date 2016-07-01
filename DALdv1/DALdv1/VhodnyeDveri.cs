@@ -33,11 +33,12 @@ namespace DALdv1
         public string OtdelkaSnarugi { get; set; }
         public string OtdelkaVnutri { get; set; }
         public Nullable<int> TolschinaDvPolotna { get; set; }
-        public int Cena { get; set; }
+        public Nullable<int> Cena { get; set; }
         public Nullable<int> Skidka { get; set; }
         public Nullable<int> CenaSoSkidcoy { get; set; }
         public string Opisanie { get; set; }
         public bool Publicaciya { get; set; }
+        public string DopCharacteristics { get; set; }
     
         public virtual ICollection<CommentVhDveri> CommentVhDveris { get; set; }
         public virtual ICollection<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }

@@ -44,7 +44,15 @@
                         <p>@i.Strana</p>
                         @if (i.Skidka == null || i.Skidka == 0)
                         {
-                            <p style="color:green; font-size:large">@i.Cena руб.</p>
+                            if (i.Cena == 0 || i.Cena == null)
+                            {
+                                <p style="color:green; font-size:medium">Цену уточняйте у менеджера.</p>
+                            }
+                            else
+                            {
+                                <p style="color:green; font-size:large">@i.Cena руб.</p>
+                            }
+
                         }
                         else
                         {

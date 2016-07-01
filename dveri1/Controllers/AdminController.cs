@@ -74,6 +74,7 @@ namespace dveri1.Controllers
                 model.TolschinaDvPolotna = v.TolschinaDvPolotna;
                 model.TolschinaMetala = v.TolschinaMetalla;
                 model.Yplotnitel = v.Yplotnitel;
+                model.DopChar = v.DopCharacteristics;
                 model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
                 if (dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(z => z.Id == id).FirstOrDefault() != null)
                 {
@@ -88,7 +89,7 @@ namespace dveri1.Controllers
         }
         //------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
         [Authorize]
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult CreateVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
             try
@@ -99,14 +100,18 @@ namespace dveri1.Controllers
                 TempData["message"]="Новый товар добавлен в базу данных!";
                 if(model.Skidka!=null)
                 {
-                    if(model.Skidka!= 0)
-                    {
+                        if (model.Skidka != 0 && (model.Cena != 0 && model.Cena != null))
+                        {
                         CenaSoSkidkoy = model.Cena - model.Cena * model.Skidka / 100;
                     }
-                }
+                        else
+                        {
+                            model.Skidka = null;
+                        }
+                    }
                 dataManager.VhodnyeDvRepository.CreateVhodnyeDv(0, model.Nazvanie, model.Proizvoditel, model.StranaProizv, model.Cvet, model.Napolnitel,
                     model.Yplotnitel, model.TolschinaMetala, model.Furnitura, model.Petli, model.OtdSnarugi,model.OtdVnutri,model.TolschinaDvPolotna,
-                    model.Cena,model.Skidka,CenaSoSkidkoy,model.Opisanie,model.Publicaciya);
+                    model.Cena,model.Skidka,CenaSoSkidkoy,model.Opisanie,model.Publicaciya,model.DopChar);
                 int iddver = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Last().Id;
                     //метод создания элементов сео единицы товара
                     dataManager.VhodnyeDvRepository.CreateSeoVhDveri(iddver, model.TitleVhDv, model.KeywordsVhDv, model.DescriptionVhDv);
@@ -211,6 +216,7 @@ namespace dveri1.Controllers
                 model.TolschinaDvPolotna = v.TolschinaDvPolotna;
                 model.TolschinaMetala = v.TolschinaMetalla;
                 model.Yplotnitel = v.Yplotnitel;
+                model.DopChar = v.DopCharacteristics;
                 model.FotoVhDvList = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
                 if(dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(z=>z.Id==id).FirstOrDefault()!=null)
                 {
@@ -227,7 +233,7 @@ namespace dveri1.Controllers
             }
         }
         [Authorize]
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult EditVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
             try
@@ -239,14 +245,18 @@ namespace dveri1.Controllers
                         TempData["message"] = "Товар изменен в базе данных!";
                         if (model.Skidka != null)
                         {
-                            if (model.Skidka != 0)
+                            if (model.Skidka != 0&&(model.Cena!=0&&model.Cena!=null))
                             {
                                 CenaSoSkidkoy = model.Cena - model.Cena * model.Skidka / 100;
                             }
+                        else
+                        {
+                            model.Skidka = null;
+                        }
                         }
                          dataManager.VhodnyeDvRepository.CreateVhodnyeDv((int)model.ID, model.Nazvanie, model.Proizvoditel, model.StranaProizv, model.Cvet, model.Napolnitel,
                             model.Yplotnitel, model.TolschinaMetala, model.Furnitura, model.Petli, model.OtdSnarugi, model.OtdVnutri, model.TolschinaDvPolotna,
-                            model.Cena, model.Skidka, CenaSoSkidkoy, model.Opisanie, model.Publicaciya);
+                            model.Cena, model.Skidka, CenaSoSkidkoy, model.Opisanie, model.Publicaciya, model.DopChar);
                        
                         //метод создания элементов сео единицы товара
                         dataManager.VhodnyeDvRepository.CreateSeoVhDveri((int)model.ID, model.TitleVhDv, model.KeywordsVhDv, model.DescriptionVhDv);
@@ -690,8 +700,66 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-       
-      
+        //функция вызванная ajax запросом на изменение публикации
+       [Authorize]
+       [HttpGet]
+       public void ChangePublic(int id, string list)
+        {
+            try
+            {//получили по id элемент
+                if(list =="входныедвери")
+                {
+                    VhodnyeDveri vh = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                    //изменили в зависимости от состояния
+                    if (vh.Publicaciya)
+                    {
+                        vh.Publicaciya = false;
+                    }
+                    else
+                    {
+                        vh.Publicaciya = true;
+                    }//перезаписали
+                    dataManager.VhodnyeDvRepository.CreateVhodnyeDv(vh.Id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Napolnitel,
+                                 vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna,
+                                  vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
+                }
+                //обработка публикации коммента входных дверей
+                if (list == "комментарийвходныхдверей")
+                {
+                    CommentVhDveri cvhd = dataManager.CommentRepository.GetCommentVhDv().Where(x => x.ID == id).FirstOrDefault();
+                    if (cvhd.Public)
+                    {
+                        cvhd.Public = false;
+                    }
+                    else
+                    {
+                        cvhd.Public = true;
+                    }
+                    dataManager.CommentRepository.CreateCommentVhDv(cvhd.ID, cvhd.IDdv, cvhd.Name, cvhd.E_mail, cvhd.Comment, cvhd.Response, cvhd.Heading, cvhd.Public, cvhd.Stars, cvhd.Date);
+                }
+                //обработка публикации компании
+               if(list =="комментарийкомпании")
+                {
+                    CommentCompany cvhd = dataManager.CommentRepository.GetCommetCompany().Where(x => x.ID == id).FirstOrDefault();
+                    if (cvhd.Public)
+                    {
+                        cvhd.Public = false;
+                    }
+                    else
+                    {
+                        cvhd.Public = true;
+                    }
+                    dataManager.CommentRepository.CreateCommentCompany(cvhd.ID, cvhd.Name, cvhd.E_mail, cvhd.Comment, cvhd.Response, cvhd.Heading, cvhd.Public, cvhd.Stars, cvhd.Date);
+                  //потом добавить о межкомнатных дверях..
+                }            
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/ChangePublic-" + er);               
+            }
+        }
+
+
     }
 
 }

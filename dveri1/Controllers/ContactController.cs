@@ -54,16 +54,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-        //[HttpPost]
-        //public ActionResult ContactPage()
-        //{
-        //    return View()
-        //}
-
-
-
-
-        // GET: Contact
+      [Authorize]
         public ActionResult AdminContact()
         {
             try
@@ -80,6 +71,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         //==========================создание(добавление) контактных данных========================================
         [HttpGet]
         public ActionResult CreateGrafik()
@@ -87,6 +79,7 @@ namespace dveri1.Controllers
             ViewBag.CreateContact = "Добавление графика работы";
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult CreateGrafik(CreateGrafikModel model)
         {
@@ -106,12 +99,14 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpGet]
         public ActionResult CreateContact()
         {
             ViewBag.CreateContact = "Добавление контактных данных";
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult CreateContact(CreateContactModel model)
         {
@@ -132,12 +127,14 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpGet]
         public ActionResult CreateAdres()
         {
             ViewBag.CreateContact = "Добавление адресных данных";
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult CreateAdres(CreateAdresModel model)
         {
@@ -158,6 +155,7 @@ namespace dveri1.Controllers
             }
         }
         //============================изменение контактных данных======================================
+        [Authorize]
         [HttpGet]
         public ActionResult ChangeContact(int id)
         {
@@ -179,6 +177,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult ChangeContact(CreateContactModel model)
         {
@@ -198,7 +197,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult ChangeGrafik(int id)
         {
@@ -220,6 +219,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult ChangeGrafik(CreateGrafikModel model)
         {
@@ -239,7 +239,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult ChangeAdres(int id)
         {
@@ -260,6 +260,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult ChangeAdres(CreateAdresModel model)
         {
@@ -281,6 +282,7 @@ namespace dveri1.Controllers
         }
 
         //==========================удаление контактных данных========================================
+        [Authorize]
         public ActionResult DellAdres(int id)
         {
             try
@@ -295,6 +297,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         public ActionResult DellContact(int id)
         {
             try
@@ -309,6 +312,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [Authorize]
         public ActionResult DellGrafik(int id)
         {
             try

@@ -1130,8 +1130,17 @@ img.spisFoto:hover{
   border-top: 1px solid rgb(128,128,128);
  }
 
+div.charakteritics{
+    padding:20px;
+    margin-bottom:10px;
+    height:353px;
+    overflow-y:scroll;
+}
+div.dopchar > p{
+    margin-bottom:-10px;
+}
 
-/*=========================      хлебные     крошки          ===========================/**/
+/*========================= хлебные крошки ===========================/**/
 
  .breadcrumbs{
  margin: 0;
