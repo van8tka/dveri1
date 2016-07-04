@@ -45,21 +45,22 @@
                         if (property.PropertyName == "Opisanie")
                         {
                             @Html.TextArea(property.PropertyName, null, new { @class = "opisareas", rows = 8})
-                        }
-                        if (property.PropertyName == "DopChar")
-                        {
-                         @Html.TextArea(property.PropertyName, null, new { @class = "dopcharareas", rows = 8 })
+                           }
+                         
+                           if (property.PropertyName == "DopChar")
+                           {
+                               @Html.TextArea(property.PropertyName, null, new { @class = "dopcharareas", rows = 8 })
                         }
                            if (property.PropertyName == "Publicaciya")
                            {
-                                @Html.CheckBox(property.PropertyName,
-                                    new { @class = "form-control" })
+                               @Html.CheckBox(property.PropertyName,
+                                   new { @class = "form-control" })
                            }
                            else
                            {
                                if (property.PropertyName != "Opisanie" && property.PropertyName != "DopChar")
                                {
-                                @Html.TextBox(property.PropertyName, null,new { @class = "form-control" })
+                                   @Html.TextBox(property.PropertyName, null,new { @class = "form-control" })
                                }
 
                            }

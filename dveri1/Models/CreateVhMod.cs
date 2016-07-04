@@ -23,9 +23,9 @@ namespace dveri1.Models
         public string Napolnitel { get; set; }
         [Display(Name = "Уплотнитель")]
         public string Yplotnitel { get; set; }
-        [Display(Name = "Толщина металла")]
-        [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода толщины металла(допускает только цифры)!")]
-        public int? TolschinaMetala { get; set; }
+        [Display(Name = "Толщина металла (ххх,хх)")]
+        [RegularExpression(@"^[0-9,]{1,20}", ErrorMessage = "Неверный формат ввода толщины металла(допускает только цифры и зпт)!")]
+        public double? TolschinaMetala { get; set; }
         [Display(Name = "Фурнитура")]
         public string Furnitura { get; set; }
         [Display(Name = "Петли")]
@@ -34,14 +34,14 @@ namespace dveri1.Models
         public string OtdSnarugi { get; set; }
         [Display(Name = "Отделка внутри")]
         public string OtdVnutri { get; set; }
-        [Display(Name = "Толщина дверного полотна")]
-        [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода толщины металла(допускает только цифры)!")]
-        public int? TolschinaDvPolotna { get; set; }
+        [Display(Name = "Толщина дверного полотна (ххх,хх)")]
+        [RegularExpression(@"^[0-9,]{1,20}", ErrorMessage = "Неверный формат ввода толщины металла(допускает только цифры и зпт)!")]
+        public double? TolschinaDvPolotna { get; set; }
         [Display(Name = "Цена")]
         //[Required(ErrorMessage = "Введите цену товара!")]
         //[RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода цены товара!")]
-        public int? Cena { get; set; }
-        [Display(Name = "Скидка в процентах")]
+        public decimal? Cena { get; set; }
+        [Display(Name = "Скидка в процентах (указать число без символа %)")]
         [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода скидки товара(допускает только цифры)!")]
         public int? Skidka { get; set; }
         [Display(Name = "Публикация")]

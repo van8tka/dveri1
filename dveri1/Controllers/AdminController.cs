@@ -94,7 +94,7 @@ namespace dveri1.Controllers
         {
             try
             {        
-            int? CenaSoSkidkoy=null;
+            decimal? CenaSoSkidkoy=null;
             if (ModelState.IsValid)
             {                                     
                 TempData["message"]="Новый товар добавлен в базу данных!";
@@ -238,7 +238,7 @@ namespace dveri1.Controllers
         {
             try
             {
-                int? CenaSoSkidkoy = null;
+                decimal? CenaSoSkidkoy = null;
                     if (ModelState.IsValid)
                     {
 
@@ -707,7 +707,7 @@ namespace dveri1.Controllers
         {
             try
             {//получили по id элемент
-                if(list =="входныедвери")
+                if(list =="входныедвери")//обработка публикации списка товаров входных дверей
                 {
                     VhodnyeDveri vh = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
                     //изменили в зависимости от состояния

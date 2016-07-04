@@ -212,7 +212,6 @@
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
-    <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomMembershipProvider.cs" />

@@ -32,7 +32,7 @@ namespace Domain2.Implementations
             }
         }
 
-        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, int? tmet, string furn, string petli, string osn, string ovn, int? tdpol, int? cena, int? skidka, int? csskid, string opis, bool publ, string dopchar)
+        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, double? tmet, string furn, string petli, string osn, string ovn, double? tdpol, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar)
         {
             if (id == 0)
             {

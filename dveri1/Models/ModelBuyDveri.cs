@@ -12,8 +12,7 @@ namespace dveri1.Models
         [Required(ErrorMessage = "Введите имя!")]
         [RegularExpression(@"^[а-яА-Я ]{1,50}", ErrorMessage = "Неверный формат имени!")]
         public string KlientName { get; set; }
-        [Required(ErrorMessage = "Введите номер телефона!")]
-        [RegularExpression(@"^[0-9-+)( ]{1,20}", ErrorMessage = "Неверный формат ввода номера телефона!")]
+        [Required(ErrorMessage = "Введите номер телефона или e-mail адрес!")]
         public string KlientPhone { get; set; }
         public string KlientAdres { get; set; }
         public string KlientQuestion { get; set; }

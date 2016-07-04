@@ -366,7 +366,7 @@ namespace dveri1.Controllers
                 {//вызов метода отправки сообщегия админу
                    if( SendMessageAboutBuyDoor(model))                  
                     {
-                             TempData["messageklient"] = "Ваше сообщение отправлено, менеджер перезвонит Вам в течении 15 минут!";     
+                             TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вам в течении 15 минут!";     
                     }
                     else
                     {   
@@ -392,19 +392,36 @@ namespace dveri1.Controllers
             dataManager.KlientRepository.CreateKlient(model.IdDveri, model.KlientName, model.KlientPhone, model.KlientAdres, model.KlientQuestion, model.Type);
             //создание и отправка сообщение админу
             string body;
-            string them = "Cообщение от клиента: " + model.KlientName + ", тел. " + model.KlientPhone;
+            string them = "Cообщение от клиента: " + model.KlientName + ", тел. или email: " + model.KlientPhone;
             string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
             //проверяем если нет такой двери
             if (model.IdDveri!=9999)
             {
                 VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
-
+                string cena, cenasoskidkoy;
+                if (vhd.Cena == null)
+                    {
+                    cena = "Не установлена";
+                    }
+                else
+                    {
+                    cena = vhd.Cena.Value.ToString("C");
+                    }
+                if (vhd.CenaSoSkidcoy == null)
+                {
+                    cenasoskidkoy = "Скидки нет"; 
+                }
+                else
+                {
+                    cenasoskidkoy = vhd.CenaSoSkidcoy.Value.ToString("C");
+                }
+                   
                 body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
-                "\r\n" + "Цена: " + vhd.Cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + vhd.CenaSoSkidcoy;
+                "\r\n" + "Цена: " + cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + cenasoskidkoy;
             }
             else
             {
-                body = "Перезвоните на номер " + model.KlientPhone;
+                body = "Свяжитесь с клиентом по тел. или e-email: " + model.KlientPhone;
             }         
             if (SendMsg.Message(body, them, adres))
             { return true; }
@@ -444,7 +461,7 @@ namespace dveri1.Controllers
                 {//вызов метода отправки сообщения админу
                     if(SendMessageAboutBuyDoor(model))
                     {
-                        return Json(model.KlientName + "! Вы сделали заказ на покупку товара: " + model.DvName + ". Наш менеджер перезвонит Вам в течении 15 минут! Спасибо что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
+                        return Json(model.KlientName + "! Вы сделали заказ на покупку товара: " + model.DvName + ". Наш менеджер свяжется с Вами в течении 15 минут! Спасибо, что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
@@ -471,6 +488,7 @@ namespace dveri1.Controllers
                 ModelBuyDveri model = new ModelBuyDveri();
                 model.IdDveri = id;
                 model.Type = type;
+                //9999 взято как исключающее ID товара, т.е. такого нет и не будет
                 if (id == 9999)
                 {
                     model.KlientName = "Перезвоните мне";
@@ -501,7 +519,7 @@ namespace dveri1.Controllers
                 {//вызов метода отправки сообщегия админу
                     if (SendMessageAboutBuyDoor(model))
                     {
-                        TempData["messageklient"] = "Ваше сообщение отправлено, менеджер перезвонит Вам в течении 15 минут!";
+                        TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вами в течении 15 минут!";
                     }
                     else
                     {
@@ -568,7 +586,7 @@ namespace dveri1.Controllers
                 {//вызов метода отправки сообщения админу
                     if (SendMessageAboutBuyDoor(model))
                     {
-                        return Json("Наш менеджер перезвонит Вам в течении 15 минут! Спасибо что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
+                        return Json("Наш менеджер свяжется с Вами в течении 15 минут! Спасибо, что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
                     }
                     else
                     {

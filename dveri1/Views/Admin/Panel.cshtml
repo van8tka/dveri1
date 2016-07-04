@@ -47,7 +47,14 @@
                 <td>Отделка снаружи</td>
                 <td>Отделка внутри</td>
                 <td>Толщина дверного полотна</td>*@
-                <td>@i.Cena</td>
+                @if (i.Cena != null)
+                {
+                    <td>@i.Cena.Value.ToString("C")</td>
+                }
+                else
+                {
+                    <td>Цена не установлена</td>
+                }
                 <td class="tac">@i.Skidka</td>
                <td class="tac"> @Html.CheckBoxFor(modelItem=>i.Publicaciya, new { @class="chpublick",id = i.Id, value = i.Id})</td>
                 <td>@Html.ActionLink("Удалить", "DellVhDv", "Admin", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })

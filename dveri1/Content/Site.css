@@ -636,7 +636,71 @@ ul.menuleft li a:hover {
   top: 2px;
   left: 2px;
 }
+/*================================================кнопки сортировки по цене стрелками================================================*/
 
+
+.buttonsort{
+ margin: 0;
+ padding: 0;
+ list-style: none;
+ }
+ 
+.buttonsort a.upsort{
+  padding: 5px 10px;
+ font-size:small;
+ float: left;
+ text-decoration: none;
+ color: #444;
+ position: relative;
+ text-shadow: 0 1px 0 rgba(255,255,255,.5);
+ background-color: 		#00BFFF;
+ background-image: linear-gradient(to bottom,#E0FFFF,#00BFFF);
+ border-right:none;
+   box-shadow:
+   inset 0 1px rgba(101,114,126,1),
+   inset 0 0 1px rgba(140,150,170,.8),
+   0 1px rgb(83,94,104),
+   0 0 1px rgb(86,96,106);
+ }
+
+.buttonsort a.upsort:hover{
+ background: #fff;
+ }
+
+/*другая кнопка*/
+.buttonsort a.downsort{
+ padding: 5px 15px;
+ font-size:small;
+ float: left;
+ text-decoration: none;
+ color: #444;
+ position: relative;
+ text-shadow: 0 1px 0 rgba(255,255,255,.5);
+ background-color: 	#00BFFF;
+ background-image: linear-gradient(to bottom,#E0FFFF, #00BFFF);
+   box-shadow:
+   inset 0 1px rgba(101,114,126,1),
+   inset 0 0 1px rgba(140,150,170,.8),
+   0 1px rgb(83,94,104),
+   0 0 1px rgb(86,96,106);
+ }
+
+.buttonsort a.downsort:hover{
+ background: #fff;
+ }
+/*//активная*/
+.buttonsort a.actsortdown{
+   box-shadow:
+   inset 0 2px 4px rgba(0,10,20,.5),
+   0 1px rgb(83,94,104),
+   0 0 1px rgb(86,96,106);
+ }
+.buttonsort a.actsortup{
+  box-shadow:
+   inset 0 2px 4px rgba(0,10,20,.5),
+   0 1px rgb(83,94,104),
+   0 0 1px rgb(86,96,106);
+ }
 
 /*таблица администрирования*/
 .table_dark {
@@ -955,15 +1019,16 @@ div.cartochkatovara{
     display:inline-block;
     width:100%;
   }
-h2.nametovar{
+h1.nametovar{
     float:left;
     margin-left:5px;
     width:98%;
-   }
+    font-size:x-large;
+    text-shadow: 0 1px 0 black;
+    }
 div.ferstsect{
     display:inline-block;
     width:100%;
-    /*background-color:white;*/
     min-height:650px;
 }
 
@@ -987,9 +1052,14 @@ div.sectionfoto{
     width:45%;
     display:inline-block;
     float:left;
-    /*background-color:white;*/
     height:565px;
 }
+
+div.blocktabov{
+    display:block;
+   
+}
+
 div #sliderVert {
     float: left;
     display: inline-block;
@@ -998,7 +1068,7 @@ div #sliderVert {
 }
 div.sectionhartk{
     width:55%;
-    height:500px;
+    height:100%;
     float:left;
 }
 img.spisFoto{   
@@ -1041,106 +1111,53 @@ img.spisFoto:hover{
   div.blhar{
       margin:3px;
   }
-  /*делаем tab (вкладки на css)*/
-  #raz { /* корпус */ 
-  position: relative;
- min-height: 400px;
-  border-top: 30px solid #fff;
-  margin-top:10px;
+  /*===========================================делаем tab (вкладки на css)==============================================*/
+#raz{
+    margin-top:10px;
+}
+#raz > div { 
+  background-color:#fff;
  }
-#raz > div { /* вкладка */ 
-  position: absolute;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  visibility: collapse;
-  transition: 0s 9999999s;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 5px;
-}
-#raz > div:before { /* рамка вкладки */ 
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: #808080 solid 1px;
-  border-top: none;
-}
-#raz > div:hover, #raz > div:nth-of-type(1) {
-  visibility: visible;
-  transition: 0s;
-  background-color:azure;
-}
-#raz:hover > div:not(:hover) {
-  visibility: hidden;
-  transition: 0s;
-}
-#raz > div > span { /* кнопка */ 
-  position: absolute;
-  top: -30px;
-  line-height: 30px;
-  height: 30px;
-  width: 25%; /* 4 вкладки, а значит 100/4 */ 
-  text-align: center;
-  box-sizing: border-box;
-  border: 1px solid rgb(128,128,128);
-  border-left-color: rgba(0,0,0,0);
-  visibility: visible;
-  transition: 0s 9999999s;
-  cursor: pointer;
-  color:black;
-}
-  
  
-#raz > div:nth-of-type(1) > span {left: 0; border-left-color: rgb(128,128,128);}
-#raz > div:nth-of-type(2) > span {left: 25%;}
-#raz > div:nth-of-type(3) > span {left: 50%;}
-#raz > div:nth-of-type(4) > span {left: 75%;}
-#raz > div:hover > span {
-  border-bottom-color: rgba(0,0,0,0);
-  transition:  0s;
-  background-color:azure;
-}
-    #raz > div:nth-of-type(1):hover > span {
-        border-bottom-color: rgba(0,0,0,0);
-        transition: 0s;
-        background-color:azure;
-    }
-      #raz > div:nth-of-type(1):before > span {
-        border-bottom-color: white;
-        transition: 0s;
-        background-color:azure;
-    }
-#raz:hover > div:not(:hover) > span {
-  border-bottom-color: rgba(128,128,128,.99);
-  transition:  0s; 
-  background-color:white;
-}
-/* появляется нижняя граница у первой кнопки tabov*/ 
-#raz > div:not(:nth-of-type(1)):not(:hover):after { 
-  content: "";
-  left: 0;
-  position: absolute;
-  top: -1px;
-  width: 25%;
-  border-top: 1px solid rgb(128,128,128);
- }
+#tab2,#tab3,#tab4 {position: fixed; }
 
-div.charakteritics{
-    padding:20px;
-    margin-bottom:10px;
-    height:353px;
-    overflow-y:scroll;
-}
-div.dopchar > p{
-    margin-bottom:-10px;
+#raz > a,
+#raz #tab2:target ~ a:nth-of-type(1),
+#raz #tab3:target ~ a:nth-of-type(1),
+#raz #tab4:target ~ a:nth-of-type(1),
+#raz > div { padding: 5px; border: 1px solid #aaa; }
+
+#raz > a { line-height: 28px; background: #E6E6FA; text-decoration: none; width:23%;display:inline-block;margin-bottom:-2px;}
+
+#tab2,
+#tab3,
+#tab4,
+#raz > div,
+#raz #tab2:target ~ div:nth-of-type(1),
+#raz #tab3:target ~ div:nth-of-type(1), 
+#raz #tab4:target ~ div:nth-of-type(1) {display: none;}
+
+
+#raz > div:nth-of-type(1),
+#raz #tab2:target ~ div:nth-of-type(2),
+#raz #tab3:target ~ div:nth-of-type(3),
+#raz #tab4:target ~ div:nth-of-type(4) { display: block; }
+
+#raz > a:nth-of-type(1),
+#raz #tab2:target ~ a:nth-of-type(2),
+#raz #tab3:target ~ a:nth-of-type(3),
+#raz #tab4:target ~ a:nth-of-type(4) { border-bottom: 2px solid #fff; background:#fff;}
+
+#raz #tab2:target ~ a:nth-of-type(1),
+#raz #tab3:target ~ a:nth-of-type(1),
+#raz #tab4:target ~ a:nth-of-type(1),
+#raz > a:nth-of-type(1)>:not(:active){
+    background: #E6E6FA;
 }
 
-/*========================= хлебные крошки ===========================/**/
+
+
+/*========================================================================= хлебные крошки =====================================================/**/
 
  .breadcrumbs{
  margin: 0;

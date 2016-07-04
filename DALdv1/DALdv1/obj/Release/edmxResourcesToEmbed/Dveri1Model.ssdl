@@ -137,9 +137,9 @@
     <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
     <Property Name="TypDveri" Type="nvarchar" MaxLength="250" />
     <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="250" />
-    <Property Name="Cena" Type="int" />
+    <Property Name="Cena" Type="money" />
     <Property Name="Skidka" Type="int" />
-    <Property Name="CenaSoSkidkoy" Type="int" />
+    <Property Name="CenaSoSkidkoy" Type="money" />
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
     <Property Name="DopCharacteristics" Type="nvarchar(max)" />
@@ -216,15 +216,15 @@
     <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
     <Property Name="Napolnitel" Type="nvarchar" MaxLength="250" />
     <Property Name="Yplotnitel" Type="nvarchar" MaxLength="250" />
-    <Property Name="TolschinaMetalla" Type="int" />
+    <Property Name="TolschinaMetalla" Type="float" />
     <Property Name="Furnitura" Type="nvarchar" MaxLength="250" />
     <Property Name="Petli" Type="nvarchar" MaxLength="250" />
     <Property Name="OtdelkaSnarugi" Type="nvarchar" MaxLength="250" />
     <Property Name="OtdelkaVnutri" Type="nvarchar" MaxLength="250" />
-    <Property Name="TolschinaDvPolotna" Type="int" />
-    <Property Name="Cena" Type="int" />
+    <Property Name="TolschinaDvPolotna" Type="float" />
+    <Property Name="Cena" Type="money" />
     <Property Name="Skidka" Type="int" />
-    <Property Name="CenaSoSkidcoy" Type="int" />
+    <Property Name="CenaSoSkidcoy" Type="money" />
     <Property Name="Opisanie" Type="nvarchar(max)" />
     <Property Name="Publicaciya" Type="bit" Nullable="false" />
     <Property Name="DopCharacteristics" Type="nvarchar(max)" />

@@ -2,7 +2,7 @@
 
 <div id="idbuy" style="text-align:center;">
     <h3>Заказ на товар: @Model.DvName</h3>
-    <h4>Заполните данные, и наш менеджер перезвонит Вам в течении 15 минут.</h4>
+    <h4>Оставьте свои данные, и мы свяжемся с Вами в течении 15 минут.</h4>
     <div class="form-group">
         @Html.HiddenFor(m => m.Type)
         @Html.HiddenFor(m => m.IdDveri)
@@ -10,13 +10,13 @@
         <label>Имя*</label>
         @Html.ValidationMessageFor(m => m.KlientName)
         @Html.TextBoxFor(m => m.KlientName, null, new { @class = "form-control ma" })
-        <label>Номер телефона*</label>
+        <label>Номер телефона или e-mail адрес для связи*</label>
         @Html.ValidationMessageFor(m => m.KlientPhone)
         @Html.TextBoxFor(m => m.KlientPhone, null, new { @class = "form-control ma" })
         <label>Адрес</label>
         @Html.TextBoxFor(m => m.KlientAdres, null, new { @class = "form-control ma" })
         <label>Задайте интересующий Вас вопрос, или напишите любое сообщение нашему менеджеру:</label>
-        @Html.TextAreaFor(m => m.KlientQuestion, new { @class = "form-control ma", rows = 5 })
+        @Html.TextAreaFor(m => m.KlientQuestion, new { @class = "form-control ma", rows = 5, style="width:650px" })
     </div>
     <strong style="font-size:small">* - поле обязательно для заполнения!</strong><br />
     <input type="submit" value="Отправить" class="butbyu ma" />

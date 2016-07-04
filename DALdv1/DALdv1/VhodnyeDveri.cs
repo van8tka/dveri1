@@ -27,15 +27,15 @@ namespace DALdv1
         public string Cvet { get; set; }
         public string Napolnitel { get; set; }
         public string Yplotnitel { get; set; }
-        public Nullable<int> TolschinaMetalla { get; set; }
+        public Nullable<double> TolschinaMetalla { get; set; }
         public string Furnitura { get; set; }
         public string Petli { get; set; }
         public string OtdelkaSnarugi { get; set; }
         public string OtdelkaVnutri { get; set; }
-        public Nullable<int> TolschinaDvPolotna { get; set; }
-        public Nullable<int> Cena { get; set; }
+        public Nullable<double> TolschinaDvPolotna { get; set; }
+        public Nullable<decimal> Cena { get; set; }
         public Nullable<int> Skidka { get; set; }
-        public Nullable<int> CenaSoSkidcoy { get; set; }
+        public Nullable<decimal> CenaSoSkidcoy { get; set; }
         public string Opisanie { get; set; }
         public bool Publicaciya { get; set; }
         public string DopCharacteristics { get; set; }

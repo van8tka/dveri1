@@ -142,9 +142,9 @@
     <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="TypDveri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Cena" Type="Int32" />
+    <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Skidka" Type="Int32" />
-    <Property Name="CenaSoSkidkoy" Type="Int32" />
+    <Property Name="CenaSoSkidkoy" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -223,15 +223,15 @@
     <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Napolnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Yplotnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="TolschinaMetalla" Type="Int32" />
+    <Property Name="TolschinaMetalla" Type="Double" />
     <Property Name="Furnitura" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Petli" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="OtdelkaSnarugi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="OtdelkaVnutri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="TolschinaDvPolotna" Type="Int32" />
-    <Property Name="Cena" Type="Int32" />
+    <Property Name="TolschinaDvPolotna" Type="Double" />
+    <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Skidka" Type="Int32" />
-    <Property Name="CenaSoSkidcoy" Type="Int32" />
+    <Property Name="CenaSoSkidcoy" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

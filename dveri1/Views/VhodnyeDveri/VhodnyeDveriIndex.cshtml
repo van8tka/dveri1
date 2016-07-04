@@ -37,37 +37,38 @@
 </div>
 <div class="productlist" id="listproduct">
     <div class="leftMainMenu">
-        <div style="padding-left:45px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none">
-           Отсортировать:
+        <div style="padding-left:25px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none;color:black;text-shadow: 0 1px 0 rgba(255,255,255,.5);">
+           Cортировать по цене:
         </div>
-        <div>
+        <div class = "buttonsort">
             @switch (Model.Sort)
             {
                 case 0:
-                    {
-                        @Html.ActionLink("Сначала дешевые", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
-                        @Html.ActionLink("Сначала дорогие", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
+                    {                       
+                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand },new {@class = "upsort"})
+                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })                      
                         break;
                     }
                 case 1:
-                    {
-                        @Html.ActionLink("Сначала дешевые", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
-                        @Html.ActionLink("Сначала дорогие", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
-                        break;
+                    {                     
+                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort actsortup" })
+                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })                     
+                      break;
                     }
                 case 2:
-                    {
-                        @Html.ActionLink("Сначала дешевые", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "leftMenuButton" })
-                        @Html.ActionLink("Сначала дорогие", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "leftMenuButton act" })
+                    {                   
+                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })      
+                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort actsortdown" })                     
                         break;
                     }
+                                
                 default:
                     break;
 
             }
         </div>
         @*меню выбора брэнда*@
-        <div style="padding-left:45px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none">
+        <div style="padding-left:45px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none;color:black;text-shadow: 0 1px 0 rgba(255,255,255,.5);">
             Каталог товаров:
         </div>
         <div>

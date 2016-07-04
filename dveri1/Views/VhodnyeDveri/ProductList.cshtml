@@ -1,4 +1,5 @@
 ﻿@using dveri1.HtmlHelpers;
+
 @model dveri1.Models.ForMainModel
     <div class="allspisok">
       <div style="text-align:center;font-size:0.8em;">
@@ -6,6 +7,7 @@
          </div> 
         @foreach (var i in Model.ListVhodnDv)
         {
+            
             <div class="shortproduct">
                 <a href="/VhodnyeDveri/TovarPage?id=@i.Id">
                     <div class="imageshort">
@@ -39,9 +41,12 @@
                                     }
                                 </div>
                     <div>
-                        <p>@i.Nazvanie</p>
-                        <p>@i.Proizvoditel</p>
-                        <p>@i.Strana</p>
+                        <div style="width:100%;height:86px;overflow:hidden;">
+                            <p>@i.Nazvanie</p>
+                            <p>@i.Proizvoditel</p>
+                            <p>@i.Strana</p>
+                        </div>
+                       
                         @if (i.Skidka == null || i.Skidka == 0)
                         {
                             if (i.Cena == 0 || i.Cena == null)
@@ -50,14 +55,23 @@
                             }
                             else
                             {
-                                <p style="color:green; font-size:large">@i.Cena руб.</p>
+                                <p style="color:green; font-size:large">@i.Cena.Value.ToString("C")</p>
                             }
 
                         }
                         else
                         {
-                            <p style="color:black; font-size:large"><strike>@i.Cena руб.</strike></p>
-                            <p style="color:green; font-size:large">@i.CenaSoSkidcoy руб.</p>
+                            if (i.Cena == 0 || i.Cena == null)
+                            {
+                                <p style="color:green; font-size:medium">Цену уточняйте у менеджера.</p>
+                            }
+                            else
+                            {
+                                <p style="color:black; font-size:large"><strike>@i.Cena.Value.ToString("C")</strike></p>
+                                <p style="color:green; font-size:large">@i.CenaSoSkidcoy.Value.ToString("C")</p>
+                            }
+
+
                         }
                     </div>
                 </a>
