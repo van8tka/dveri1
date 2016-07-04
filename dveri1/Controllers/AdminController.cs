@@ -24,14 +24,33 @@ namespace dveri1.Controllers
         }
         int PageSize = 250;
         // GET: Admin
+
+        //для добавления списка меню в админку по категориям товара(производителя)
+        public ActionResult MenuAdmin()
+        {
+             var model = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(z => z.Proizvoditel).GroupBy(z=>z.Proizvoditel).ToDictionary(z=>z.Key,z=>z.ToList());
+            return View(model);
+        }
+
         [Authorize]
-        public ActionResult Panel(int page = 1)
+        public ActionResult Panel(int page = 1, string brand = null)
         {
             try
             {
+                int TotalItemsProduct = 0;
                 ForMainModel model = new ForMainModel();
-                int TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
-                model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                if(brand == null)
+                {
+                    ViewBag.NameProductList = "Входные двери - весь список";
+                   TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
+                    model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                }
+                else
+                {
+                    ViewBag.NameProductList = brand;
+                    TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Proizvoditel==brand).Count();
+                    model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == brand).OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                }
                 model.PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,

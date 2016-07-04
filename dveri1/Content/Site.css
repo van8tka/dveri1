@@ -309,7 +309,7 @@ div.navigation-menu{
     div.contactsdata:hover {
         zoom:1.3;
     }
-/*--------------------------------------меню---------------------меню---------------меню------------------------------------------*/
+/*--------------------------------------меню------------ГЛАВНОЕ МЕНЮ-------------------меню---------------меню------------------------------------------*/
 
 #menu{
 	width:1200px;
@@ -596,7 +596,7 @@ margin-left:218px;
 }
 
 div.navigationleftfixed{
-    position:fixed;
+    margin-top:-20px;
     width:220px;
     height:100%;
     min-height:1000px;
@@ -605,37 +605,36 @@ div.navigationleftfixed{
     margin-left:-10px;
     border:2px solid gray;
     box-shadow: 0 2px 6px black;
+    float:left;
 }
-ul.menuleft{
-    margin-left:10px;
-    margin-top:50px;
+.actadmin{
+    color:black;
 }
-ul.menuleft li{
-     list-style-type: none;
-     margin-left:-35px;
+/*            ================================экспериментальное меню с выпадающим древовидным списком==============================*/
+/* ul-treefree */
+ul.treespis { padding-left:25px; }
+ul.treespis ul { margin:0; padding-left:6px; }
+ul.treespis li { position:relative; list-style:none outside none; border-left:solid 1px #999; margin:0; padding:0 0 0 19px; line-height:23px; }
+ul.treespis li:before { content:''; display:block; border-bottom:solid 1px #999; position:absolute; width:18px; height:11px; left:0; top:0; }
+ul.treespis li:last-child { border-left:0 none; }
+ul.treespis li:last-child:before { border-left:solid 1px #999; }
+
+/* ul-dropfree */
+ul.dropspis div.drop {
+width:11px;
+height:11px;
+position:absolute;
+z-index:10;
+top:6px;
+left:-6px;
+/*тут изображение крестика раскрывающегося*/
+background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAIAAAD0nuopAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE1JREFUeNpinDlzJgNlgAWI09LScEnPmjWLoAImrHpIAkwMFAMqGMGC6X44GzkIsHoQooAFTTVQKdbAwxOigyMsmIh3MC7ASHnqBAgwAD4CGeOiDhXRAAAAAElFTkSuQmCC');
+background-position:-11px 0;
+background-repeat:no-repeat;
+cursor:pointer;
 }
-ul.menuleft li a {
-  margin-left:8px;
-  margin-top:0.8em;
-  color:whitesmoke;
-  text-decoration-line:none;
-  font-size:1.0em;
-  display: inline-block;
-  padding: 5px 10px;
-  background:#191970;
-  box-shadow: 2px 2px 0 0 black;
-  position: relative;
-  text-align:center;
-  cursor: pointer;
-  border-radius: 3px;
-  width:170px;
-}
-ul.menuleft li a:hover {
-  background-color:#4169E1;
-  box-shadow: none;
-  top: 2px;
-  left: 2px;
-}
+
+
 /*================================================кнопки сортировки по цене стрелками================================================*/
 
 

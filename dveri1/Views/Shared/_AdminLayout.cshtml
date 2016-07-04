@@ -27,39 +27,40 @@
 
         
 
-          <ul class="menuleft">
+         <ul class="treespis dropspis">
               <li>
-                 @Html.ActionLink("Для SEO", "SeoGet", "MetaTags")
+                 @Html.ActionLink("Для SEO", "SeoGet", "MetaTags", null, new {@class="admmen m1"})
               </li>
               <li>
-                  @Html.ActionLink("Входные двери","Panel","Admin")
+                  @Html.ActionLink("Входные двери","Panel","Admin", null, new { @class = "admmen m2 actadmin" })
+                   @Html.Action("MenuAdmin","Admin")
+             </li>
+              <li>
+                  @Html.ActionLink("Межкомнатные двери", "Panel", "Admin", null, new { @class = "admmen m3" })
               </li>
               <li>
-                  @Html.ActionLink("Межкомнатные двери", "Panel", "Admin")
+                  @Html.ActionLink("Главный слайдер", "SliderMain", "Admin", null, new { @class = "admmen m4" })
               </li>
               <li>
-                  @Html.ActionLink("Главный слайдер", "SliderMain", "Admin")
+                  @Html.ActionLink("Боковой слайдер", "SliderLeft", "Admin", null, new { @class = "admmen m5" })
               </li>
               <li>
-                  @Html.ActionLink("Боковой слайдер", "SliderLeft", "Admin")
+                  @Html.ActionLink("Доставка", "SvedenijaDostavka", "Admin", null, new { @class = "admmen m6" })
               </li>
               <li>
-                  @Html.ActionLink("Доставка", "SvedenijaDostavka", "Admin")
+                  @Html.ActionLink("Оплата", "SvedenijaOplata", "Admin", null, new { @class = "admmen m7" })
               </li>
               <li>
-                  @Html.ActionLink("Оплата", "SvedenijaOplata", "Admin")
+                  @Html.ActionLink("Статьи", "Panel", "Admin", null, new { @class = "admmen m8" })
               </li>
               <li>
-                  @Html.ActionLink("Статьи", "Panel", "Admin")
+                  @Html.ActionLink("Контакты", "AdminContact", "Contact", null, new { @class = "admmen m9" })
               </li>
               <li>
-                  @Html.ActionLink("Контакты", "AdminContact", "Contact")
+                  @Html.ActionLink("Пользователи", "UserPage", "Admin", null, new { @class = "admmen m10" })
               </li>
               <li>
-                  @Html.ActionLink("Пользователи", "UserPage", "Admin")
-              </li>
-              <li>
-                  @Html.ActionLink("Отзывы", "AdminCommentCompany", "Comment")
+                  @Html.ActionLink("Отзывы", "AdminCommentCompany", "Comment", null, new { @class = "admmen m11" })
               </li>
           </ul>
          
@@ -77,6 +78,24 @@
         @Scripts.Render("~/bundles/jquery")
 
         @RenderSection("scripts", required: false)
+        @*для раскрывающегося списка меню*@
+        <script>         
+            $(".dropspis").find("li:has(ul)").prepend('<div class="drop"></div>');
+            //проверяем наличие элемента для оперделения страницы списка товаров
+            if (!$("a").is(".newdoor"))
+            {
+                $(".dropspis").find("ul").slideUp(1).parents("li").children("div.drop").css({ 'background-position': "0 0" });
+            }              
+                $(".dropspis div.drop").click(function () {
+                    if ($(this).nextAll("ul").css('display') == 'none') {
+                        $(this).nextAll("ul").slideDown(400);
+                        $(this).css({ 'background-position': "-11px 0" });
+                    } else {
+                        $(this).nextAll("ul").slideUp(400);
+                        $(this).css({ 'background-position': "0 0" });
+                    }
+                });              
+        </script>
     </div>
 </body>
 </html>
