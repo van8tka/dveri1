@@ -187,6 +187,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutYstanovkaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Models\ModelComment.cs" />
     <Compile Include="Models\ModelSeoMain.cs" />
     <Compile Include="Models\ModelUser.cs" />
+    <Compile Include="Models\ModelYstanovka.cs" />
     <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\SliderModel.cs" />
@@ -337,6 +339,8 @@
     <Content Include="Views\Comment\AdminEditCommentVhDv.cshtml" />
     <Content Include="Views\Comment\PartialEditComment.cshtml" />
     <Content Include="Views\Admin\MenuAdmin.cshtml" />
+    <Content Include="Views\AboutYstanovka\AdminYstanovka.cshtml" />
+    <Content Include="Views\AboutYstanovka\YstanovkaInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

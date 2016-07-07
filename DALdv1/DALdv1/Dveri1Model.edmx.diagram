@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5de247b06cbc4913a3eb48f1dd914430" Name="Diagram1">
+      <Diagram DiagramId="a6500f1a838146559f9ed1830f8fff0b" Name="Diagram1">
         <EntityTypeShape EntityType="dbdveri1Model.Adresa" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.CommentCompany" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.CommentVhDveri" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
@@ -23,7 +23,9 @@
         <EntityTypeShape EntityType="dbdveri1Model.SliderLeftImg" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.SliderMainImg" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.sysdiagram" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.User" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableArticle" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableYstanovka" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.User" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.VhodnyeDveri" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="dbdveri1Model.FK_CommentVhDveri_VhodnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_FotoFyrnitury_Furnitura" ManuallyRouted="false" />

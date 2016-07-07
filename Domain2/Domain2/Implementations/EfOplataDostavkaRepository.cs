@@ -16,17 +16,17 @@ namespace Domain2.Implementations
             this.context = context;
         }
         public void CreateDostavka(int id, string d)
-        {
+        {//создаем новый объект
             Dostavka dost = new Dostavka
             {
                 Id = id,
                 Dostavka1 = d
-            };
+            };//получаем объекты 
           Dostavka dosta = context.Dostavkas.FirstOrDefault();
-            if(dosta!=null)
+            if(dosta!=null)//если объекты существуют удаляем их
             {
                 DellDostavka(dosta.Id);
-            }             
+            }           //и добавляем новый  
             context.Dostavkas.Add(dost);       
             context.SaveChanges();
         }

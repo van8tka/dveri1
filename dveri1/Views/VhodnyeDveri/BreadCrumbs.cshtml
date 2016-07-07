@@ -35,6 +35,11 @@
             {
                  @Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri")
             }
+            if (Model.NamePartSite == "Установка")
+            {
+                @Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka")
+            }
+            
         }
         @if (Model.NameCategory != null)
         {

@@ -613,7 +613,9 @@ namespace dveri1.Controllers
             {
                 //возвращаем один текст сведений о доставке
                 OplDostModel model = new OplDostModel();
-                model.DostInfo = dataManager.OplDostRepository.GetDostavka().FirstOrDefault().Dostavka1;
+                Dostavka dos = dataManager.OplDostRepository.GetDostavka().FirstOrDefault();
+                //если нет сущности то инфо отсутст иначе присваиваем знасчение поля Dostavka1
+                model.DostInfo = dos!=null ? dos.Dostavka1 : "информация отсутствует..";                       
                 return View(model);
             }
             catch (Exception er)

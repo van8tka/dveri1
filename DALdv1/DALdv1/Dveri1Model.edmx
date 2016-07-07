@@ -202,6 +202,22 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TableArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="550" />
+          <Property Name="Headings" Type="nvarchar" MaxLength="1550" />
+          <Property Name="Articles" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TableYstanovka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Ystanovka" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -323,6 +339,8 @@
           <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CommentVhDveri_VhodnyeDveri" Association="Self.FK_CommentVhDveri_VhodnyeDveri">
@@ -555,6 +573,22 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TableArticle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Headings" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
+          <Property Name="Articles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TableYstanovka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Ystanovka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -679,6 +713,8 @@
           <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
+          <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
           <AssociationSet Name="FK_CommentVhDveri_VhodnyeDveri" Association="Self.FK_CommentVhDveri_VhodnyeDveri">
@@ -920,6 +956,24 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableArticles">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableArticle">
+              <MappingFragment StoreEntitySet="TableArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Headings" ColumnName="Headings" />
+                <ScalarProperty Name="Articles" ColumnName="Articles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableYstanovkas">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableYstanovka">
+              <MappingFragment StoreEntitySet="TableYstanovka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ystanovka" ColumnName="Ystanovka" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

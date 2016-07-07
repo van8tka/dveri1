@@ -1,0 +1,4 @@
+[07.07.2016 23:41:47.966] AboutYstanovkaController/AdminYstanovka-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.AboutYstanovkaController.AdminYstanovka() in D:\GitHub\dveri1\dveri1\Controllers\AboutYstanovkaController.cs:line 31
+[07.07.2016 23:43:39.936] AboutYstanovkaController/AdminYstanovka-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.AboutYstanovkaController.AdminYstanovka() in D:\GitHub\dveri1\dveri1\Controllers\AboutYstanovkaController.cs:line 31

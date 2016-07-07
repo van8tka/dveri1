@@ -61,6 +61,7 @@
     <Compile Include="Implementations\EfSliderRepository.cs" />
     <Compile Include="Implementations\EfUserRepository.cs" />
     <Compile Include="Implementations\EfVhodnyeDvRepository.cs" />
+    <Compile Include="Implementations\EfYstanovkaRepository.cs" />
     <Compile Include="Interfaces\ICommentRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IKlientRepository.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Interfaces\ISliderRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Interfaces\IVhodnyeDvRepository.cs" />
+    <Compile Include="Interfaces\IYstanovkaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

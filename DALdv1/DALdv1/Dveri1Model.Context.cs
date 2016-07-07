@@ -43,6 +43,8 @@ namespace DALdv1
         public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TableArticle> TableArticles { get; set; }
+        public virtual DbSet<TableYstanovka> TableYstanovkas { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<VhodnyeDveri> VhodnyeDveris { get; set; }
     }

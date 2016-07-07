@@ -216,6 +216,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableArticles">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableArticle">
+        <MappingFragment StoreEntitySet="TableArticles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Headings" ColumnName="Headings" />
+          <ScalarProperty Name="Articles" ColumnName="Articles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableYstanovkas">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableYstanovka">
+        <MappingFragment StoreEntitySet="TableYstanovka">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ystanovka" ColumnName="Ystanovka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="dbdveri1Model.User">
         <MappingFragment StoreEntitySet="User">
