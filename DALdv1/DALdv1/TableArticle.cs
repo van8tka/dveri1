@@ -18,5 +18,6 @@ namespace DALdv1
         public string Name { get; set; }
         public string Headings { get; set; }
         public string Articles { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     }
 }

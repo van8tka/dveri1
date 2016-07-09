@@ -589,6 +589,8 @@ div.body-admin{
     width:100%;
     min-width:1200px;
     min-height:700px;
+    height:100%;
+    position:relative;
 }
 
 div.tablecontent{
@@ -598,7 +600,7 @@ margin-left:218px;
 div.navigationleftfixed{
     margin-top:-20px;
     width:220px;
-    height:100%;
+  
     min-height:1000px;
     background-color:lightgray;
     top:0;
@@ -606,6 +608,9 @@ div.navigationleftfixed{
     border:2px solid gray;
     box-shadow: 0 2px 6px black;
     float:left;
+
+    position:absolute;
+      height:101%;
 }
 .actadmin{
     color:black;

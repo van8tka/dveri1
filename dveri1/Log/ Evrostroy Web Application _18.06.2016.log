@@ -1,4 +1,0 @@
-[18.06.2016 15:51:42.379] Admin/EditVhDv-System.NullReferenceException: Object reference not set to an instance of an object.
-   at dveri1.Controllers.AdminController.EditVhDv(CreateVhMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 227
-[18.06.2016 15:52:03.534] Admin/EditVhDv-System.NullReferenceException: Object reference not set to an instance of an object.
-   at dveri1.Controllers.AdminController.EditVhDv(CreateVhMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 227

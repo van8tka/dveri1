@@ -201,16 +201,17 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="550" />
     <Property Name="Headings" Type="nvarchar" MaxLength="1550" />
     <Property Name="Articles" Type="nvarchar(max)" />
+    <Property Name="Date" Type="datetime" />
   </EntityType>
   <EntityType Name="TableYstanovka">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Ystanovka" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="User">

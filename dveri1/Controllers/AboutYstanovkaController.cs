@@ -59,7 +59,6 @@ namespace dveri1.Controllers
         [HttpGet]
         public ActionResult YstanovkaInfo()
         {
-
             try
             {
                 ModelYstanovka model = new ModelYstanovka();

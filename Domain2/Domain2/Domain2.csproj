@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="Implementations\EfArticlesRepository.cs" />
     <Compile Include="Implementations\EfCommentRepository.cs" />
     <Compile Include="Implementations\EfContactRepository.cs" />
     <Compile Include="Implementations\EfKlientRepository.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Implementations\EfUserRepository.cs" />
     <Compile Include="Implementations\EfVhodnyeDvRepository.cs" />
     <Compile Include="Implementations\EfYstanovkaRepository.cs" />
+    <Compile Include="Interfaces\IArticlesRepository.cs" />
     <Compile Include="Interfaces\ICommentRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IKlientRepository.cs" />

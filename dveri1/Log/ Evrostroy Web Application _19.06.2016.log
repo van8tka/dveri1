@@ -1,4 +1,0 @@
-[19.06.2016 14:27:03.608] VhodnyeDveri/VhodnyeDveriIndex-System.NullReferenceException: Object reference not set to an instance of an object.
-   at dveri1.Controllers.VhodnyeDveriController.VhodnyeDveriIndex(Nullable`1 id, Int32 sort, String brand) in D:\GitHub\dveri1\dveri1\Controllers\VhodnyeDveriController.cs:line 49
-[19.06.2016 14:28:06.880] VhodnyeDveri/VhodnyeDveriIndex-System.NullReferenceException: Object reference not set to an instance of an object.
-   at dveri1.Controllers.VhodnyeDveriController.VhodnyeDveriIndex(Nullable`1 id, Int32 sort, String brand) in D:\GitHub\dveri1\dveri1\Controllers\VhodnyeDveriController.cs:line 49

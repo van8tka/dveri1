@@ -19,9 +19,11 @@ namespace Domain2
         private ISeoMainRepository seoMainRepository;
         private ICommentRepository commentRepository;
         private IYstanovkaRepository ystanovkaRepository;
+        private IArticlesRepository articlesRepository;
 
-        public DataManager(IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
+            this.articlesRepository = articlesRepository;
             this.klientRepository = klientRepository;
             this.vhodnDvRepository = vhodnDvRepository;
             this.sliderRepository = sliderRepository;
@@ -33,6 +35,10 @@ namespace Domain2
             this.ystanovkaRepository = ystanovkaRepository;
         }
         //св-ва через которые будет происх вызов
+        public IArticlesRepository ArticlesRepository
+        {
+            get { return articlesRepository; }
+        }
         public IYstanovkaRepository YstanovkaRepository
         {
             get { return ystanovkaRepository; }

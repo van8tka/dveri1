@@ -31,6 +31,8 @@ namespace dveri1.Controllers
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Доставка и оплата");
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Отзывы");
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Контакты");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Установка");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Статьи");
                 }
                 ModelSeoMain model = new ModelSeoMain();
                 model.SeoList = dataManager.SeoMainRepository.GetSeoMain();
