@@ -39,11 +39,11 @@ select
 
 a {
     color:blue;
-    text-decoration-line:none;
+    text-decoration:none;
 }
 a:hover
 {
-    color:darkblue;
+    color:darkblue;  
 }
 
 div{
@@ -262,12 +262,8 @@ div.content-body{
  }
 
 div.navigationfixedtop {
-    /*margin-top:-173px;*/
-     width:inherit;
-    /*min-width:1200px;*/
-    /*position: fixed;*/
+    width:inherit;
     display: block;
-    /*height:135px;*/
     height:170px;
     background-image: url('fon.jpg');  
     z-index:10;
@@ -276,7 +272,6 @@ div.navigation-menu{
     margin-top:110px;
 }
  div.footer{
-  /*min-width:1200px;*/
     display: inline-block;
     height: auto;
     min-height: 50px;
@@ -307,7 +302,7 @@ div.navigation-menu{
    text-align:center;
  }
     div.contactsdata:hover {
-        zoom:1.3;
+       background-color:white;
     }
 /*--------------------------------------меню------------ГЛАВНОЕ МЕНЮ-------------------меню---------------меню------------------------------------------*/
 
@@ -315,12 +310,11 @@ div.navigation-menu{
 	width:1200px;
 	height:51px;
 	background:url(images/fm_menu_bg.jpg) repeat-x;
-    /*margin-top:100px;*/
-      list-style-type: none;
-      position:absolute;
+    list-style-type: none;
+     position:absolute;
 }
 	#menu ul{
-		width:80%;
+		width:90%;
 		margin:0 auto;	
 	}
 		#menu li{
@@ -1510,9 +1504,8 @@ div.breadcrumbsonpage{
     } 
     /*//доставка и оплата*/
     div.dostavka{
-        font-size:large;
-      
-        padding:20px;
+          font-size:large;      
+          padding:20px;
           margin-bottom:10px;
           height:353px;
           overflow-y: scroll;
@@ -1537,6 +1530,9 @@ div.breadcrumbsonpage{
         padding:20px;
         height:auto;
     }
+
+
+
 
   /*================================выбор количества звезд и все для страницы отзывов=========================================*/
 .rating-hide {
@@ -1638,3 +1634,36 @@ div.informcomment {
     padding: 2px 0 15px 10px;
     float:left;
 }
+/*=================================================    С Т А Т Ь И   ===========================================================================*/
+div.bootharticles{
+     margin-top:5px;
+     margin-left:-10px;
+     display:block;
+     padding:5px;
+     text-align:justify
+}
+div.bootharticles a{
+   text-decoration:none;
+}
+
+
+
+div.bootharticles:hover{
+    border: 1px solid gray;
+    border-radius: 3px;
+    box-shadow: 1px 3px 6px black;
+    color:black !important;
+    cursor:pointer;
+}
+div.article2{
+     display:block;
+    }
+div.article2 a{
+     text-decoration:none;
+   }
+
+
+.article2 .artmain:hover, .entren:hover{   
+    color:black;
+   }
+

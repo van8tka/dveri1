@@ -33,7 +33,9 @@
                     <td class="tac">@i.Date</td>
                       <td>@i.Name</td>
                     <td>@i.Headings</td>
-                    <td>@Html.ActionLink("Удалить", "DellArticle", "Articles", new { id = i.ID }, new { @class = "tablebut", style = "width:100px" })</td>
+                    <td>@Html.ActionLink("Удалить", "DellArticle", "Articles", new { id = i.ID }, new { @class = "tablebut", style = "width:100px;margin-bottom:5px;" })
+                       @Html.ActionLink("Мета тэги", "CreateSeoArticle", "Articles", new { id = i.ID }, new { @class = "tablebut", style = "width:100px" })
+                    </td>
                 </tr>
             }
         </table>

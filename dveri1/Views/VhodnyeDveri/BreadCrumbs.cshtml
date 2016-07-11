@@ -5,9 +5,9 @@
 <div class="breadcrumbs">
     <hr style="float: left;height: 3px; width: 100%;">
    
-       
+       @*//для страницы главная*@
                      @Html.ActionLink("Главная", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "homebreadcrumbs" })
-      
+      @*другие главные разделы сайта*@
         @if (Model.NamePartSite != null)
         {
 
@@ -39,7 +39,15 @@
             {
                 @Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka")
             }
-            
+            if (Model.NamePartSite == "Статьи")
+            {
+                @Html.ActionLink("Статьи", "GetArticles", "Articles")
+                if (Model.NameProduct != null)
+                {
+                    <a>@Model.NameProduct</a>
+                }
+            }
+
         }
         @if (Model.NameCategory != null)
         {

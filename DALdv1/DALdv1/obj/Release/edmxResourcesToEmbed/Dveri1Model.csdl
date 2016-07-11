@@ -213,6 +213,17 @@
     <Property Name="Headings" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
     <Property Name="Articles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TableSeoArticle" Relationship="Self.FK_TableSeoArticles_TableArticles1" FromRole="TableArticles" ToRole="TableSeoArticles" />
+  </EntityType>
+  <EntityType Name="TableSeoArticle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="Keywords" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TableArticle" Relationship="Self.FK_TableSeoArticles_TableArticles1" FromRole="TableSeoArticles" ToRole="TableArticles" />
   </EntityType>
   <EntityType Name="TableYstanovka">
     <Key>
@@ -326,6 +337,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TableSeoArticles_TableArticles1">
+    <End Role="TableArticles" Type="Self.TableArticle" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TableSeoArticles" Type="Self.TableSeoArticle" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TableArticles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TableSeoArticles">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresas" EntityType="Self.Adresa" />
     <EntitySet Name="CommentCompanies" EntityType="Self.CommentCompany" />
@@ -346,6 +371,7 @@
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
+    <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
     <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
@@ -368,6 +394,10 @@
     <AssociationSet Name="FK_SeoVhodnuhDverei_VhodnyeDveri" Association="Self.FK_SeoVhodnuhDverei_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
       <End Role="SeoVhodnuhDverei" EntitySet="SeoVhodnuhDvereis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableSeoArticles_TableArticles1" Association="Self.FK_TableSeoArticles_TableArticles1">
+      <End Role="TableArticles" EntitySet="TableArticles" />
+      <End Role="TableSeoArticles" EntitySet="TableSeoArticles" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

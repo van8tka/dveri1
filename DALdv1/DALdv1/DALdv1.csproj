@@ -121,6 +121,9 @@
     <Compile Include="TableArticle.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TableSeoArticle.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TableYstanovka.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

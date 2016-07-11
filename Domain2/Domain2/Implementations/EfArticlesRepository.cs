@@ -25,7 +25,7 @@ namespace Domain2.Implementations
                     Name = name,
                     Headings = descrip,
                     Articles = art,
-                    Date = DateTime.Now
+                    Date = DateTime.Now,
                 };
                 context.TableArticles.Add(ta);
             }
@@ -42,7 +42,29 @@ namespace Domain2.Implementations
                 }
             }
             context.SaveChanges();     
+            if(id==0)
+            {
+                TableSeoArticle ta = new TableSeoArticle()
+                {
+                    ID = context.TableArticles.OrderByDescending(z => z.ID).First().ID,
+                    Title = name,
+                    Keywords = null,
+                    Description = null
+                };
+                context.TableSeoArticles.Add(ta);
+                context.SaveChanges();
+            }
+        }
 
+        public void CreateSeoArticle(int id, string title, string key, string desc)
+        {
+           
+             TableSeoArticle ta = context.TableSeoArticles.Where(i => i.ID == id).FirstOrDefault();
+                    ta.Title = title;
+                    ta.Keywords = key;
+                    ta.Description = desc;
+              context.Entry(ta).State = System.Data.Entity.EntityState.Modified;
+              context.SaveChanges();
         }
 
         public void DelArticle(int id)
@@ -64,6 +86,11 @@ namespace Domain2.Implementations
         public IEnumerable<TableArticle> GetArticles()
         {
             return context.TableArticles;
+        }
+
+        public TableSeoArticle GetSeoArticle(int id)
+        {
+            return context.TableSeoArticles.Where(x => x.ID == id).FirstOrDefault();
         }
     }
 }

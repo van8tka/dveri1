@@ -73,13 +73,13 @@
         </div>
         <div>
             @Html.ActionLink("ВХОДНЫЕ ДВЕРИ ВЕСЬ СПИСОК", "VhodnyeDveriIndex", "VhodnyeDveri", new { sort = 0, brand = "весьтовар" }, new { @class = "leftMenuButton весьтовар" })
-            @foreach (var i in Model.Brand)
+           @foreach (var i in Model.Brand)
             {
                 if (i != null)
                 {
-                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new { sort = 0, brand = i }, new { @class = "leftMenuButton " + i })
-                }
-            }
+                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new {id=1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i })
+                 }
+             }
         </div>
         @*слайдер левый боковой orbit*@
         <div class="LeftSlider mt20">
@@ -90,6 +90,12 @@
                 }
             </div>
         </div>
+        @*статьи 5 последних с сылками на их же*@
+        <div>
+            @Html.Action("GetFiveArticles","Articles")
+        </div>
+
+
     </div>
     @Html.Partial("ProductList")
 </div>
@@ -113,29 +119,22 @@
     $(document).ready(function(){
         //скрипт слайдера левого (орбит)
         $(window).load(function() {
-
             $("#featured").orbit({
-
                 'bullets': false,
-
                 'timer' : true,
-
-
                 'animation' : 'horizontal-slide'
-
             });
-
         });
 
 
-        $('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
+        @*$('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
            '</div>  '));
-        var page = 1;
+        var page = 1;*@
         //выделение текущего брэнда
 
         $('.@Model.CurrentBrand').addClass("act");
 
-        $('.showadd').click(
+        @*$('.showadd').click(
         function loadItems() {
                var totalpages = $(".showadd").val();
 
@@ -164,7 +163,7 @@
              {
                  $('.addpage').replaceWith($('<div class="emtypage"> </div>  '));
              }
-        }  )
+        }  )*@
     })
     </script>
 

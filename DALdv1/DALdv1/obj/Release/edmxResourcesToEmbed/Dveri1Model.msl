@@ -227,6 +227,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableSeoArticles">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticle">
+        <MappingFragment StoreEntitySet="TableSeoArticles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableYstanovkas">
       <EntityTypeMapping TypeName="dbdveri1Model.TableYstanovka">
         <MappingFragment StoreEntitySet="TableYstanovka">

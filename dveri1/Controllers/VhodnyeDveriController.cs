@@ -305,7 +305,7 @@ namespace dveri1.Controllers
             }
         }
         //---------------------------------------------------------------хлебные крошки----------------------------------------------
-        public ActionResult BreadCrumbs(ForMainModel mainmod = null,KartochkaTovaraModel kmod = null, string namepart = null)
+        public ActionResult BreadCrumbs(ForMainModel mainmod = null,KartochkaTovaraModel kmod = null, string namepart = null,string nameart=null)
         {
             try
             {
@@ -313,6 +313,10 @@ namespace dveri1.Controllers
                 if (namepart != null)
                 {
                     mod.NamePartSite = namepart;
+                    if (nameart != null)
+                    {
+                        mod.NameProduct = nameart;
+                    }
                 }
                 if (mainmod.Brand != null&& mainmod.Brand.First()!="весьтовар")
                 {
@@ -324,8 +328,9 @@ namespace dveri1.Controllers
                     {
                         mod.NameCategory = kmod.Tovar.Proizvoditel;
                         mod.NameProduct = kmod.Tovar.Nazvanie;
-                    }
+                    }        
                 }
+               
                 return View(mod);
             }
             catch (Exception er)

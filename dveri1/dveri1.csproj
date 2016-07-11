@@ -427,6 +427,10 @@
     <Content Include="Views\AboutYstanovka\YstanovkaInfo.cshtml" />
     <Content Include="Views\Articles\AdminGetArticles.cshtml" />
     <Content Include="Views\Articles\CreateArticle.cshtml" />
+    <Content Include="Views\Articles\GetFiveArticles.cshtml" />
+    <Content Include="Views\Articles\GetArticle.cshtml" />
+    <Content Include="Views\Articles\GetArticles.cshtml" />
+    <Content Include="Views\Articles\CreateSeoArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,7 @@ namespace dveri1.Models
         public string SeoHead { get; set; }
         public TableArticle ArticleOne { get; set; }
         public IEnumerable<TableArticle> ArticlesList { get; set; }
+        public PagingInfo pagingInfo { get; set; }
     }
     public class ModelArticleCreate
     {
@@ -27,5 +28,13 @@ namespace dveri1.Models
         [StringLength(1549, MinimumLength = 1, ErrorMessage = "Максимальная длина описания 1550 символов")]
         public string ArticleDescript { get; set; }
         public int ArticleID { get; set; }
+    }
+    public class ModelSeoArticle
+    {
+        public int IDart { get; set; }
+        public string Key { get; set; }
+        public string Desc { get; set; }
+        [Required(ErrorMessage ="Введите значение title!")]
+        public string Title { get; set; }
     }
 }
