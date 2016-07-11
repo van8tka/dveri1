@@ -88,8 +88,23 @@ div.allspisok{
       border-radius:3px;
       box-shadow:1px 3px 6px black;
        height:398px;
-       width:208px;
-      
+       width:208px;     
+ }
+ div.shortproduct-small
+ {
+     display:block;
+     float:left;
+     height:240px;
+     width:140px;
+     margin:5px 0px 0px 6px;
+     text-align:center;
+ }
+ div.shortproduct-small:hover{
+      border: 1px solid gray;
+      border-radius:3px;
+      box-shadow:1px 3px 6px black;
+      height:238px;
+      width:138px;     
  }
  div.imageshort{
      display:block;
@@ -100,6 +115,19 @@ div.allspisok{
      height:240px;
      margin-top:15px;
  }
+
+img.img-thumbnail-small{
+     width:55px;
+     height:120px;
+     margin-top:15px;
+}
+
+div.shortChar{
+     width:138px;height:85px;overflow:hidden;
+}
+
+
+
  /*//для отображения текста в редакторе админа*/
  textarea.areas{
     width:960px;
@@ -151,6 +179,30 @@ div.allspisok{
     margin-left:115px;  
  }
 
+  div.blockpercent-small{
+    z-index:3;
+    position:absolute;
+    margin-left:74px;  
+    margin-top:10px;
+ }
+  .percent-small{
+        background-image: -webkit-gradient(linear, center top, center bottom, from(#ff7e4d 20%), to(#bd0502 66%));
+background-image: -webkit-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -moz-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -o-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: -ms-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
+background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
+                /*position:relative;*/
+                font-size: 14px;
+                color: #fff;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                border-radius:50%;
+                line-height: 25px;
+                /*z-index:3;*/
+                padding:3px;
+  }
 
 /*для скидки*/
  .percent{

@@ -242,6 +242,11 @@
     <Content Include="Content\ImgComment\starwhite.png" />
     <Content Include="Content\ImgComment\starwhite24.png" />
     <Content Include="Content\ImgComment\user.png" />
+    <Content Include="Content\KaruselTovara\next.png" />
+    <Content Include="Content\KaruselTovara\prev.png" />
+    <Content Include="Content\KaruselTovara\Для слайдера на чистом css htmкод.txt" />
+    <Content Include="Content\KaruselTovara\Для слайдера на чистом css.css" />
+    <Content Include="Content\KaruselTovara\том css.css" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\orbit.css" />
@@ -431,6 +436,7 @@
     <Content Include="Views\Articles\GetArticle.cshtml" />
     <Content Include="Views\Articles\GetArticles.cshtml" />
     <Content Include="Views\Articles\CreateSeoArticle.cshtml" />
+    <Content Include="Views\VhodnyeDveri\SimilarGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

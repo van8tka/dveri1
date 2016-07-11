@@ -27,4 +27,9 @@ namespace dveri1.Models
         public string SeoHead { get; set; }
 
     }
+    public class KaruselTovara
+    {
+        public IEnumerable<VhodnyeDveri> ListVhodnDv { get; set; }
+      
+    }
 }

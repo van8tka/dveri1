@@ -25,11 +25,11 @@ namespace dveri1.Controllers
         //    1-по возрастанию,
         //    2-по убыванию,
         //    0-по номеру(по умолчанию)
-      
+
         public int PageSize = 32;
         //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult VhodnyeDveriIndex(int? id, int sort=0, string brand="весьтовар")
+        public ActionResult VhodnyeDveriIndex(int? id, int sort = 0, string brand = "весьтовар")
         {
             try
             {
@@ -79,12 +79,12 @@ namespace dveri1.Controllers
                         }
                         else
                         {
-                            model.SeoHead = "Входные двери от производителя "+brand+"! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
+                            model.SeoHead = "Входные двери от производителя " + brand + "! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
                         }
                     }
                     else
                     {
-                        model.SeoTitle = "Купить входные двери фирмы "+brand;
+                        model.SeoTitle = "Купить входные двери фирмы " + brand;
                         model.SeoHead = "Входные двери от производителя " + brand + "! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
                     }
                 }
@@ -105,11 +105,11 @@ namespace dveri1.Controllers
                 model.Brand = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.Proizvoditel).Distinct().OrderBy(z => z);
                 if (Request.IsAjaxRequest())
                 {
-                     return RedirectToAction("ProductList", new { page, sort, brand });
+                    return RedirectToAction("ProductList", new { page, sort, brand });
                 }
-              
+
                 return View(model);
-                
+
             }
             catch (Exception er)
             {
@@ -122,8 +122,8 @@ namespace dveri1.Controllers
         {
             try
             {
-                FotoVhodnyhDverey foto = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id).OrderBy(x=>x.Idfoto).FirstOrDefault();
-                if (foto!= null)
+                FotoVhodnyhDverey foto = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id).OrderBy(x => x.Idfoto).FirstOrDefault();
+                if (foto != null)
                 { return File(foto.Imaging, foto.MimeType); }
                 else
                 {//   изображение по умолчанию
@@ -136,32 +136,32 @@ namespace dveri1.Controllers
                 return null;
             }
         }
-      
-            [HttpGet]
-    public ActionResult ProductList(int page = 1, int sort = 0,string brand= "весьтовар")
-    {
+
+        [HttpGet]
+        public ActionResult ProductList(int page = 1, int sort = 0, string brand = "весьтовар")
+        {
             try
             {
-            ForMainModel model = new ForMainModel();
-            model.CurrentBrand = brand;
-            int TotalItemsProduct;
-            if (brand== "весьтовар")
-            {
-                TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
-            }
-            else
-            {
-                TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
-            }
-          
-            model.ListVhodnDv = SortirDveri(page,sort,brand);
-            model.PagingInfo = new PagingInfo
-            {
-                CurrentPage = page,
-                TotalItems = TotalItemsProduct,
-                ItemsPerPage = PageSize
-            };        
-            return PartialView(model);
+                ForMainModel model = new ForMainModel();
+                model.CurrentBrand = brand;
+                int TotalItemsProduct;
+                if (brand == "весьтовар")
+                {
+                    TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true).Count();
+                }
+                else
+                {
+                    TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
+                }
+
+                model.ListVhodnDv = SortirDveri(page, sort, brand);
+                model.PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    TotalItems = TotalItemsProduct,
+                    ItemsPerPage = PageSize
+                };
+                return PartialView(model);
             }
             catch (Exception er)
             {
@@ -169,59 +169,59 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-      //   метод возврата списка отсортированных дверей
-      public IEnumerable<VhodnyeDveri> SortirDveri(int page,int s, string br)
+        //   метод возврата списка отсортированных дверей
+        public IEnumerable<VhodnyeDveri> SortirDveri(int page, int s, string br)
         {
             try
             {
-            IEnumerable<VhodnyeDveri> temp = null;
-            if(br!= "весьтовар")
-            {
-                switch (s)
+                IEnumerable<VhodnyeDveri> temp = null;
+                if (br != "весьтовар")
                 {
-                    case 0:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                    switch (s)
+                    {
+                        case 0:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        case 1:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        case 2:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        default:
                             break;
-                        }
-                    case 1:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
-                            break;
-                        }
-                    case 2:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
-                            break;
-                        }
-                    default:
-                        break;
+                    }
                 }
-            }
-            else
-            {
-                switch (s)
+                else
                 {
-                    case 0:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                    switch (s)
+                    {
+                        case 0:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        case 1:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        case 2:
+                            {
+                                temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
+                                break;
+                            }
+                        default:
                             break;
-                        }
-                    case 1:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
-                            break;
-                        }
-                    case 2:
-                        {
-                            temp = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
-                            break;
-                        }
-                    default:
-                        break;
+                    }
                 }
-            }       
-            return temp;
+                return temp;
             }
             catch (Exception er)
             {
@@ -230,16 +230,16 @@ namespace dveri1.Controllers
             }
         }
         //вызов сведений о контактах в layout
- public ActionResult ContactOnPanel()
+        public ActionResult ContactOnPanel()
         {
             try
             {
-            ViewBag.Count = 0;
-            ViewBag.Count1 = 0;
-            ContactModel model = new ContactModel();
-            model.ContactList = dataManager.ContactRepository.GetContacts();
-            model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
-            return PartialView(model);
+                ViewBag.Count = 0;
+                ViewBag.Count1 = 0;
+                ContactModel model = new ContactModel();
+                model.ContactList = dataManager.ContactRepository.GetContacts();
+                model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
+                return PartialView(model);
             }
             catch (Exception er)
             {
@@ -257,15 +257,15 @@ namespace dveri1.Controllers
                 model.Tovar = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
                 model.FotoTovara = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id);
                 //отбираем коментарии к товару по ID с указанной публикацией, сортироуем по дате (сначала последние(свежие), и отбираем 1-ые 100 комментов)
-                model.CommentVhDvList = dataManager.CommentRepository.GetCommentVhDv().Where(x => x.IDdv == id && x.Public == true).OrderByDescending(z=>z.Date).Take(100);
+                model.CommentVhDvList = dataManager.CommentRepository.GetCommentVhDv().Where(x => x.IDdv == id && x.Public == true).OrderByDescending(z => z.Date).Take(100);
                 OplDostModel md = new OplDostModel();
                 md = InfaDostOplata();
                 model.InfoDostavka = md.DostInfo;
                 model.InfoOplata = md.OplInfo;
                 SeoVhodnuhDverei se = dataManager.VhodnyeDvRepository.GetSeoVhDv().Where(x => x.Id == id).FirstOrDefault();
-                if (se!= null)
+                if (se != null)
                 {
-                    if(se.TitleDveri!=null&&se.TitleDveri!="")
+                    if (se.TitleDveri != null && se.TitleDveri != "")
                     {
                         model.TitleD = se.TitleDveri;
                     }
@@ -280,17 +280,17 @@ namespace dveri1.Controllers
                 {
                     model.TitleD = "купить " + model.Tovar.Nazvanie;
                 }
-                    
+
                 return View(model);
             }
             catch (Exception er)
             {
-                ClassLog.Write("VhodnyeDveri/ TovarPage-"+ er);
+                ClassLog.Write("VhodnyeDveri/ TovarPage-" + er);
                 return View("Error");
-            }           
+            }
         }
 
-//акшен для возврата частичного представления с данными кликнутого фото в карточке товара
+        //акшен для возврата частичного представления с данными кликнутого фото в карточке товара
         public ActionResult ImgTov(int id)
         {
             try
@@ -305,7 +305,7 @@ namespace dveri1.Controllers
             }
         }
         //---------------------------------------------------------------хлебные крошки----------------------------------------------
-        public ActionResult BreadCrumbs(ForMainModel mainmod = null,KartochkaTovaraModel kmod = null, string namepart = null,string nameart=null)
+        public ActionResult BreadCrumbs(ForMainModel mainmod = null, KartochkaTovaraModel kmod = null, string namepart = null, string nameart = null)
         {
             try
             {
@@ -318,7 +318,7 @@ namespace dveri1.Controllers
                         mod.NameProduct = nameart;
                     }
                 }
-                if (mainmod.Brand != null&& mainmod.Brand.First()!="весьтовар")
+                if (mainmod.Brand != null && mainmod.Brand.First() != "весьтовар")
                 {
                     mod.NameCategory = mainmod.Brand.First();
                 }
@@ -328,9 +328,9 @@ namespace dveri1.Controllers
                     {
                         mod.NameCategory = kmod.Tovar.Proizvoditel;
                         mod.NameProduct = kmod.Tovar.Nazvanie;
-                    }        
+                    }
                 }
-               
+
                 return View(mod);
             }
             catch (Exception er)
@@ -353,7 +353,7 @@ namespace dveri1.Controllers
                 {
                     model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
                 }
-               return View(model);
+                return View(model);
             }
             catch (Exception er)
             {
@@ -367,31 +367,31 @@ namespace dveri1.Controllers
         {
             try
             {
-                 if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {//вызов метода отправки сообщегия админу
-                   if( SendMessageAboutBuyDoor(model))                  
+                    if (SendMessageAboutBuyDoor(model))
                     {
-                             TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вам в течении 15 минут!";     
+                        TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вам в течении 15 минут!";
                     }
                     else
-                    {   
-                            TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";                          
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
                     }
-                    return RedirectToAction("TovarPage", new {id=model.IdDveri});
+                    return RedirectToAction("TovarPage", new { id = model.IdDveri });
                 }
                 else
                 {
                     return View(model);
-                }                
+                }
             }
             catch (Exception er)
             {
-               ClassLog.Write("VhodnyeDveri/BuyDveri-" + er);
-               return View("Error");
-           }
-      }
-       //================метод отправки сообщения админу от клиента========================
-       protected bool SendMessageAboutBuyDoor(ModelBuyDveri model)
+                ClassLog.Write("VhodnyeDveri/BuyDveri-" + er);
+                return View("Error");
+            }
+        }
+        //================метод отправки сообщения админу от клиента========================
+        protected bool SendMessageAboutBuyDoor(ModelBuyDveri model)
         {
             //запись клиента в бд
             dataManager.KlientRepository.CreateKlient(model.IdDveri, model.KlientName, model.KlientPhone, model.KlientAdres, model.KlientQuestion, model.Type);
@@ -400,38 +400,38 @@ namespace dveri1.Controllers
             string them = "Cообщение от клиента: " + model.KlientName + ", тел. или email: " + model.KlientPhone;
             string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
             //проверяем если нет такой двери
-            if (model.IdDveri!=9999)
+            if (model.IdDveri != 9999)
             {
                 VhodnyeDveri vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == model.IdDveri).FirstOrDefault();
                 string cena, cenasoskidkoy;
                 if (vhd.Cena == null)
-                    {
+                {
                     cena = "Не установлена";
-                    }
+                }
                 else
-                    {
+                {
                     cena = vhd.Cena.Value.ToString("C");
-                    }
+                }
                 if (vhd.CenaSoSkidcoy == null)
                 {
-                    cenasoskidkoy = "Скидки нет"; 
+                    cenasoskidkoy = "Скидки нет";
                 }
                 else
                 {
                     cenasoskidkoy = vhd.CenaSoSkidcoy.Value.ToString("C");
                 }
-                   
+
                 body = "Текст сообщения: " + model.KlientQuestion + "\r\n" + "тип товара: " + model.Type + "\r\n" + "код товара: " + model.IdDveri + "\r\n" + "наименование товара: " + vhd.Nazvanie + "\r\n" + "фирма производитель: " + vhd.Proizvoditel +
                 "\r\n" + "Цена: " + cena + "\r\n" + "Скидка: " + vhd.Skidka + "\r\n" + "Цена со скидкой: " + cenasoskidkoy;
             }
             else
             {
                 body = "Свяжитесь с клиентом по тел. или e-email: " + model.KlientPhone;
-            }         
+            }
             if (SendMsg.Message(body, them, adres))
             { return true; }
             else
-            {return false; }
+            { return false; }
         }
 
 
@@ -464,7 +464,7 @@ namespace dveri1.Controllers
             {
                 if (ModelState.IsValid)
                 {//вызов метода отправки сообщения админу
-                    if(SendMessageAboutBuyDoor(model))
+                    if (SendMessageAboutBuyDoor(model))
                     {
                         return Json(model.KlientName + "! Вы сделали заказ на покупку товара: " + model.DvName + ". Наш менеджер свяжется с Вами в течении 15 минут! Спасибо, что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
                     }
@@ -506,7 +506,7 @@ namespace dveri1.Controllers
                         model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
                     }
                 }
-               
+
                 return View(model);
             }
             catch (Exception er)
@@ -530,7 +530,7 @@ namespace dveri1.Controllers
                     {
                         TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
                     }
-                    if(model.IdDveri==9999)
+                    if (model.IdDveri == 9999)
                     {
                         return RedirectToAction("VhodnyeDveriIndex");
                     }
@@ -560,19 +560,19 @@ namespace dveri1.Controllers
                 ModelBuyDveri model = new ModelBuyDveri();
                 model.IdDveri = id;
                 model.Type = type;
-               if(id==9999)
+                if (id == 9999)
                 {
                     model.KlientName = "Перезвоните мне";
                 }
-               else
+                else
                 {
                     model.KlientName = "Быстрая покупка";
                     if (type == "входные двери")
                     {
                         model.DvName = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id).Nazvanie;
                     }
-                }               
-              
+                }
+
                 return View(model);
             }
             catch (Exception er)
@@ -622,7 +622,7 @@ namespace dveri1.Controllers
                     model.SeoTitle = s.Title;
                     model.SeoKey = s.Keywords;
                     model.SeoDesc = s.Description;
-                    if(s.Header!=null)
+                    if (s.Header != null)
                     {
                         model.SeoHead = s.Header;
                     }
@@ -637,8 +637,8 @@ namespace dveri1.Controllers
                     model.SeoHead = "Информация о доставке товаров и об оплате";
                 }
                 return View(model);
-            }           
-             catch (Exception er)
+            }
+            catch (Exception er)
             {
                 ClassLog.Write("VhodnyeDveri/FastBuyDveriModel-" + er);
                 return View("Error");
@@ -668,5 +668,19 @@ namespace dveri1.Controllers
             }
             return model;
         }
+        //для загрузки похожих товаров на странице карточка товара
+        public ActionResult SimilarGoods()
+        {
+            KaruselTovara model = new KaruselTovara();
+            //получим рандомное число
+            int maxgoods = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
+            Random rand = new Random();
+            int randomize = rand.Next(1, maxgoods-25);
+
+            //пропустим рандомное число товаров и выберем следующие 24;
+            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Skip(randomize).Take(24);
+            return View(model);
+        }
+
     }
 }
