@@ -95,6 +95,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Visual\TestForExel\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -193,6 +198,7 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ExpImpController.cs" />
     <Compile Include="Controllers\MetaTagsController.cs" />
     <Compile Include="Controllers\VhodnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
@@ -211,6 +217,7 @@
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
     <Compile Include="Models\ModelComment.cs" />
+    <Compile Include="Models\ModelExpImp.cs" />
     <Compile Include="Models\ModelSeoMain.cs" />
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\ModelYstanovka.cs" />
@@ -244,9 +251,7 @@
     <Content Include="Content\ImgComment\user.png" />
     <Content Include="Content\KaruselTovara\next.png" />
     <Content Include="Content\KaruselTovara\prev.png" />
-    <Content Include="Content\KaruselTovara\Для слайдера на чистом css htmкод.txt" />
-    <Content Include="Content\KaruselTovara\Для слайдера на чистом css.css" />
-    <Content Include="Content\KaruselTovara\том css.css" />
+    <Content Include="Content\KaruselTovara\ForKaruselOfGoods.css" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\orbit.css" />
@@ -437,6 +442,7 @@
     <Content Include="Views\Articles\GetArticles.cshtml" />
     <Content Include="Views\Articles\CreateSeoArticle.cshtml" />
     <Content Include="Views\VhodnyeDveri\SimilarGoods.cshtml" />
+    <Content Include="Views\ExpImp\Export.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

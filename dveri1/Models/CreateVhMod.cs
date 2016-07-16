@@ -64,4 +64,5 @@ namespace dveri1.Models
         public string ImageMimeType{ get; set; }
         public byte[] ImageData{get;set;}
     }
+
 }

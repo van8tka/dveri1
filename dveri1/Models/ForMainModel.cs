@@ -29,7 +29,6 @@ namespace dveri1.Models
     }
     public class KaruselTovara
     {
-        public IEnumerable<VhodnyeDveri> ListVhodnDv { get; set; }
-      
+        public IEnumerable<VhodnyeDveri> ListVhodnDv { get; set; }    
     }
 }

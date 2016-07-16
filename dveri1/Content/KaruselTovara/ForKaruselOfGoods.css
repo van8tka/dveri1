@@ -5,8 +5,8 @@
 	margin: 0 auto;
     height:100%;
 }
-
-article{
+#sliderKar,
+.articleslider  {
   margin: 0;
   padding: 0;
   border: 0;
@@ -38,7 +38,7 @@ article{
 	line-height: 0;
 }
 
-#slides article {
+#slides .articleslider {
 	width: 100%;
     margin-bottom:5px;
 }

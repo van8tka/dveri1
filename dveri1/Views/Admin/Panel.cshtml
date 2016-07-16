@@ -7,7 +7,8 @@
 <div class="tablecontent">
     <div style="margin:1em;">
         @Html.ActionLink("Новый товар", "CreateVhDv", "Admin", new {@class= "tablebut newdoor", style="width:150px"})
-    </div>
+        @Html.ActionLink("Экспорт товара", "Export", "ExpImp", new {categor = ViewBag.NameProductList }, new { @class = "tablebut newdoor", style = "width:150px" })
+        </div>          
     <hr />
     <h3 class="headpanel">@ViewBag.NameProductList</h3>
     <table class="table_dark">
@@ -94,7 +95,7 @@
    // alert(z);
     if ($(".itemMA").attr('id')==id)
     {
-        alert($(".itemMA").attr('id'))
+        //alert($(".itemMA").attr('id'))
         //$(".itemMA").removeClass("actadmin")
         //$($(".itemMA").attr('id')).addClass("actadmin")
     }

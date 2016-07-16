@@ -49,6 +49,9 @@ a:hover
 div{
     color:blue;
 }
+div.chLine div:hover{
+    background-color:gray;
+}
 div.productlist{
     height:initial;
     padding-bottom:60px;
@@ -98,6 +101,7 @@ div.allspisok{
      width:140px;
      margin:5px 0px 0px 6px;
      text-align:center;
+   
  }
  div.shortproduct-small:hover{
       border: 1px solid gray;
@@ -123,7 +127,7 @@ img.img-thumbnail-small{
 }
 
 div.shortChar{
-     width:138px;height:85px;overflow:hidden;
+     width:138px;height:55px;overflow:hidden;
 }
 
 
