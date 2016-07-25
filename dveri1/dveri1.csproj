@@ -443,6 +443,8 @@
     <Content Include="Views\Articles\CreateSeoArticle.cshtml" />
     <Content Include="Views\VhodnyeDveri\SimilarGoods.cshtml" />
     <Content Include="Views\ExpImp\Export.cshtml" />
+    <Content Include="Views\ExpImp\Import.cshtml" />
+    <Content Include="Views\ExpImp\EmptyFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

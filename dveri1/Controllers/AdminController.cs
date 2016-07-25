@@ -28,8 +28,17 @@ namespace dveri1.Controllers
         //для добавления списка меню в админку по категориям товара(производителя)
         public ActionResult MenuAdmin()
         {
-             var model = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(z => z.Proizvoditel).GroupBy(z=>z.Proizvoditel).ToDictionary(z=>z.Key,z=>z.ToList());
-            return View(model);
+            try
+            {//выберем и сгрупируем данные по производителю для составления меню
+                IEnumerable<VhodnyeDveri> vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(z => z.Proizvoditel != null);
+                var model = vhd.OrderBy(z => z.Proizvoditel).GroupBy(z => z.Proizvoditel).ToDictionary(z => z.Key, z => z.ToList());
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/MenuAdmin-" + er);
+                return View("Error");
+            }
         }
 
         [Authorize]
@@ -39,7 +48,7 @@ namespace dveri1.Controllers
             {
                 int TotalItemsProduct = 0;
                 ForMainModel model = new ForMainModel();
-                if(brand == null)
+                if(brand == null||brand == "Входные двери - весь список")
                 {
                     ViewBag.NameProductList = "Входные двери - весь список";
                    TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();

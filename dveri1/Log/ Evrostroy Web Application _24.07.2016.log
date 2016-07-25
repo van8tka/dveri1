@@ -1,0 +1,258 @@
+[24.07.2016 16:02:04.734] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 579
+[24.07.2016 16:06:15.752] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 579
+[24.07.2016 16:09:02.220] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 579
+[24.07.2016 16:16:03.237] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 579
+[24.07.2016 16:18:56.014] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 582
+[24.07.2016 16:20:23.340] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 582
+[24.07.2016 16:35:17.467] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 582
+[24.07.2016 16:40:04.868] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(37).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 581
+[24.07.2016 16:43:37.084] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(37).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 577
+[24.07.2016 16:45:30.608] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(37).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 577
+[24.07.2016 16:49:14.079] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(37).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 577
+[24.07.2016 16:51:40.749] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(37).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 577
+[24.07.2016 17:32:42.739] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'double?'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 571
+[24.07.2016 17:32:42.746] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(3).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 695
+[24.07.2016 17:38:29.531] ExpImpController/Import(ImportToDataBase)- System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Decimal.Parse(String s)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 620
+[24.07.2016 17:38:29.535] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(3).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 704
+[24.07.2016 17:42:42.188] ExpImpController/Import(ImportToDataBase)- System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Decimal.Parse(String s)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 620
+[24.07.2016 17:52:25.599] ExpImpController/Import(ImportToDataBase)- System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateVhodnyeDv(Int32 id, String naz, String pr, String strpr, String cvet, String napoln, String yplotnit, Nullable`1 tmet, String furn, String petli, String osn, String ovn, Nullable`1 tdpol, Nullable`1 cena, Nullable`1 skidka, Nullable`1 csskid, String opis, Boolean publ, String dopchar) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 66
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 678
+[24.07.2016 18:47:42.715] ExpImpController/Import(ImportToDataBase)- System.Runtime.InteropServices.COMException (0x8001010A): Фильтр сообщений выдал диагностику о занятости приложения. (Exception from HRESULT: 0x8001010A (RPC_E_SERVERCALL_RETRYLATER))
+   at System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   at System.Dynamic.ComRuntimeHelpers.CheckIfMissingTypeInfoIsExpected(Int32 hresult, Boolean throwIfMissingExpectedTypeInfo)
+   at System.Dynamic.ComRuntimeHelpers.GetITypeInfoFromIDispatch(IDispatch dispatch, Boolean throwIfMissingExpectedTypeInfo)
+   at System.Dynamic.IDispatchComObject.EnsureScanDefinedMethods()
+   at CallSite.Target(Closure , CallSite , ComObject )
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 518
+[24.07.2016 18:54:45.750] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'bool'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 648
+[24.07.2016 18:56:39.568] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'bool'
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 648
+[24.07.2016 18:57:47.720] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'bool'
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 648
+[24.07.2016 18:57:55.444] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(3).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 692
+[24.07.2016 18:57:55.454] ExpImpController/Import- System.IO.IOException: The process cannot access the file 'D:\GitHub\dveri1\dveri1\App_Data\ForDB\Книга1(3).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at dveri1.Controllers.ExpImpController.Import(IEnumerable`1 fileupload) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 345
+[24.07.2016 18:58:45.423] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'bool'
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 648
+[24.07.2016 19:13:03.446] ExpImpController/Import(ImportToDataBase)- System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateVhodnyeDv(Int32 id, String naz, String pr, String strpr, String cvet, String napoln, String yplotnit, Nullable`1 tmet, String furn, String petli, String osn, String ovn, Nullable`1 tdpol, Nullable`1 cena, Nullable`1 skidka, Nullable`1 csskid, String opis, Boolean publ, String dopchar) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 66
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 679
+[24.07.2016 19:15:16.230] ExpImpController/Import(ImportToDataBase)- System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateVhodnyeDv(Int32 id, String naz, String pr, String strpr, String cvet, String napoln, String yplotnit, Nullable`1 tmet, String furn, String petli, String osn, String ovn, Nullable`1 tdpol, Nullable`1 cena, Nullable`1 skidka, Nullable`1 csskid, String opis, Boolean publ, String dopchar) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 66
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 679
+[24.07.2016 19:24:56.897] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:25:08.459] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 713
+[24.07.2016 19:25:08.459] ExpImpController/Import- System.IO.IOException: The process cannot access the file 'D:\GitHub\dveri1\dveri1\App_Data\ForDB\Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at dveri1.Controllers.ExpImpController.Import(IEnumerable`1 fileupload) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 345
+[24.07.2016 19:26:01.284] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:27:45.987] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:28:45.327] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:30:50.755] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:31:20.284] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 713
+[24.07.2016 19:31:20.284] ExpImpController/Import- System.IO.IOException: The process cannot access the file 'D:\GitHub\dveri1\dveri1\App_Data\ForDB\Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at dveri1.Controllers.ExpImpController.Import(IEnumerable`1 fileupload) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 345
+[24.07.2016 19:32:23.559] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:34:54.827] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 713
+[24.07.2016 19:35:26.195] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:37:24.054] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot perform runtime binding on a null reference
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CallSite.Target(Closure , CallSite , Object )
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 401
+[24.07.2016 19:42:02.333] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateVhodnyeDv(Int32 id, String naz, String pr, String strpr, String cvet, String napoln, String yplotnit, Nullable`1 tmet, String furn, String petli, String osn, String ovn, Nullable`1 tdpol, Nullable`1 cena, Nullable`1 skidka, Nullable`1 csskid, String opis, Boolean publ, String dopchar) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 86
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 691
+[24.07.2016 19:48:44.259] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfVhodnyeDvRepository.CreateVhodnyeDv(Int32 id, String naz, String pr, String strpr, String cvet, String napoln, String yplotnit, Nullable`1 tmet, String furn, String petli, String osn, String ovn, Nullable`1 tdpol, Nullable`1 cena, Nullable`1 skidka, Nullable`1 csskid, String opis, Boolean publ, String dopchar) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfVhodnyeDvRepository.cs:line 86
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 691
+[24.07.2016 20:00:04.167] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 727
+[24.07.2016 20:00:04.168] ExpImpController/Import- System.IO.IOException: The process cannot access the file 'D:\GitHub\dveri1\dveri1\App_Data\ForDB\Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at dveri1.Controllers.ExpImpController.Import(IEnumerable`1 fileupload) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 345
+[24.07.2016 20:24:39.377] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 734
+[24.07.2016 20:46:04.357] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 734
+[24.07.2016 20:48:53.727] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 734
+[24.07.2016 21:07:04.766] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 734
+[24.07.2016 21:22:08.796] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 853
+[24.07.2016 21:31:05.582] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(4).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 853
+[24.07.2016 21:34:14.588] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 853
+[24.07.2016 21:38:49.062] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[24.07.2016 21:40:22.332] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[24.07.2016 21:41:28.395] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[24.07.2016 21:42:17.376] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Книга1(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[24.07.2016 21:42:37.055] ExpImpController/Import(ImportToDataBase)- System.Runtime.InteropServices.COMException (0x800A03EC): Аннотация.docx: недопустимый формат файла.
+   at Microsoft.Office.Interop.Excel.Workbooks.Open(String Filename, Object UpdateLinks, Object ReadOnly, Object Format, Object Password, Object WriteResPassword, Object IgnoreReadOnlyRecommended, Object Origin, Object Delimiter, Object Editable, Object Notify, Object Converter, Object AddToMru, Object Local, Object CorruptLoad)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 394
+[24.07.2016 21:42:56.652] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file 'otzyv_webcom.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[24.07.2016 21:43:09.666] ExpImpController/Import(ImportToDataBase)- System.Runtime.InteropServices.COMException (0x800A03EC): Exception from HRESULT: 0x800A03EC
+   at Microsoft.Office.Interop.Excel.Workbooks.Open(String Filename, Object UpdateLinks, Object ReadOnly, Object Format, Object Password, Object WriteResPassword, Object IgnoreReadOnlyRecommended, Object Origin, Object Delimiter, Object Editable, Object Notify, Object Converter, Object AddToMru, Object Local, Object CorruptLoad)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 394

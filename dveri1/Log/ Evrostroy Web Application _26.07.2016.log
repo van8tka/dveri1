@@ -1,0 +1,12 @@
+[26.07.2016 01:09:53.652] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$каталог.xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 859
+[26.07.2016 01:22:20.438] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$каталог.xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 860
+[26.07.2016 01:25:04.019] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$каталог.xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 864

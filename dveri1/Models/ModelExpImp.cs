@@ -8,11 +8,9 @@ using System.ComponentModel.DataAnnotations;
 namespace dveri1.Models
 {
     public class ModelExpImp
-    {
-      
+    {     
         public string Category { get; set; }
-        public bool ID { get; set; }
-       
+        public bool ID { get; set; }       
         [Display(Name = "Название")]
         public bool Nazvanie { get; set; }    
         [Display(Name = "Производитель")]

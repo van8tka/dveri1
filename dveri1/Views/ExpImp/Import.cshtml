@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Импорт данных из файла Exel в базу данных";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="tablecontent">
+    <h2>Выберите файл для импорта в базу данных</h2>
+
+    <div>
+        <p>
+            @using (Html.BeginForm("Import", "ExpImp", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset class="fieldsetform">
+                    <legend>Выберите файл для загрузки на сервер</legend>
+                    <input type="file" name="fileUpload[0]" />
+                  
+                    <div style="margin-bottom:20px">
+                        <input type="submit" value="Загрузить файлы на сервер" />
+                        @Html.ActionLink("Отменить", "Panel", "Admin")
+                    </div>
+                </fieldset>
+            }
+        </p>
+    </div>
+</div>

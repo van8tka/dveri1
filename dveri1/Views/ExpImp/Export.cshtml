@@ -32,7 +32,7 @@
         </div>
         <div style="margin-bottom:20px">
             <input type="submit" value="Сохранить" class="showadd" />
-            @Html.ActionLink("Отменить", "Panel")
+            @Html.ActionLink("Отменить", "Panel","Admin", new {brand=Model.Category },null)
         </div>
     }
 </div>

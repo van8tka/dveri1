@@ -7,7 +7,8 @@
 <div class="tablecontent">
     <div style="margin:1em;">
         @Html.ActionLink("Новый товар", "CreateVhDv", "Admin", new {@class= "tablebut newdoor", style="width:150px"})
-        @Html.ActionLink("Экспорт товара", "Export", "ExpImp", new {categor = ViewBag.NameProductList }, new { @class = "tablebut newdoor", style = "width:150px" })
+        @Html.ActionLink("Экспорт товара в Exel", "Export", "ExpImp", new {categor = ViewBag.NameProductList }, new { @class = "tablebut newdoor", style = "width:150px" })
+        @Html.ActionLink("Импорт товара в базу данных", "Import", "ExpImp", new { categor = ViewBag.NameProductList }, new { @class = "tablebut newdoor", style = "width:250px" })
         </div>          
     <hr />
     <h3 class="headpanel">@ViewBag.NameProductList</h3>
