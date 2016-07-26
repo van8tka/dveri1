@@ -1,0 +1,10 @@
+﻿@model string
+@{
+    Layout = null;
+}
+ 
+    @using (Html.BeginForm("FindById", "Admin", FormMethod.Post))
+    {
+        @Html.TextBox("model", null, new { @class = "form-control", style="padding:1px 4px;min-width:200px;float:left;"})
+        <input type="submit" value="Поиск" class="showadd" style="height:34px;"/>
+    }

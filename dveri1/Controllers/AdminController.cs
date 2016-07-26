@@ -42,24 +42,44 @@ namespace dveri1.Controllers
         }
 
         [Authorize]
-        public ActionResult Panel(int page = 1, string brand = null)
+        public ActionResult Panel(int page = 1, string brand = null, int index = 0)
         {
             try
             {
                 int TotalItemsProduct = 0;
                 ForMainModel model = new ForMainModel();
-                if(brand == null||brand == "Входные двери - весь список")
+                //индекс для поиска товара по индексу
+                if(index==0)
                 {
-                    ViewBag.NameProductList = "Входные двери - весь список";
-                   TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
-                    model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                    if (brand == null || brand == "Входные двери - весь список")
+                    {
+                        ViewBag.NameProductList = "Входные двери - весь список";
+                        TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
+                        model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                    }
+                    else
+                    {
+                        ViewBag.NameProductList = brand;
+                        TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == brand).Count();
+                        model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == brand).OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                    }
                 }
                 else
                 {
-                    ViewBag.NameProductList = brand;
-                    TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x=>x.Proizvoditel==brand).Count();
-                    model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == brand).OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
+                    model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == index);
+                    if(model.ListVhodnDv.ElementAt(0)!=null)
+                    {
+                        ViewBag.NameProductList = model.ListVhodnDv.ElementAt(0).Proizvoditel;
+                        TotalItemsProduct = 1;
+                    }
+                    else
+                    {
+                        TempData["message"] = "Товар с кодом " + index + " ненайден!";
+                        return View();
+                    }
+                   
                 }
+
                 model.PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -788,8 +808,19 @@ namespace dveri1.Controllers
                 ClassLog.Write("Admin/ChangePublic-" + er);               
             }
         }
-
-
+        [Authorize]
+        [HttpGet]
+        public ActionResult FindById()
+        {
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult FindById(string model = null)
+        {
+            int i = int.Parse(model);
+            return RedirectToAction("Panel", new { index = i });
+        }
     }
 
 }

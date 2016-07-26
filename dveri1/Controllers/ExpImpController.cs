@@ -270,8 +270,6 @@ namespace dveri1.Controllers
                 excelworksheet.get_Range("A2", "Y1").ColumnWidth = 20;
                 excelworksheet.get_Range("A1", "Y65000").RowHeight = 25;
             
-
-
                 //формат сохранения
                 string pathDog = Server.MapPath("~//App_data//Excel//");
                 //проверяем наличие папки
@@ -300,9 +298,9 @@ namespace dveri1.Controllers
                 string file = Path.Combine(p + "Книга1.xlsx");
                 DirectoryInfo dir = new DirectoryInfo(p);
                 string contentType = "application/xlsx";
-                TempData["message"] = "Данные экспортированы в файл!";
+               
                 return File(dir + "Книга1.xlsx", contentType, "каталог.xlsx");
-                //RedirectToAction("Panel", "Admin");
+            
             }
             catch(Exception er)
             {
@@ -336,11 +334,26 @@ namespace dveri1.Controllers
                 string domainpath = Server.MapPath("~//App_Data//ForDB//");
                 if (!Directory.Exists(domainpath))
                     Directory.CreateDirectory(domainpath); // Создаем директорию, если нужно
-                string path = null;  
-                foreach(var file in fileupload)
+                string path = null;
+              
+                if (fileupload.ElementAt(0) == null)
+                {
+                    TempData["message"] = "Выберите файл для загрузки на сервер!";
+                    return RedirectToAction("Import");
+                }
+                
+               
+
+                foreach (var file in fileupload)
                 {
                     if (file != null && file.ContentLength > 0)
-                    {
+                    {//считаем загруженный файл в массив
+                      
+                        if (file.ContentLength > 25000000)
+                        {
+                            TempData["message"] = "Файл для загрузки на сервер слишком большой(мах = 25мб)!";
+                            return RedirectToAction("Import");
+                        }
                         string fileName = Path.GetFileName(file.FileName);
                         path = Path.Combine(domainpath, fileName);
                         file.SaveAs(path);
@@ -394,7 +407,7 @@ namespace dveri1.Controllers
                 //Открываем книгу и получаем на нее ссылку
                 excelappworkbook = excelapp.Workbooks.Open(pathfile, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 excelworksheet = excelappworkbook.ActiveSheet;
-                string stroka;
+              
                 //кол во строк
                 int str = 2;
                 int AllCountHeadCell = 18;

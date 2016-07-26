@@ -10,3 +10,70 @@
    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
    at System.IO.FileInfo.Delete()
    at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 864
+[26.07.2016 09:25:56.437] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$каталог(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 864
+[26.07.2016 09:40:32.484] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file 'big_ot_delta.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 864
+[26.07.2016 10:26:33.933] ExpImpController/Import(ImportToDataBase)- System.Runtime.InteropServices.COMException (0x800A03EC): Копи android data.docx: недопустимый формат файла.
+   at Microsoft.Office.Interop.Excel.Workbooks.Open(String Filename, Object UpdateLinks, Object ReadOnly, Object Format, Object Password, Object WriteResPassword, Object IgnoreReadOnlyRecommended, Object Origin, Object Delimiter, Object Editable, Object Notify, Object Converter, Object AddToMru, Object Local, Object CorruptLoad)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 395
+[26.07.2016 12:38:56.856] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$каталог(1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 864
+[26.07.2016 13:21:54.374] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file 'nissan almera N16(2000-2006).djvu' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles() in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 877
+[26.07.2016 14:43:51.878] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:44:18.355] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:49:40.819] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:49:41.887] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:50:15.179] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:50:16.078] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:53:40.397] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:54:07.436] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:54:08.600] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:54:11.467] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 14:59:32.043] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 15:33:59.619] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70

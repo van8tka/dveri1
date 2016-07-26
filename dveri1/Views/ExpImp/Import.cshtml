@@ -16,10 +16,10 @@
                 @Html.ValidationSummary(true)
                 <fieldset class="fieldsetform">
                     <legend>Выберите файл для загрузки на сервер</legend>
-                    <input type="file" name="fileUpload[0]" />
+                    <input class="inpset ml20" type="file" name="fileUpload[0]" />
                   
-                    <div style="margin-bottom:20px">
-                        <input type="submit" value="Загрузить файлы на сервер" />
+                    <div class="mt20 mb20">
+                        <input class="showadd ml20" style="width:300px" id="inpload" type="submit" value="Загрузить файлы на сервер" disabled = "disabled"/>
                         @Html.ActionLink("Отменить", "Panel", "Admin")
                     </div>
                 </fieldset>
@@ -27,3 +27,12 @@
         </p>
     </div>
 </div>
+@*//скрипт для разблокирования кнопки загрузки файла на сервер*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.inpset').click(function (e) {
+                    $('#inpload').prop('disabled',false);
+        })
+       
+    });
+</script>

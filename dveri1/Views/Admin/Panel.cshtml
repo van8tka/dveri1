@@ -11,7 +11,16 @@
         @Html.ActionLink("Импорт товара в базу данных", "Import", "ExpImp", new { categor = ViewBag.NameProductList }, new { @class = "tablebut newdoor", style = "width:250px" })
         </div>          
     <hr />
-    <h3 class="headpanel">@ViewBag.NameProductList</h3>
+    <div>
+        <div class="fll" style="width:400px;">
+            <h3 class="headpanel">@ViewBag.NameProductList</h3>
+        </div>
+        <div class="fll mt10" style="width:600px;display:inline-block;position:relative">
+            @*вызов действия для поиска товаров*@
+            @Html.Action("FindById", "Admin")
+         </div>
+   </div>
+  
     <table class="table_dark">
         <tr>
             <th>Код товара</th>
