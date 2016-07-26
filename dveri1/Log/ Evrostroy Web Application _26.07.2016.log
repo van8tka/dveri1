@@ -77,3 +77,11 @@ Parameter name: index
 Parameter name: index
    at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
    at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 18:35:05.522] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 70
+[26.07.2016 18:37:57.161] Admin/Panel-System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at dveri1.Controllers.AdminController.Panel(Int32 page, String brand, Int32 index) in D:\GitHub\dveri1\dveri1\Controllers\AdminController.cs:line 72

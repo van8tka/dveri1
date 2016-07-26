@@ -218,6 +218,7 @@
     <Compile Include="Models\ModelBuyDveri.cs" />
     <Compile Include="Models\ModelComment.cs" />
     <Compile Include="Models\ModelExpImp.cs" />
+    <Compile Include="Models\ModelFind.cs" />
     <Compile Include="Models\ModelSeoMain.cs" />
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\ModelYstanovka.cs" />

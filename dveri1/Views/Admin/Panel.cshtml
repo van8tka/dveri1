@@ -61,11 +61,11 @@
                 <td>Толщина дверного полотна</td>*@
                 @if (i.Cena != null)
                 {
-                    <td>@i.Cena.Value.ToString("C")</td>
+                    <td class="cenaChange" id="@i.Id">@i.Cena.Value.ToString("C")</td>
                 }
                 else
                 {
-                    <td>Цена не установлена</td>
+                    <td class="cenaChange">Цена не установлена</td>
                 }
                 <td class="tac">@i.Skidka</td>
                <td class="tac"> @Html.CheckBoxFor(modelItem=>i.Publicaciya, new { @class="chpublick",id = i.Id, value = i.Id})</td>
@@ -94,20 +94,22 @@
             });
 
     });
+    //изменение текущего активного пункта меню
     $(".admmen").removeClass("actadmin")
     $(".m2").addClass("actadmin")
     $(".dropspis").find("ul").slideDown(400).parents("li").children("div.drop").css({ 'background-position': "0 0" });
-
+    //поиск меню в подменю и попытка его сделать активным
     var id = $('.headpanel').text();
     
    // var elem = document.getElementById(id);
    //var z = $(".itemMA").attr('id')==
    // alert(z);
-    if ($(".itemMA").attr('id')==id)
-    {
+    if ($(".itemMA").attr('id') == id) {
         //alert($(".itemMA").attr('id'))
         //$(".itemMA").removeClass("actadmin")
         //$($(".itemMA").attr('id')).addClass("actadmin")
     }
-
+    $(".cenaChange").click(function () {
+        $(this).replaceWith("<td><input type='text'style='width:70px;'/> <br/> <input type= 'submit' value='Изменить'</td>")
+    })
 </script>

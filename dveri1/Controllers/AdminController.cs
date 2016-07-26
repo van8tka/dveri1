@@ -67,7 +67,7 @@ namespace dveri1.Controllers
                 else
                 {
                     model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == index);
-                    if(model.ListVhodnDv.ElementAt(0)!=null)
+                    if(model.ListVhodnDv.Count()!=0)
                     {
                         ViewBag.NameProductList = model.ListVhodnDv.ElementAt(0).Proizvoditel;
                         TotalItemsProduct = 1;
@@ -75,7 +75,7 @@ namespace dveri1.Controllers
                     else
                     {
                         TempData["message"] = "Товар с кодом " + index + " ненайден!";
-                        return View();
+                        return RedirectToAction("Panel");
                     }
                    
                 }
@@ -808,6 +808,7 @@ namespace dveri1.Controllers
                 ClassLog.Write("Admin/ChangePublic-" + er);               
             }
         }
+       //поиск товара по номеру ID
         [Authorize]
         [HttpGet]
         public ActionResult FindById()
@@ -816,10 +817,22 @@ namespace dveri1.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult FindById(string model = null)
+        public ActionResult FindById(ModelFind model)
         {
-            int i = int.Parse(model);
-            return RedirectToAction("Panel", new { index = i });
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Panel", new { index = model.IndexFind});
+                }
+                TempData["message"] = "Неверный формат ввода кода товара, допускаются только цифры.";
+                return RedirectToAction("Panel");
+            }
+           catch (Exception er)
+            {
+                ClassLog.Write("Admin/FindById-" + er);
+                return View("Error");
+            }
         }
     }
 
