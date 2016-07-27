@@ -144,8 +144,14 @@ namespace dveri1.Controllers
             {        
             decimal? CenaSoSkidkoy=null;
             if (ModelState.IsValid)
-            {                                     
-                TempData["message"]="Новый товар добавлен в базу данных!";
+            {
+                    //если ввели отрицательное значение цены
+                    if (model.Cena < 0)
+                    {
+                        string[] g = model.Cena.Value.ToString().Split('-');
+                        model.Cena = decimal.Parse(g[1]);
+                    }
+                    TempData["message"]="Новый товар добавлен в базу данных!";
                 if(model.Skidka!=null)
                 {
                         if (model.Skidka != 0 && (model.Cena != 0 && model.Cena != null))
@@ -289,7 +295,12 @@ namespace dveri1.Controllers
                 decimal? CenaSoSkidkoy = null;
                     if (ModelState.IsValid)
                     {
-
+                    //если ввели отрицательное значение цены
+                        if(model.Cena<0)
+                        {
+                            string[] g = model.Cena.Value.ToString().Split('-');
+                            model.Cena = decimal.Parse(g[1]);
+                        }
                         TempData["message"] = "Товар изменен в базе данных!";
                         if (model.Skidka != null)
                         {
@@ -808,7 +819,7 @@ namespace dveri1.Controllers
                 ClassLog.Write("Admin/ChangePublic-" + er);               
             }
         }
-       //поиск товара по номеру ID
+       //------------поиск товара по номеру ID
         [Authorize]
         [HttpGet]
         public ActionResult FindById()
@@ -831,6 +842,75 @@ namespace dveri1.Controllers
            catch (Exception er)
             {
                 ClassLog.Write("Admin/FindById-" + er);
+                return View("Error");
+            }
+        }
+     
+        [Authorize]
+         //--------------------------------------изменение цены------------------------------------------
+        public ActionResult ChangeCena(int id, string newprice="0")
+        {//получим длину строки
+            try
+            {
+            int count = newprice.Length;
+            decimal res;
+            //если строка не пустая
+            VhodnyeDveri vh = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == id).FirstOrDefault();
+            if (count!=0)
+            {//получим элемент по ID               
+                if (vh != null)
+                {//проверим на то что это цифровая строка
+                  
+                     if(newprice == "Цена не установлена")
+                        {
+                            vh.Cena = 0;
+                        }
+                      else
+                        {
+                            string[] g = newprice.Split('р');
+                            if(Decimal.TryParse(g[0],out res))
+                            {//проверим на отрицательное значение
+                                if(res<0)
+                                {
+                                    string[] k = g[0].Split('-');
+                                    vh.Cena = decimal.Parse(k[1]);
+                                }
+                                else
+                                {
+                                    vh.Cena = res;
+                                }
+                               
+                            }
+                        }
+                  }
+            }
+            else
+            {
+                vh.Cena = 0;
+            }
+          if(vh.Cena!=0 && (vh.Skidka!=0&&vh.Skidka!=null))
+          {
+                vh.CenaSoSkidcoy = vh.Cena - vh.Cena * vh.Skidka /100;
+          }
+          //изменяем данные товара
+            dataManager.VhodnyeDvRepository.CreateVhodnyeDv(id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Napolnitel, vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna, vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
+//создадим массив для передачи на страницу с ценами и скидкой
+                string[] price = new string[2];
+                if (vh.Cena != null)
+                {
+                    price[0] = vh.Cena.Value.ToString("c");
+                }
+                else
+                {
+                    price[0] = "Цена не установлена";
+                }
+                price[1] = vh.Skidka == null ? "" : vh.Skidka.ToString();
+                        
+                return Json(price,JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/ChangeCena-" + er);
                 return View("Error");
             }
         }

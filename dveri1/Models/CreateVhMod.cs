@@ -39,7 +39,7 @@ namespace dveri1.Models
         public double? TolschinaDvPolotna { get; set; }
         [Display(Name = "Цена")]
         //[Required(ErrorMessage = "Введите цену товара!")]
-        //[RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода цены товара!")]
+        [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода цены товара!")]
         public decimal? Cena { get; set; }
         [Display(Name = "Скидка в процентах (указать число без символа %)")]
         [RegularExpression(@"^[0-9]{1,20}", ErrorMessage = "Неверный формат ввода скидки товара(допускает только цифры)!")]

@@ -67,4 +67,3 @@ D:\GitHub\dveri1\dveri1\bin\Domain2.dll
 D:\GitHub\dveri1\dveri1\bin\Domain2.pdb
 D:\GitHub\dveri1\dveri1\bin\System.Web.Providers.dll
 D:\GitHub\dveri1\dveri1\bin\System.Web.Providers.xml
-D:\GitHub\dveri1\dveri1\obj\Debug\dveri1.csprojResolveAssemblyReference.cache
