@@ -127,9 +127,14 @@ img.img-thumbnail-small{
 }
 
 div.shortChar{
-     width:138px;height:55px;overflow:hidden;
+     width:138px;
+     height:110px;
+     overflow:hidden;
+   
 }
-
+div.shortChar p{
+      line-height:80%;
+}
 
 
  /*//для отображения текста в редакторе админа*/
@@ -185,9 +190,12 @@ div.shortChar{
 
   div.blockpercent-small{
     z-index:3;
-    position:absolute;
-    margin-left:74px;  
-    margin-top:10px;
+    position:relative;
+    /*margin-left:74px;  
+    margin-top:10px;*/
+    /*width:1px;
+    height:1px;*/
+
  }
   .percent-small{
         background-image: -webkit-gradient(linear, center top, center bottom, from(#ff7e4d 20%), to(#bd0502 66%));
@@ -196,7 +204,7 @@ background-image: -moz-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: -o-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: -ms-linear-gradient(top, #ff7e4d 20%, #bd0502 66%);
 background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
-                /*position:relative;*/
+                position:absolute;
                 font-size: 14px;
                 color: #fff;
                 width: 25px;
@@ -204,7 +212,7 @@ background-image: linear-gradient(to bottom, #ff7e4d 20%, #bd0502 66%);
                 text-align: center;
                 border-radius:50%;
                 line-height: 25px;
-                /*z-index:3;*/
+                top:5px;
                 padding:3px;
   }
 

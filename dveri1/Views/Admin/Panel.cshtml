@@ -107,8 +107,7 @@
 
     //$(".cenaChange").on('click', function (e) { - это не работает при повторном нажатии
     $('body').on('click','td.cenaChange', function (e) {//а это работает
-        alert("click")
-        var idtd = $(this).attr('id');
+       var idtd = $(this).attr('id');
         var pr = $(this).text();
         $(this).replaceWith("<td class='cenaChangeAfter'><input class='tbCenaChange' id='"+idtd+"' type='text'style='width:70px;'/> <br/> <input type= 'submit' value='Изменить' class='btCenaChange'/> <input type='button' value='Отменить' class='btCenaChangeCancel'/></td>")
         //обработка ввода цены

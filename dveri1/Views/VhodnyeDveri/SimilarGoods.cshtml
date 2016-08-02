@@ -57,11 +57,11 @@
                                     </div>
                                     <div class="shortChar">
                                         <br clear="all" />
-                                        @*<div style="width:138px;height:35px;overflow:hidden;">*@
-                                            <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
-                                        @*</div>*@
+                                        <div style="clear:both">
 
-                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                        </div>
+                                               <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                    @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
                                     {
                                         if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
                                         {
@@ -131,11 +131,11 @@
                                     </div>
                                     <div class="shortChar">
                                         <br clear="all" />
-                                        @*<div style="width:138px;height:35px;overflow:hidden;">*@
-                                        <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
-                                        @*</div>*@
+                                        <div style="clear:both">
 
-                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                        </div>
+                                                <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                       @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
                                         {
                                             if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
                                             {
@@ -170,7 +170,7 @@
 
                         @for (int i = 16; i < 24; i++)
                         {
-                            <div class="shortproduct-small fll">
+                           <div class="shortproduct-small fll">
                                 <a href="/VhodnyeDveri/TovarPage?id=@Model.ListVhodnDv.ElementAt(i).Id">
                                     <div class="imageshort">
                                         @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
@@ -204,11 +204,11 @@
                                     </div>
                                     <div class="shortChar">
                                         <br clear="all" />
-                                        @*<div style="width:138px;height:35px;overflow:hidden;">*@
-                                        <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
-                                        @*</div>*@
+                                        <div style="clear:both">
 
-                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                        </div>
+                                            <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                       @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
                                         {
                                             if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
                                             {

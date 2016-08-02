@@ -892,6 +892,11 @@ namespace dveri1.Controllers
           {
                 vh.CenaSoSkidcoy = vh.Cena - vh.Cena * vh.Skidka /100;
           }
+          else
+                {
+                    vh.CenaSoSkidcoy = null;
+                    vh.Skidka = null;
+                }
           //изменяем данные товара
             dataManager.VhodnyeDvRepository.CreateVhodnyeDv(id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Napolnitel, vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna, vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
 //создадим массив для передачи на страницу с ценами и скидкой
