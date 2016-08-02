@@ -289,6 +289,9 @@ color:white;
 .mr10{
     margin-right:10px;
 }
+.mr40{
+    margin-right:40px;
+}
 .mt10{
     margin-top:10px;
 }
@@ -335,13 +338,32 @@ div.navigationfixedtop {
 div.navigation-menu{
     margin-top:110px;
 }
- div.footer{
+/*======================================               footer            ====================================*/
+ footer{
     display: inline-block;
-    height: auto;
+    height: 200px;
     min-height: 50px;
     width: 100%;
-    color:azure;
-     
+    color:white;
+    background-color:#191970; 
+    position:relative;
+   
+ }
+ footer p{
+     color:white;
+ }
+ div.yurinffooter{
+       display: inline-block;
+       height:50px;
+       width:inherit;
+       z-index:1;
+       background-color:	#000080;
+       position:absolute;
+       left:0px;
+       bottom:-15px;
+ }
+ div.yurinffooter p{
+     color:gray;
  }
  div.content{
     display: block;

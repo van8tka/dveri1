@@ -9,6 +9,7 @@ namespace dveri1.Models
 {
     public class ContactModel
     {
+        public TableYrInfa YrInformationProp { get; set; }
         public IEnumerable<Adresa> AdresList { get; set; }
         public IEnumerable<Contact> ContactList { get; set; }
         public IEnumerable<GrafikWork> GrafikWorkList { get; set; }

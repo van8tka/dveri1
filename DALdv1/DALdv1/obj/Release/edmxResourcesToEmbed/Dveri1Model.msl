@@ -237,6 +237,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableYrInfas">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableYrInfa">
+        <MappingFragment StoreEntitySet="TableYrInfa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="YrInfa" ColumnName="YrInfa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableYstanovkas">
       <EntityTypeMapping TypeName="dbdveri1Model.TableYstanovka">
         <MappingFragment StoreEntitySet="TableYstanovka">

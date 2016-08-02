@@ -72,6 +72,36 @@
     </div>
     <hr />
 </div>
+
+
+
+<div class="tablecontent">
+    @if (Model.YrInformationProp != null)
+    {
+    <h3>Юридическая информация</h3>
+    <table class="table_dark" style="font-size:0.9em">
+        <tr>
+            <th>Номер в списке</th>
+            <th>Сведения</th>
+            <th></th>
+        </tr>
+       
+            <tr>
+                <td>@Html.ActionLink(Model.YrInformationProp.Id.ToString(), "ChangeYrInfa", "Contact", new { id = Model.YrInformationProp.Id }, null)</td>
+                <td>@Html.ActionLink(Model.YrInformationProp.YrInfa, "ChangeYrInfa", "Contact", new { id = Model.YrInformationProp.Id }, null)</td>
+                <td>@Html.ActionLink("Удалить", "DellYrInfa", "Contact", new { id = Model.YrInformationProp.Id }, new { @class = "tablebut", style = "width:100px" })</td>
+            </tr>
+      
+    </table>
+    }
+    else
+    { <h3>Юридическая информация еще не добавлена!</h3>}
+    <div style="margin:1em;">
+        @Html.ActionLink("Добавить юр. информацию", "CreateYrInfa", "Contact", new { @class = "tablebut", style = "width:150px" })
+    </div>
+    <hr />
+  
+</div>
 <script>
     $(".admmen").removeClass("actadmin")
     $(".m9").addClass("actadmin")

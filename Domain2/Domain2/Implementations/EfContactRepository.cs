@@ -16,7 +16,36 @@ namespace Domain2.Implementations
         {
             this.context = context;
         }
-
+        public void CreateYrInfa(int id,string yr)
+        {
+            if(id==0)
+            {
+                TableYrInfa y = new TableYrInfa()
+                {
+                    Id=id,
+                    YrInfa = yr
+                };
+                context.TableYrInfas.Add(y);
+                context.SaveChanges();             
+            }
+            else
+            {
+                TableYrInfa y = context.TableYrInfas.Where(i => i.Id == id).FirstOrDefault();
+                y.YrInfa = yr;
+                context.Entry(y).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+        public void DellYrInfa(int id)
+        {
+            TableYrInfa y = context.TableYrInfas.Where(i => i.Id == id).FirstOrDefault();
+            context.TableYrInfas.Remove(y);
+            context.SaveChanges();
+        }
+        public TableYrInfa GetYrInfa()
+        {
+            return context.TableYrInfas.FirstOrDefault();
+        }
         public void CreateAdres(int id, string adres)
         {
             if(id==0)

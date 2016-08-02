@@ -54,6 +54,15 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        [HttpGet]
+        public ActionResult YrInformation()
+        {
+            CreateAdresModel model = new CreateAdresModel();
+           model.AdresName = dataManager.ContactRepository.GetYrInfa().YrInfa;
+            return View(model);
+        }
+
+
       [Authorize]
         public ActionResult AdminContact()
         {
@@ -63,6 +72,7 @@ namespace dveri1.Controllers
             model.AdresList = dataManager.ContactRepository.GetAdres();
             model.ContactList = dataManager.ContactRepository.GetContacts();
             model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
+            model.YrInformationProp = dataManager.ContactRepository.GetYrInfa();
             return View(model);
             }
             catch (Exception er)
@@ -154,6 +164,39 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateYrInfa()
+        {
+            ViewBag.CreateContact = "Добавление юридической информации";
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateYrInfa(CreateAdresModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    TableYrInfa yr = dataManager.ContactRepository.GetYrInfa();
+                    dataManager.ContactRepository.CreateYrInfa(0, model.AdresName);
+                    if (yr != null)
+                        dataManager.ContactRepository.DellYrInfa(yr.Id);
+                    TempData["message"] = "Юридическая информация добавлена!";
+                    return RedirectToAction("AdminContact");
+                }
+                return View();
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/CreateYrInfa-", er);
+                return View("Error");
+            }
+        }
+
         //============================изменение контактных данных======================================
         [Authorize]
         [HttpGet]
@@ -281,6 +324,52 @@ namespace dveri1.Controllers
             }
         }
 
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult ChangeYrInfa(int id)
+        {
+            try
+            {
+                ViewBag.CreateContact = "Изменение юридичской информации";
+                TableYrInfa yi = dataManager.ContactRepository.GetYrInfa();
+                //используем модель для адресов
+                CreateAdresModel model = new CreateAdresModel()
+                {
+                    IDAdres = yi.Id,
+                    AdresName = yi.YrInfa
+                };
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/ChangeYrnfa-", er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult ChangeYrInfa(CreateAdresModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    dataManager.ContactRepository.CreateYrInfa((int)model.IDAdres, model.AdresName);
+                    TempData["message"] = "Юридическая информация изменена!";
+                    return RedirectToAction("AdminContact");
+                }
+                return View();
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/ChangeYrInfa-", er);
+                return View("Error");
+            }
+        }
+
+
         //==========================удаление контактных данных========================================
         [Authorize]
         public ActionResult DellAdres(int id)
@@ -324,6 +413,21 @@ namespace dveri1.Controllers
             catch (Exception er)
             {
                 ClassLog.Write("Contact/DellGrafik-",er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        public ActionResult DellYrInfa(int id)
+        {
+            try
+            {
+                dataManager.ContactRepository.DellYrInfa(id);
+                TempData["message"] = "Юридическая информация удалена!";
+                return RedirectToAction("AdminContact");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/DellAdres-", er);
                 return View("Error");
             }
         }

@@ -221,6 +221,13 @@
           <Property Name="Keywords" Type="nvarchar" MaxLength="450" />
           <Property Name="Description" Type="nvarchar" MaxLength="450" />
         </EntityType>
+        <EntityType Name="TableYrInfa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YrInfa" Type="nvarchar" MaxLength="550" />
+        </EntityType>
         <EntityType Name="TableYstanovka">
           <Key>
             <PropertyRef Name="ID" />
@@ -365,6 +372,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableYrInfa" EntityType="Self.TableYrInfa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />
@@ -623,6 +631,13 @@
           <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TableArticle" Relationship="Self.FK_TableSeoArticles_TableArticles1" FromRole="TableSeoArticles" ToRole="TableArticles" />
         </EntityType>
+        <EntityType Name="TableYrInfa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YrInfa" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="TableYstanovka">
           <Key>
             <PropertyRef Name="ID" />
@@ -770,6 +785,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
+          <EntitySet Name="TableYrInfas" EntityType="Self.TableYrInfa" />
           <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
@@ -1037,6 +1053,14 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableYrInfas">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableYrInfa">
+              <MappingFragment StoreEntitySet="TableYrInfa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YrInfa" ColumnName="YrInfa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

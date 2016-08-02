@@ -216,6 +216,13 @@
     <Property Name="Keywords" Type="nvarchar" MaxLength="450" />
     <Property Name="Description" Type="nvarchar" MaxLength="450" />
   </EntityType>
+  <EntityType Name="TableYrInfa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YrInfa" Type="nvarchar" MaxLength="550" />
+  </EntityType>
   <EntityType Name="TableYstanovka">
     <Key>
       <PropertyRef Name="ID" />
@@ -360,6 +367,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableYrInfa" EntityType="Self.TableYrInfa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VhodnyeDveri" EntityType="Self.VhodnyeDveri" Schema="dbo" store:Type="Tables" />

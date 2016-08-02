@@ -12,6 +12,9 @@ namespace Domain2.Interfaces
         IEnumerable<Contact> GetContacts();
         IEnumerable<GrafikWork> GetGrafikWork();
         IEnumerable<Adresa> GetAdres();
+        TableYrInfa GetYrInfa();
+        void DellYrInfa(int id);
+        void CreateYrInfa(int id, string yr);
         void DellContact(int id);
         void DellGrafikWork(int id);
         void DellAdres(int id);

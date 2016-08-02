@@ -57,12 +57,7 @@
             @RenderBody()
                     
         </div>
-        <hr /> 
-        <div class="footer">
-            <div class="fll" style="width:350px;"> @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</div>
-            @Html.Action("ContactOnPanel", "VhodnyeDveri")
-            
-        </div>
+           
         @if (TempData["messageklient"] != null)
             {
             <div class="alertmessage">@TempData["messageklient"]</div>
@@ -76,6 +71,14 @@
         @Html.Action("FastBuyDveriModal","VhodnyeDveri", new { id = 9999, type = "входные двери" })
     </div>
     <div id="overlay"></div><!-- Пoдлoжкa -->
-           
+ <footer> 
+         <div class="fll" style="width:350px;"> @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</div>
+         @Html.Action("ContactOnPanel", "VhodnyeDveri")
+         <div class="yurinffooter">
+             <div class="fll ml40">@Html.Action("YrInformation","Contact")</div>
+             <p class="flr mr40">devprogram.by</p>
+         </div>  
+ </footer>          
 </body>
+
 </html>
