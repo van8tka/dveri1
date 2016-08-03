@@ -238,6 +238,14 @@
     <Content Include="Content\ControlSlider\selected-dot.png" />
     <Content Include="Content\ControlSlider\text.png" />
     <Content Include="Content\fon.jpg" />
+    <Content Include="Content\ForSoc\facebook.png" />
+    <Content Include="Content\ForSoc\google.png" />
+    <Content Include="Content\ForSoc\mail.png" />
+    <Content Include="Content\ForSoc\odnoklasniki.png" />
+    <Content Include="Content\ForSoc\rss.png" />
+    <Content Include="Content\ForSoc\twitter.png" />
+    <Content Include="Content\ForSoc\vk.png" />
+    <Content Include="Content\ForSoc\yandex.png" />
     <Content Include="Content\glyphicons-443-earphone.png" />
     <Content Include="Content\imageDefault.jpg" />
     <Content Include="Content\ImageTemp\1.jpg" />
@@ -450,6 +458,7 @@
     <Content Include="Views\Contact\CreateYrInfa.cshtml" />
     <Content Include="Views\Contact\ChangeYrInfa.cshtml" />
     <Content Include="Views\Contact\YrInformation.cshtml" />
+    <Content Include="Views\VhodnyeDveri\ContactOnFoter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -247,6 +247,31 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        public ActionResult ContactOnFoter(bool contact = true)
+        {
+            try
+            {
+                ViewBag.Count = 0;
+                ViewBag.Count1 = 0;
+                if (contact)
+                {
+                    ViewBag.Contact = true;
+                }
+                else
+                    ViewBag.Contact = false;
+                ContactModel model = new ContactModel();
+                model.ContactList = dataManager.ContactRepository.GetContacts();
+                return PartialView(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/ContactOnFooter-" + er);
+                return View("Error");
+            }
+        }
+
+
+
         //==========================================карточка товара==============================================================================
         [HttpGet]
         public ActionResult TovarPage(int id)

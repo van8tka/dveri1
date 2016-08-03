@@ -322,7 +322,7 @@ div.contacts{
       min-width:330px;
    }
 div.content-body{
-    margin-top:-20px;  
+    margin-top:-28px; 
     height:auto;
     padding-bottom:40px;
     width:1200px;
@@ -341,13 +341,13 @@ div.navigation-menu{
 /*======================================               footer            ====================================*/
  footer{
     display: inline-block;
-    height: 200px;
+    height: 230px;
     min-height: 50px;
     width: 100%;
     color:white;
     background-color:#191970; 
     position:relative;
-   
+
  }
  footer p{
      color:white;
@@ -365,6 +365,65 @@ div.navigation-menu{
  div.yurinffooter p{
      color:gray;
  }
+ /*меню футера*/
+div.footermenudiv {
+    color: white;
+    width:33.3%;
+    height:95%;
+     float:left;
+}
+
+ul.footermenu {
+     margin-left:80px;
+ }
+ ul.footermenu li:hover{
+     color:	#00FFFF;
+ }
+
+
+ a.footermenuitem{
+     text-decoration:none;
+     color:white;
+ }
+    a.footermenuitem:hover {
+    color:	#00FFFF;
+    }
+div.footcontact {
+    width:33.3%;
+    color: white;
+    height:95%;
+    float:left;
+}
+div.footcontact div{
+    color:white;
+}
+
+
+div.socseti{
+    float:left;
+    width:33.3%;
+    color:white;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:	#172981;
+    height:95%;
+}
+div.socseti a{
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
  div.content{
     display: block;
     width: 100%;
