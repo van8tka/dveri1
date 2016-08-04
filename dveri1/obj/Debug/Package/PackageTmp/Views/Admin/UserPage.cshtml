@@ -1,0 +1,35 @@
+﻿@using DALdv1
+@model IEnumerable<User>
+@{
+    ViewBag.Title = "Пользователи сайта(администраторы)";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="tablecontent">
+    <h3>Список пользователей сайта:</h3>
+    <table class="table_dark" style="font-size:0.9em;text-align:center;">
+        <tr>
+            <th>Номер</th>
+            <th>Имя пользователя</th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.Name</td>
+                <td>@Html.ActionLink("Удалить", "DeleteUser", "Admin", new { id = i.ID }, new { @class = "tablebut", style = "width:100px" })</td>
+            </tr>
+        }
+    </table>
+    <div style="margin:1em;">
+     @Html.ActionLink("Добавить нового пользователя","Register","Account",null ,new { @class="tablebut"})
+    </div>
+    <hr />
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m10").addClass("actadmin")
+</script>
+ 

@@ -161,6 +161,7 @@
     <Property Name="Description" Type="nvarchar" MaxLength="2050" />
     <Property Name="Page" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Header" Type="nvarchar" MaxLength="1550" />
+    <Property Name="Category" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="SeoVhodnuhDverei">
     <Key>

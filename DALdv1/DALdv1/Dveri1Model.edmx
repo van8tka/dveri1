@@ -166,6 +166,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="2050" />
           <Property Name="Page" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Header" Type="nvarchar" MaxLength="1550" />
+          <Property Name="Category" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="SeoVhodnuhDverei">
           <Key>
@@ -573,6 +574,7 @@
           <Property Name="Description" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
           <Property Name="Page" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Header" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SeoVhodnuhDverei">
           <Key>
@@ -993,6 +995,7 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Page" ColumnName="Page" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

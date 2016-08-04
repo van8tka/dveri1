@@ -248,11 +248,6 @@
     <Content Include="Content\ForSoc\yandex.png" />
     <Content Include="Content\glyphicons-443-earphone.png" />
     <Content Include="Content\imageDefault.jpg" />
-    <Content Include="Content\ImageTemp\1.jpg" />
-    <Content Include="Content\ImageTemp\2.jpg" />
-    <Content Include="Content\ImageTemp\3.jpg" />
-    <Content Include="Content\ImageTemp\4.jpg" />
-    <Content Include="Content\ImageTemp\5.jpg" />
     <Content Include="Content\ImgComment\stargold.png" />
     <Content Include="Content\ImgComment\stargold24.png" />
     <Content Include="Content\ImgComment\starwhite.png" />
@@ -366,6 +361,7 @@
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="Properties\PublishProfiles\van8tka.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -463,6 +459,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Content\ImageTemp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

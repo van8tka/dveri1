@@ -343,6 +343,7 @@ div.navigation-menu{
     display: inline-block;
     height: 230px;
     min-height: 50px;
+    min-width:1200px;
     width: 100%;
     color:white;
     background-color:#191970; 
@@ -371,6 +372,7 @@ div.footermenudiv {
     width:33.3%;
     height:95%;
      float:left;
+       min-width:350px;
 }
 
 ul.footermenu {
@@ -389,6 +391,7 @@ ul.footermenu {
     color:	#00FFFF;
     }
 div.footcontact {
+    min-width:350px;
     width:33.3%;
     color: white;
     height:95%;
@@ -400,6 +403,7 @@ div.footcontact div{
 
 
 div.socseti{
+     min-width:350px;
     float:left;
     width:33.3%;
     color:white;
@@ -412,6 +416,18 @@ div.socseti a{
     color:white;
 }
 
+.Asocseti{
+     display:block;
+     padding:3px;
+      width:130px;
+      text-align:left;
+  }
+.Asocseti:hover{
+    background-color:darkblue;
+    padding:3px;
+    border-radius:3px;
+   
+}
 
 
 

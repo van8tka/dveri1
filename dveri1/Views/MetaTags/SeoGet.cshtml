@@ -9,6 +9,7 @@
    <table class="table_dark" style="font-size:0.7em;width:980px;">
         <tr>
             <th>Страница</th>
+            <th>Категория</th>
             <th>Title</th>
             <th>Keywords</th>
             <th>H1(Заголовок страницы)</th>
@@ -19,6 +20,7 @@
         {
             <tr>
                 <td>@Html.ActionLink(i.Page, "CreateSeo", "MetaTags", new { id = i.ID }, null)</td>
+                <td>@i.Category</td>
                 <td>@i.Title</td>
                 <td>@i.Keywords</td>
                 <td>@i.Header</td>

@@ -1,0 +1,43 @@
+﻿@model dveri1.Models.ModelArticles
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="breadcrumbsonpage">
+        @Html.Action("BreadCrumbs", "VhodnyeDveri", new { namepart = "Статьи" })
+    </div>
+<div style="padding:25px;">
+    <div class="head">
+        <h1>@Model.SeoHead</h1>
+    </div>
+
+    @if (Model.ArticlesList.Count() > 0)
+    {
+        foreach (var i in Model.ArticlesList)
+        {
+            <div class="article2 mt10">
+                <a class="artmain" href="/Articles/GetArticle?id=@i.ID" style="display:block;">
+                    <div class="entren">
+                        <h3 class="tac">@i.Name</h3>
+                        <p style="color:gray;font-size:small">@i.Date</p>
+                       <span>@i.Headings</span>             
+                    </div>                     
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <p>На сайте нет ни одной статьи..</p>
+    }
+</div>
+<div class="pager">
+    @Html.PageLinks(Model.pagingInfo, x => Url.Action("GetArticles", new { page = x, PageSize = Model.pagingInfo.ItemsPerPage }))
+</div>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m9").addClass("current")
+</script>

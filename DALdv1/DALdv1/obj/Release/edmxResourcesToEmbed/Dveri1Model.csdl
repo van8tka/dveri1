@@ -167,6 +167,7 @@
     <Property Name="Description" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
     <Property Name="Page" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Header" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SeoVhodnuhDverei">
     <Key>

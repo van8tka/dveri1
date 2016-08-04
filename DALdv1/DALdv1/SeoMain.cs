@@ -20,5 +20,6 @@ namespace DALdv1
         public string Description { get; set; }
         public string Page { get; set; }
         public string Header { get; set; }
+        public string Category { get; set; }
     }
 }

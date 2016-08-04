@@ -23,16 +23,15 @@ namespace dveri1.Controllers
         {
             try
             {
-               if (dataManager.SeoMainRepository.GetSeoMainByPage("Главная")==null)
+               if (dataManager.SeoMainRepository.GetSeoMainByPage("Входные двери") == null)
                 {
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,null, "Главная");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Входные двери");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Межкомнатные двери");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Доставка и оплата");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Отзывы");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Контакты");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Установка");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, null, "Статьи");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Входные двери", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Межкомнатные двери", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Доставка и оплата", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Отзывы", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Контакты", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Установка", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Статьи", null, "Главная");
                 }
                 ModelSeoMain model = new ModelSeoMain();
                 model.SeoList = dataManager.SeoMainRepository.GetSeoMain();
@@ -60,7 +59,10 @@ namespace dveri1.Controllers
                     model.SeoTitle = s.Title;
                     model.Page = s.Page;
                     model.SeoHead = s.Header;
+                    model.SeoCat = s.Category;
                 }
+                else
+                    model.SeoCat = "Главная";
                     return View(model);
             }
             catch (Exception er)
@@ -80,7 +82,7 @@ namespace dveri1.Controllers
                     if (ModelState.IsValid)
                     {
                     TempData["message"] = "Информация метатэгов добавлена (изменена)";
-                    dataManager.SeoMainRepository.CreateSeo(model.Id, model.SeoTitle, model.SeoKey, model.SeoDesc, model.Page,model.SeoHead);                                   
+                    dataManager.SeoMainRepository.CreateSeo(model.Id, model.SeoTitle, model.SeoKey, model.SeoDesc, model.Page,model.SeoHead,model.SeoCat);                                   
                     return RedirectToAction("SeoGet");
                     }
                 }
@@ -95,7 +97,7 @@ namespace dveri1.Controllers
                         if (ModelState.IsValid)
                         {
                             TempData["message"] = "Информация метатэгов добавлена (изменена)";
-                            dataManager.SeoMainRepository.CreateSeo(model.Id, model.SeoTitle, model.SeoKey, model.SeoDesc, model.Page,model.SeoHead);
+                            dataManager.SeoMainRepository.CreateSeo(model.Id, model.SeoTitle, model.SeoKey, model.SeoDesc, model.Page,model.SeoHead,model.SeoCat);
                             return RedirectToAction("SeoGet");
                         }
                     }

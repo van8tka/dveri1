@@ -1,0 +1,35 @@
+﻿@model dveri1.Models.CreateContactModel
+@{
+    ViewBag.Title = "Изменение контактных данных";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="tablecontent" style="text-align:center;color:black;">
+    <h4>@ViewBag.CreateContact</h4>
+    <hr />
+    @using (Html.BeginForm("ChangeContact", "Contact", FormMethod.Post))
+    {
+        <div class="fieldset">
+            @Html.HiddenFor(m => m.IDContact)
+            <label>Тип контакта (н.р. МТС, Life, Skype, email и т.д)</label>
+            @Html.ValidationMessageFor(m => m.TypContact)
+            @Html.TextBoxFor(m => m.TypContact, new { @class = "form-control" })
+            <label>Номер контакта</label>
+            @Html.ValidationMessageFor(m => m.NameContact)
+            @Html.TextBoxFor(m => m.NameContact, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-top:20px">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "AdminContact")
+        </div>
+
+    }
+
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m9").addClass("actadmin")
+</script>

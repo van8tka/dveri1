@@ -1,0 +1,104 @@
+﻿@model dveri1.Models.CreateVhMod
+
+@{
+    ViewBag.Title = "Редактирование входных дверей";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "opareas",
+        plugins: "image, imagetools ,media ,contextmenu,link,textcolor"
+    });
+    tinyMCE.init({
+        mode: "specific_textareas",
+        editor_selector: "dopchar"
+    });
+</script>
+
+<div class="tablecontent" style="text-align:center;color:black;">
+    <h4>
+        Редактировать товар "Входные двери"
+    </h4>
+    <hr />
+    @using (Html.BeginForm("EditVhDv", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="fieldset">
+            @Html.HiddenFor(m => m.ID)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName == "ID" || property.PropertyName == "ImageData" || property.PropertyName == "ImageMimeType" || property.PropertyName == "FotoVhDvList")
+                {
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label>@(property.DisplayName ?? property.PropertyName)</label>
+                        @if (property.PropertyName == "DescriptionVhDv")
+                        {
+                            @Html.TextArea(property.PropertyName, null,
+                                new { @class = "form-control", rows = 5 })
+                        }
+                        else
+                        {
+                            if (property.PropertyName == "Opisanie")
+                            {
+                                @Html.TextArea(property.PropertyName, null, new { @class = "opareas", rows = 8 })
+                            }
+                            if (property.PropertyName == "DopChar")
+                            {
+                                @Html.TextArea(property.PropertyName, null, new { @class = "dopchar", rows = 8 })
+                            }
+                            if (property.PropertyName == "Publicaciya")
+                            {
+                                @Html.CheckBox(property.PropertyName,
+                                new { @class = "form-control" })
+                            }
+                            else
+                            {
+                                if (property.PropertyName != "Opisanie" && property.PropertyName != "DopChar")
+                                {
+                                    @Html.TextBox(property.PropertyName, null,
+                                new { @class = "form-control" })
+                                }
+
+                            }
+
+                        }
+                        @Html.ValidationMessage(property.PropertyName)
+                    </div>
+                }
+            }
+        </div>
+        <div class="form-group">
+            <div style="display:inline-block">
+                @if (Model.FotoVhDvList != null)
+                {
+                    foreach (var item in Model.FotoVhDvList)
+                    {
+                        <div style="margin:10px;float:left;">
+                            @Html.Raw("<img style='width:150px; height:350px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+                            <br />
+                            @Html.ActionLink("Удалить изображение", "DellFotoVhDv", "Admin", new { idf = item.Idfoto, idt = item.Id }, new { @class = "tablebut", style = "width:170px" })
+                        </div>
+                    }
+                    for (int i = 0; i < 5 - Model.FotoVhDvList.Count(); i++)
+                    {
+                        <input type="file" name="fileUpload[@i]" /><br />
+                    }
+                }             
+               
+            </div>
+            <div style="margin-bottom:20px">
+                <input type="submit" value="Сохранить" class="showadd" />
+                @Html.ActionLink("Отменить", "Panel")
+            </div>
+        </div>
+                                                   
+      
+
+    }
+
+</div>

@@ -1,0 +1,49 @@
+﻿@model dveri1.Models.ModelArticles
+@{
+    ViewBag.Title = "Список статей";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent">
+    <h2>Перечень статей на сайте</h2>
+    <hr />
+    <div style="margin:1em;">
+        @Html.ActionLink("Добавить", "CreateArticle", "Article", new { @class = "tablebut", style = "width:150px" })
+    </div>
+    @if (Model.ArticlesList.Count() == 0)
+    {
+        <div style="text-align:center">
+            <h3 style="font-size:large">У вас на сайте еще нет ни одной статьи! Добавьте пожалуйста статью!</h3>
+        </div>
+    }
+    else
+    {
+        <table class="table_dark" style="font-size:0.7em;width:980px;">
+            <tr>
+                <th class="tac">Номер</th>
+                <th class="tac">Дата</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th></th>
+            </tr>
+            @foreach (var i in Model.ArticlesList)
+            {
+                <tr>
+                    <td class="tac">@Html.ActionLink(i.ID.ToString(), "CreateArticle", "Articles", new { id = i.ID }, null)</td>
+                    <td class="tac">@i.Date</td>
+                      <td>@i.Name</td>
+                    <td>@i.Headings</td>
+                    <td>@Html.ActionLink("Удалить", "DellArticle", "Articles", new { id = i.ID }, new { @class = "tablebut", style = "width:100px;margin-bottom:5px;" })
+                       @Html.ActionLink("Мета тэги", "CreateSeoArticle", "Articles", new { id = i.ID }, new { @class = "tablebut", style = "width:100px" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <hr />
+</div>
+
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m8").addClass("actadmin")
+</script>

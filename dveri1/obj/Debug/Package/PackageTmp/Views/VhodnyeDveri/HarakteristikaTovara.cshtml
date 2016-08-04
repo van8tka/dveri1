@@ -1,0 +1,70 @@
+﻿@model dveri1.Models.KartochkaTovaraModel
+<script src="~/Scripts/modalwindowforharacteristicview.js"></script>
+<div>
+    <div>
+        <span class="pr">Код товара:</span>
+        <span class="valtov">@Model.Tovar.Id</span>
+    </div>
+    @*<br />*@
+    @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
+    {
+        <div>
+            @if (Model.Tovar.Cena == 0 || Model.Tovar.Cena == null)
+            {
+                <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> Цену уточняйте у менеджера.</span>
+            }
+            else
+            {
+                <span class="pr">Цена:</span>
+                <span class="valpr" style="color:red; font-size:x-large; font-weight:800;"> @Model.Tovar.Cena.Value.ToString("C")</span><span style="color:gray"> /шт </span>
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <span class="pr">Цена: </span>
+            <span class="valpr" style="color:black; font-size:medium"><strike> @Model.Tovar.Cena.Value.ToString("C")</strike></span><span style="color:gray"> /шт </span>
+        </div>
+        <div>
+            <span class="pr">Цена со скидкой: </span>
+            <span class="valpr" style="color:red; font-size:x-large; font-weight:800;">@Model.Tovar.CenaSoSkidcoy.Value.ToString("C")</span><span style="color:gray"> /шт </span>
+            <span style="color:white;background-color:orangered"> @Model.Tovar.Skidka% off </span>
+        </div>
+    }
+    <div class="boxbutton">
+        @Html.ActionLink("Купить", "BuyDveri", "VhodnyeDveri", new { id = Model.Tovar.Id, type = "входные двери" }, new { @class = "butbyu" })
+        @Html.ActionLink("Быстрая покупка", "FastBuyDveri", "VhodnyeDveri", new { id = Model.Tovar.Id, type = "входные двери" }, new { @class = "butcall" })
+    </div>
+
+
+</div>
+
+<div id="raz">
+    <br id="tab2" /><br id="tab3" /><br id="tab4" />  
+        <a href="#tab1">Характеристики</a><a href="#tab2">Доставка</a><a href="#tab3">Оплата</a><a href="#tab4">Отзывы (всего: @Model.CommentVhDvList.Count())</a>  
+         <div class="dostavka">
+        @Html.Partial("OpisanieTov")
+    </div>
+    <div class="dostavka">
+        @Html.Raw(Model.InfoDostavka)
+    </div>
+    <div class="dostavka">
+        @Html.Raw(Model.InfoOplata)
+    </div>
+    <div class="dostavka">
+        @Html.Partial("CommentForDveriView")
+    </div>
+</div>
+
+@*делаем модальное окно для оформления товара*@
+<div id="modal_form">
+    <!-- Сaмo oкнo -->
+    <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
+    @Html.Action("BuyDveriModal", new { id = Model.Tovar.Id, type = "входные двери" })
+</div>
+<div id="modal_form_fastbuy">
+    <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
+    @Html.Action("FastBuyDveriModal", new { id = Model.Tovar.Id, type = "входные двери" })
+</div>
+<div id="overlay"></div><!-- Пoдлoжкa -->

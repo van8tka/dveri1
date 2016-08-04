@@ -1,0 +1,48 @@
+[04.08.2016 16:15:27.581] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:15:34.919] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:15:44.450] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:17:17.621] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:20:25.059] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:28:35.894] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:31:46.257] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28
+[04.08.2016 16:31:56.557] MetaTags/SeoGet-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.MetaTagsController.SeoGet() in D:\GitHub\dveri1\dveri1\Controllers\MetaTagsController.cs:line 28

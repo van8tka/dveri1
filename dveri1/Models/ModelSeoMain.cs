@@ -21,6 +21,7 @@ namespace dveri1.Models
         [Display(Name = "Название страницы (рекомендуется не изменять!)")]
         [Required(ErrorMessage ="Введите название страницы!")]
         public string Page { get; set; }
+        public string SeoCat { get; set; }
         public IEnumerable<SeoMain> SeoList { get; set; }
     }
 }

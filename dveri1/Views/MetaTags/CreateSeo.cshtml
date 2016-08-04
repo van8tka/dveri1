@@ -11,10 +11,11 @@
     {
         <div class="fieldset">
             @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.SeoCat)
             @Html.LabelFor(m => m.Page)
             @Html.ValidationMessageFor(m => m.Page)
             @Html.TextBoxFor(m => m.Page, new { @class = "form-control" })
-            @Html.LabelFor(m=>m.SeoTitle)
+            @Html.LabelFor(m => m.SeoTitle)
             @Html.ValidationMessageFor(m => m.SeoTitle)
             @Html.TextBoxFor(m => m.SeoTitle, new { @class = "form-control" })
             @Html.LabelFor(m => m.SeoKey)
@@ -25,7 +26,7 @@
             @Html.TextBoxFor(m => m.SeoHead, new { @class = "form-control" })
             @Html.LabelFor(m => m.SeoDesc)
             @Html.ValidationMessageFor(m => m.SeoDesc)
-            @Html.TextAreaFor(m=>m.SeoDesc,new { @class = "form-control", rows = 5 })
+            @Html.TextAreaFor(m => m.SeoDesc, new { @class = "form-control", rows = 5 })
         </div>
 
         <div style="margin-top:20px">

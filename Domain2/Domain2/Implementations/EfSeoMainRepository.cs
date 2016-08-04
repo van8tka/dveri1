@@ -15,7 +15,7 @@ namespace Domain2.Implementations
         {
             this.contex = contex;
         }
-        public void CreateSeo(int id, string tit, string key, string des, string page, string head)
+        public void CreateSeo(int id, string tit, string key, string des, string page, string head, string categ)
         {
             if(id==0)
             {
@@ -26,7 +26,8 @@ namespace Domain2.Implementations
                     Keywords = key,
                     Description = des,
                     Page = page,
-                    Header = head
+                    Header = head,
+                    Category = categ
                 };
                 contex.SeoMains.Add(s);
             }
@@ -38,6 +39,7 @@ namespace Domain2.Implementations
                 s.Description = des;
                 s.Page = page;
                 s.Header = head;
+                s.Category = categ;
                 contex.Entry(s).State = System.Data.Entity.EntityState.Modified;
             }
             contex.SaveChanges();

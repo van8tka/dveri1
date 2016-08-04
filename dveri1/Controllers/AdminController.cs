@@ -229,10 +229,13 @@ namespace dveri1.Controllers
                     //удалим файлы из временной папки
                     string dompath = Server.MapPath("~/Content/ImageTemp/");
                    DellFilesFromDomain.DellAllFiles(dompath);
+                    //проверим есть ли сео теги для данной категории товара согласно фирмы производителя
+                    //для продвижения по фирме производителю
                     SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(model.Proizvoditel);
                     if(s==null)
                     {
-                        dataManager.SeoMainRepository.CreateSeo(0, "Купить входные двери фирмы "+model.Proizvoditel,null, null, model.Proizvoditel,null);
+                        string category = "Производитель входных дверей";
+                        dataManager.SeoMainRepository.CreateSeo(0, "Купить входные двери фирмы "+model.Proizvoditel,null, null, model.Proizvoditel,null, category);
                     }
                     return RedirectToAction("Panel");
             }

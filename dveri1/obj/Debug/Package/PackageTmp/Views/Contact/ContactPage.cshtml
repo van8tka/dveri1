@@ -1,0 +1,55 @@
+﻿@model dveri1.Models.ContactModel
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.Action("BreadCrumbs","VhodnyeDveri", new { namepart = "Контакты"})
+</div>
+
+<div class="contactpage">
+    <div style="font-size:0.9em;">
+        <h1>@Model.SeoHead</h1>
+    </div>
+    <div class="contactsdata">
+        <h3 style="width:auto;font-style:italic"> Время работы: </h3>
+
+        @foreach (var i in Model.GrafikWorkList)
+        {
+            <div style="display:block;">
+                <div class="fll" style="width:30%;margin-left:20px">@i.NameDay: </div>
+                <div class="fll" style="width:50%">@i.TimeWork </div>
+            </div>
+        }
+       
+    </div>
+    <div class="contactsdata">
+        <h3 style="width:auto;font-style:italic"> Контакты: </h3>
+        @foreach (var z in Model.ContactList)
+        {
+            <div style="display:block;">
+                <div class="fll" style="width:30%">@z.TypeSv: </div>
+                <div>@z.NumberSv </div>
+            </div>
+        }
+    </div>
+    <div class="contactsdata">
+        <h3 style="width:auto;font-style:italic"> Адреса офисов: </h3>
+        @foreach (var z in Model.AdresList)
+        {
+            <div style="display:block;">
+                <div>@z.AdresName </div>
+            </div>
+        }
+    </div>
+
+</div>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m7").addClass("current")
+</script>
+
+
