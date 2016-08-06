@@ -21,6 +21,22 @@
     <Property Name="Public" Type="Boolean" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
+  <EntityType Name="CommentMkDv">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDdv" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="E_mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Stars" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Response" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Heading" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="Public" Type="Boolean" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="MegkomnatnyeDveri" Relationship="Self.FK_CommentMkDv_MegkomnatnyeDveri" FromRole="CommentMkDv" ToRole="MegkomnatnyeDveri" />
+  </EntityType>
   <EntityType Name="CommentVhDveri">
     <Key>
       <PropertyRef Name="ID" />
@@ -148,7 +164,9 @@
     <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Publicaciya" Type="Boolean" Nullable="false" />
     <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CommentMkDvs" Relationship="Self.FK_CommentMkDv_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="CommentMkDv" />
     <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
+    <NavigationProperty Name="SeoMkDverei" Relationship="Self.FK_SeoMkDverei_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="SeoMkDverei" />
   </EntityType>
   <EntityType Name="Oplata">
     <Key>
@@ -168,6 +186,16 @@
     <Property Name="Page" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Header" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
     <Property Name="Category" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SeoMkDverei">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="TitleDveri" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
+    <Property Name="KeywordsDveri" Type="String" MaxLength="1050" FixedLength="false" Unicode="true" />
+    <Property Name="DescriptionDveri" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MegkomnatnyeDveri" Relationship="Self.FK_SeoMkDverei_MegkomnatnyeDveri" FromRole="SeoMkDverei" ToRole="MegkomnatnyeDveri" />
   </EntityType>
   <EntityType Name="SeoVhodnuhDverei">
     <Key>
@@ -275,6 +303,20 @@
     <NavigationProperty Name="FotoVhodnyhDvereys" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="FotoVhodnyhDverey" />
     <NavigationProperty Name="SeoVhodnuhDverei" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="SeoVhodnuhDverei" />
   </EntityType>
+  <Association Name="FK_CommentMkDv_MegkomnatnyeDveri">
+    <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CommentMkDv" Type="Self.CommentMkDv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MegkomnatnyeDveri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommentMkDv">
+        <PropertyRef Name="IDdv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CommentVhDveri_VhodnyeDveri">
     <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -331,6 +373,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SeoMkDverei_MegkomnatnyeDveri">
+    <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SeoMkDverei" Type="Self.SeoMkDverei" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MegkomnatnyeDveri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SeoMkDverei">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SeoVhodnuhDverei_VhodnyeDveri">
     <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -362,6 +418,7 @@
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresas" EntityType="Self.Adresa" />
     <EntitySet Name="CommentCompanies" EntityType="Self.CommentCompany" />
+    <EntitySet Name="CommentMkDvs" EntityType="Self.CommentMkDv" />
     <EntitySet Name="CommentVhDveris" EntityType="Self.CommentVhDveri" />
     <EntitySet Name="Contacts" EntityType="Self.Contact" />
     <EntitySet Name="Dostavkas" EntityType="Self.Dostavka" />
@@ -374,6 +431,7 @@
     <EntitySet Name="MegkomnatnyeDveris" EntityType="Self.MegkomnatnyeDveri" />
     <EntitySet Name="Oplatas" EntityType="Self.Oplata" />
     <EntitySet Name="SeoMains" EntityType="Self.SeoMain" />
+    <EntitySet Name="SeoMkDvereis" EntityType="Self.SeoMkDverei" />
     <EntitySet Name="SeoVhodnuhDvereis" EntityType="Self.SeoVhodnuhDverei" />
     <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
@@ -384,6 +442,10 @@
     <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="VhodnyeDveris" EntityType="Self.VhodnyeDveri" />
+    <AssociationSet Name="FK_CommentMkDv_MegkomnatnyeDveri" Association="Self.FK_CommentMkDv_MegkomnatnyeDveri">
+      <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveris" />
+      <End Role="CommentMkDv" EntitySet="CommentMkDvs" />
+    </AssociationSet>
     <AssociationSet Name="FK_CommentVhDveri_VhodnyeDveri" Association="Self.FK_CommentVhDveri_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
       <End Role="CommentVhDveri" EntitySet="CommentVhDveris" />
@@ -399,6 +461,10 @@
     <AssociationSet Name="FK_FotoVhodnyhDverey_VhodnyeDveri" Association="Self.FK_FotoVhodnyhDverey_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
       <End Role="FotoVhodnyhDverey" EntitySet="FotoVhodnyhDvereys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeoMkDverei_MegkomnatnyeDveri" Association="Self.FK_SeoMkDverei_MegkomnatnyeDveri">
+      <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveris" />
+      <End Role="SeoMkDverei" EntitySet="SeoMkDvereis" />
     </AssociationSet>
     <AssociationSet Name="FK_SeoVhodnuhDverei_VhodnyeDveri" Association="Self.FK_SeoVhodnuhDverei_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />

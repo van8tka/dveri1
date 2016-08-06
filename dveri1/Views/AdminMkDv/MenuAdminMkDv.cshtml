@@ -1,0 +1,26 @@
+﻿@using DALdv1;
+@model dveri1.Models.ModelAdMenu
+@{
+    Layout = null;
+}
+<ul class="mk">
+    <li class="mkl">
+      <a>Фирма</a>
+        <ul class="mk">
+            @foreach (var i in Model.DictionaryMkDvProizvoditel)
+            {
+                <li class="mkl">@Html.ActionLink(i.Key, "PanelMkDv", "AdminMkDv", new { page = 1, brand = i.Key }, new { @class = "itemMA", id = i.Key })</li>
+            }
+        </ul>
+    </li>
+   <li>
+       <a>Материал</a>
+       <ul class="mk">
+           @foreach (var i in Model.DictionaryMkDvMaterial)
+           {
+               <li class="mkl">@Html.ActionLink(i.Key, "PanelMkDv", "AdminMkDv", new { page = 1, material = i.Key }, new { @class = "itemMA", id = i.Key })</li>
+           }
+       </ul>
+   </li>   
+</ul>
+

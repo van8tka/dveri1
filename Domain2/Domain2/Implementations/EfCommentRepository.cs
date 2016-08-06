@@ -52,6 +52,8 @@ namespace Domain2.Implementations
             context.SaveChanges();
         }
 
+
+
         public void CreateCommentVhDv(int id, int iddv, string name, string email, string comment, string response, string header, bool publ, int stars, DateTime date)
         {
            if (id == 0)
@@ -89,6 +91,43 @@ namespace Domain2.Implementations
             context.SaveChanges();
         }
 
+        public void CreateCommentMkDv(int id, int iddv, string name, string email, string comment, string response, string header, bool publ, int stars, DateTime date)
+        {
+            if (id == 0)
+            {
+                CommentMkDv c = new CommentMkDv
+                {
+                    ID = id,
+                    IDdv = iddv,
+                    Name = name,
+                    E_mail = email,
+                    Comment = comment,
+                    Response = response,
+                    Heading = header,
+                    Public = publ,
+                    Date = date,
+                    Stars = stars
+                };
+                context.CommentMkDvs.Add(c);
+            }
+            else
+            {
+                CommentMkDv c = context.CommentMkDvs.Where(x => x.ID == id).FirstOrDefault();
+                c.ID = id;
+                c.IDdv = iddv;
+                c.Name = name;
+                c.E_mail = email;
+                c.Comment = comment;
+                c.Response = response;
+                c.Heading = header;
+                c.Public = publ;
+                c.Date = date;
+                c.Stars = stars;
+                context.Entry(c).State = EntityState.Modified;
+            }
+            context.SaveChanges();
+        }
+
         public void DellComCop(int id)
         {
             context.CommentCompanies.Remove(context.CommentCompanies.Where(i => i.ID == id).FirstOrDefault());
@@ -100,10 +139,19 @@ namespace Domain2.Implementations
             context.CommentVhDveris.Remove(context.CommentVhDveris.Where(i => i.ID == id).FirstOrDefault());
             context.SaveChanges();
         }
+        public void DellComMkDv(int id)
+        {
+            context.CommentMkDvs.Remove(context.CommentMkDvs.Where(i => i.ID == id).FirstOrDefault());
+            context.SaveChanges();
+        }
 
         public IEnumerable<CommentVhDveri> GetCommentVhDv()
         {
             return context.CommentVhDveris;
+        }
+        public IEnumerable<CommentMkDv> GetCommentMkDv()
+        {
+            return context.CommentMkDvs;
         }
 
         public IEnumerable<CommentCompany> GetCommetCompany()

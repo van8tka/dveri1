@@ -1,4 +1,4 @@
-﻿
+﻿@model dveri1.Models.CreateAdresModel
 @{
     ViewBag.Title = "Импорт данных из файла Exel в базу данных";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -12,6 +12,7 @@
         <p>
             @using (Html.BeginForm("Import", "ExpImp", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                @Html.HiddenFor(m=>m.AdresName)
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 <fieldset class="fieldsetform">

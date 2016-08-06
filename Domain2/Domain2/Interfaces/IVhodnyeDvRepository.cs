@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DALdv1;
 
 namespace Domain2.Interfaces
 {
-   public interface IVhodnyeDvRepository
+    public interface IVhodnyeDvRepository
     {
         IEnumerable<VhodnyeDveri> GetVhodnyeDv();
         VhodnyeDveri GetVhodnyeDvById(int id);

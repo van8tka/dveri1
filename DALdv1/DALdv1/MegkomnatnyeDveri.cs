@@ -16,6 +16,7 @@ namespace DALdv1
     {
         public MegkomnatnyeDveri()
         {
+            this.CommentMkDvs = new HashSet<CommentMkDv>();
             this.FotoMegkomnDvereys = new HashSet<FotoMegkomnDverey>();
         }
     
@@ -36,6 +37,8 @@ namespace DALdv1
         public bool Publicaciya { get; set; }
         public string DopCharacteristics { get; set; }
     
+        public virtual ICollection<CommentMkDv> CommentMkDvs { get; set; }
         public virtual ICollection<FotoMegkomnDverey> FotoMegkomnDvereys { get; set; }
+        public virtual SeoMkDverei SeoMkDverei { get; set; }
     }
 }

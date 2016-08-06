@@ -39,4 +39,8 @@ namespace dveri1.Models
     public class ModelCommentVhDv{
         public IEnumerable<CommentVhDveri> CommentVhDvList { get; set; }
     }
+    public class ModelCommentMkDv
+    {
+        public IEnumerable<CommentMkDv> CommentMkDvList { get; set; }
+    }
 }

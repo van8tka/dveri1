@@ -24,6 +24,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CommentMkDvs">
+      <EntityTypeMapping TypeName="dbdveri1Model.CommentMkDv">
+        <MappingFragment StoreEntitySet="CommentMkDv">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDdv" ColumnName="IDdv" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CommentVhDveris">
       <EntityTypeMapping TypeName="dbdveri1Model.CommentVhDveri">
         <MappingFragment StoreEntitySet="CommentVhDveri">
@@ -175,6 +191,16 @@
           <ScalarProperty Name="Page" ColumnName="Page" />
           <ScalarProperty Name="Header" ColumnName="Header" />
           <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeoMkDvereis">
+      <EntityTypeMapping TypeName="dbdveri1Model.SeoMkDverei">
+        <MappingFragment StoreEntitySet="SeoMkDverei">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TitleDveri" ColumnName="TitleDveri" />
+          <ScalarProperty Name="KeywordsDveri" ColumnName="KeywordsDveri" />
+          <ScalarProperty Name="DescriptionDveri" ColumnName="DescriptionDveri" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -3,10 +3,10 @@
 @{
     Layout = null;
 }
-<ul>
+<ul class="vh">
     @foreach(var i in Model)
     {
-        <li>@Html.ActionLink(i.Key,"Panel","Admin", new {page = 1, brand = i.Key}, new {@class="itemMA", id=i.Key})</li>
+        <li class="vhl">@Html.ActionLink(i.Key,"Panel","Admin", new {page = 1, brand = i.Key}, new {@class="itemMA", id=i.Key})</li>
     }
 </ul>
 

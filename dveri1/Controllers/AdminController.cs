@@ -418,6 +418,19 @@ namespace dveri1.Controllers
         {
             try
             {
+                //проверим на наличие еще таких товаров, 
+                VhodnyeDveri vh = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                IEnumerable<VhodnyeDveri> List = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == vh.Proizvoditel);
+                if(List.Count()==1)//если последний товар удаляем,то
+                {//удалим и страницу продвижения его проверим нет ли такой фирмы в межкомнатных
+                    MegkomnatnyeDveri mk = dataManager.MegkomDvRepository.GetMkDv().Where(X => X.Proizvoditel == vh.Proizvoditel).FirstOrDefault();
+                    if(mk==null)//и если нет такой фирмы в межкомнатных дверях
+                    {
+                        SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(vh.Proizvoditel);
+                        dataManager.SeoMainRepository.DellSeo(s.ID);
+                    }     
+                }
+                //теперь удалим      
                 dataManager.VhodnyeDvRepository.DeleteVhodnyeDv(id);
                 TempData["message"] = "Товар удален из базы данных!";
                 return RedirectToAction("Panel", new { page });
@@ -727,6 +740,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //экшен для вывода страницы пользователей
         [Authorize]
         public ActionResult UserPage()
         {
@@ -741,6 +755,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //экшен удаления пользователя
         [Authorize]
         public ActionResult DeleteUser(int id)
         {
@@ -835,7 +850,7 @@ namespace dveri1.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                 if (ModelState.IsValid)
                 {
                     return RedirectToAction("Panel", new { index = model.IndexFind});
                 }

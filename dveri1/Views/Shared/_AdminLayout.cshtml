@@ -28,41 +28,42 @@
         
 
          <ul class="treespis dropspis">
-              <li>
+              <li class="ms">
                  @Html.ActionLink("Для SEO", "SeoGet", "MetaTags", null, new {@class="admmen m1"})
               </li>
-              <li>
-                  @Html.ActionLink("Входные двери","Panel","Admin", null, new { @class = "admmen m2 actadmin" })
-                   @Html.Action("MenuAdmin","Admin")
+             <li class="ms">
+                 @Html.ActionLink("Входные двери", "Panel", "Admin", null, new { @class = "admmen m2 actadmin" })
+                 @Html.Action("MenuAdmin", "Admin")
              </li>
-              <li>
-                  @Html.ActionLink("Межкомнатные двери", "Panel", "Admin", null, new { @class = "admmen m3" })
-              </li>
-              <li>
-                  @Html.ActionLink("Главный слайдер", "SliderMain", "Admin", null, new { @class = "admmen m4" })
-              </li>
-              <li>
-                  @Html.ActionLink("Боковой слайдер", "SliderLeft", "Admin", null, new { @class = "admmen m5" })
-              </li>
-              <li>
-                  @Html.ActionLink("Доставка", "SvedenijaDostavka", "Admin", null, new { @class = "admmen m6" })
-              </li>
-              <li>
-                  @Html.ActionLink("Оплата", "SvedenijaOplata", "Admin", null, new { @class = "admmen m7" })
-              </li>
-              <li>
-                  @Html.ActionLink("Статьи", "AdminGetArticles", "Articles", null, new { @class = "admmen m8" })
-              </li>
-              <li>
-                  @Html.ActionLink("Контакты", "AdminContact", "Contact", null, new { @class = "admmen m9" })
-              </li>
-              <li>
-                  @Html.ActionLink("Пользователи", "UserPage", "Admin", null, new { @class = "admmen m10" })
-              </li>
-              <li>
-                  @Html.ActionLink("Отзывы", "AdminCommentCompany", "Comment", null, new { @class = "admmen m11" })
-              </li>
-             <li>
+             <li class="ms">
+                 @Html.ActionLink("Межкомнатные двери", "PanelMkDv", "AdminMkDv", null, new { @class = "admmen m3" })
+                 @Html.Action("MenuAdminMkDv", "AdminMkDv")
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Главный слайдер", "SliderMain", "Admin", null, new { @class = "admmen m4" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Боковой слайдер", "SliderLeft", "Admin", null, new { @class = "admmen m5" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Доставка", "SvedenijaDostavka", "Admin", null, new { @class = "admmen m6" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Оплата", "SvedenijaOplata", "Admin", null, new { @class = "admmen m7" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Статьи", "AdminGetArticles", "Articles", null, new { @class = "admmen m8" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Контакты", "AdminContact", "Contact", null, new { @class = "admmen m9" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Пользователи", "UserPage", "Admin", null, new { @class = "admmen m10" })
+             </li>
+             <li class="ms">
+                 @Html.ActionLink("Отзывы", "AdminCommentCompany", "Comment", null, new { @class = "admmen m11" })
+             </li>
+             <li class="ms">
                  @Html.ActionLink("Установка", "AdminYstanovka", "AboutYstanovka", null, new { @class = "admmen m12" })
              </li>
           </ul>

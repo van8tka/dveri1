@@ -1,0 +1,15 @@
+[05.08.2016 19:22:15.695] AdminMkDv/CreateMkDv-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfMegkomnatnyeDvRepository.CreateSeoMkDveri(Int32 id, String title, String keywords, String description) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfMegkomnatnyeDvRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.CreateMkDv(CreateMkMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 206
+[05.08.2016 19:23:56.750] AdminMkDv/CreateMkDv-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfMegkomnatnyeDvRepository.CreateSeoMkDveri(Int32 id, String title, String keywords, String description) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfMegkomnatnyeDvRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.CreateMkDv(CreateMkMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 206
+[05.08.2016 19:31:17.562] AdminMkDv/CreateMkDv-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfMegkomnatnyeDvRepository.CreateSeoMkDveri(Int32 id, String title, String keywords, String description) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfMegkomnatnyeDvRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.CreateMkDv(CreateMkMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 206
+[05.08.2016 19:37:17.808] AdminMkDv/CreateMkDv-System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.AdminMkDvController.CreateMkDv(CreateMkMod model, IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 286

@@ -57,6 +57,7 @@
     <Compile Include="Implementations\EfCommentRepository.cs" />
     <Compile Include="Implementations\EfContactRepository.cs" />
     <Compile Include="Implementations\EfKlientRepository.cs" />
+    <Compile Include="Implementations\EfMegkomnatnyeDvRepository.cs" />
     <Compile Include="Implementations\EfOplataDostavkaRepository.cs" />
     <Compile Include="Implementations\EfSeoMainRepository.cs" />
     <Compile Include="Implementations\EfSliderRepository.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Interfaces\ICommentRepository.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\IKlientRepository.cs" />
+    <Compile Include="Interfaces\IMegkomnatnyeDvRepository.cs" />
     <Compile Include="Interfaces\IOplataDostavkaRepository.cs" />
     <Compile Include="Interfaces\ISeoMainRepository.cs" />
     <Compile Include="Interfaces\ISliderRepository.cs" />

@@ -30,6 +30,7 @@
                     </div>
                     <div class="fll mr10" style="max-width:400px;">
                         <a href="/VhodnyeDveri/VhodnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                     <br /> @Html.ActionLink("Админ", "Panel", "Admin",null, new {style="display:block;width:100px;background-color:silver;" })
                     </div>
                 </div>
                 @Html.Action("ContactOnPanel", "VhodnyeDveri")        
@@ -46,7 +47,7 @@
                         <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "mainmen m7" })</li>
                         <li>@Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "mainmen m8" })</li>
                         <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "mainmen m9" })</li>
-                        <li>@Html.ActionLink("Админ", "Panel", "Admin")</li>
+                    
                     </ul>
                 </div>
             </div>
@@ -71,15 +72,8 @@
     </div>
     <div id="overlay"></div><!-- Пoдлoжкa -->
  <footer> 
-    @*<div style="width:inherit;background-color:azure;height:95%;display:inline-block;">
-        <div style="background-color:green;width:33%;height:80%;float:left">        </div>
-        <div style="background-color:blue;width:33%;height:80%;float:left">        </div>
-        <div style="background-color:yellow;width:33%;height:80%;float:left">        </div>
-
-    </div>*@
      <div style="width:inherit;height:95%;display:inline-block;">
-         @*<div class="fll" style="width:350px;"> @DateTime.Now.Year - Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</div>*@
-         <div class="footermenudiv">
+        <div class="footermenudiv">
              <h4 style="text-align:center">КАРТА САЙТА</h4>
              <ul class="footermenu fll" style="margin-top:-20px;">
                  <li>@Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
@@ -115,7 +109,6 @@
          </div>
 
 
-
          <div class="footcontact">
              <h4 style="margin-left:110px;">КОНТАКТЫ</h4>
              <div style="margin-top:-20px;">
@@ -124,7 +117,9 @@
          </div>
 
          <div class="yurinffooter">
-             <div class="fll ml40">@Html.Action("YrInformation", "Contact")</div>
+             <div class="fll ml40">
+                @Html.Action("YrInf", "VhodnyeDveri")
+             </div>
              <p class="flr mr40">devprogram.by</p>
          </div>
      </div>

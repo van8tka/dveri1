@@ -54,13 +54,7 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-        [HttpGet]
-        public ActionResult YrInformation()
-        {
-            CreateAdresModel model = new CreateAdresModel();
-           model.AdresName = dataManager.ContactRepository.GetYrInfa().YrInfa;
-            return View(model);
-        }
+      
 
 
       [Authorize]

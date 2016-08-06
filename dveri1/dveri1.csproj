@@ -195,6 +195,7 @@
     <Compile Include="Controllers\AboutYstanovkaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminMkDvController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -210,9 +211,11 @@
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\CreateMkMod.cs" />
     <Compile Include="Models\CreateVhMod.cs" />
     <Compile Include="Models\ForMainModel.cs" />
     <Compile Include="Models\KartochkaTovaraModel.cs" />
+    <Compile Include="Models\ModelAdMenu.cs" />
     <Compile Include="Models\ModelArticles.cs" />
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
@@ -453,8 +456,16 @@
     <Content Include="Views\Admin\FindById.cshtml" />
     <Content Include="Views\Contact\CreateYrInfa.cshtml" />
     <Content Include="Views\Contact\ChangeYrInfa.cshtml" />
-    <Content Include="Views\Contact\YrInformation.cshtml" />
     <Content Include="Views\VhodnyeDveri\ContactOnFoter.cshtml" />
+    <Content Include="Views\AdminMkDv\MenuAdminMkDv.cshtml" />
+    <Content Include="Views\AdminMkDv\PanelMkDv.cshtml" />
+    <Content Include="Views\AdminMkDv\FindById.cshtml" />
+    <Content Include="Views\AdminMkDv\CreateMkDv.cshtml" />
+    <Content Include="Views\VhodnyeDveri\YrInf.cshtml" />
+    <Content Include="Views\AdminMkDv\EditMkDv.cshtml" />
+    <Content Include="Views\Comment\AdminCommentMkDv.cshtml" />
+    <Content Include="Views\Comment\AdminEditCommentMkDv.cshtml" />
+    <Content Include="Views\ExpImp\ExportMkDv.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

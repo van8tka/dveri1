@@ -54,6 +54,9 @@
     <Compile Include="CommentCompany.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommentMkDv.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommentVhDveri.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeoMain.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SeoMkDverei.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SeoVhodnuhDverei.cs">

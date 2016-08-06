@@ -1,9 +1,4 @@
 ﻿using Domain2.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain2
 {
@@ -20,9 +15,11 @@ namespace Domain2
         private ICommentRepository commentRepository;
         private IYstanovkaRepository ystanovkaRepository;
         private IArticlesRepository articlesRepository;
+        private IMegkomnatnyeDvRepository megkomDvRepository;
 
-        public DataManager(IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IMegkomnatnyeDvRepository megkomDvRepository, IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
+            this.megkomDvRepository = megkomDvRepository;
             this.articlesRepository = articlesRepository;
             this.klientRepository = klientRepository;
             this.vhodnDvRepository = vhodnDvRepository;
@@ -35,6 +32,10 @@ namespace Domain2
             this.ystanovkaRepository = ystanovkaRepository;
         }
         //св-ва через которые будет происх вызов
+        public IMegkomnatnyeDvRepository MegkomDvRepository
+        {
+            get { return megkomDvRepository; }
+        }
         public IArticlesRepository ArticlesRepository
         {
             get { return articlesRepository; }

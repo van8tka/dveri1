@@ -1,0 +1,48 @@
+﻿@model dveri1.Models.ModelExpImpMkDv
+@{
+    ViewBag.Title = "Экспорт каталога товаров";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="tablecontent" style="text-align:center">
+    <h2>Выберите поля для экспорта в файл Exel:</h2>
+    @using (Html.BeginForm("ExportMkDv", "ExpImp", FormMethod.Post))
+    {
+        <div class="chLine fieldset">
+            @Html.HiddenFor(m =>m.ProizvCat)
+            @Html.HiddenFor(m=>m.MaterialCat)
+            @Html.HiddenFor(m => m.ID)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "ProizvCat")
+                {
+                    if (property.PropertyName != "ID")
+                    {
+                        if (property.PropertyName != "MaterialCat")
+                        {
+                            <div class="form-group mt20">
+                                <div class="fll" style="width:250px; text-align:left">
+                                    <label>@(property.DisplayName ?? property.PropertyName)</label>
+                                </div>
+                                <div class="fll">
+                                    @Html.CheckBox(property.PropertyName, new { @checked = "checked" })
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            }
+        </div>
+        <div style="margin-bottom:20px">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "PanelMkDv", "AdminMkDv")
+        </div>
+    }
+</div>
+ 
+<script>
+    //изменение текущего активного пункта меню
+    $(".admmen").removeClass("actadmin")
+    $(".m3").addClass("actadmin")
+    $(".dropspis").find("ul").slideDown(400).parents("li").children("div.drop").css({ 'background-position': "0 0" });
+</script> 
+  

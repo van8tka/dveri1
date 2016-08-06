@@ -326,6 +326,84 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-       
+
+
+        //вывод всех коментов о межкомнатных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminCommentMkDv()
+        {
+            ModelCommentMkDv model = new ModelCommentMkDv();
+            model.CommentMkDvList = dataManager.CommentRepository.GetCommentMkDv().OrderByDescending(x => x.Date);
+            return View(model);
+        }
+        //удаление коментов о межкомнатных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminDellCommentMkDv(int id)
+        {
+            try
+            {
+                dataManager.CommentRepository.DellComMkDv(id);
+                return RedirectToAction("AdminCommentMkDv");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminDellVhDv" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о межкомнатных дверях
+        [Authorize]
+        [HttpGet]
+        public ActionResult AdminEditCommentMkDv(int id)
+        {
+            try
+            {
+                ModelCommentCreate model = new ModelCommentCreate();
+                CommentMkDv cc = dataManager.CommentRepository.GetCommentMkDv().Where(x => x.ID == id).FirstOrDefault();
+                model.Id = cc.ID;
+                model.IdDv = cc.IDdv;
+                model.Name = cc.Name;
+                model.Publish = cc.Public;
+                model.Resp = cc.Response;
+                model.Stars = cc.Stars;
+                model.Email = cc.E_mail;
+                model.Comm = cc.Comment;
+                model.Date = cc.Date;
+                model.Head = cc.Heading;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentMkDv" + er);
+                return View("Error");
+            }
+        }
+        //изменение коментов о межкомнатных дверях
+        [Authorize]
+        [HttpPost]
+        public ActionResult AdminEditCommentMkDv(ModelCommentCreate model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (model.IdDv != 0)
+                    {
+                        dataManager.CommentRepository.CreateCommentMkDv(model.Id, model.IdDv, model.Name, model.Email, model.Comm, model.Resp, model.Head, model.Publish, model.Stars, model.Date);
+                        TempData["message"] = "Комментарий изменен!";
+                        return RedirectToAction("AdminCommentMkDv");
+                    }
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("/Comment/AdminEditCommentMkDv(post)" + er);
+                return View("Error");
+            }
+        }
+
     }
 }

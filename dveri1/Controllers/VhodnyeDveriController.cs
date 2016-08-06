@@ -696,16 +696,39 @@ namespace dveri1.Controllers
         //для загрузки похожих товаров на странице карточка товара
         public ActionResult SimilarGoods()
         {
-            KaruselTovara model = new KaruselTovara();
-            //получим рандомное число
-            int maxgoods = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
-            Random rand = new Random();
-            int randomize = rand.Next(1, maxgoods-25);
+            try
+            {
+                KaruselTovara model = new KaruselTovara();
+                //получим рандомное число
+                int maxgoods = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Count();
+                Random rand = new Random();
+                int randomize = rand.Next(1, maxgoods - 25);
 
-            //пропустим рандомное число товаров и выберем следующие 24;
-            model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Skip(randomize).Take(24);
-            return View(model);
+                //пропустим рандомное число товаров и выберем следующие 24;
+                model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Skip(randomize).Take(24);
+                return View(model);
+            }
+           catch(Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/SimilarGoods-", er);
+                return View("Error");
+            }
         }
 
+//для получения юридической информации на layout
+      public ActionResult YrInf()
+        {
+            try
+            {
+                CreateAdresModel model = new CreateAdresModel();
+                model.AdresName = dataManager.ContactRepository.GetYrInfa().YrInfa;
+                return PartialView(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/YrInf-", er);
+                return View("Error");
+            }
+        }         
     }
 }

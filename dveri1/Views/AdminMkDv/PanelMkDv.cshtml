@@ -1,0 +1,131 @@
+﻿@model dveri1.Models.ForMainModel
+@{
+    ViewBag.Title = "Панель управления";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent">
+    <div style="margin:1em;">
+        @Html.ActionLink("Новый товар", "CreateMkDv", "AdminMkDv", null, new { @class = "tablebut newdoor", style = "width:150px" })
+        @Html.ActionLink("Экспорт товара в Exel", "ExportMkDv", "ExpImp", new { proizvCat = ViewBag.NameProductList, materialCat = ViewBag.NameMat }, new { @class = "tablebut newdoor", style = "width:150px" })
+        @Html.ActionLink("Импорт товара в базу данных", "Import", "ExpImp", new { whatdoors="межкомнатные" }, new { @class = "tablebut newdoor", style = "width:250px" })
+    </div>
+    <hr />
+    <div>
+        <div class="fll" style="width:400px;">
+            <h3 class="headpanel">@ViewBag.NameProductList</h3>
+        </div>
+        <div class="fll mt10" style="width:600px;display:inline-block;position:relative">
+            @*вызов действия для поиска товаров*@
+            @Html.Action("FindById", "AdminMkDv")
+        </div>
+    </div>
+
+    <table class="table_dark">
+        <tr>
+            <th>Код товара</th>
+            <th>Название</th>
+            <th>Производитель</th>
+            <th>Страна</th>
+            <th>Материал</th>
+            <th>Покрытие</th>
+            <th>Каркас</th>
+            <th>Цвет</th>
+            <th>Тип двери</th>
+            <th>Наполнение</th>
+            <th>Цена</th>
+            <th>Скидка</th>
+            <th>Публикация</th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model.ListMkDv)
+        {
+            <tr>
+                <td class="tac">@Html.ActionLink(i.Id.ToString(), "EditMkDv", "AdminMkDv", new { id = i.Id }, null)</td>
+                <td>@Html.ActionLink(i.Nazvanie, "EditMkDv", "AdminMkDv", new { id = i.Id }, null)</td>
+                <td>@i.Proizvoditel</td>
+                <td>@i.Strana</td>
+                <td>@i.Material</td>
+                <td>@i.Pokrytie</td>
+                <td>@i.Karkas </td>
+                <td>@i.Cvet</td>
+                <td>@i.TypDveri </td>
+                <td>@i.VnytrenneeNapolnenie </td>
+                @if (i.Cena != null)
+                {
+                    <td class="cenaChange" id="@i.Id">@i.Cena.Value.ToString("C")</td>
+                }
+                else
+                {
+                    <td class="cenaChange" id="@i.Id">Цена не установлена</td>
+                }
+                <td class="tac" id="skid_@i.Id">@i.Skidka</td>
+                <td class="tac"> @Html.CheckBoxFor(modelItem => i.Publicaciya, new { @class = "chpublick", id = i.Id, value = i.Id })</td>
+                <td>
+                    @Html.ActionLink("Удалить", "DellMkDv", "AdminMkDv", new { id = i.Id, page = Model.PagingInfo.CurrentPage }, new { @class = "tablebut", style = "width:100px" })
+                <br />
+                @Html.ActionLink("Создать на основе", "CreateMkDv", "AdminMkDv", new { id = i.Id }, new { @class = "tablebut", style = "width:100px;margin-top:0.8em" })
+            </td>
+        </tr>
+        }
+    </table>
+
+</div>
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("PanelMkDv", new { page = x, PageSize = Model.PagingInfo.ItemsPerPage }))
+</div>
+@*//скрипт для обработки чекбоксов для публикации*@
+<script type="text/javascript">
+    //определяем Id кликнутого элемента
+    $('.chpublick').click(function () {
+        var id = $(this).attr('id');
+        var temp = "?list=межкомнатныедвери";
+             $.ajax({//и вызываем ajax функцию
+                type: 'GET',
+                url: '/AdminMkDv/ChangePublic/' + id+temp,
+                success: function (data) {
+                }
+            });
+
+    });
+    //изменение текущего активного пункта меню
+    $(".admmen").removeClass("actadmin")
+    $(".m3").addClass("actadmin")
+    $(".dropspis").find("ul").slideDown(400).parents("li").children("div.drop").css({ 'background-position': "0 0" });
+    //поиск меню в подменю и попытка его сделать активным
+    var id = $('.headpanel').text();
+
+   // var elem = document.getElementById(id);
+   //var z = $(".itemMA").attr('id')==
+   // alert(z);
+    if ($(".itemMA").attr('id') == id) {
+        //alert($(".itemMA").attr('id'))
+        //$(".itemMA").removeClass("actadmin")
+        //$($(".itemMA").attr('id')).addClass("actadmin")
+    }
+
+
+    //действия по нажатию на поле с ценой
+    $('body').on('click','td.cenaChange', function (e) {//а это работает
+       var idtd = $(this).attr('id');
+        var pr = $(this).text();
+        $(this).replaceWith("<td class='cenaChangeAfter'><input class='tbCenaChange' id='"+idtd+"' type='text'style='width:70px;'/> <br/> <input type= 'submit' value='Изменить' class='btCenaChange'/> <input type='button' value='Отменить' class='btCenaChangeCancel'/></td>")
+        //обработка ввода цены
+        $('.btCenaChange').click(function () {
+            var newprice = $('#'+idtd).val();
+            var temp = "?newprice="+newprice;
+            $.ajax({//и вызываем ajax функцию
+                 url: '/AdminMkDv/ChangeCena/' + idtd+temp,
+                 success: function (price) {
+                     $('.cenaChangeAfter').replaceWith("<td class='cenaChange' id='" + idtd + "'>" + price[0] + " </td>");
+                     $('#skid_' + idtd).text(price[1]);
+                 }
+              });
+
+        });
+        //действие по кнопке отмена
+        $('.btCenaChangeCancel').click(function () {
+            $('.cenaChangeAfter').replaceWith("<td class='cenaChange' id='" + idtd + "'>" + pr + " </td>")
+        });
+    })
+</script>

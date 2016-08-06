@@ -1,0 +1,25 @@
+﻿@model dveri1.Models.ModelFind
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("FindById", "AdminMkDv", FormMethod.Post))
+{
+   <input id="IndexFind" class="form-control" type="text" value="Введите код товара для поиска.." onfocus="fS(this);" onblur="bS(this);" style="padding:1px 4px;min-width:200px;float:left;" name="IndexFind">
+   <input type="submit" value="Поиск" class="showadd" style="height:34px;" />
+}
+@*//скрипт отрабатывающий на появление курсора в поле ввода*@
+<script type="text/javascript">
+function fS(elem)
+{
+    if (elem.value == 'Введите код товара для поиска..')
+      elem.value='';
+}
+
+function bS(elem)
+{
+  if (elem.value == '')
+      elem.value = 'Введите код товара для поиска..';
+}
+</script>
+

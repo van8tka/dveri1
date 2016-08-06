@@ -9,6 +9,7 @@ using Domain2;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using dveri1.DopMethod;
+using System.Text;
 
 namespace dveri1.Controllers
 {
@@ -20,23 +21,13 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-     //метод exporta данных на ПК в формате xml
-     [Authorize]
-     [HttpGet,ValidateInput(false)]
-        public ActionResult Export(string categor)
-        {
-            ModelExpImp model = new ModelExpImp();
-            model.Category = categor;
-            model.ID = true;
-            return View(model);
-        }
-
+    
         //объявим глобальные переменные для работы с exel
         private Excel.Application excelapp;
         private Excel.Workbook excelappworkbook;
         private Excel.Workbooks excelappworkbooks;
         private Excel.Worksheet excelworksheet;
-        //и глобальные константы
+        //и глобальные константы для входных дверей
         private const string nazv = "Название";
         private const string proizvoditel  = "Фирма производитель";
         private const string stranaProizv ="Страна";
@@ -54,6 +45,27 @@ namespace dveri1.Controllers
         private const string publicaciya = "Публикация";
         private const string opisanie = "Описание";
         private const string dopChar = "Дополнительное описание";
+        //и для межкомнатных
+        private const string material = "Материал";
+        private const string pokrytie = "Покрытие";
+        private const string karkas = "Каркас";
+        private const string typdveri = "Тип двери";
+        private const string vnytrnapolnenie = "Внутреннее наполнение";
+        //для оперделения типа двери для импорта
+        private const string cVhodnye = "входные";
+        private const string cMegkomnatnye = "межкомнатные";
+
+
+        //метод exporta данных на ПК в формате xml для Входных дверей
+        [Authorize]
+        [HttpGet, ValidateInput(false)]
+        public ActionResult Export(string categor)
+        {
+            ModelExpImp model = new ModelExpImp();
+            model.Category = categor;
+            model.ID = true;
+            return View(model);
+        }
 
         [Authorize]
         [HttpPost]
@@ -296,10 +308,10 @@ namespace dveri1.Controllers
                 //вывод окна для сохранения файла
                 string p = Server.MapPath("~//App_data//Excel//");
                 string file = Path.Combine(p + "Книга1.xlsx");
-                DirectoryInfo dir = new DirectoryInfo(p);
+                    DirectoryInfo dir = new DirectoryInfo(p);
                 string contentType = "application/xlsx";
                
-                return File(dir + "Книга1.xlsx", contentType, "каталог.xlsx");
+                return File(dir + "Книга1.xlsx", contentType, "Входные_двери.xlsx");
             
             }
             catch(Exception er)
@@ -318,19 +330,21 @@ namespace dveri1.Controllers
         //импорт файла в БД
         [HttpGet]
         [Authorize]
-        public ActionResult Import()
+        public ActionResult Import(string whatdoors)
         {
-            return View();
+            //для передачи используем модель создания адреса, чтобы не создавать другую
+            CreateAdresModel model = new CreateAdresModel();
+            model.AdresName = whatdoors;
+            return View(model);
         }
 
 
         [HttpPost]
-        public ActionResult Import(IEnumerable<HttpPostedFileBase> fileupload)
+        public ActionResult Import(CreateAdresModel model,IEnumerable<HttpPostedFileBase> fileupload)
         {
             try
             {
                 //загружаем книгу на сервер
-
                 string domainpath = Server.MapPath("~//App_Data//ForDB//");
                 if (!Directory.Exists(domainpath))
                     Directory.CreateDirectory(domainpath); // Создаем директорию, если нужно
@@ -362,12 +376,15 @@ namespace dveri1.Controllers
                    int flagerr=0;
                     if (path != null)
                     {
-                        if (ImportToDataBase(path,ref flagerr))
+                        if (ImportToDataBase(model.AdresName,path,ref flagerr))
                         {
                             TempData["message"] = "Данные из файла импортированы в базу данных";
                             DellAllFiles();
+                        if(model.AdresName==cVhodnye)
                             return RedirectToAction("Panel","Admin",null);
-                        }
+                        else
+                            return RedirectToAction("PanelMkDv", "AdminMkDv", null);
+                    }
                         else
                         {    //проверка наличия ошибки в файле на наличие полей                      
                             if(flagerr==1)
@@ -380,7 +397,10 @@ namespace dveri1.Controllers
                             }
                         KillExcel();
                         DellAllFiles();
+                        if (model.AdresName == cVhodnye)
                             return RedirectToAction("Panel", "Admin", null);
+                        else
+                            return RedirectToAction("PanelMkDv", "AdminMkDv", null);
                         }
                     }
                     else
@@ -398,7 +418,7 @@ namespace dveri1.Controllers
             }
         }
         //метод считывания и загрузки инфы из файла excel в бд
-        private bool ImportToDataBase(string pathfile,ref int flagerr)
+        private bool ImportToDataBase(string whatdoors,string pathfile,ref int flagerr)
         {
             try
             {
@@ -410,13 +430,18 @@ namespace dveri1.Controllers
               
                 //кол во строк
                 int str = 2;
-                int AllCountHeadCell = 18;
-                //переменные для сохранения номера столбца
-                int iproiz=0, istrproiz = 0, ifur = 0, iotdvn = 0, iotdsnar = 0, iopis = 0, idopch = 0, itolmet = 0, itoldvpol = 0, icvet = 0, inapolnt = 0, iyplotn = 0, inazv = 0, ipubl = 0, icena = 0, iskid = 0, ipetl = 0;
-
-                ModelExpImp model = new ModelExpImp();
+                int AllCountHeadCell;
+                if (whatdoors == cVhodnye)
+                    AllCountHeadCell = 18;
+                else
+                    AllCountHeadCell = 15;
+                             
+                //переменные для сохранения номера столбца для вх и мк дверей
+                int iproiz=0, istrproiz = 0, ifur = 0, iotdvn = 0, iotdsnar = 0, iopis = 0, idopch = 0, itolmet = 0, itoldvpol = 0, icvet = 0, inapolnt = 0, iyplotn = 0, inazv = 0, ipubl = 0, icena = 0, iskid = 0, ipetl = 0, imater = 0, ipokryt = 0, ikarkas = 0, itypdv = 0, ivnnapol = 0;
+                ModelImport model = new ModelImport();
+               
                 //проверка наличия полей в файле для добавления(изменения) данных
-                for(int i=1;i<=AllCountHeadCell;i++)
+                for (int i=1;i<=AllCountHeadCell;i++)
                 {
                     string j=null;
                     //проверка наличия заголовка
@@ -426,7 +451,8 @@ namespace dveri1.Controllers
                     }
                     else
                     {//для проскакивания оставшихся элементов заголовка
-                        i = 19;
+                        
+                        i = whatdoors==cVhodnye?19:16;
                         if(!model.Nazvanie||!model.ID)
                         {
                               //TempData["message"] = "В импортируемом файле недостаточно данных. Должны присутствовать поля: ID, Название, Цена.";
@@ -545,6 +571,37 @@ namespace dveri1.Controllers
                                 ifur = i;
                                 break;
                             }
+                        //для межкомнатных дверей
+                        case material:
+                            {
+                                model.Material = true;
+                                imater = i;
+                                break;
+                            }
+                        case karkas:
+                            {
+                                model.Karkas = true;
+                                ikarkas = i;
+                                break;
+                            }
+                        case pokrytie:
+                            {
+                                model.Pokrytie = true;
+                                ipokryt = i;
+                                break;
+                            }
+                        case typdveri:
+                            {
+                                model.TypDveri = true;
+                                itypdv = i;
+                                break;
+                            }
+                        case vnytrnapolnenie:
+                            {
+                                model.VnNapoln = true;
+                                ivnnapol = i;
+                                break;
+                            }
                         default:
                             break;
                     }
@@ -558,217 +615,219 @@ namespace dveri1.Controllers
 
                 //проходим по строкам пока есть ID
                 while (excelworksheet.Cells[str, 1].Value != null)
-                {     
-                    CreateVhMod m = new CreateVhMod();
-                    decimal? CenaSoSkidkoy = null;
-                    //получаем значение ID
-                   int ID = int.Parse(excelworksheet.Cells[str, 1].Value2.ToString());
-                    //проверим наличие элемента в БД
-                    VhodnyeDveri vh = new VhodnyeDveri();
-                    vh = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == ID).FirstOrDefault();
-                    if (vh == null)
+                {   //если импорт во входные двери то
+                    if(whatdoors==cVhodnye)
                     {
-                        ID = 0;
-                    }
-                    //если есть название в заголовках таблицы файла
-                    if (model.Nazvanie)
-                    {//если значение ячейки не равно нуль
-                        if (excelworksheet.Cells[str, inazv].Value != null)
+                        CreateVhMod m = new CreateVhMod();
+                        decimal? CenaSoSkidkoy = null;
+                        //получаем значение ID
+                        int ID = int.Parse(excelworksheet.Cells[str, 1].Value2.ToString());
+                        //проверим наличие элемента в БД
+                        VhodnyeDveri vh = new VhodnyeDveri();
+                        vh = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Id == ID).FirstOrDefault();
+                        if (vh == null)
                         {
-                            m.Nazvanie = excelworksheet.Cells[str, inazv].Value2.ToString();
-                        }                                   
-                    }
-                    else
-                    {
-                        if(vh!=null)
-                        {
-                            m.Nazvanie = vh.Nazvanie;
+                            ID = 0;
                         }
-                    }
-                   if (model.Proizvoditel)
-                    {
-                        if (excelworksheet.Cells[str, iproiz].Value != null)
-                        {
-                            m.Proizvoditel = excelworksheet.Cells[str, iproiz].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Proizvoditel = vh.Proizvoditel;
-                        }
-                    }
-                    if (model.StranaProizv)
-                    {
-                        if(excelworksheet.Cells[str, istrproiz].Value!=null)
-                        {
-                            m.StranaProizv = excelworksheet.Cells[str, istrproiz].Value2.ToString();
-                        }                   
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.StranaProizv = vh.Strana;
-                        }
-                    }
-                    if (model.Cvet)
-                    {
-                        if (excelworksheet.Cells[str, icvet].Value != null)
-                        {
-                            m.Cvet = excelworksheet.Cells[str, icvet].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Cvet = vh.Cvet;
-                        }
-                    }
-                    if (model.Napolnitel)
-                    {
-                        if (excelworksheet.Cells[str,inapolnt].Value != null)
-                        {
-                            m.Napolnitel = excelworksheet.Cells[str,inapolnt ].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Napolnitel = vh.Napolnitel;
-                        }
-                    }
-                    if (model.Yplotnitel)
-                    {
-                        if (excelworksheet.Cells[str,iyplotn].Value != null)
-                        {
-                            m.Yplotnitel = excelworksheet.Cells[str,iyplotn].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Yplotnitel = vh.Yplotnitel;
-                        }
-                    }
-                    if (model.TolschinaMetala)
-                    {
-                        if (excelworksheet.Cells[str,itolmet].Value != null)
-                        {
-                            m.TolschinaMetala = double.Parse(excelworksheet.Cells[str,itolmet].Value2.ToString());
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.TolschinaMetala = vh.TolschinaMetalla;
-                        }
-                    }
-                    if (model.TolschinaDvPolotna)
-                    {
-                        if (excelworksheet.Cells[str,itoldvpol].Value != null)
-                        {
-                            m.TolschinaDvPolotna = double.Parse(excelworksheet.Cells[str,itoldvpol].Value2.ToString());
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.TolschinaDvPolotna = vh.TolschinaDvPolotna;
-                        }
-                    }
-                    if (model.Furnitura)
-                    {
-                        if (excelworksheet.Cells[str,ifur].Value != null)
-                        {
-                            m.Furnitura = excelworksheet.Cells[str,ifur].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Furnitura = vh.Furnitura;
-                        }
-                    }
-                    if (model.Petli)
-                    {
-                        if (excelworksheet.Cells[str,ipetl].Value != null)
-                        {
-                            m.Petli = excelworksheet.Cells[str,ipetl].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.Petli = vh.Petli;
-                        }
-                    }
-                    if (model.OtdSnarugi)
-                    {
-                        if (excelworksheet.Cells[str,iotdsnar].Value != null)
-                        {
-                            m.OtdSnarugi = excelworksheet.Cells[str,iotdsnar].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.OtdSnarugi = vh.OtdelkaSnarugi;
-                        }
-                    }
-                    if (model.OtdVnutri)
-                    {
-                        if (excelworksheet.Cells[str,iotdvn].Value != null)
-                        {
-                            m.OtdVnutri = excelworksheet.Cells[str,iotdvn].Value2.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (vh != null)
-                        {
-                            m.OtdVnutri = vh.OtdelkaVnutri;
-                        }
-                    }
-                    if (model.Cena)
-                    {
-                        if (excelworksheet.Cells[str,icena].Value != null)
-                        {
-                            string cena = excelworksheet.Cells[str, icena].Value2.ToString();
-                            if(cena == "Цена не установлена")
+                        //если есть название в заголовках таблицы файла
+                        if (model.Nazvanie)
+                        {//если значение ячейки не равно нуль
+                            if (excelworksheet.Cells[str, inazv].Value != null)
                             {
-                                m.Cena = 0;
+                                m.Nazvanie = excelworksheet.Cells[str, inazv].Value2.ToString();
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (vh != null)
                             {
-                                //парсим строку по символу "р"
-                                string[] val = cena.Split('р');
-                                m.Cena = decimal.Parse(val[0]);
+                                m.Nazvanie = vh.Nazvanie;
                             }
-                           
                         }
-                    }
-                    else
-                    {
-                        if (vh != null)
+                        if (model.Proizvoditel)
                         {
-                            m.Cena = vh.Cena;
+                            if (excelworksheet.Cells[str, iproiz].Value != null)
+                            {
+                                m.Proizvoditel = excelworksheet.Cells[str, iproiz].Value2.ToString();
+                            }
                         }
-                    }
-                    if (model.Skidka)
-                    {
-                        if (excelworksheet.Cells[str,iskid].Value != null)
+                        else
                         {
-                            m.Skidka = int.Parse(excelworksheet.Cells[str,iskid].Value2.ToString());
+                            if (vh != null)
+                            {
+                                m.Proizvoditel = vh.Proizvoditel;
+                            }
+                        }
+                        if (model.StranaProizv)
+                        {
+                            if (excelworksheet.Cells[str, istrproiz].Value != null)
+                            {
+                                m.StranaProizv = excelworksheet.Cells[str, istrproiz].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.StranaProizv = vh.Strana;
+                            }
+                        }
+                        if (model.Cvet)
+                        {
+                            if (excelworksheet.Cells[str, icvet].Value != null)
+                            {
+                                m.Cvet = excelworksheet.Cells[str, icvet].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Cvet = vh.Cvet;
+                            }
+                        }
+                        if (model.Napolnitel)
+                        {
+                            if (excelworksheet.Cells[str, inapolnt].Value != null)
+                            {
+                                m.Napolnitel = excelworksheet.Cells[str, inapolnt].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Napolnitel = vh.Napolnitel;
+                            }
+                        }
+                        if (model.Yplotnitel)
+                        {
+                            if (excelworksheet.Cells[str, iyplotn].Value != null)
+                            {
+                                m.Yplotnitel = excelworksheet.Cells[str, iyplotn].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Yplotnitel = vh.Yplotnitel;
+                            }
+                        }
+                        if (model.TolschinaMetala)
+                        {
+                            if (excelworksheet.Cells[str, itolmet].Value != null)
+                            {
+                                m.TolschinaMetala = double.Parse(excelworksheet.Cells[str, itolmet].Value2.ToString());
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.TolschinaMetala = vh.TolschinaMetalla;
+                            }
+                        }
+                        if (model.TolschinaDvPolotna)
+                        {
+                            if (excelworksheet.Cells[str, itoldvpol].Value != null)
+                            {
+                                m.TolschinaDvPolotna = double.Parse(excelworksheet.Cells[str, itoldvpol].Value2.ToString());
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.TolschinaDvPolotna = vh.TolschinaDvPolotna;
+                            }
+                        }
+                        if (model.Furnitura)
+                        {
+                            if (excelworksheet.Cells[str, ifur].Value != null)
+                            {
+                                m.Furnitura = excelworksheet.Cells[str, ifur].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Furnitura = vh.Furnitura;
+                            }
+                        }
+                        if (model.Petli)
+                        {
+                            if (excelworksheet.Cells[str, ipetl].Value != null)
+                            {
+                                m.Petli = excelworksheet.Cells[str, ipetl].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Petli = vh.Petli;
+                            }
+                        }
+                        if (model.OtdSnarugi)
+                        {
+                            if (excelworksheet.Cells[str, iotdsnar].Value != null)
+                            {
+                                m.OtdSnarugi = excelworksheet.Cells[str, iotdsnar].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.OtdSnarugi = vh.OtdelkaSnarugi;
+                            }
+                        }
+                        if (model.OtdVnutri)
+                        {
+                            if (excelworksheet.Cells[str, iotdvn].Value != null)
+                            {
+                                m.OtdVnutri = excelworksheet.Cells[str, iotdvn].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.OtdVnutri = vh.OtdelkaVnutri;
+                            }
+                        }
+                        if (model.Cena)
+                        {
+                            if (excelworksheet.Cells[str, icena].Value != null)
+                            {
+                                string cena = excelworksheet.Cells[str, icena].Value2.ToString();
+                                if (cena == "Цена не установлена")
+                                {
+                                    m.Cena = 0;
+                                }
+                                else
+                                {
+                                    //парсим строку по символу "р"
+                                    string[] val = cena.Split('р');
+                                    m.Cena = decimal.Parse(val[0]);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Cena = vh.Cena;
+                            }
+                        }
+                        if (model.Skidka)
+                        {
+                            if (excelworksheet.Cells[str, iskid].Value != null)
+                            {
+                                m.Skidka = int.Parse(excelworksheet.Cells[str, iskid].Value2.ToString());
 
                                 if (m.Skidka != 0 && (m.Cena != 0 && m.Cena != null))
                                 {
@@ -778,78 +837,351 @@ namespace dveri1.Controllers
                                 {
                                     m.Skidka = null;
                                 }
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (vh != null)
+                        else
                         {
-                            m.Skidka = vh.Skidka;
-                        }
-                        if (m.Skidka != 0 && (m.Cena != 0 && m.Cena != null))
-                        {
-                            CenaSoSkidkoy = m.Cena - m.Cena * m.Skidka / 100;
-                        }
-                    }
-                    if (model.Publicaciya)
-                    {
-                        if (excelworksheet.Cells[str,ipubl].Value != null)
-                        {
-                            string pub = excelworksheet.Cells[str,ipubl].Value2.ToString();
-                            if (pub == "ЛОЖЬ" || pub == "False" || pub == "false" || pub == "0" || pub == "непубликовать")
+                            if (vh != null)
                             {
-                                m.Publicaciya = false;
+                                m.Skidka = vh.Skidka;
+                            }
+                            if (m.Skidka != 0 && (m.Cena != 0 && m.Cena != null))
+                            {
+                                CenaSoSkidkoy = m.Cena - m.Cena * m.Skidka / 100;
+                            }
+                        }
+                        if (model.Publicaciya)
+                        {
+                            if (excelworksheet.Cells[str, ipubl].Value != null)
+                            {
+                                string pub = excelworksheet.Cells[str, ipubl].Value2.ToString();
+                                if (pub == "ЛОЖЬ" || pub == "False" || pub == "false" || pub == "0" || pub == "непубликовать")
+                                {
+                                    m.Publicaciya = false;
+                                }
+                                else
+                                {
+                                    m.Publicaciya = true;
+                                }
+
                             }
                             else
                             {
                                 m.Publicaciya = true;
                             }
-
                         }
                         else
                         {
-                            m.Publicaciya = true;
+                            if (vh != null)
+                            {
+                                m.Publicaciya = vh.Publicaciya;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (vh != null)
+                        if (model.Opisanie)
                         {
-                            m.Publicaciya = vh.Publicaciya;
+                            if (excelworksheet.Cells[str, iopis].Value != null)
+                            {
+                                m.Opisanie = excelworksheet.Cells[str, iopis].Value2.ToString();
+                            }
                         }
-                    }
-                    if (model.Opisanie)
-                    {
-                        if (excelworksheet.Cells[str,iopis].Value != null)
+                        else
                         {
-                            m.Opisanie = excelworksheet.Cells[str,iopis].Value2.ToString();
+                            if (vh != null)
+                            {
+                                m.Opisanie = vh.Opisanie;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (vh != null)
+                        if (model.DopChar)
                         {
-                            m.Opisanie = vh.Opisanie;
+                            if (excelworksheet.Cells[str, idopch].Value != null)
+                            {
+                                m.DopChar = excelworksheet.Cells[str, idopch].Value2.ToString();
+                            }
                         }
-                    }
-                    if (model.DopChar)
-                    {
-                        if (excelworksheet.Cells[str,idopch].Value != null)
+                        else
                         {
-                            m.DopChar = excelworksheet.Cells[str,idopch].Value2.ToString();
+                            if (vh != null)
+                            {
+                                m.DopChar = vh.DopCharacteristics;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (vh != null)
+                        //создаем(изменяем) элемент в БД
+                        dataManager.VhodnyeDvRepository.CreateVhodnyeDv(ID, m.Nazvanie, m.Proizvoditel, m.StranaProizv, m.Cvet, m.Napolnitel,
+                         m.Yplotnitel, m.TolschinaMetala, m.Furnitura, m.Petli, m.OtdSnarugi, m.OtdVnutri, m.TolschinaDvPolotna,
+                         m.Cena, m.Skidka, CenaSoSkidkoy, m.Opisanie, m.Publicaciya, m.DopChar);
+                        SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(m.Proizvoditel);
+                        if (s == null)
                         {
-                            m.DopChar = vh.DopCharacteristics;
+                            string category = "Производитель входных дверей";
+                            dataManager.SeoMainRepository.CreateSeo(0, "Купить входные двери фирмы " + m.Proizvoditel, null, null, m.Proizvoditel, null, category);
                         }
                     }
-                    //создаем(изменяем) элемент в БД
-                    dataManager.VhodnyeDvRepository.CreateVhodnyeDv(ID, m.Nazvanie, m.Proizvoditel, m.StranaProizv, m.Cvet, m.Napolnitel,
-                     m.Yplotnitel, m.TolschinaMetala, m.Furnitura, m.Petli, m.OtdSnarugi, m.OtdVnutri, m.TolschinaDvPolotna,
-                     m.Cena, m.Skidka, CenaSoSkidkoy, m.Opisanie, m.Publicaciya, m.DopChar);
+                    else//если межкомнатные двери
+                    {
+                        CreateMkMod m = new CreateMkMod();
+                        decimal? CenaSoSkidkoy = null;
+                        //получаем значение ID
+                        int ID = int.Parse(excelworksheet.Cells[str, 1].Value2.ToString());
+                        //проверим наличие элемента в БД
+                        MegkomnatnyeDveri vh = new MegkomnatnyeDveri();
+                        vh = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Id == ID).FirstOrDefault();
+                        if (vh == null)
+                        {
+                            ID = 0;
+                        }
+                        //если есть название в заголовках таблицы файла
+                        if (model.Nazvanie)
+                        {//если значение ячейки не равно нуль
+                            if (excelworksheet.Cells[str, inazv].Value != null)
+                            {
+                                m.Nazvanie = excelworksheet.Cells[str, inazv].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Nazvanie = vh.Nazvanie;
+                            }
+                        }
+                        if (model.Proizvoditel)
+                        {
+                            if (excelworksheet.Cells[str, iproiz].Value != null)
+                            {
+                                m.Proizvoditel = excelworksheet.Cells[str, iproiz].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Proizvoditel = vh.Proizvoditel;
+                            }
+                        }
+                        if (model.StranaProizv)
+                        {
+                            if (excelworksheet.Cells[str, istrproiz].Value != null)
+                            {
+                                m.StranaProizv = excelworksheet.Cells[str, istrproiz].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.StranaProizv = vh.Strana;
+                            }
+                        }
+                        if (model.Cvet)
+                        {
+                            if (excelworksheet.Cells[str, icvet].Value != null)
+                            {
+                                m.Cvet = excelworksheet.Cells[str, icvet].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Cvet = vh.Cvet;
+                            }
+                        }
+                        if (model.Material)
+                        {
+                            if (excelworksheet.Cells[str, imater].Value != null)
+                            {
+                                m.Material = excelworksheet.Cells[str, imater].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Material = vh.Material;
+                            }
+                        }
+                        if (model.Karkas)
+                        {
+                            if (excelworksheet.Cells[str, ikarkas].Value != null)
+                            {
+                                m.Karkas = excelworksheet.Cells[str, ikarkas].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Karkas = vh.Karkas;
+                            }
+                        }
+                        if (model.Pokrytie)
+                        {
+                            if (excelworksheet.Cells[str, ipokryt].Value != null)
+                            {
+                                m.Pokrytie = excelworksheet.Cells[str, ipokryt].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Pokrytie = vh.Pokrytie;
+                            }
+                        }
+                        if (model.TypDveri)
+                        {
+                            if (excelworksheet.Cells[str, itypdv].Value != null)
+                            {
+                                m.TypeDv = excelworksheet.Cells[str, itypdv].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.TypeDv = vh.TypDveri;
+                            }
+                        }
+                        if (model.VnNapoln)
+                        {
+                            if (excelworksheet.Cells[str, ivnnapol].Value != null)
+                            {
+                                m.VnNapoln = excelworksheet.Cells[str, ivnnapol].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.VnNapoln = vh.VnytrenneeNapolnenie;
+                            }
+                        }
+                        if (model.Cena)
+                        {
+                            if (excelworksheet.Cells[str, icena].Value != null)
+                            {
+                                string cena = excelworksheet.Cells[str, icena].Value2.ToString();
+                                if (cena == "Цена не установлена")
+                                {
+                                    m.Cena = 0;
+                                }
+                                else
+                                {
+                                    //парсим строку по символу "р"
+                                    string[] val = cena.Split('р');
+                                    m.Cena = decimal.Parse(val[0]);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Cena = vh.Cena;
+                            }
+                        }
+                        if (model.Skidka)
+                        {
+                            if (excelworksheet.Cells[str, iskid].Value != null)
+                            {
+                                m.Skidka = int.Parse(excelworksheet.Cells[str, iskid].Value2.ToString());
+
+                                if (m.Skidka != 0 && (m.Cena != 0 && m.Cena != null))
+                                {
+                                    CenaSoSkidkoy = m.Cena - m.Cena * m.Skidka / 100;
+                                }
+                                else
+                                {
+                                    m.Skidka = null;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Skidka = vh.Skidka;
+                            }
+                            if (m.Skidka != 0 && (m.Cena != 0 && m.Cena != null))
+                            {
+                                CenaSoSkidkoy = m.Cena - m.Cena * m.Skidka / 100;
+                            }
+                        }
+                        if (model.Publicaciya)
+                        {
+                            if (excelworksheet.Cells[str, ipubl].Value != null)
+                            {
+                                string pub = excelworksheet.Cells[str, ipubl].Value2.ToString();
+                                if (pub == "ЛОЖЬ" || pub == "False" || pub == "false" || pub == "0" || pub == "непубликовать")
+                                {
+                                    m.Publicaciya = false;
+                                }
+                                else
+                                {
+                                    m.Publicaciya = true;
+                                }
+
+                            }
+                            else
+                            {
+                                m.Publicaciya = true;
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Publicaciya = vh.Publicaciya;
+                            }
+                        }
+                        if (model.Opisanie)
+                        {
+                            if (excelworksheet.Cells[str, iopis].Value != null)
+                            {
+                                m.Opisanie = excelworksheet.Cells[str, iopis].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.Opisanie = vh.Opisanie;
+                            }
+                        }
+                        if (model.DopChar)
+                        {
+                            if (excelworksheet.Cells[str, idopch].Value != null)
+                            {
+                                m.DopChar = excelworksheet.Cells[str, idopch].Value2.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (vh != null)
+                            {
+                                m.DopChar = vh.DopCharacteristics;
+                            }
+                        }
+                        //создаем(изменяем) элемент в БД
+                        dataManager.MegkomDvRepository.CreateMkDv(ID, m.Nazvanie, m.Proizvoditel, m.StranaProizv, m.Cvet, m.Material, m.Pokrytie, m.Karkas,
+                            m.TypeDv, m.VnNapoln, m.Cena, m.Skidka, CenaSoSkidkoy, m.Opisanie, m.Publicaciya, m.DopChar);
+
+                        SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(m.Proizvoditel);
+                        if (s == null)
+                        {
+                            string category = "Производитель межкомнатных дверей";
+                            dataManager.SeoMainRepository.CreateSeo(0, "Купить межкомнатные двери фирмы " + m.Proizvoditel, null, null, m.Proizvoditel, null, category);
+                        }
+                        //для продвижения по названию материала межкомн дверей
+                        SeoMain sm = dataManager.SeoMainRepository.GetSeoMainByPage(m.Material);
+                        if (sm == null)
+                        {
+                            string category = "Материал межкомнатных дверей";
+                            dataManager.SeoMainRepository.CreateSeo(0, "Купить межкомнатные двери из " + m.Material, null, null, m.Material, null, category);
+                        }
+
+                    }
                     //увеличили количество строк
                     str++;
                 }
@@ -887,6 +1219,253 @@ namespace dveri1.Controllers
         public ActionResult EmptyFile()
         {
             return View();
+        }
+        //==============================ДЛЯ ЭКСПОРТА И ИМПОРТА МЕЖКОМНАТНЫХ ДВЕРЕЙ==========================================
+        //метод exporta данных на ПК в формате xml для межкомнатных дверей из БД
+        [Authorize]
+        [HttpGet, ValidateInput(false)]
+        public ActionResult ExportMkDv(string proizvCat, string materialCat)
+        {
+            ModelExpImpMkDv model = new ModelExpImpMkDv();
+            model.ProizvCat = proizvCat;
+            model.MaterialCat = materialCat;
+            model.ID = true;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ExportMkDv(ModelExpImpMkDv model)
+        {
+            try
+            {
+                IEnumerable<MegkomnatnyeDveri> MkDvList;
+                if (model.ProizvCat != "Межкомнатные двери - весь список")
+                {
+                    if(model.MaterialCat!=null)
+                        MkDvList = dataManager.MegkomDvRepository.GetMkDv().Where(x=>x.Material == model.MaterialCat).OrderBy(x => x.Id);
+                    else
+                        MkDvList = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Proizvoditel == model.ProizvCat).OrderBy(x => x.Id);
+                }
+                else
+                {
+                    MkDvList = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Id);
+                }
+
+                //получив данные брабатываем их 
+                //создаем приложение excel
+                excelapp = new Excel.Application();
+                //создаем книгу
+                excelappworkbook = excelapp.Workbooks.Add(Type.Missing);
+                //создадим записи в книге и указываем названия столбцов в зависимости от выбранных полей характеристик товара
+                excelworksheet = excelappworkbook.ActiveSheet;
+                //первой поле номер товара по умолчанию, остальные если истина то добавляем иначе нет
+                excelworksheet.Cells[1, 1] = "ID";
+                //создадим словарь для определения имен заголовка таблицы
+                Dictionary<string, bool> ListOfHeaders = new Dictionary<string, bool>();
+                ListOfHeaders.Add("Название", model.Nazvanie);
+                ListOfHeaders.Add("Фирма производитель", model.Proizvoditel);
+                ListOfHeaders.Add("Страна", model.StranaProizv);
+                ListOfHeaders.Add("Цвет", model.Cvet);
+                ListOfHeaders.Add("Материал", model.Material);
+                ListOfHeaders.Add("Каркас", model.Karkas);
+                ListOfHeaders.Add("Покрытие", model.Pokrytie);
+                ListOfHeaders.Add("Тип двери", model.TypDveri);
+                ListOfHeaders.Add(vnytrnapolnenie, model.VnNapoln);
+                ListOfHeaders.Add("Цена", model.Cena);
+                ListOfHeaders.Add("Скидка", model.Skidka);
+                ListOfHeaders.Add("Публикация", model.Publicaciya);
+                ListOfHeaders.Add("Описание", model.Opisanie);
+                ListOfHeaders.Add("Дополнительное описание", model.DopChar);
+                //определим количество ячеек в заголовке
+                int countOfCellsHead = 15;
+                //определим текущее имя выбранной ячейки
+                int currentNameCell = 0;
+                int RemoveAllCells = 0;
+                //кол-во дверей
+                int countDv = MkDvList.Count();
+                //заполним индексы
+                for (int str = 2; str < countDv + 2; str++)
+                {
+                    excelworksheet.Cells[str, 1] = MkDvList.ElementAt(str - 2).Id.ToString();
+                }
+
+                //проход по ячейкам заголовка
+                for (int currentCellHead = 2; currentCellHead <= countOfCellsHead; currentCellHead++)
+                {//взяв номер ячейки заголовка, пройдем по выбрнным полям
+
+                    for (int IndexNameCell = currentNameCell; IndexNameCell <= 13; IndexNameCell++)
+                    {//если поле выбрано, то этой ячейке присвоим имя и выйдем из цикла
+                        if (ListOfHeaders.ElementAt(IndexNameCell).Value)
+                        {
+                            excelworksheet.Cells[1, currentCellHead] = ListOfHeaders.ElementAt(IndexNameCell).Key;
+                            //заполним столбец данными из таблицы БД,начинаем со 2-ой строки
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Название")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Nazvanie;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Фирма производитель")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Proizvoditel;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Страна")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Strana;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Цвет")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Cvet;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == material)
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Material;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == karkas)
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Karkas;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == pokrytie)
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Pokrytie;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == typdveri)
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).TypDveri;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == vnytrnapolnenie)
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).VnytrenneeNapolnenie;
+                                }
+                            }
+                           
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Цена")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    if (MkDvList.ElementAt(stroka - 2).Cena != null)
+                                    {
+                                        excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Cena.Value.ToString("C");
+                                    }
+                                    else
+                                    {
+                                        excelworksheet.Cells[stroka, currentCellHead] = "Цена не установлена";
+                                    }
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Скидка")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Skidka.ToString();
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Публикация")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Publicaciya.ToString();
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Описание")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Opisanie;
+                                }
+                            }
+                            if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Дополнительное описание")
+                            {
+                                for (int stroka = 2; stroka < countDv + 2; stroka++)
+                                {
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).DopCharacteristics;
+                                }
+                            }
+                            //если не равно 16 то переходим к следующему полю
+                            if (IndexNameCell != 13)
+                                currentNameCell = IndexNameCell + 1;
+                            else
+                                currentNameCell = IndexNameCell;
+                            break;
+                        }
+                        else
+                        {
+                            RemoveAllCells++;
+                        }
+                    }
+                    //перейдем к другой ячейки
+                    countOfCellsHead = 15 - RemoveAllCells;
+                }
+
+                //выделим первую строку с названиями столбцов
+                excelworksheet.get_Range("A1", "Y1").Font.Bold = true;
+                excelworksheet.get_Range("A1", "Y1").Interior.ColorIndex = 17;
+                excelworksheet.get_Range("A2", "Y1").ColumnWidth = 20;
+                excelworksheet.get_Range("A1", "Y65000").RowHeight = 25;
+
+                //формат сохранения
+                string pathDog = Server.MapPath("~//App_data//Excel//");
+                //проверяем наличие папки
+                if (!Directory.Exists(pathDog))
+                    Directory.CreateDirectory(pathDog);
+                excelapp.DefaultFilePath = pathDog;
+                //фотмат сохранения xlExcel12 равен .xlsx
+                excelapp.DefaultSaveFormat = Excel.XlFileFormat.xlExcel12;
+                //запрос перезаписи книги - да перезаписать
+                excelapp.DisplayAlerts = false;
+                //получим список книг
+                //excelappworkbooks = excelapp.Workbooks;
+
+                //получим ссылку на первую книгу
+                //excelappworkbook = excelappworkbooks[1];
+                excelappworkbook.Save();
+
+                //закрытие программы
+                excelappworkbook.Close();
+                excelapp.Quit();
+                //полностью убиваем прилагу
+                KillExcel();
+
+                //вывод окна для сохранения файла
+                string p = Server.MapPath("~//App_data//Excel//");
+                string file = Path.Combine(p + "Книга1.xlsx");
+             
+                DirectoryInfo dir = new DirectoryInfo(p);
+                string contentType = "application/xlsx";
+
+                return File(dir + "Книга1.xlsx", contentType, "Межкомнатные_двери.xlsx");
+
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("ExpImpController/ExportMkDv- " + er);
+                return View("Error");
+            }
         }
     }
 }

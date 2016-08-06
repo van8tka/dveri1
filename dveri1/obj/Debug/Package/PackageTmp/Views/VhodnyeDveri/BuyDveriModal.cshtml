@@ -1,9 +1,0 @@
-﻿@model dveri1.Models.ModelBuyDveri
-    @{
-        Layout = null;
-    }
-
-   @using (Ajax.BeginForm("BuyDveriModal", new AjaxOptions { UpdateTargetId = "idbuy", InsertionMode = InsertionMode.Replace }))
-    {
-         @Html.Partial("ViewBuy")
-    }
