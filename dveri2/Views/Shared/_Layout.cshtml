@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/orbit.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.orbit.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modalwindowrecallme.js"></script>
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="body">
+        <div>
+            @Html.ActionLink("Заказать звонок", "FastBuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "входные двери" }, new { @class = "butcallmain" })
+        </div>
+        <div class="navigationfixedtop">
+            <div class="content mt10">
+                <div class="brand fll">
+                    <div class="fll mr10">
+                        <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex"> <img src="~/Content/logo1.png" alt="" style="width:35px;height:35px;" /></a>
+                    </div>
+                    <div class="fll mr10" style="max-width:400px;">
+                        <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                    </div>
+                </div>
+                @Html.Action("ContactOnPanel", "MegkomnatnyeDveri")
+
+            </div>
+            <div style="background:#fff;color:#666;font:12px/18px Tahoma, Arial, Helvetica, sans-serif;">
+                <div id="menu">
+                    <ul>
+                        <li>@Html.ActionLink("Главная", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m1" })</li>
+                        <li>@Html.ActionLink("Входные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m2 current" })</li>
+                        <li>@Html.ActionLink("Межкомнатные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m3" })</li>
+                        <li>@Html.ActionLink("Доставка и оплата", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m5" })</li>
+                        <li>@Html.ActionLink("Отзывы", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m6" })</li>
+                        <li>@Html.ActionLink("Контакты", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m7" })</li>
+                        <li>@Html.ActionLink("Установка", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m8" })</li>
+                        <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "mainmen m9" })</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            @RenderBody()
+
+        </div>
+
+        @if (TempData["messageklient"] != null)
+            {
+            <div class="alertmessage">@TempData["messageklient"]</div>
+        }
+        @Scripts.Render("~/bundles/jquery")
+
+        @RenderSection("scripts", required: false)
+    </div>
+    <div id="modal_form_fastbuy">
+        <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
+        @Html.Action("FastBuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "входные двери" })
+    </div>
+    <div id="overlay"></div><!-- Пoдлoжкa -->
+    <footer>
+        <div style="width:inherit;height:95%;display:inline-block;">
+            <div class="footermenudiv">
+                <h4 style="text-align:center">КАРТА САЙТА</h4>
+                <ul class="footermenu fll" style="margin-top:-20px;">
+                    <li>@Html.ActionLink("Входные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Межкомнатные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Доставка и оплата", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Отзывы", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Контакты", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Установка", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "footermenuitem" })</li>
+                    <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "footermenuitem" })</li>
+                </ul>
+            </div>
+            <div class="socseti">
+                <div style="text-align:center;color:white;">
+                    <h4>ОСТАВАЙТЕСЬ С НАМИ</h4>
+                </div>
+
+                <div style="text-align:center;margin-top:-10px;">
+                    <div style="width:35%;float:left;margin-left:30px;">
+                        <a class="fll Asocseti" href="https://plus.google.com/" rel="nofollow"> <img src="~/Content/ForSoc/google.png" style="width:24px;height:24px" alt="" class="fll" /> <div class="fll" style="color:white; margin-left:8px;">Google+</div> </a>
+                        <a class="fll Asocseti" href="https://www.facebook.com/" rel="nofollow"> <img src="~/Content/ForSoc/facebook.png" style="width:24px;height:24px" alt="" class="fll" /> <div class="fll" style="color:white; margin-left:8px;">Facebook</div>  </a>
+                        <a class="fll Asocseti" href="https://my.mail.ru/" rel="nofollow"> <img src="~/Content/ForSoc/mail.png" style="width:24px;height:24px" alt="" class="fll" /><div class="fll" style="color:white; margin-left:8px;"> Mail </div></a>
+                        <a class="fll Asocseti" href="https://ok.ru/" rel="nofollow"> <img src="~/Content/ForSoc/odnoklasniki.png" style="width:24px;height:24px" alt="" class="fll" /><div class="fll" style="color:white; margin-left:8px;"> Odnoklassniki  </div> </a>
+                    </div>
+                    <div style="width:25%;float:right;margin-right:30px;">
+                        @*<a class="fll" href="https://plus.google.com/" rel="nofollow"> <img src="~/Content/ForSoc/rss.png" style="width:24px;height24px" alt="" /> RSS  </a>*@
+                        <a class="fll Asocseti" href="https://twitter.com/" rel="nofollow"> <img src="~/Content/ForSoc/twitter.png" style="width:24px;height:24px" alt="" class="fll" /> <div class="fll" style="color:white; margin-left:8px;">Twitter </div>  </a>
+                        <a class="fll Asocseti" href="https://new.vk.com/" rel="nofollow"> <img src="~/Content/ForSoc/vk.png" style="width:24px;height:24px" alt="" class="fll" /> <div class="fll" style="color:white; margin-left:8px;">VK </div>  </a>
+                        <a class="fll Asocseti" href="https://www.yandex.by/" rel="nofollow"> <img src="~/Content/ForSoc/yandex.png" style="width:24px;height:24px" alt="" class="fll" /> <div class="fll" style="color:white; margin-left:8px;">Yandex  </div> </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footcontact">
+                <h4 style="margin-left:110px;">КОНТАКТЫ</h4>
+                <div style="margin-top:-20px;">
+                    @Html.Action("ContactOnFoter", "MegkomnatnyeDveri", new { contact = false })
+                </div>
+            </div>
+
+            <div class="yurinffooter">
+                <div class="fll ml40">
+                    @Html.Action("YrInf","MegkomnatnyeDveri")
+                </div>
+                <p class="flr mr40">devprogram.by</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

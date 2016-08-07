@@ -65,7 +65,7 @@ namespace Domain2.Implementations
         {
             return context.SliderLeftImgs;
         }
-        //для МК дверей
+        //=======================================================================для МК дверей
         //главный слайдер
         public void CreateSliderMainImgMk(string Type, byte[] Image)
         {
