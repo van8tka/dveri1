@@ -151,12 +151,12 @@
           <Property Name="Nazvanie" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Proizvoditel" Type="nvarchar" MaxLength="250" />
           <Property Name="Strana" Type="nvarchar" MaxLength="250" />
-          <Property Name="Material" Type="nvarchar" MaxLength="250" />
-          <Property Name="Pokrytie" Type="nvarchar" MaxLength="250" />
-          <Property Name="Karkas" Type="nvarchar" MaxLength="250" />
+          <Property Name="Material" Type="nvarchar" MaxLength="550" />
+          <Property Name="Pokrytie" Type="nvarchar" MaxLength="550" />
+          <Property Name="Karkas" Type="nvarchar" MaxLength="550" />
           <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
-          <Property Name="TypDveri" Type="nvarchar" MaxLength="250" />
-          <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="250" />
+          <Property Name="TypDveri" Type="nvarchar" MaxLength="550" />
+          <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="450" />
           <Property Name="Cena" Type="money" />
           <Property Name="Skidka" Type="int" />
           <Property Name="CenaSoSkidkoy" Type="money" />
@@ -209,7 +209,23 @@
           <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="SliderLeftImgMk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="SliderMainImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SliderMainImgMk">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -237,7 +253,26 @@
           <Property Name="Articles" Type="nvarchar(max)" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
+        <EntityType Name="TableArticlesMk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="550" />
+          <Property Name="Headings" Type="nvarchar" MaxLength="1550" />
+          <Property Name="Articles" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
         <EntityType Name="TableSeoArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="450" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="450" />
+          <Property Name="Description" Type="nvarchar" MaxLength="450" />
+        </EntityType>
+        <EntityType Name="TableSeoArticlesMk">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -404,6 +439,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TableSeoArticlesMk_TableArticlesMk">
+          <End Role="TableArticlesMk" Type="Self.TableArticlesMk" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TableSeoArticlesMk" Type="Self.TableSeoArticlesMk" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TableArticlesMk">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableSeoArticlesMk">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbdveri1ModelStoreContainer">
           <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentCompany" EntityType="Self.CommentCompany" Schema="dbo" store:Type="Tables" />
@@ -423,10 +472,14 @@
           <EntitySet Name="SeoMkDverei" EntityType="Self.SeoMkDverei" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeoVhodnuhDverei" EntityType="Self.SeoVhodnuhDverei" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderLeftImgMk" EntityType="Self.SliderLeftImgMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderMainImgMk" EntityType="Self.SliderMainImgMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableArticlesMk" EntityType="Self.TableArticlesMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableSeoArticlesMk" EntityType="Self.TableSeoArticlesMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableYrInfa" EntityType="Self.TableYrInfa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -462,6 +515,10 @@
           <AssociationSet Name="FK_TableSeoArticles_TableArticles1" Association="Self.FK_TableSeoArticles_TableArticles1">
             <End Role="TableArticles" EntitySet="TableArticles" />
             <End Role="TableSeoArticles" EntitySet="TableSeoArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TableSeoArticlesMk_TableArticlesMk" Association="Self.FK_TableSeoArticlesMk_TableArticlesMk">
+            <End Role="TableArticlesMk" EntitySet="TableArticlesMk" />
+            <End Role="TableSeoArticlesMk" EntitySet="TableSeoArticlesMk" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -621,12 +678,12 @@
           <Property Name="Nazvanie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Proizvoditel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Strana" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Material" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Pokrytie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Karkas" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Material" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Pokrytie" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Karkas" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="TypDveri" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TypDveri" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Skidka" Type="Int32" />
           <Property Name="CenaSoSkidkoy" Type="Decimal" Precision="19" Scale="4" />
@@ -684,7 +741,23 @@
           <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="SliderLeftImgMk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="SliderMainImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SliderMainImgMk">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -713,6 +786,17 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TableSeoArticle" Relationship="Self.FK_TableSeoArticles_TableArticles1" FromRole="TableArticles" ToRole="TableSeoArticles" />
         </EntityType>
+        <EntityType Name="TableArticlesMk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Headings" Type="String" MaxLength="1550" FixedLength="false" Unicode="true" />
+          <Property Name="Articles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TableSeoArticlesMk" Relationship="Self.FK_TableSeoArticlesMk_TableArticlesMk" FromRole="TableArticlesMk" ToRole="TableSeoArticlesMk" />
+        </EntityType>
         <EntityType Name="TableSeoArticle">
           <Key>
             <PropertyRef Name="ID" />
@@ -722,6 +806,16 @@
           <Property Name="Keywords" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TableArticle" Relationship="Self.FK_TableSeoArticles_TableArticles1" FromRole="TableSeoArticles" ToRole="TableArticles" />
+        </EntityType>
+        <EntityType Name="TableSeoArticlesMk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TableArticlesMk" Relationship="Self.FK_TableSeoArticlesMk_TableArticlesMk" FromRole="TableSeoArticlesMk" ToRole="TableArticlesMk" />
         </EntityType>
         <EntityType Name="TableYrInfa">
           <Key>
@@ -884,6 +978,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TableSeoArticlesMk_TableArticlesMk">
+          <End Role="TableArticlesMk" Type="Self.TableArticlesMk" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TableSeoArticlesMk" Type="Self.TableSeoArticlesMk" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TableArticlesMk">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableSeoArticlesMk">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adresas" EntityType="Self.Adresa" />
           <EntitySet Name="CommentCompanies" EntityType="Self.CommentCompany" />
@@ -903,10 +1011,14 @@
           <EntitySet Name="SeoMkDvereis" EntityType="Self.SeoMkDverei" />
           <EntitySet Name="SeoVhodnuhDvereis" EntityType="Self.SeoVhodnuhDverei" />
           <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
+          <EntitySet Name="SliderLeftImgMks" EntityType="Self.SliderLeftImgMk" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
+          <EntitySet Name="SliderMainImgMks" EntityType="Self.SliderMainImgMk" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
+          <EntitySet Name="TableArticlesMks" EntityType="Self.TableArticlesMk" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
+          <EntitySet Name="TableSeoArticlesMks" EntityType="Self.TableSeoArticlesMk" />
           <EntitySet Name="TableYrInfas" EntityType="Self.TableYrInfa" />
           <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -942,6 +1054,10 @@
           <AssociationSet Name="FK_TableSeoArticles_TableArticles1" Association="Self.FK_TableSeoArticles_TableArticles1">
             <End Role="TableArticles" EntitySet="TableArticles" />
             <End Role="TableSeoArticles" EntitySet="TableSeoArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TableSeoArticlesMk_TableArticlesMk" Association="Self.FK_TableSeoArticlesMk_TableArticlesMk">
+            <End Role="TableArticlesMk" EntitySet="TableArticlesMks" />
+            <End Role="TableSeoArticlesMk" EntitySet="TableSeoArticlesMks" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1172,9 +1288,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SliderLeftImgMks">
+            <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImgMk">
+              <MappingFragment StoreEntitySet="SliderLeftImgMk">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SliderMainImgs">
             <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImg">
               <MappingFragment StoreEntitySet="SliderMainImg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderMainImgMks">
+            <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImgMk">
+              <MappingFragment StoreEntitySet="SliderMainImgMk">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MimeType" ColumnName="MimeType" />
                 <ScalarProperty Name="Imaging" ColumnName="Imaging" />
@@ -1203,9 +1337,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TableArticlesMks">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableArticlesMk">
+              <MappingFragment StoreEntitySet="TableArticlesMk">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Headings" ColumnName="Headings" />
+                <ScalarProperty Name="Articles" ColumnName="Articles" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TableSeoArticles">
             <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticle">
               <MappingFragment StoreEntitySet="TableSeoArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableSeoArticlesMks">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticlesMk">
+              <MappingFragment StoreEntitySet="TableSeoArticlesMk">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />

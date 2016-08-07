@@ -34,7 +34,7 @@ namespace dveri1.Controllers
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Статьи", null, "Главная");
                 }
                 ModelSeoMain model = new ModelSeoMain();
-                model.SeoList = dataManager.SeoMainRepository.GetSeoMain();
+                model.SeoList = dataManager.SeoMainRepository.GetSeoMain().OrderBy(x=>x.Category);
                 return View(model);
             }
             catch (Exception er)

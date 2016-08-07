@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DALdv1;
 using dveri1.Models;
-using dveri1.Infrastructure;
 using Domain2;
 using dveri1.DopMethod;
 
 
 namespace dveri1.Controllers
 {
-   
     public class ArticlesController : Controller
     {
         DataManager dataManager;
@@ -21,7 +17,7 @@ namespace dveri1.Controllers
             this.dataManager = dataManager;
         }
         [Authorize]
-        //получение всего списка статей
+        //получение всего списка статей вх дв
         public ActionResult AdminGetArticles()
         {
             ModelArticles model = new ModelArticles();
@@ -173,6 +169,113 @@ namespace dveri1.Controllers
             };
                   
             return View(model);
+        }
+
+        //=======================================о МК ДВ=======================
+        //получение всего списка статей вх дв
+        public ActionResult AdminGetArticlesMk()
+        {
+            ModelArticles model = new ModelArticles();
+            model.ArticlesListMk = dataManager.ArticlesRepository.GetArticlesMk().OrderByDescending(x => x.Date);
+            return View(model);
+        }
+
+        //создание статьи
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateArticleMk(int id = 0)
+        {
+            ModelArticleCreate model = new ModelArticleCreate();
+            if (id == 0)
+            {
+                model.ArticleID = 0;
+            }
+            else
+            {
+                TableArticlesMk ta = dataManager.ArticlesRepository.GetArticleMk(id);
+                if (ta != null)
+                {
+                    model.ArticleID = id;
+                    model.ArticleDescript = ta.Headings;
+                    model.ArticleName = ta.Name;
+                    model.ArticleText = ta.Articles;
+                }
+            }
+            return View(model);
+        }
+        [Authorize]
+        [HttpPost, ValidateInput(false)]
+        public ActionResult CreateArticleMk(ModelArticleCreate model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    dataManager.ArticlesRepository.CreateArticleMk(model.ArticleID, model.ArticleName, model.ArticleDescript, model.ArticleText);
+                    if (model.ArticleID == 0)
+                        TempData["message"] = "Статья добавлена в базуданных!";
+                    else
+                        TempData["message"] = "Статья изменена!";
+                    return RedirectToAction("AdminGetArticlesMk");
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("CreateArticleMk/Articles-" + er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        //удаление статьи
+        public ActionResult DellArticleMk(int id)
+        {
+            try
+            {
+                dataManager.ArticlesRepository.DelArticleMk(id);
+                TempData["message"] = "Статья удалена!";
+                return RedirectToAction("AdminGetArticlesMk");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("DelArticleMk/Articles-" + er);
+                return View("Error");
+            }
+        }
+
+        [Authorize]
+        [HttpGet]
+        //создание сео для статей
+        public ActionResult CreateSeoArticleMk(int id)
+        {
+            ModelSeoArticle model = new ModelSeoArticle();
+            model.IDart = id;
+            TableSeoArticlesMk ta = dataManager.ArticlesRepository.GetSeoArticleMk(id);
+            model.Title = ta.Title;
+            model.Key = ta.Keywords;
+            model.Desc = ta.Description;
+            return View(model);
+        }
+        [Authorize]
+        [HttpPost]
+        //создание сео для статей
+        public ActionResult CreateSeoArticleMk(ModelSeoArticle model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    dataManager.ArticlesRepository.CreateSeoArticleMk(model.IDart, model.Title, model.Key, model.Desc);
+                    TempData["message"] = "Значения метатегов изменены(добавлены)!";
+                    return RedirectToAction("AdminGetArticlesMk");
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("CreateSeoArticleMk/Articles-" + er);
+                return View("Error");
+            }
         }
 
 

@@ -15,6 +15,7 @@ namespace Domain2.Implementations
         {
             this.context = context;
         }
+        //для входных дверей
         public void CreateArticle(int id, string name, string descrip, string art)
         {
             if (id == 0)
@@ -91,6 +92,86 @@ namespace Domain2.Implementations
         public TableSeoArticle GetSeoArticle(int id)
         {
             return context.TableSeoArticles.Where(x => x.ID == id).FirstOrDefault();
+        }
+
+
+        //для МК дверей
+        public void CreateArticleMk(int id, string name, string descrip, string art)
+        {
+            if (id == 0)
+            {
+                TableArticlesMk ta = new TableArticlesMk()
+                {
+                    ID = id,
+                    Name = name,
+                    Headings = descrip,
+                    Articles = art,
+                    Date = DateTime.Now,
+                };
+                context.TableArticlesMks.Add(ta);
+            }
+            else
+            {
+                TableArticlesMk ta = context.TableArticlesMks.Where(i => i.ID == id).FirstOrDefault();
+                if (ta != null)
+                {
+                    ta.Name = name;
+                    ta.Headings = descrip;
+                    ta.Articles = art;
+                    ta.Date = DateTime.Now;
+                    context.Entry(ta).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
+            context.SaveChanges();
+            if (id == 0)
+            {
+                TableSeoArticlesMk ta = new TableSeoArticlesMk()
+                {
+                    ID = context.TableArticlesMks.OrderByDescending(z => z.ID).First().ID,
+                    Title = name,
+                    Keywords = null,
+                    Description = null
+                };
+                context.TableSeoArticlesMks.Add(ta);
+                context.SaveChanges();
+            }
+        }
+
+        public void CreateSeoArticleMk(int id, string title, string key, string desc)
+        {
+
+            TableSeoArticlesMk ta = context.TableSeoArticlesMks.Where(i => i.ID == id).FirstOrDefault();
+            ta.Title = title;
+            ta.Keywords = key;
+            ta.Description = desc;
+            context.Entry(ta).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        public void DelArticleMk(int id)
+        {
+            TableArticlesMk ta = context.TableArticlesMks.Where(i => i.ID == id).FirstOrDefault();
+            if (ta != null)
+            {
+                context.TableArticlesMks.Remove(ta);
+                context.SaveChanges();
+            }
+
+        }
+
+        public TableArticlesMk GetArticleMk(int id)
+        {
+            return context.TableArticlesMks.Where(z => z.ID == id).FirstOrDefault();
+        }
+
+        public IEnumerable<TableArticlesMk> GetArticlesMk()
+        {
+            return context.TableArticlesMks;
+        }
+
+        public TableSeoArticlesMk GetSeoArticleMk(int id)
+        {
+            return context.TableSeoArticlesMks.Where(x => x.ID == id).FirstOrDefault();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Domain2.Implementations
         {
             this.context = context;
         }
+        //для ВХ дверей
         //главный слайдер
         public void CreateSliderMainImg(string Type, byte[] Image)
         {
@@ -64,7 +65,56 @@ namespace Domain2.Implementations
         {
             return context.SliderLeftImgs;
         }
+        //для МК дверей
+        //главный слайдер
+        public void CreateSliderMainImgMk(string Type, byte[] Image)
+        {
+            SliderMainImgMk sl = new SliderMainImgMk()
+            {
+                Id = 0,
+                MimeType = Type,
+                Imaging = Image
+            };
+            context.SliderMainImgMks.Add(sl);
+            context.SaveChanges();
+        }
 
+        public void DellSliderMainImgMk(int id)
+        {
+            context.SliderMainImgMks.Remove(context.SliderMainImgMks.Where(x => x.Id == id).FirstOrDefault());
+            context.SaveChanges();
+
+        }
+
+        public IEnumerable<SliderMainImgMk> GetSliderMainImgMk()
+        {
+            return context.SliderMainImgMks;
+        }
+
+        //==============================боковой слайдер===================================
+        public void CreateSliderLeftImgMk(string Type, byte[] Image)
+        {
+            SliderLeftImgMk sl = new SliderLeftImgMk()
+            {
+                Id = 0,
+                MimeType = Type,
+                Imaging = Image
+            };
+            context.SliderLeftImgMks.Add(sl);
+            context.SaveChanges();
+        }
+
+        public void DellSliderLeftImgMk(int id)
+        {
+            context.SliderLeftImgMks.Remove(context.SliderLeftImgMks.Where(x => x.Id == id).FirstOrDefault());
+            context.SaveChanges();
+
+        }
+
+        public IEnumerable<SliderLeftImgMk> GetSliderLeftImgMk()
+        {
+            return context.SliderLeftImgMks;
+        }
 
 
 

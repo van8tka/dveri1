@@ -1,0 +1,42 @@
+﻿@model dveri1.Models.SliderModel
+@{
+    ViewBag.Title = "Главный слайдер";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="tablecontent">
+    <h3>Главный слайдер - межкомнатные двери</h3>
+    <div style="margin:1em;">
+        @Html.ActionLink("Слайдер - входные двери", "SliderMain", "Admin", null, new { @class = "tablebut newdoor", style = "width:220px" })
+        @Html.ActionLink("Слайдер - межкомнатные двери", "SliderMainMk", "AdminMkDv", null, new { @class = "tablebut newdoor", style = "width:220px;background-color:#00FF7F" })
+    </div>
+    @using (Html.BeginForm("SliderMainMk", "AdminMkDv", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { <div class="form-group">
+        <h3> Изображения главного слайдера (добавляйте изображения формата 1200px*200px или кратные им для корректного отображения):</h3><br />
+        <div style="position:relative">
+            @foreach (var item in Model.SliderMImk)
+            {
+                <div style="margin:20px;">
+                    @Html.Raw("<img style='width:1000px; height:200px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+                    <br />
+                    @Html.ActionLink("Удалить изображение " + item.Id, "DellSlideMk", "AdminMkDv", new { id = item.Id }, new { @class = "tablebut", style = "width:170px" })
+                </div>
+            }
+            @for (int i = 0; i < 8 - Model.CountSlide; i++)
+            {
+                <input type="file" name="fileUpload[@i]" /><br />
+            }
+        </div>
+    </div>
+        if (Model.CountSlide < 8)
+        {
+            <div style="margin-bottom:20px">
+                <input type="submit" value="Сохранить" class="showadd" />
+                @Html.ActionLink("Отменить", "PanelMkDv")
+            </div>
+        }
+    }
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m4").addClass("actadmin")
+</script>

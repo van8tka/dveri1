@@ -15,6 +15,7 @@ namespace dveri1.Models
         public string SeoHead { get; set; }
         public TableArticle ArticleOne { get; set; }
         public IEnumerable<TableArticle> ArticlesList { get; set; }
+        public IEnumerable<TableArticlesMk> ArticlesListMk { get; set; }
         public PagingInfo pagingInfo { get; set; }
     }
     public class ModelArticleCreate

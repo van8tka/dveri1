@@ -67,4 +67,3 @@ D:\GitHub\dveri1\dveri1\bin\Antlr3.Runtime.pdb
 D:\GitHub\dveri1\dveri1\bin\Newtonsoft.Json.xml
 D:\GitHub\dveri1\dveri1\obj\Release\dveri1.dll
 D:\GitHub\dveri1\dveri1\obj\Release\dveri1.pdb
-D:\GitHub\dveri1\dveri1\obj\Release\dveri1.csprojResolveAssemblyReference.cache

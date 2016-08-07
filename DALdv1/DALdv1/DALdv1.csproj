@@ -118,7 +118,13 @@
     <Compile Include="SliderLeftImg.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="SliderLeftImgMk.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SliderMainImg.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SliderMainImgMk.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
@@ -127,7 +133,13 @@
     <Compile Include="TableArticle.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TableArticlesMk.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TableSeoArticle.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TableSeoArticlesMk.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TableYrInfa.cs">

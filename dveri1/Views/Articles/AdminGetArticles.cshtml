@@ -5,10 +5,11 @@
 }
 
 <div class="tablecontent">
-    <h2>Перечень статей на сайте</h2>
+    <h2>Перечень статей на сайте входных дверей</h2>
     <hr />
     <div style="margin:1em;">
-        @Html.ActionLink("Добавить", "CreateArticle", "Article", new { @class = "tablebut", style = "width:150px" })
+        @Html.ActionLink("Добавить", "CreateArticle", "Articles", new { @class = "tablebut", style = "width:240px" })
+        @Html.ActionLink("Статьи сайта межкомнатных дверей", "AdminGetArticlesMk", "Articles", new { @class = "tablebut", style = "width:250px" })
     </div>
     @if (Model.ArticlesList.Count() == 0)
     {

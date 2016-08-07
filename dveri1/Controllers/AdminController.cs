@@ -22,8 +22,10 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
+        //global
+        private const string cProizVhonyh = "Производитель входных дверей";
         int PageSize = 250;
-        // GET: Admin
+       
 
         //для добавления списка меню в админку по категориям товара(производителя)
         public ActionResult MenuAdmin()
@@ -231,10 +233,10 @@ namespace dveri1.Controllers
                    DellFilesFromDomain.DellAllFiles(dompath);
                     //проверим есть ли сео теги для данной категории товара согласно фирмы производителя
                     //для продвижения по фирме производителю
-                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(model.Proizvoditel);
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x=>x.Page==model.Proizvoditel && x.Category==cProizVhonyh).FirstOrDefault();
                     if(s==null)
                     {
-                        string category = "Производитель входных дверей";
+                        string category = cProizVhonyh;
                         dataManager.SeoMainRepository.CreateSeo(0, "Купить входные двери фирмы "+model.Proizvoditel,null, null, model.Proizvoditel,null, category);
                     }
                     return RedirectToAction("Panel");
@@ -422,13 +424,11 @@ namespace dveri1.Controllers
                 VhodnyeDveri vh = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
                 IEnumerable<VhodnyeDveri> List = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == vh.Proizvoditel);
                 if(List.Count()==1)//если последний товар удаляем,то
-                {//удалим и страницу продвижения его проверим нет ли такой фирмы в межкомнатных
-                    MegkomnatnyeDveri mk = dataManager.MegkomDvRepository.GetMkDv().Where(X => X.Proizvoditel == vh.Proizvoditel).FirstOrDefault();
-                    if(mk==null)//и если нет такой фирмы в межкомнатных дверях
-                    {
-                        SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(vh.Proizvoditel);
+                {//удалим и страницу продвижения его 
+                       SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x=>x.Page==vh.Proizvoditel && x.Category == cProizVhonyh).FirstOrDefault();
+                    if(s!=null)
                         dataManager.SeoMainRepository.DellSeo(s.ID);
-                    }     
+                       
                 }
                 //теперь удалим      
                 dataManager.VhodnyeDvRepository.DeleteVhodnyeDv(id);

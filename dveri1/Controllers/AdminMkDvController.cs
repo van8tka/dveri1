@@ -27,6 +27,13 @@ namespace dveri1.Controllers
         {
             return View();
         }
+        
+        //глобал конст
+        private const string cMegomnAllList = "Межкомнатные двери - весь список";
+        private const string cProizvMegkomn = "Производитель межкомнатных дверей";
+        private const string cMaterialMegkomn = "Материал межкомнатных дверей";
+       
+
 
         //для добавления списка меню в админку по категориям товара(производителя) и по материалу
         public ActionResult MenuAdminMkDv()
@@ -60,7 +67,7 @@ namespace dveri1.Controllers
                     if (brand == null && material == null)
                     {
                         ViewBag.NameMat = null;
-                        ViewBag.NameProductList = "Межкомнатные двери - весь список";
+                        ViewBag.NameProductList = cMegomnAllList;
                         TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Count();
                         model.ListMkDv = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Id).Skip((page - 1) * PageSize).Take(PageSize);
                     }
@@ -279,17 +286,18 @@ namespace dveri1.Controllers
                     DellFilesFromDomain.DellAllFiles(dompath);
                     //проверим есть ли сео теги для данной категории товара согласно фирмы производителя
                     //для продвижения по фирме производителю
-                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(model.Proizvoditel);
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x => x.Page == model.Proizvoditel && x.Category == cProizvMegkomn).FirstOrDefault();
                     if (s == null)
                     {
-                        string category = "Производитель межкомнатных дверей";
+                        string category = cProizvMegkomn;
                         dataManager.SeoMainRepository.CreateSeo(0, "Купить межкомнатные двери фирмы " + model.Proizvoditel, null, null, model.Proizvoditel, null, category);
                     }
+                  
                     //для продвижения по названию материала межкомн дверей
                     SeoMain sm = dataManager.SeoMainRepository.GetSeoMainByPage(model.Material);
                     if (sm == null)
                     {
-                        string category = "Материал межкомнатных дверей";
+                        string category = cMaterialMegkomn;
                         dataManager.SeoMainRepository.CreateSeo(0, "Купить межкомнатные двери из " + model.Material, null, null, model.Material, null, category);
                     }
                     return RedirectToAction("PanelMkDv");
@@ -476,14 +484,11 @@ namespace dveri1.Controllers
                 MegkomnatnyeDveri vh = dataManager.MegkomDvRepository.GetMkDvById(id);
                 IEnumerable<MegkomnatnyeDveri> List = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Proizvoditel == vh.Proizvoditel);
                 if (List.Count() == 1)//если последний товар удаляем,то
-                {//удалим и страницу продвижения его проверим нет ли такой фирмы во входных дверях
-                    VhodnyeDveri mk = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(X => X.Proizvoditel == vh.Proizvoditel).FirstOrDefault();
-                    if (mk == null)//и если нет такой фирмы в входных дверях
-                    {
-                        SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(vh.Proizvoditel);
-                        dataManager.SeoMainRepository.DellSeo(s.ID);
-                    }
-                }
+                {//удалим и страницу продвижения его 
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x => x.Page == vh.Proizvoditel && x.Category == cProizvMegkomn).FirstOrDefault();
+                    if (s != null)
+                          dataManager.SeoMainRepository.DellSeo(s.ID);
+               }
                 //получим список по материалам из которых изготовлены двери
                 IEnumerable<MegkomnatnyeDveri> List2 = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Material == vh.Material);
                 //если это последняя дверь то удалим и сео по этой странице
@@ -618,6 +623,227 @@ namespace dveri1.Controllers
             catch (Exception er)
             {
                 ClassLog.Write("AdminMkDv/ChangeCena-" + er);
+                return View("Error");
+            }
+        }
+
+
+
+        //------------------------------------------------контроллер главного слайдера--------------------------------------------------------
+        [Authorize]
+        [HttpGet]
+        public ActionResult SliderMainMk()
+        {
+            try
+            {
+                SliderModel model = new SliderModel();
+                model.SliderMImk = dataManager.SliderRepository.GetSliderMainImgMk();
+                model.CountSlide = model.SliderMImk.Count();
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMk/SliderMainMk-" + er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult SliderMainMk(IEnumerable<HttpPostedFileBase> fileUpload = null)
+        {
+            try
+            {
+                SliderModel model = new SliderModel();
+                string domainpath = Server.MapPath("~/Content/ImageTemp/");
+                int i = 0;
+                bool BreakAddFiles = false;
+                int countImage = dataManager.SliderRepository.GetSliderMainImgMk().Count();
+                if (countImage >= 8)//максимальное число слайдов = 8
+                {
+                    TempData["message"] = "Слайдер содержит 8 изображений, для добавления другого изображения необходимо удалить старые изображения.";
+                    return RedirectToAction("SliderMainMk");
+                }
+                else
+                {
+                    foreach (var image in fileUpload)
+                    {
+                        if (image != null)
+                        {
+                            if (countImage == 8)
+                            {
+                                TempData["message"] = "Слайдер содержит 8 изображений, добавлено только " + i + " изображения";
+                                BreakAddFiles = true;
+                                break;
+                            }
+                            countImage++;
+                            i++;
+                            //получим ID последнего фото                  
+                            string path = Path.Combine(domainpath, image.FileName);
+                            image.SaveAs(path);
+                            //изменим разрешение файла
+                            Image img = Image.FromFile(path);
+                            Bitmap myBitmap = new Bitmap(img, new Size(1200, 200));
+                            Graphics myGraphic = Graphics.FromImage(myBitmap);
+                            //новое имя и сохраним
+                            string newfilename = "evrostroySlMAin" + i.ToString() + ".jpg";
+                            string newfilepath = domainpath + newfilename;
+                            myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                            //теперь запишем файл в базу данных
+                            FileStream fs = null;
+                            fs = new FileStream(newfilepath, FileMode.Open);
+                            model.ImgDataSlider = new byte[fs.Length];
+                            model.MimeTypeSlider = "image/jpg";
+                            fs.Read(model.ImgDataSlider, 0, (int)fs.Length);
+                            dataManager.SliderRepository.CreateSliderMainImgMk(model.MimeTypeSlider, model.ImgDataSlider);
+                            fs.Close();
+                            //освобождаем занятый ресурс
+                            myBitmap.Dispose();
+                            myGraphic.Dispose();
+                            img.Dispose();
+                            myBitmap = null;
+                            myGraphic = null;
+                            img = null;
+                            fs = null;
+                        }
+                    }
+                    fileUpload = null;
+                    //удалим файлы из временной папки
+                    DellFilesFromDomain.DellAllFiles(domainpath);
+                    if (!BreakAddFiles)
+                    {
+                        TempData["message"] = "Изображения слайдера добавлены!";
+                    }
+                    return RedirectToAction("SliderMainMk");
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMkDv/SliderMainMk-" + er);
+                return View("Error");
+            }
+        }
+        //-----------------------------------------------контроллер удаления слайда-------------------------------------------------------------------
+        [Authorize]
+        public ActionResult DellSlideMk(int id)
+        {
+            try
+            {
+                dataManager.SliderRepository.DellSliderMainImgMk(id);
+                TempData["message"] = "Изображение удалено из базы данных!";
+                return RedirectToAction("SliderMainMk");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMkDv/DellSlideMk-" + er);
+                return View("Error");
+            }
+        }
+        //------------------------------------------------контроллер боковогослайдера--------------------------------------------------------
+        [Authorize]
+        [HttpGet]
+        public ActionResult SliderLeftMk()
+        {
+            try
+            {
+                SliderModel model = new SliderModel();
+                model.SliderLImk = dataManager.SliderRepository.GetSliderLeftImgMk();
+                model.CountSlide = model.SliderLImk.Count();
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMkDv/SliderLeftMk-" + er);
+                return View("Error");
+            }
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult SliderLeftMk(IEnumerable<HttpPostedFileBase> fileUpload = null)
+        {
+            try
+            {
+                SliderModel model = new SliderModel();
+                string domainpath = Server.MapPath("~/Content/ImageTemp/");
+                int i = 0;
+                bool BreakAddFiles = false;
+                int countImage = dataManager.SliderRepository.GetSliderLeftImgMk().Count();
+                if (countImage >= 8)
+                {
+                    TempData["message"] = "Слайдер содержит 8 изображений или более, для добавления другого изображения необходимо удалить старые изображения.";
+                    return RedirectToAction("SliderLeftMk");
+                }
+                else
+                {
+                    foreach (var image in fileUpload)
+                    {
+                        if (image != null)
+                        {
+                            if (countImage == 8)
+                            {
+                                TempData["message"] = "Слайдер содержит 8 изображений, добавлено только " + i + " изображения";
+                                BreakAddFiles = true;
+                                break;
+                            }
+                            countImage++;
+                            i++;
+                            //получим ID последнего фото                  
+                            string path = Path.Combine(domainpath, image.FileName);
+                            image.SaveAs(path);
+                            //изменим разрешение файла
+                            Image img = Image.FromFile(path);
+                            Bitmap myBitmap = new Bitmap(img, new Size(200, 400));
+                            Graphics myGraphic = Graphics.FromImage(myBitmap);
+                            //новое имя и сохраним
+                            string newfilename = "evrostroySlLeft" + i.ToString() + ".jpg";
+                            string newfilepath = domainpath + newfilename;
+                            myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                            //теперь запишем файл в базу данных
+                            FileStream fs = null;
+                            fs = new FileStream(newfilepath, FileMode.Open);
+                            model.ImgDataSlider = new byte[fs.Length];
+                            model.MimeTypeSlider = "image/jpg";
+                            fs.Read(model.ImgDataSlider, 0, (int)fs.Length);
+                            dataManager.SliderRepository.CreateSliderLeftImgMk(model.MimeTypeSlider, model.ImgDataSlider);
+                            fs.Close();
+                            //освобождаем занятый ресурс
+                            myBitmap.Dispose();
+                            myGraphic.Dispose();
+                            img.Dispose();
+                            myBitmap = null;
+                            myGraphic = null;
+                            img = null;
+                            fs = null;
+                        }
+                    }
+                    fileUpload = null;
+                    //удалим файлы из временной папки
+                    DellFilesFromDomain.DellAllFiles(domainpath);
+                    if (!BreakAddFiles)
+                    {
+                        TempData["message"] = "Изображения слайдера добавлены!";
+                    }
+                    return RedirectToAction("SliderLeftMk");
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMkDv/SliderLeftMk-" + er);
+                return View("Error");
+            }
+        }
+        //-----------------------------------------------контроллер удаления бокового слайда-------------------------------------------------------------------
+        [Authorize]
+        public ActionResult DellSlideLeftMk(int id)
+        {
+            try
+            {
+                dataManager.SliderRepository.DellSliderLeftImgMk(id);
+                TempData["message"] = "Изображение удалено из базы данных!";
+                return RedirectToAction("SliderLeftMk");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("AdminMkDv/DellSlideLeftMk-" + er);
                 return View("Error");
             }
         }

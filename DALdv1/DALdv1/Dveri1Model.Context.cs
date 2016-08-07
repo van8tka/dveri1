@@ -43,10 +43,14 @@ namespace DALdv1
         public virtual DbSet<SeoMkDverei> SeoMkDvereis { get; set; }
         public virtual DbSet<SeoVhodnuhDverei> SeoVhodnuhDvereis { get; set; }
         public virtual DbSet<SliderLeftImg> SliderLeftImgs { get; set; }
+        public virtual DbSet<SliderLeftImgMk> SliderLeftImgMks { get; set; }
         public virtual DbSet<SliderMainImg> SliderMainImgs { get; set; }
+        public virtual DbSet<SliderMainImgMk> SliderMainImgMks { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TableArticle> TableArticles { get; set; }
+        public virtual DbSet<TableArticlesMk> TableArticlesMks { get; set; }
         public virtual DbSet<TableSeoArticle> TableSeoArticles { get; set; }
+        public virtual DbSet<TableSeoArticlesMk> TableSeoArticlesMks { get; set; }
         public virtual DbSet<TableYrInfa> TableYrInfas { get; set; }
         public virtual DbSet<TableYstanovka> TableYstanovkas { get; set; }
         public virtual DbSet<User> Users { get; set; }

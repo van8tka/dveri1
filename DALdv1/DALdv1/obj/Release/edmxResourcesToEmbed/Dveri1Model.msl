@@ -223,9 +223,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SliderLeftImgMks">
+      <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImgMk">
+        <MappingFragment StoreEntitySet="SliderLeftImgMk">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+          <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SliderMainImgs">
       <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImg">
         <MappingFragment StoreEntitySet="SliderMainImg">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+          <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SliderMainImgMks">
+      <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImgMk">
+        <MappingFragment StoreEntitySet="SliderMainImgMk">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="MimeType" ColumnName="MimeType" />
           <ScalarProperty Name="Imaging" ColumnName="Imaging" />
@@ -254,9 +272,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableArticlesMks">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableArticlesMk">
+        <MappingFragment StoreEntitySet="TableArticlesMk">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Headings" ColumnName="Headings" />
+          <ScalarProperty Name="Articles" ColumnName="Articles" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableSeoArticles">
       <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticle">
         <MappingFragment StoreEntitySet="TableSeoArticles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableSeoArticlesMks">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticlesMk">
+        <MappingFragment StoreEntitySet="TableSeoArticlesMk">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Keywords" ColumnName="Keywords" />

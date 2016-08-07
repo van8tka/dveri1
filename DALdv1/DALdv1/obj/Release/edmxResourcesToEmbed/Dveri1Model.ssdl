@@ -146,12 +146,12 @@
     <Property Name="Nazvanie" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Proizvoditel" Type="nvarchar" MaxLength="250" />
     <Property Name="Strana" Type="nvarchar" MaxLength="250" />
-    <Property Name="Material" Type="nvarchar" MaxLength="250" />
-    <Property Name="Pokrytie" Type="nvarchar" MaxLength="250" />
-    <Property Name="Karkas" Type="nvarchar" MaxLength="250" />
+    <Property Name="Material" Type="nvarchar" MaxLength="550" />
+    <Property Name="Pokrytie" Type="nvarchar" MaxLength="550" />
+    <Property Name="Karkas" Type="nvarchar" MaxLength="550" />
     <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
-    <Property Name="TypDveri" Type="nvarchar" MaxLength="250" />
-    <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="250" />
+    <Property Name="TypDveri" Type="nvarchar" MaxLength="550" />
+    <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="450" />
     <Property Name="Cena" Type="money" />
     <Property Name="Skidka" Type="int" />
     <Property Name="CenaSoSkidkoy" Type="money" />
@@ -204,7 +204,23 @@
     <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="SliderLeftImgMk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="SliderMainImg">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SliderMainImgMk">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -232,7 +248,26 @@
     <Property Name="Articles" Type="nvarchar(max)" />
     <Property Name="Date" Type="datetime" />
   </EntityType>
+  <EntityType Name="TableArticlesMk">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="550" />
+    <Property Name="Headings" Type="nvarchar" MaxLength="1550" />
+    <Property Name="Articles" Type="nvarchar(max)" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
   <EntityType Name="TableSeoArticles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="450" />
+    <Property Name="Keywords" Type="nvarchar" MaxLength="450" />
+    <Property Name="Description" Type="nvarchar" MaxLength="450" />
+  </EntityType>
+  <EntityType Name="TableSeoArticlesMk">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -399,6 +434,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TableSeoArticlesMk_TableArticlesMk">
+    <End Role="TableArticlesMk" Type="Self.TableArticlesMk" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TableSeoArticlesMk" Type="Self.TableSeoArticlesMk" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TableArticlesMk">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TableSeoArticlesMk">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dbdveri1ModelStoreContainer">
     <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CommentCompany" EntityType="Self.CommentCompany" Schema="dbo" store:Type="Tables" />
@@ -418,10 +467,14 @@
     <EntitySet Name="SeoMkDverei" EntityType="Self.SeoMkDverei" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SeoVhodnuhDverei" EntityType="Self.SeoVhodnuhDverei" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SliderLeftImgMk" EntityType="Self.SliderLeftImgMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SliderMainImgMk" EntityType="Self.SliderMainImgMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableArticlesMk" EntityType="Self.TableArticlesMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableSeoArticlesMk" EntityType="Self.TableSeoArticlesMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableYrInfa" EntityType="Self.TableYrInfa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -457,6 +510,10 @@
     <AssociationSet Name="FK_TableSeoArticles_TableArticles1" Association="Self.FK_TableSeoArticles_TableArticles1">
       <End Role="TableArticles" EntitySet="TableArticles" />
       <End Role="TableSeoArticles" EntitySet="TableSeoArticles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableSeoArticlesMk_TableArticlesMk" Association="Self.FK_TableSeoArticlesMk_TableArticlesMk">
+      <End Role="TableArticlesMk" EntitySet="TableArticlesMk" />
+      <End Role="TableSeoArticlesMk" EntitySet="TableSeoArticlesMk" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

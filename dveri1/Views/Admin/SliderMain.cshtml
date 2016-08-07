@@ -4,6 +4,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="tablecontent">
+    <h3>Главный слайдер - входные двери</h3>
+    <div style="margin:1em;">
+        @Html.ActionLink("Слайдер - входные двери", "SliderMain", "Admin", null, new { @class = "tablebut newdoor", style = "width:220px;background-color:#00FF7F" })
+        @Html.ActionLink("Слайдер - межкомнатные двери", "SliderMainMk", "AdminMkDv", null, new { @class = "tablebut newdoor", style = "width:220px" })
+    </div>
     @using (Html.BeginForm("SliderMain", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     { <div class="form-group">
           <h3> Изображения главного слайдера (добавляйте изображения формата 1200px*200px или кратные им для корректного отображения):</h3><br />

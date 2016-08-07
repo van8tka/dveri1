@@ -466,6 +466,11 @@
     <Content Include="Views\Comment\AdminCommentMkDv.cshtml" />
     <Content Include="Views\Comment\AdminEditCommentMkDv.cshtml" />
     <Content Include="Views\ExpImp\ExportMkDv.cshtml" />
+    <Content Include="Views\AdminMkDv\SliderMainMk.cshtml" />
+    <Content Include="Views\AdminMkDv\SliderLeftMk.cshtml" />
+    <Content Include="Views\Articles\AdminGetArticlesMk.cshtml" />
+    <Content Include="Views\Articles\CreateArticleMk.cshtml" />
+    <Content Include="Views\Articles\CreateSeoArticleMk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
