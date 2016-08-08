@@ -1,0 +1,18 @@
+﻿@model dveri2.Models.ModelBuyDveri
+@{
+    Layout = null;
+}
+@using (Ajax.BeginForm("FastBuyDveriModal", new AjaxOptions { UpdateTargetId = "fastbuy", InsertionMode = InsertionMode.Replace }))
+{
+    <div id="fastbuy" style="text-align:center">
+        @Html.Partial("ViewFastBuy")
+        @if (Model.IdDveri != 9999)
+        {
+            @Html.ActionLink("Отменить", "TovarPage", "MegkomnatnyeDveri", new { id = Model.IdDveri }, new { @class = "butcancel" })
+        }
+        else
+        {
+            @Html.ActionLink("Отменить", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "butcancel" })
+        }
+    </div>
+}

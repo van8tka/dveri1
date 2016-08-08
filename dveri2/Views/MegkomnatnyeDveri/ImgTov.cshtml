@@ -1,0 +1,12 @@
+﻿@using DALdv1
+@model DALdv1.FotoMegkomnDverey
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery.imageLens.js"></script>
+@Html.Raw("<img class='MainFoto lp2' id=" + Model.IdFoto + " src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Imaging) + "\"/>")
+
+<script type="text/javascript">
+
+        $('.lp2').imageLens({ lensSize: 200, borderSize: 1 });
+</script>

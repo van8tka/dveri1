@@ -1,0 +1,24 @@
+﻿@model dveri2.Models.ContactModel
+<div class="contacts flr">
+
+    @if (ViewBag.Contact)
+    {
+        <div style="width:auto;font-style:italic"> Контакты: </div>
+    }
+
+    @foreach (var z in Model.ContactList)
+    {//для ограничения вывода количества контактов не более четырех
+        if (ViewBag.Count1 > 3)
+        {
+            break;
+        }
+        else
+        {
+            ViewBag.Count1++;
+            <div style="display:block;width:70%">
+                <div class="fll">@z.TypeSv: </div>
+                <div>@z.NumberSv </div>
+            </div>
+        }
+    }
+</div>

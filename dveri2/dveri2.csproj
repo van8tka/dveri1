@@ -186,6 +186,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\MegkomnatnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
     <Compile Include="DopMethod\DellFilesFromDomain.cs" />
@@ -195,7 +197,15 @@
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\ForMainModel.cs" />
+    <Compile Include="Models\KartochkaTovaraModel.cs" />
+    <Compile Include="Models\ModelArticles.cs" />
+    <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
+    <Compile Include="Models\ModelCommentCreate.cs" />
+    <Compile Include="Models\ModelYrinfa.cs" />
+    <Compile Include="Models\OplDostModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -290,6 +300,24 @@
     <Content Include="Views\Shared\ViewBuy.cshtml" />
     <Content Include="Views\Shared\ViewFastBuy.cshtml" />
     <Content Include="Views\MegkomnatnyeDveri\MegkomnatnyeDveriIndex.cshtml" />
+    <Content Include="Views\Articles\GetFiveArticles.cshtml" />
+    <Content Include="Views\Articles\GetArticle.cshtml" />
+    <Content Include="Views\Articles\GetArticles.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\ContactOnPanel.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\ContactOnFoter.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\YrInf.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\BreadCrumbs.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\FastBuyDveri.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\FastBuyDveriModal.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\ProductList.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\TovarPage.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\ImgTov.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\SimilarGoods.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\HarakteristikaTovara.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\OpisanieTov.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\CommentForDveriView.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\BuyDveriModal.cshtml" />
+    <Content Include="Views\Comment\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

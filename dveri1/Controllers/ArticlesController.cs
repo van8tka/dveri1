@@ -173,6 +173,7 @@ namespace dveri1.Controllers
 
         //=======================================о МК ДВ=======================
         //получение всего списка статей вх дв
+        [Authorize]
         public ActionResult AdminGetArticlesMk()
         {
             ModelArticles model = new ModelArticles();

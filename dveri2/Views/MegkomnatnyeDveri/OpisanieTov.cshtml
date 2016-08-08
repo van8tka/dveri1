@@ -1,0 +1,95 @@
+﻿@model dveri2.Models.KartochkaTovaraModel
+<div class="charakteritics">
+    @if (Model.Tovar.Proizvoditel == "" || Model.Tovar.Proizvoditel == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Фирма производитель:</span>
+            <span class="valtov"> @Model.Tovar.Proizvoditel</span>
+        </div>
+    }
+    @if (Model.Tovar.Strana == "" || Model.Tovar.Strana == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Страна производитель:</span>
+            <span class="valtov"> @Model.Tovar.Strana</span>
+        </div>
+    }
+    @if (Model.Tovar.Cvet == "" || Model.Tovar.Cvet == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Цвет двери:</span>
+            <span class="valtov"> @Model.Tovar.Cvet</span>
+        </div>
+    }
+    @if (Model.Tovar.Material == "" || Model.Tovar.Material == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Материал:</span>
+            <span class="valtov"> @Model.Tovar.Material</span>
+        </div>
+    }
+    @if (Model.Tovar.Karkas == "" || Model.Tovar.Karkas == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Каркас:</span>
+            <span class="valtov"> @Model.Tovar.Karkas </span>
+        </div>
+    }
+    @if (Model.Tovar.Pokrytie == "" || Model.Tovar.Pokrytie == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Покрытие:</span>
+            <span class="valtov"> @Model.Tovar.Pokrytie</span>
+        </div>
+    }
+    @if (Model.Tovar.TypDveri == "" || Model.Tovar.TypDveri == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Тип двери:</span>
+            <span class="valtov"> @Model.Tovar.TypDveri </span>
+        </div>
+    }
+    @if (Model.Tovar.VnytrenneeNapolnenie == "" || Model.Tovar.VnytrenneeNapolnenie == null)
+    {
+    }
+    else
+    {
+        <div class="blhar">
+            <span class="pr">Внутреннее наполнение:</span>
+            <span class="valtov"> @Model.Tovar.VnytrenneeNapolnenie </span>
+        </div>
+    }
+   
+    @if (Model.Tovar.DopCharacteristics == null || Model.Tovar.DopCharacteristics == "")
+    {
+
+    }
+    else
+    {
+        <div class="blhar dopchar">
+            <h4>Дополнительные характеристики:</h4>
+            @Html.Raw(Model.Tovar.DopCharacteristics)
+        </div>
+    }
+    </div>  

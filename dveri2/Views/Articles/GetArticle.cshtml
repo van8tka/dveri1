@@ -1,0 +1,27 @@
+﻿@model dveri2.Models.ModelArticles
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbsonpage">
+    @Html.Action("BreadCrumbs", "MegkomnatnyeDveri", new { namepart = "Статьи", nameart = Model.ArticleOne.Name })
+</div>
+<div style="background-color:white;color:black;padding:30px;">
+    <div class="tac">
+        <h1>@Model.ArticleOne.Name</h1>
+    </div>
+    <p style="color:gray;font-size:small">Дата публикации: @Model.ArticleOne.Date</p>
+    <div style="text-align:justify;font-style:oblique;font-size:medium;">
+        <span>@Model.ArticleOne.Headings</span>
+    </div>
+    <div class="mt20">
+        @Html.Raw(Model.ArticleOne.Articles)
+    </div>
+</div>
+
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m9").addClass("current")
+</script>

@@ -1,0 +1,22 @@
+﻿@model dveri2.Models.ContactModel
+
+<div class="timeworktop fll">
+    <div style="width:auto;font-style:italic"> Время работы: </div>
+
+    @foreach (var i in Model.GrafikWorkList)
+    {
+        if (ViewBag.Count > 3)
+        {
+            break;
+        }
+        else
+        {
+            ViewBag.Count++;
+            <div style="display:block;width:60%">
+                <div class="fll">@i.NameDay: </div>
+                <div>@i.TimeWork </div>
+            </div>
+        }
+    }
+</div>
+@Html.Action("ContactOnFoter", "MegkomnatnyeDveri")
