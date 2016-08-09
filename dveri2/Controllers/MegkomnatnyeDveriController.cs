@@ -29,7 +29,7 @@ namespace dveri2.Controllers
         public int PageSize = 32;
         //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult MegkomnatnyeDveriIndex(int? id, int sort = 0, string brand = "весьтовар")
+        public ActionResult MegkomnatnyeDveriIndex(int? id, int sort = 0, string brand = "весьтовар",bool flagMaterial = false)
         {
             try
             {
@@ -66,33 +66,62 @@ namespace dveri2.Controllers
                 }
                 else
                 {
-                    TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
-                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(brand);
-                    if (s != null)
+                    if(!flagMaterial)
                     {
-                        model.SeoTitle = s.Title;
-                        model.SeoKey = s.Keywords;
-                        model.SeoDesc = s.Description;
-                        if (s.Header != null)
+                        TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
+                        SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x=>x.Page == brand && x.Category == "Производитель межкомнатных дверей").FirstOrDefault();
+                        if (s != null)
                         {
-                            model.SeoHead = s.Header;
+                            model.SeoTitle = s.Title;
+                            model.SeoKey = s.Keywords;
+                            model.SeoDesc = s.Description;
+                            if (s.Header != null)
+                            {
+                                model.SeoHead = s.Header;
+                            }
+                            else
+                            {
+                                model.SeoHead = "Межкомнатные двери от производителя " + brand + "! Вы здесь найдете межкомнатные двери на Ваш вкус, как дешевые двери так и качественные двери!";
+                            }
                         }
                         else
                         {
+                            model.SeoTitle = "Купить межкомнатные двери фирмы " + brand;
                             model.SeoHead = "Межкомнатные двери от производителя " + brand + "! Вы здесь найдете межкомнатные двери на Ваш вкус, как дешевые двери так и качественные двери!";
                         }
                     }
-                    else
+                    else//если выбраны мл двери по материалу
                     {
-                        model.SeoTitle = "Купить межкомнатные двери фирмы " + brand;
-                        model.SeoHead = "Межкомнатные двери от производителя " + brand + "! Вы здесь найдете межкомнатные двери на Ваш вкус, как дешевые двери так и качественные двери!";
+                        TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Material == brand).Count();
+                        SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x => x.Page == brand && x.Category == "Материал межкомнатных дверей").FirstOrDefault();
+                        if (s != null)
+                        {
+                            model.SeoTitle = s.Title;
+                            model.SeoKey = s.Keywords;
+                            model.SeoDesc = s.Description;
+                            if (s.Header != null)
+                            {
+                                model.SeoHead = s.Header;
+                            }
+                            else
+                            {
+                                model.SeoHead = "Межкомнатные двери из " + brand + "! Вы здесь найдете межкомнатные двери на Ваш вкус, как дешевые двери так и качественные двери!";
+                            }
+                        }
+                        else
+                        {
+                            model.SeoTitle = "Купить межкомнатные двери из " + brand;
+                            model.SeoHead = "Межкомнатные двери из " + brand + "! Вы здесь найдете межкомнатные двери на Ваш вкус, как дешевые двери так и качественные двери!";
+                        }
                     }
+                    
                 }
-                //вызлв метода сортировки
+                //вызов метода сортировки
 
-                model.ListMkDv = SortirDveri(page, sort, brand);
+                model.ListMkDv = SortirDveri(page, sort, brand, flagMaterial);
 
                 model.CurrentBrand = brand;
+                model.FlagMaterial = flagMaterial;
                 
                 model.PagingInfo = new PagingInfo
                 {
@@ -100,10 +129,12 @@ namespace dveri2.Controllers
                     TotalItems = TotalItemsProduct,
                     ItemsPerPage = PageSize
                 };
+                //для заполнения меню каталога
                 model.Brand = dataManager.MegkomDvRepository.GetMkDv().Select(z => z.Proizvoditel).Distinct().OrderBy(z => z);
+                model.Material = dataManager.MegkomDvRepository.GetMkDv().Select(z => z.Material).Distinct().OrderBy(z => z);
                 if (Request.IsAjaxRequest())
                 {
-                    return RedirectToAction("ProductList", new { page, sort, brand });
+                    return RedirectToAction("ProductList", new { page, sort, brand, flagMaterial });
                 }
 
                 return View(model);
@@ -117,7 +148,7 @@ namespace dveri2.Controllers
         }
 
         //   метод возврата списка отсортированных дверей
-        public IEnumerable<MegkomnatnyeDveri> SortirDveri(int page, int s, string br)
+        public IEnumerable<MegkomnatnyeDveri> SortirDveri(int page, int s, string br,bool flagMaterial)
         {
             try
             {
@@ -128,17 +159,26 @@ namespace dveri2.Controllers
                     {
                         case 0:
                             {
-                                temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                if(!flagMaterial)
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                else
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true && x.Material == br).Skip((page - 1) * PageSize).Take(PageSize);
                                 break;
                             }
                         case 1:
                             {
-                                temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                if(!flagMaterial)
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                else
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderBy(x => x.Cena).Where(x => x.Publicaciya == true && x.Material == br).Skip((page - 1) * PageSize).Take(PageSize);
                                 break;
                             }
                         case 2:
                             {
-                                temp = dataManager.MegkomDvRepository.GetMkDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                if(!flagMaterial)
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true && x.Proizvoditel == br).Skip((page - 1) * PageSize).Take(PageSize);
+                                else
+                                    temp = dataManager.MegkomDvRepository.GetMkDv().OrderByDescending(x => x.Cena).Where(x => x.Publicaciya == true && x.Material == br).Skip((page - 1) * PageSize).Take(PageSize);
                                 break;
                             }
                         default:
@@ -239,6 +279,12 @@ namespace dveri2.Controllers
             try
             {
                 ModelBreadCrumbs mod = new ModelBreadCrumbs();
+
+                if (mainmod.Brand != null)
+                    mod.FlagMaterial = mainmod.FlagMaterial;
+                else
+                    mod.FlagMaterial = kmod.FlagMaterial;
+
                 if (namepart != null)
                 {
                     mod.NamePartSite = namepart;
@@ -255,7 +301,10 @@ namespace dveri2.Controllers
                 {
                     if (kmod.Tovar != null)
                     {
-                        mod.NameCategory = kmod.Tovar.Proizvoditel;
+                        if (!kmod.FlagMaterial)
+                            mod.NameCategory = kmod.Tovar.Proizvoditel;
+                        else
+                            mod.NameCategory = kmod.Tovar.Material;
                         mod.NameProduct = kmod.Tovar.Nazvanie;
                     }
                 }
@@ -441,12 +490,13 @@ namespace dveri2.Controllers
         }
      //=================================           продукт лист - список товаров                   =======================
         [HttpGet]
-        public ActionResult ProductList(int page = 1, int sort = 0, string brand = "весьтовар")
+        public ActionResult ProductList(int page = 1, int sort = 0, string brand = "весьтовар",bool flagMaterial = false)
         {
             try
             {
                 ForMainModel model = new ForMainModel();
                 model.CurrentBrand = brand;
+                model.FlagMaterial = flagMaterial;
                 int TotalItemsProduct;
                 if (brand == "весьтовар")
                 {
@@ -454,10 +504,13 @@ namespace dveri2.Controllers
                 }
                 else
                 {
-                    TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
+                    if(!flagMaterial)
+                        TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
+                    else
+                        TotalItemsProduct = dataManager.MegkomDvRepository.GetMkDv().Where(x => x.Publicaciya == true && x.Material == brand).Count();
                 }
 
-                model.ListMkDv = SortirDveri(page, sort, brand);
+                model.ListMkDv = SortirDveri(page, sort, brand,flagMaterial);
                 model.PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -495,11 +548,14 @@ namespace dveri2.Controllers
 
         //==========================================карточка товара==============================================================================
         [HttpGet]
-        public ActionResult TovarPage(int id)
+        public ActionResult TovarPage(int id, bool flag = false)
         {
             try
             {
                 KartochkaTovaraModel model = new KartochkaTovaraModel();
+              
+                    model.FlagMaterial = flag;
+              
                 model.Tovar = dataManager.MegkomDvRepository.GetMkDvById(id);
                 model.FotoTovara = dataManager.MegkomDvRepository.GetFotoMkDvByID(id);
                 //отбираем коментарии к товару по ID с указанной публикацией, сортироуем по дате (сначала последние(свежие), и отбираем 1-ые 100 комментов)
@@ -576,7 +632,7 @@ namespace dveri2.Controllers
             return model;
         }
 
-        //для загрузки похожих товаров на странице карточка товара
+        //для загрузки похожих товаров на странице карточка товара КАРУСЕЛЬ
         public ActionResult SimilarGoods()
         {
             try
@@ -597,6 +653,7 @@ namespace dveri2.Controllers
             {
                 ClassLog.Write("MegkomnatnyeDveri/SimilarGoods-", er);
                 return View("Error");
+               
             }
         }
 

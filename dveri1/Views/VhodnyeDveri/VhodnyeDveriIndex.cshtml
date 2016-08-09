@@ -77,7 +77,7 @@
             {
                 if (i != null)
                 {
-                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new {id=1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i })
+                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new {id=1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i.Replace(" ",string.Empty) })
                  }
              }
         </div>
@@ -116,7 +116,12 @@
 
     @*замена pagingLinks на кнопку показать еще*@
     <script type="text/javascript">
-    $(document).ready(function(){
+        $(document).ready(function(){
+
+
+            //выделение текущего брэнда(.Replace(" ", string.Empty)-метод замены пробелов)
+            $('.@Model.CurrentBrand.Replace(" ", string.Empty)').addClass("act");
+
         //скрипт слайдера левого (орбит)
         $(window).load(function() {
             $("#featured").orbit({
@@ -132,8 +137,7 @@
         var page = 1;*@
         //выделение текущего брэнда
 
-        $('.@Model.CurrentBrand').addClass("act");
-
+    
         @*$('.showadd').click(
         function loadItems() {
                var totalpages = $(".showadd").val();

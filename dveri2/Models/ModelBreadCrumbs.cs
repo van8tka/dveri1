@@ -5,5 +5,6 @@
         public string NameProduct { get; set; }
         public string NameCategory { get; set; }
         public string NamePartSite { get; set; }
+        public bool FlagMaterial { get; set; }
     }
 }

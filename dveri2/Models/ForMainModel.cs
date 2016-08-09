@@ -23,6 +23,8 @@ namespace dveri2.Models
 
         public string CurrentBrand { get; set; }
         public string CurrentMaterial { get; set; }
+
+        public bool FlagMaterial { get; set; }
     
         public IEnumerable<SliderMainImgMk> SliderImgMk { get; set; }
         public IEnumerable<SliderLeftImgMk> SliderLeftImgMk { get; set; }

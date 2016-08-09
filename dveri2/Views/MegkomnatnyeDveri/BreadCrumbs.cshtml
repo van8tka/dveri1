@@ -52,7 +52,7 @@
     @if (Model.NameCategory != null)
     {
 
-        @Html.ActionLink(Model.NameCategory, "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { brand = Model.NameCategory }, null)
+        @Html.ActionLink(Model.NameCategory, "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { brand = Model.NameCategory, flagMaterial = Model.FlagMaterial }, null)
         if (Model.NameProduct != null)
         {
             <a>@Model.NameProduct</a>

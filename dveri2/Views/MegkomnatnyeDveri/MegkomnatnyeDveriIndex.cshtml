@@ -45,20 +45,20 @@
             {
                 case 0:
                     {
-                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })
-                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })
+                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "upsort" })
+                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "downsort" })
                         break;
                     }
                 case 1:
                     {
-                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort actsortup" })
-                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })
+                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "upsort actsortup" })
+                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "downsort" })
                         break;
                     }
                 case 2:
                     {
-                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })
-                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort actsortdown" })
+                        @Html.ActionLink("по возрастанию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "upsort" })
+                        @Html.ActionLink("по убыванию", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand, flagMaterial = Model.FlagMaterial }, new { @class = "downsort actsortdown" })
                         break;
                     }
 
@@ -72,15 +72,32 @@
             Каталог товаров:
         </div>
         <div>
-            @Html.ActionLink("МЕЖКОМНАТНЫЕ ДВЕРИ ВЕСЬ КАТАЛОГ", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { sort = 0, brand = "весьтовар" }, new { @class = "leftMenuButton весьтовар" })
+            @Html.ActionLink("МЕЖКОМНАТНЫЕ ДВЕРИ ВЕСЬ КАТАЛОГ", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { sort = 0, brand = "весьтовар", flagMaterial = false }, new { @class = "leftMenuButton весьтовар" })
             @foreach (var i in Model.Brand)
             {
                 if (i != null)
                 {
-                    @Html.ActionLink("Межкомнатные двери " + i, "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i })
+                    @Html.ActionLink("Межкомнатные двери " + i, "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 0, brand = i,flagMaterial = false }, new { @class = "leftMenuButton " + i.Replace(" ", string.Empty) })
                 }
             }
         </div>
+        @*меню выбора материала дверей*@
+        <div>
+            <div style="padding-left:15px;margin-top:20px;margin-bottom:10px;font-size:1.1em;text-decoration-line:none;color:black;text-shadow: 0 1px 0 rgba(255,255,255,.5);">
+                Межкомнатные двери:
+            </div>
+            @foreach (var i in Model.Material)
+            {
+                if (i != null)
+                {
+                    @Html.ActionLink(i, "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { id = 1, sort = 0, brand = i,flagMaterial = true }, new { @class = "leftMenuButton " + i.Replace(" ", string.Empty) })
+                }
+            }
+        </div>
+
+
+
+
         @*слайдер левый боковой orbit*@
         <div class="LeftSlider mt20">
             <div id="featured">
@@ -108,7 +125,7 @@
 </div>
 @*разбиение на страничный режим*@
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("MegkomnatnyeDveriIndex", new { id = x, sort = Model.Sort, brand = Model.CurrentBrand, PageSize = Model.PagingInfo.ItemsPerPage }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("MegkomnatnyeDveriIndex", new { id = x, sort = Model.Sort, brand = Model.CurrentBrand,flagMaterial = Model.FlagMaterial, PageSize = Model.PagingInfo.ItemsPerPage }))
 </div>
 
 @section Scripts {
@@ -116,7 +133,12 @@
 
     @*замена pagingLinks на кнопку показать еще*@
     <script type="text/javascript">
-    $(document).ready(function(){
+        $(document).ready(function(){
+
+            //выделение текущего брэнда(.Replace(" ", string.Empty)-метод замены пробелов)
+            $('.@Model.CurrentBrand.Replace(" ", string.Empty)').addClass("act");
+
+
         //скрипт слайдера левого (орбит)
         $(window).load(function() {
             $("#featured").orbit({
@@ -130,9 +152,8 @@
         @*$('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
            '</div>  '));
         var page = 1;*@
-        //выделение текущего брэнда
 
-        $('.@Model.CurrentBrand').addClass("act");
+
 
         @*$('.showadd').click(
         function loadItems() {

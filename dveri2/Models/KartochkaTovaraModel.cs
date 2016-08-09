@@ -8,6 +8,7 @@ namespace dveri2.Models
         public MegkomnatnyeDveri Tovar { get; set; }
         public IEnumerable<FotoMegkomnDverey> FotoTovara { get; set; }
         public IEnumerable<CommentMkDv> CommentMkDvList { get; set; }
+        public bool FlagMaterial { get; set; }
         public string InfoDostavka { get; set; }
         public string InfoOplata { get; set; }
         public string TitleD { get; set; }

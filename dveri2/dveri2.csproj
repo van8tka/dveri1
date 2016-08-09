@@ -188,6 +188,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\MegkomnatnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
     <Compile Include="DopMethod\DellFilesFromDomain.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\MegkomnatnyeDveri\CommentForDveriView.cshtml" />
     <Content Include="Views\MegkomnatnyeDveri\BuyDveriModal.cshtml" />
     <Content Include="Views\Comment\CreateComment.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

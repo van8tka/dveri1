@@ -67,7 +67,7 @@ namespace dveri1.Controllers
                 else
                 {
                     TotalItemsProduct = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Publicaciya == true && x.Proizvoditel == brand).Count();
-                    SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage(brand);
+                    SeoMain s = dataManager.SeoMainRepository.GetSeoMain().Where(x=>x.Page==brand&&x.Category== "Производитель входных дверей").FirstOrDefault();
                     if (s != null)
                     {
                         model.SeoTitle = s.Title;
