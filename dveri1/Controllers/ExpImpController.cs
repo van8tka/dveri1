@@ -21,12 +21,12 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-    
+
         //объявим глобальные переменные для работы с exel
-        private Excel.Application excelapp;
-        private Excel.Workbook excelappworkbook;
-        private Excel.Workbooks excelappworkbooks;
-        private Excel.Worksheet excelworksheet;
+        //private Excel.Application excelapp = null;
+        //private Excel.Workbook excelappworkbook = null;
+        //private Excel.Workbooks excelappworkbooks = null;
+        //private Excel.Worksheet excelworksheet = null;
         //и глобальные константы для входных дверей
         private const string nazv = "Название";
         private const string proizvoditel  = "Фирма производитель";
@@ -73,7 +73,11 @@ namespace dveri1.Controllers
         {
             try
             {
-                IEnumerable<VhodnyeDveri> VhDvList;
+                Excel.Application excelapp ;
+                Excel.Workbook excelappworkbook;
+               
+                Excel.Worksheet excelworksheet;
+        IEnumerable<VhodnyeDveri> VhDvList;
                if (model.Category != "Входные двери - весь список")
                 {
                   VhDvList = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Where(x => x.Proizvoditel == model.Category).OrderBy(x=>x.Id);
@@ -85,12 +89,16 @@ namespace dveri1.Controllers
 
                 //получив данные брабатываем их 
                 //создаем приложение excel
+             
                 excelapp = new Excel.Application();
                 //создаем книгу
+              
                 excelappworkbook = excelapp.Workbooks.Add(Type.Missing);
                 //создадим записи в книге и указываем названия столбцов в зависимости от выбранных полей характеристик товара
+              
                 excelworksheet = excelappworkbook.ActiveSheet;
                 //первой поле номер товара по умолчанию, остальные если истина то добавляем иначе нет
+            
                 excelworksheet.Cells[1, 1] = "ID";
                 //создадим словарь для определения имен заголовка таблицы
                 Dictionary<string, bool> ListOfHeaders = new Dictionary<string, bool>();
@@ -119,7 +127,8 @@ namespace dveri1.Controllers
                 //кол-во дверей
                 int countDv = VhDvList.Count();
                 //заполним индексы
-                for(int str=2;str<countDv+2;str++)
+               
+                for (int str=2;str<countDv+2;str++)
                 {
                     excelworksheet.Cells[str, 1] = VhDvList.ElementAt(str - 2).Id.ToString();
                 }
@@ -275,20 +284,24 @@ namespace dveri1.Controllers
                     //перейдем к другой ячейки
                     countOfCellsHead = 18 - RemoveAllCells;
                 }
-
-//выделим первую строку с названиями столбцов
+             
+                //выделим первую строку с названиями столбцов
                 excelworksheet.get_Range("A1", "Y1").Font.Bold = true;
                 excelworksheet.get_Range("A1", "Y1").Interior.ColorIndex = 33;
                 excelworksheet.get_Range("A2", "Y1").ColumnWidth = 20;
                 excelworksheet.get_Range("A1", "Y65000").RowHeight = 25;
-            
+
+              
                 //формат сохранения
                 string pathDog = Server.MapPath("~//App_data//Excel//");
                 //проверяем наличие папки
                 if (!Directory.Exists(pathDog))
                     Directory.CreateDirectory(pathDog);
+                DellAllFiles(pathDog);
+
                 excelapp.DefaultFilePath = pathDog;
                 //фотмат сохранения xlExcel12 равен .xlsx
+             
                 excelapp.DefaultSaveFormat = Excel.XlFileFormat.xlExcel12;
                 //запрос перезаписи книги - да перезаписать
                 excelapp.DisplayAlerts = false;
@@ -297,21 +310,24 @@ namespace dveri1.Controllers
 
                 //получим ссылку на первую книгу
                 //excelappworkbook = excelappworkbooks[1];
+             
                 excelappworkbook.Save();
 
                 //закрытие программы
+           
                 excelappworkbook.Close();
+            
                 excelapp.Quit();
                 //полностью убиваем прилагу
+             
                 KillExcel();
-               
+
                 //вывод окна для сохранения файла
-                string p = Server.MapPath("~//App_data//Excel//");
-                string file = Path.Combine(p + "Книга1.xlsx");
-                    DirectoryInfo dir = new DirectoryInfo(p);
+
+                string file = Directory.GetFiles(pathDog).FirstOrDefault();
+                    DirectoryInfo dir = new DirectoryInfo(pathDog);
                 string contentType = "application/xlsx";
-               
-                return File(dir + "Книга1.xlsx", contentType, "Входные_двери.xlsx");
+                return File(file,contentType, "Входные_двери.xlsx");
             
             }
             catch(Exception er)
@@ -344,10 +360,13 @@ namespace dveri1.Controllers
         {
             try
             {
+
+              
                 //загружаем книгу на сервер
                 string domainpath = Server.MapPath("~//App_Data//ForDB//");
                 if (!Directory.Exists(domainpath))
                     Directory.CreateDirectory(domainpath); // Создаем директорию, если нужно
+                DellAllFiles(domainpath);
                 string path = null;
               
                 if (fileupload.ElementAt(0) == null)
@@ -379,7 +398,7 @@ namespace dveri1.Controllers
                         if (ImportToDataBase(model.AdresName,path,ref flagerr))
                         {
                             TempData["message"] = "Данные из файла импортированы в базу данных";
-                            DellAllFiles();
+                            DellAllFiles(Server.MapPath("~//App_Data//ForDB//"));
                         if(model.AdresName==cVhodnye)
                             return RedirectToAction("Panel","Admin",null);
                         else
@@ -396,7 +415,6 @@ namespace dveri1.Controllers
                                 TempData["message"] = "Во время импорта данных из файла произошла ошибка!!!";
                             }
                         KillExcel();
-                        DellAllFiles();
                         if (model.AdresName == cVhodnye)
                             return RedirectToAction("Panel", "Admin", null);
                         else
@@ -405,23 +423,26 @@ namespace dveri1.Controllers
                     }
                     else
                     {
-                    DellAllFiles();
-                    return View("Error");
+                       return View("Error");
                     }
             }
             catch(Exception er)
             {
                 KillExcel();
-                DellAllFiles();
                 ClassLog.Write("ExpImpController/Import- " + er);
                 return RedirectToAction("Error");
             }
         }
         //метод считывания и загрузки инфы из файла excel в бд
+# region Метод считывания и загрузки инфы из файла excel в бд
         private bool ImportToDataBase(string whatdoors,string pathfile,ref int flagerr)
         {
             try
             {
+                Excel.Application excelapp;
+                Excel.Workbook excelappworkbook;
+                Excel.Workbooks excelappworkbooks;
+                Excel.Worksheet excelworksheet;
                 excelapp = new Excel.Application();
                 excelappworkbooks = excelapp.Workbooks;
                 //Открываем книгу и получаем на нее ссылку
@@ -1195,13 +1216,13 @@ namespace dveri1.Controllers
             }
 
         }
-
+        #endregion
         //метод удаления файлов из каталога
-        private void DellAllFiles()
+        private void DellAllFiles(string domainpath)
         {
             try
-            {
-                string domainpath = Server.MapPath("~//App_Data//ForDB//");
+            {              
+                //string domainpath = Server.MapPath("~//App_Data//ForDB//");
                 var dir = new DirectoryInfo(domainpath);
                 FileInfo[] fileNames = dir.GetFiles("*.*");
                 foreach (var item in fileNames)
@@ -1239,6 +1260,10 @@ namespace dveri1.Controllers
         {
             try
             {
+                Excel.Application excelapp;
+                Excel.Workbook excelappworkbook;
+              
+                Excel.Worksheet excelworksheet;
                 IEnumerable<MegkomnatnyeDveri> MkDvList;
                 if (model.ProizvCat != "Межкомнатные двери - весь список")
                 {
@@ -1429,11 +1454,12 @@ namespace dveri1.Controllers
                 excelworksheet.get_Range("A1", "Y65000").RowHeight = 25;
 
                 //формат сохранения
-                string pathDog = Server.MapPath("~//App_data//Excel//");
+                string pathDogm = Server.MapPath("~//App_data//Excel//");
                 //проверяем наличие папки
-                if (!Directory.Exists(pathDog))
-                    Directory.CreateDirectory(pathDog);
-                excelapp.DefaultFilePath = pathDog;
+                if (!Directory.Exists(pathDogm))
+                    Directory.CreateDirectory(pathDogm);
+                DellAllFiles(pathDogm);
+                excelapp.DefaultFilePath = pathDogm;
                 //фотмат сохранения xlExcel12 равен .xlsx
                 excelapp.DefaultSaveFormat = Excel.XlFileFormat.xlExcel12;
                 //запрос перезаписи книги - да перезаписать
@@ -1452,13 +1478,13 @@ namespace dveri1.Controllers
                 KillExcel();
 
                 //вывод окна для сохранения файла
-                string p = Server.MapPath("~//App_data//Excel//");
-                string file = Path.Combine(p + "Книга1.xlsx");
+              //получим первый файл в папке (он там один т.к. перед созданием папка чистится)
+                string filem = Directory.GetFiles(pathDogm).FirstOrDefault();
              
-                DirectoryInfo dir = new DirectoryInfo(p);
+                DirectoryInfo dirm = new DirectoryInfo(pathDogm);
                 string contentType = "application/xlsx";
 
-                return File(dir + "Книга1.xlsx", contentType, "Межкомнатные_двери.xlsx");
+                return File(filem, contentType, "Межкомнатные_двери.xlsx");
 
             }
             catch (Exception er)

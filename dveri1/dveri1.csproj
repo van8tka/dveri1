@@ -98,7 +98,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\Visual\TestForExel\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <HintPath>..\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -399,7 +399,6 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\CreateVhDv.cshtml" />
-    <Content Include="Views\Admin\Exception.cshtml" />
     <Content Include="Views\Admin\SliderMain.cshtml" />
     <Content Include="Views\Admin\SliderLeft.cshtml" />
     <Content Include="Views\Contact\AdminContact.cshtml" />

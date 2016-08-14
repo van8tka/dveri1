@@ -1,0 +1,85 @@
+[13.08.2016 09:22:08.520] 1Начало команды экспорта
+[13.08.2016 09:22:08.521] 2Создание excel app
+[13.08.2016 09:22:12.417] 3Создание книги
+[13.08.2016 09:22:12.777] 4Создание записей книги
+[13.08.2016 09:22:12.807] 5Добавление ячейки 1-1
+[13.08.2016 09:22:12.847] 6Добавление всех строк
+[13.08.2016 09:22:37.477] 7ДВыделение 1-ой строки
+[13.08.2016 09:22:38.057] 8Сохранение в эксел
+[13.08.2016 09:22:38.217] 8-1
+[13.08.2016 09:22:38.469] 8-2
+[13.08.2016 09:22:38.469] 8-3 метод сохранения
+[13.08.2016 09:22:42.468] 9 Закрытие программы
+[13.08.2016 09:22:42.538] 10 Выход
+[13.08.2016 09:22:42.538] 11 метод убийства процесса
+[13.08.2016 09:22:42.558] 12 Вывод окна для сохранения книги пользователю!
+[13.08.2016 10:21:11.614] 1Начало команды экспорта
+[13.08.2016 10:32:17.552] 1Начало команды экспорта
+[13.08.2016 10:33:24.590] 1Начало команды экспорта
+[13.08.2016 11:24:15.668] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(8).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1232
+[13.08.2016 11:27:46.529] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1204
+[13.08.2016 11:27:46.532] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(10).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1232
+[13.08.2016 11:29:39.014] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1204
+[13.08.2016 11:29:39.018] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(10).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1232
+[13.08.2016 11:38:56.904] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(11).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1232
+[13.08.2016 11:40:41.838] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1204
+[13.08.2016 11:40:41.841] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(12).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1232
+[13.08.2016 11:45:06.691] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1202
+[13.08.2016 11:50:35.798] ExpImpController/Import(ImportToDataBase)- System.Runtime.InteropServices.COMException (0x800401A8): Exception from HRESULT: 0x800401A8
+   at Microsoft.Office.Interop.Excel._Worksheet.get_Cells()
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 632
+[13.08.2016 11:52:18.972] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1202
+[13.08.2016 11:53:41.959] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Межкомнатные_двери(12).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1230
+[13.08.2016 12:00:58.066] ExpImpController/Import(ImportToDataBase)- System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Domain2.Implementations.EfSeoMainRepository.CreateSeo(Int32 id, String tit, String key, String des, String page, String head, String categ) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSeoMainRepository.cs:line 45
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 937
+[13.08.2016 12:01:49.926] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$Входные_двери(6).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1230

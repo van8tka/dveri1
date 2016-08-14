@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using dveri1.DopMethod;
+using System.Drawing.Drawing2D;
 
 namespace dveri1.Controllers
 {
@@ -203,10 +204,25 @@ namespace dveri1.Controllers
                         Image imgLogo = Image.FromFile(Server.MapPath("~/Content/logoinAllImage.png"));
                         //в метод DRAW передали изобр для наложения координата X и Y и размер изобра W и H
                          myGraphic.DrawImage(imgLogo,0, 0, 220,270);
-                        //новое имя и сохраним
-                        string newfilename = "evrostroy" + (idfot + 1).ToString() + ".jpg";
-                        string newfilepath = domainpath + newfilename;
-                        myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                           
+                            //изменим качество изображения(это новое от 12.08.2016)
+                            Encoder myEncoder = Encoder.Quality;
+                            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                            // Save the bitmap as a JPG file with zero quality level compression.
+                            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 20L);
+                            myEncoderParameters.Param[0] = myEncoderParameter;
+                            //вызов метода получения кодировки файла(из msdn)
+                            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+                          
+
+
+                            //новое имя и сохраним
+                            string newfilename = "evrostroy" + (idfot + 1).ToString() + ".jpg";
+                            string newfilepath = domainpath + newfilename;
+
+                            //myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+
+                            myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
                        //теперь запишем файл в базу данных
                         FileStream fs = null;
                         fs = new FileStream(newfilepath, FileMode.Open);
@@ -249,6 +265,24 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+
+        //метод получения кодировки файла (из msdn)
+        private ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+
+
         //-----------------------------------контроллер изменения товара---------------------------------------------
         [Authorize]
         [HttpGet]
@@ -359,7 +393,20 @@ namespace dveri1.Controllers
                                 //новое имя и сохраним
                                 string newfilename = "evrostroy" + (idfot + 1).ToString() + ".jpg";
                                 string newfilepath = domainpath + newfilename;
-                                myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+
+                            //изменим качество изображения(это новое от 12.08.2016)
+                            Encoder myEncoder = Encoder.Quality;
+                            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                            // Save the bitmap as a JPG file with zero quality level compression.
+                            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 20L);
+                            myEncoderParameters.Param[0] = myEncoderParameter;
+                            //вызов метода получения кодировки файла(из msdn)
+                            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+
+
+
+
+                            myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
                                 //теперь запишем файл в базу данных
                                 FileStream fs = null;
                                 fs = new FileStream(newfilepath, FileMode.Open);
@@ -500,7 +547,17 @@ namespace dveri1.Controllers
                         //новое имя и сохраним
                         string newfilename = "evrostroySlMAin" + i.ToString() + ".jpg";
                         string newfilepath = domainpath + newfilename;
-                        myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                            //изменим качество изображения(это новое от 12.08.2016)
+                            Encoder myEncoder = Encoder.Quality;
+                            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                            // Save the bitmap as a JPG file with zero quality level compression.
+                            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 40L);
+                            myEncoderParameters.Param[0] = myEncoderParameter;
+                            //вызов метода получения кодировки файла(из msdn)
+                            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+
+
+                            myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
                         //теперь запишем файл в базу данных
                         FileStream fs = null;
                         fs = new FileStream(newfilepath, FileMode.Open);
@@ -609,7 +666,17 @@ namespace dveri1.Controllers
                         //новое имя и сохраним
                         string newfilename = "evrostroySlLeft" + i.ToString() + ".jpg";
                         string newfilepath = domainpath + newfilename;
-                        myBitmap.Save(newfilepath, ImageFormat.Jpeg);
+                            //изменим качество изображения(это новое от 12.08.2016)
+                            Encoder myEncoder = Encoder.Quality;
+                            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                            // Save the bitmap as a JPG file with zero quality level compression.
+                            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 40L);
+                            myEncoderParameters.Param[0] = myEncoderParameter;
+                            //вызов метода получения кодировки файла(из msdn)
+                            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+
+                            myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
+                          
                         //теперь запишем файл в базу данных
                         FileStream fs = null;
                         fs = new FileStream(newfilepath, FileMode.Open);

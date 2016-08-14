@@ -124,7 +124,9 @@ namespace dveri1.Controllers
             {
                 FotoVhodnyhDverey foto = dataManager.VhodnyeDvRepository.GetFotoVhDvByID(id).OrderBy(x => x.Idfoto).FirstOrDefault();
                 if (foto != null)
-                { return File(foto.Imaging, foto.MimeType); }
+                {
+                    return File(foto.Imaging, foto.MimeType);
+                }
                 else
                 {//   изображение по умолчанию
                     return null;
