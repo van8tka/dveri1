@@ -13,16 +13,57 @@ namespace dveri2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // routes.MapRoute(
-            //    name: "vhodnyedveri",
-            //    url: "{controller}/{action}/{brand}/{sort}/{id}/",
-            //    defaults: new { id = UrlParameter.Optional, sort = UrlParameter.Optional, brand = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+              name: "PageSizeAllRoute",
+              url: "{controller}/{action}/{brand}/{id}/{sort}/{flagMaterial}/{pagesize}/"
+
+          );
+            routes.MapRoute(
+           name: "PageSizeAllRoute2",
+           url: "{controller}/{action}/{brand}/{id}/{sort}/{flagMaterial}/"
+
+       );
+          
+
+            //маршрут для определения товара и выдачи имени в URL и индекса товара(для сео)
+            routes.MapRoute(
+                name: "TovRoute",
+                url: "{controller}/{action}/{tov}/{id}/{flag}/"
+         );
+
+//установим ограничение только для контроллера Articles
+            routes.MapRoute(
+         name: "ArtRoute",
+         url: "{controller}/{action}/{tov}/{id}/",
+         defaults: new {controller= "Articles", action="Getarticle"},
+         constraints: new { controller = "^Ar.*" }
+         );
+            routes.MapRoute(
+           name: "PageSizeAllRoute3",
+           url: "{controller}/{action}/{brand}/{flagMaterial}/"
+
+       );
+      
 
             routes.MapRoute(
+            name: "OtherRoute",
+            url: "{controller}/{action}/{id}/"
+       );
+            routes.MapRoute(
+           name: "OtherRoute2",
+           url: "{controller}/{action}/{page}/"
+      );
+
+            routes.MapRoute(
+          name: "BrandRoute",
+          url: "{controller}/{action}/{brand}/"
+      );
+
+          
+            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "MegkomnatnyeDveri", action = "MegkomnatnyeDveriIndex", id = UrlParameter.Optional }
+                url: "{controller}/{action}/",
+                defaults: new { controller = "MegkomnatnyeDveri", action = "MegkomnatnyeDveriIndex" }
             );
             //устанавливаем url в нижний регистр
             routes.LowercaseUrls = true;

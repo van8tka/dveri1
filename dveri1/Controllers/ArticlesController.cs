@@ -123,7 +123,6 @@ namespace dveri1.Controllers
             }
         }
 
-
         //получение последних 5 статей на боковую панель layout
         public ActionResult GetFiveArticles()
         {
@@ -132,7 +131,7 @@ namespace dveri1.Controllers
             return View(model);
         } 
         //==============================================получение одной конкретной статьи===================================
-        public ActionResult GetArticle(int id)
+        public ActionResult GetArticle(string tov, int id)
         {
             ModelArticles model = new ModelArticles();
             model.ArticleOne = dataManager.ArticlesRepository.GetArticle(id);

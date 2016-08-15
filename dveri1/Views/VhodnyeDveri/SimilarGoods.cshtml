@@ -24,70 +24,71 @@
                         @for (int i = 0; i < 8; i++)
                     {
                             <div class="shortproduct-small fll">
-                                <a href="/VhodnyeDveri/TovarPage?id=@Model.ListVhodnDv.ElementAt(i).Id">
-                                    <div class="imageshort">
-                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
-                                    {
-                                        if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
-                                        {
-                                                <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
-                                        }
-                                        else
-                                        {
-                                                <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
-                                        {
-                                                <div class="blockpercent-small">
-                                                    <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
-                                                </div>
-                                                <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
-                                        }
-                                        else
-                                        {
-                                                <div class="blockpercent-small">
-                                                    <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
-                                                </div>
-                                                <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
-                                        }
-                                    }
-                                    </div>
-                                    <div class="shortChar">
-                                        <br clear="all" />
-                                        <div style="clear:both">
-
+                                <a href="@Url.Action("TovarPage","VhodnyeDveri", new {tov=Model.ListVhodnDv.ElementAt(i).Nazvanie ,id=Model.ListVhodnDv.ElementAt(i).Id})">
+                                  
+                                        <div class="imageshort">
+                                            @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                            {
+                                                if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
+                                                {
+                                                    <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
+                                                }
+                                                else
+                                                {
+                                                    <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
+                                                {
+                                                    <div class="blockpercent-small">
+                                                        <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
+                                                    </div>
+                                                    <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
+                                                }
+                                                else
+                                                {
+                                                    <div class="blockpercent-small">
+                                                        <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
+                                                    </div>
+                                                    <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
+                                                }
+                                            }
                                         </div>
-                                               <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
-                                    @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
-                                    {
-                                        if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
-                                        {
-                                                <p class="CenaGreen">Цену уточняйте у менеджера.</p>
-                                        }
-                                        else
-                                        {
-                                                <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</p>
-                                        }
+                                        <div class="shortChar">
+                                            <br clear="all" />
+                                            <div style="clear:both">
 
-                                    }
-                                    else
-                                    {
-                                        if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
-                                        {
-                                                <p class="CenaGreen">Цену уточняйте у менеджера.</p>
-                                        }
-                                        else
-                                        {
-                                                <p class="CenaBlack"><strike>@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</strike></p>
-                                                <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).CenaSoSkidcoy.Value.ToString("C")</p>
-                                        }
-                                    }
-                                    </div>
-                                </a>
-                            </div>
+                                            </div>
+                                            <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                            @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                            {
+                                                if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
+                                                {
+                                                    <p class="CenaGreen">Цену уточняйте у менеджера.</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</p>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
+                                                {
+                                                    <p class="CenaGreen">Цену уточняйте у менеджера.</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="CenaBlack"><strike>@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</strike></p>
+                                                    <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).CenaSoSkidcoy.Value.ToString("C")</p>
+                                                }
+                                            }
+                                        </div>
+                                    </a>
+</div>
                     }
 
                     </div>
@@ -98,7 +99,7 @@
                         @for (int i = 8; i < 16; i++)
                         {
                             <div class="shortproduct-small fll">
-                                <a href="/VhodnyeDveri/TovarPage?id=@Model.ListVhodnDv.ElementAt(i).Id">
+                                <a href="@Url.Action("TovarPage","VhodnyeDveri", new {tov=Model.ListVhodnDv.ElementAt(i).Nazvanie ,id=Model.ListVhodnDv.ElementAt(i).Id})">
                                     <div class="imageshort">
                                         @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
                                         {
@@ -134,8 +135,8 @@
                                         <div style="clear:both">
 
                                         </div>
-                                                <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
-                                       @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                        <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
                                         {
                                             if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
                                             {
@@ -160,7 +161,7 @@
                                             }
                                         }
                                     </div>
-                                  </a>
+                                </a>
                             </div>
                         }
 
@@ -171,69 +172,70 @@
                         @for (int i = 16; i < 24; i++)
                         {
                            <div class="shortproduct-small fll">
-                                <a href="/VhodnyeDveri/TovarPage?id=@Model.ListVhodnDv.ElementAt(i).Id">
-                                    <div class="imageshort">
-                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
-                                        {
-                                            if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
-                                            {
-                                                <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
-                                            }
-                                            else
-                                            {
-                                                <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
-                                            }
-                                        }
-                                        else
-                                        {
-                                            if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
-                                            {
-                                                <div class="blockpercent-small">
-                                                    <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
-                                                </div>
-                                                <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
-                                            }
-                                            else
-                                            {
-                                                <div class="blockpercent-small">
-                                                    <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
-                                                </div>
-                                                <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
-                                            }
-                                        }
-                                    </div>
-                                    <div class="shortChar">
-                                        <br clear="all" />
-                                        <div style="clear:both">
-
-                                        </div>
-                                            <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                               <a href="@Url.Action("TovarPage","VhodnyeDveri", new {tov=Model.ListVhodnDv.ElementAt(i).Nazvanie ,id=Model.ListVhodnDv.ElementAt(i).Id})">
+                                   <div class="imageshort">
                                        @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
-                                        {
-                                            if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
-                                            {
-                                                <p class="CenaGreen">Цену уточняйте у менеджера.</p>
-                                            }
-                                            else
-                                            {
-                                                <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</p>
-                                            }
+                                       {
+                                           if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
+                                           {
+                                               <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
+                                           }
+                                           else
+                                           {
+                                               <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
+                                           }
+                                       }
+                                       else
+                                       {
+                                           if (Model.ListVhodnDv.ElementAt(i).FotoVhodnyhDvereys.FirstOrDefault() == null)
+                                           {
+                                               <div class="blockpercent-small">
+                                                   <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
+                                               </div>
+                                               <img class="img-thumbnail-small" src="~/Content/imageDefault.jpg" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie отсутствует" />
+                                           }
+                                           else
+                                           {
+                                               <div class="blockpercent-small">
+                                                   <span class="percent-small">@Model.ListVhodnDv.ElementAt(i).Skidka%</span>
+                                               </div>
+                                               <img class="img-thumbnail-small" src="@Url.Action("GetImage", "VhodnyeDveri", new { Model.ListVhodnDv.ElementAt(i).Id })" alt="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" title="фото @Model.ListVhodnDv.ElementAt(i).Nazvanie" />
+                                           }
+                                       }
+                                   </div>
+                                   <div class="shortChar">
+                                       <br clear="all" />
+                                       <div style="clear:both">
 
-                                        }
-                                        else
-                                        {
-                                            if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
-                                            {
-                                                <p class="CenaGreen">Цену уточняйте у менеджера.</p>
-                                            }
-                                            else
-                                            {
-                                                <p class="CenaBlack"><strike>@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</strike></p>
-                                                <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).CenaSoSkidcoy.Value.ToString("C")</p>
-                                            }
-                                        }
                                        </div>
-                                </a>
+                                       <p>@Model.ListVhodnDv.ElementAt(i).Nazvanie</p>
+                                       @if (Model.ListVhodnDv.ElementAt(i).Skidka == null || Model.ListVhodnDv.ElementAt(i).Skidka == 0)
+                                       {
+                                           if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
+                                           {
+                                               <p class="CenaGreen">Цену уточняйте у менеджера.</p>
+                                           }
+                                           else
+                                           {
+                                               <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</p>
+                                           }
+
+                                       }
+                                       else
+                                       {
+                                           if (Model.ListVhodnDv.ElementAt(i).Cena == 0 || Model.ListVhodnDv.ElementAt(i).Cena == null)
+                                           {
+                                               <p class="CenaGreen">Цену уточняйте у менеджера.</p>
+                                           }
+                                           else
+                                           {
+                                               <p class="CenaBlack"><strike>@Model.ListVhodnDv.ElementAt(i).Cena.Value.ToString("C")</strike></p>
+                                               <p class="CenaGreen">@Model.ListVhodnDv.ElementAt(i).CenaSoSkidcoy.Value.ToString("C")</p>
+                                           }
+                                       }
+                                   </div>
+                               </a>
+
                             </div>
                         }
 

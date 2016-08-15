@@ -24,7 +24,7 @@
             }
            @if (Model.FotoTovara.Count() == 0)
             {
-                <img class='MainFoto ml130 mt30' src="~/Content/imageDefault.jpg" alt="фото @Model.Tovar.Nazvanie отсутствует" title="фото @Model.Tovar.Nazvanie отсутствует" />
+                <img class='MainFotoDef mt30' src="~/Content/imageDefault.jpg" alt="фото @Model.Tovar.Nazvanie отсутствует" title="фото @Model.Tovar.Nazvanie отсутствует" />
             }
             else
             {
@@ -62,8 +62,7 @@
     {
     <div class="sectionabout mt10">
         <span class="OpisDoor">Описание входных дверей:</span>
-        <hr class="hei3">
-        <div class="opisanie">
+          <div class="opisanie">
              @Html.Raw(Model.Tovar.Opisanie)
         </div>
     </div>

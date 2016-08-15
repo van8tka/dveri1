@@ -24,7 +24,7 @@ namespace dveri2.Controllers
             return View(model);
         }
         //==============================================получение одной конкретной статьи===================================
-        public ActionResult GetArticle(int id)
+        public ActionResult GetArticle(string tov, int id)
         {
             ModelArticles model = new ModelArticles();
             model.ArticleOne = dataManager.ArticlesRepository.GetArticleMk(id);

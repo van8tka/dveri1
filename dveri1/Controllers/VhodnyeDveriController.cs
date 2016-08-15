@@ -29,7 +29,8 @@ namespace dveri1.Controllers
         public int PageSize = 32;
         //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult VhodnyeDveriIndex(int? id, int sort = 0, string brand = "весьтовар")
+       
+        public ActionResult VhodnyeDveriIndex(string brand = "весьтовар",int? id=0, int sort = 0)
         {
             try
             {
@@ -275,8 +276,9 @@ namespace dveri1.Controllers
 
 
         //==========================================карточка товара==============================================================================
+      
         [HttpGet]
-        public ActionResult TovarPage(int id)
+        public ActionResult TovarPage(string tov, int id)
         {
             try
             {

@@ -58,7 +58,6 @@ D:\GitHub\dveri1\dveri2\bin\EntityFramework.SqlServer.xml
 D:\GitHub\dveri1\dveri2\bin\Microsoft.AspNet.Identity.Core.xml
 D:\GitHub\dveri1\dveri2\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\GitHub\dveri1\dveri2\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\GitHub\dveri1\dveri2\obj\Debug\dveri2.csprojResolveAssemblyReference.cache
 D:\GitHub\dveri1\dveri2\obj\Debug\dveri2.dll
 D:\GitHub\dveri1\dveri2\obj\Debug\dveri2.pdb
 D:\GitHub\dveri1\dveri2\bin\DALdv1.dll

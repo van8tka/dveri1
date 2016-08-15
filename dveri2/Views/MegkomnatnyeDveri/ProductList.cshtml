@@ -9,12 +9,13 @@
     {
 
         <div class="shortproduct">
-           <a href="~/MegkomnatnyeDveri/TovarPage?id=@i.Id&flag=@Model.FlagMaterial.ToString()">             
-              <div class="imageshort">
+            <a href="@Url.Action("TovarPage","MegkomnatnyeDveri", new {tov = i.Nazvanie, id=i.Id, flag=Model.FlagMaterial.ToString()})">
+              
+                    <div class="imageshort">
                         @if (i.Skidka == null || i.Skidka == 0)
-               {
-                   if (i.FotoMegkomnDvereys.FirstOrDefault() == null)
-                   {
+                        {
+                            if (i.FotoMegkomnDvereys.FirstOrDefault() == null)
+                            {
                                 <img class="img-thumbnail" src="~/Content/imageDefault.jpg" alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует" />
                             }
                             else
@@ -48,9 +49,9 @@
                         </div>
 
                         @if (i.Skidka == null || i.Skidka == 0)
-                    {
-                        if (i.Cena == 0 || i.Cena == null)
                         {
+                            if (i.Cena == 0 || i.Cena == null)
+                            {
                                 <p class="CenaGreenMed">Цену уточняйте у менеджера.</p>
                             }
                             else
@@ -74,8 +75,8 @@
 
                         }
                     </div>
-             </a>
-        </div>
+                </a>
+</div>
 
     }
 </div>

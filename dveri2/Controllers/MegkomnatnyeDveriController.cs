@@ -29,7 +29,7 @@ namespace dveri2.Controllers
         public int PageSize = 32;
         //отображение списка и баннера (главная страница)
         [HttpGet]
-        public ActionResult MegkomnatnyeDveriIndex(int? id, int sort = 0, string brand = "весьтовар",bool flagMaterial = false)
+        public ActionResult MegkomnatnyeDveriIndex(string brand = "весьтовар", int? id = 0, int sort = 0, bool flagMaterial = false)
         {
             try
             {
@@ -548,7 +548,7 @@ namespace dveri2.Controllers
 
         //==========================================карточка товара==============================================================================
         [HttpGet]
-        public ActionResult TovarPage(int id, bool flag = false)
+        public ActionResult TovarPage(string tov, int id, bool flag = false)
         {
             try
             {

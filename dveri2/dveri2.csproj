@@ -245,7 +245,6 @@
     <Content Include="Content\KaruselTovara\prev.png" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
-    <Content Include="Content\logoinAllImage.png" />
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\orbit.css" />
     <Content Include="Content\orbit\bullets.png" />

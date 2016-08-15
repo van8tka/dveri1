@@ -1215,9 +1215,8 @@ div.ferstsect{
 }
 
 div.sectionabout{
-    background-color:#F5F5F5;
-    text-align:center;
-}
+       text-align:center;
+     }
 div.opisanie{
     text-align:justify;
     color:black;
@@ -1282,6 +1281,11 @@ img.spisFoto:hover{
       width:300px;
       height:520px;
   }
+    img.MainFotoDef{
+      margin-left:140px;
+      width:300px;
+      height:520px;
+   }
   span.pr{
       width:100px;
   }

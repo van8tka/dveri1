@@ -9,7 +9,8 @@
         {
             
             <div class="shortproduct">
-                <a href="/VhodnyeDveri/TovarPage?id=@i.Id">
+                <a href="@Url.Action("TovarPage","VhodnyeDveri", new {tov = i.Nazvanie, id=i.Id})">
+             
                     <div class="imageshort">
                         @if (i.Skidka == null || i.Skidka == 0)
                         {
@@ -19,7 +20,7 @@
                             }
                             else
                             {
-                                <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })"  alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
+                                <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })" alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
                             }
                         }
                         else
@@ -29,24 +30,24 @@
                                 <div class="blockpercent">
                                     <span class="percent">@i.Skidka%</span>
                                 </div>
-                                    <img class="img-thumbnail" src="~/Content/imageDefault.jpg"  alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует"/>
-                                    }
-                                    else
-                                    {
+                                <img class="img-thumbnail" src="~/Content/imageDefault.jpg" alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует" />
+                            }
+                            else
+                            {
                                 <div class="blockpercent">
-                                      <span class="percent">@i.Skidka%</span>
-                                 </div>
-                                    <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })"  alt="фото @i.Nazvanie" title="фото @i.Nazvanie"/>
-                                    }
-                                    }
+                                    <span class="percent">@i.Skidka%</span>
                                 </div>
+                                <img class="img-thumbnail" src="@Url.Action("GetImage", "VhodnyeDveri", new { i.Id })" alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
+                            }
+                        }
+                    </div>
                     <div>
                         <div class="shOpisTov">
                             <p>@i.Nazvanie</p>
                             <p>@i.Proizvoditel</p>
                             <p>@i.Strana</p>
                         </div>
-                       
+
                         @if (i.Skidka == null || i.Skidka == 0)
                         {
                             if (i.Cena == 0 || i.Cena == null)
@@ -68,7 +69,7 @@
                             else
                             {
                                 <p class="CenaBlackL"><strike>@i.Cena.Value.ToString("C")</strike></p>
-                                <p class="CenaGreenL">@i.CenaSoSkidcoy.Value.ToString("C")</p>
+                                            <p class="CenaGreenL">@i.CenaSoSkidcoy.Value.ToString("C")</p>
                             }
 
 
