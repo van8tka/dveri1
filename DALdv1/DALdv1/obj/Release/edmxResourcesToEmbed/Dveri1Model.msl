@@ -303,6 +303,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableWorkingEmails">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableWorkingEmail">
+        <MappingFragment StoreEntitySet="TableWorkingEmail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableYrInfas">
       <EntityTypeMapping TypeName="dbdveri1Model.TableYrInfa">
         <MappingFragment StoreEntitySet="TableYrInfa">

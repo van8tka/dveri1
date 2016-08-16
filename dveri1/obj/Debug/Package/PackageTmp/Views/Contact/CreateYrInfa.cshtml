@@ -1,0 +1,32 @@
+﻿@model dveri1.Models.CreateAdresModel
+@{
+    ViewBag.Title = "Добавление юридической информации";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="tablecontent tac blackFont">
+    <h4>@ViewBag.CreateContact</h4>
+    <hr />
+    @using (Html.BeginForm("CreateYrInfa", "Contact", FormMethod.Post))
+    {
+        <div class="fieldset">
+            @Html.HiddenFor(m => m.IDAdres)
+            <label>Юридическая информация</label>
+            @Html.ValidationMessageFor(m => m.AdresName)
+            @Html.TextAreaFor(m => m.AdresName, new { @class = "form-control" })
+        </div>
+
+        <div class="mt20">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "AdminContact")
+        </div>
+
+    }
+
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m9").addClass("actadmin")
+</script>

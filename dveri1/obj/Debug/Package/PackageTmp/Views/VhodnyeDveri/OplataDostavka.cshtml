@@ -1,0 +1,25 @@
+﻿@model dveri1.Models.OplDostModel
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbsonpage">
+    @Html.Action("BreadCrumbs", "VhodnyeDveri", new { namepart = "Оплата и Доставка" })
+</div>
+
+
+<div class="dostavkamain">
+    <div class="headPageProduct">
+        <h1>@Model.SeoHead</h1>
+    </div>
+    @Html.Raw(Model.DostInfo)
+</div>
+<div class="oplatamain">
+    @Html.Raw(Model.OplInfo)
+</div>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m5").addClass("current")
+</script>

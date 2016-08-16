@@ -1,0 +1,55 @@
+﻿@model dveri1.Models.ContactModel
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.Action("BreadCrumbs","VhodnyeDveri", new { namepart = "Контакты"})
+</div>
+
+<div class="contactpage">
+    <div class="fs09e">
+        <h1>@Model.SeoHead</h1>
+    </div>
+    <div class="contactsdata">
+        <h3 class="widA fst-I"> Время работы: </h3>
+
+        @foreach (var i in Model.GrafikWorkList)
+        {
+            <div style="display:block;">
+                <div class="fll ml20 wid30p" >@i.NameDay: </div>
+                <div class="fll wid50p">@i.TimeWork </div>
+            </div>
+        }
+       
+    </div>
+    <div class="contactsdata">
+        <h3 class="widA fst-I"> Контакты: </h3>
+        @foreach (var z in Model.ContactList)
+        {
+            <div style="display:block;">
+                <div class="fll wid30p">@z.TypeSv: </div>
+                <div>@z.NumberSv </div>
+            </div>
+        }
+    </div>
+    <div class="contactsdata">
+        <h3 class="widA fst-I"> Адреса офисов: </h3>
+        @foreach (var z in Model.AdresList)
+        {
+            <div class="db">
+                <div>@z.AdresName </div>
+            </div>
+        }
+    </div>
+
+</div>
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m7").addClass("current")
+</script>
+
+

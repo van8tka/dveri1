@@ -1,0 +1,70 @@
+﻿@model dveri1.Models.ModelCommentVhDv
+@{
+    ViewBag.Title = "Комментарии о входных дверях";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent">
+    <div class="marg1e">
+        @Html.ActionLink("О компании", "AdminCommentCompany", "Comment", new { @class = "tablebut wid250"})
+        @Html.ActionLink("О входных дверях", "AdminCommentVhDv", "Comment", new { @class = "tablebutAct wid250" })
+        @Html.ActionLink("О межкомнатных дверях", "AdminCommentMkDv", "Comment", new { @class = "tablebut wid250"})
+    </div>
+    <hr />
+    <table class="table_dark wid1040">
+        <tr>
+            <th>Номер</th>
+            <th>Дата</th>
+            <th>Код двери</th>
+            <th>Название двери</th>
+            <th>Имя</th>
+            <th>E-mail</th>
+            <th>Звезды</th>
+            <th>Заголовок</th>
+            <th>Комментарий</th>
+            <th>Ответ</th>
+            <th>Публикация</th>
+            <th></th>
+        </tr>
+        @foreach (var i in Model.CommentVhDvList)
+        {
+            <tr>
+                <td class="tac">@Html.ActionLink(i.ID.ToString(), "AdminEditCommentVhDv", "Comment", new { id = i.ID }, null)</td>
+                <td>@Html.ActionLink(i.Date.ToString(), "AdminEditCommentVhDv", "Comment", new { id = i.ID }, null)</td>
+                <td>@i.IDdv</td>
+                <td>@i.VhodnyeDveri.Nazvanie</td>
+                <td>@i.Name</td>
+                <td>@i.E_mail</td>
+                <td class="tac">@i.Stars</td>
+                <td>@i.Heading</td>
+                <td>@i.Comment</td>
+                <td>@i.Response</td>
+                <td class="tac"> @Html.CheckBoxFor(modelItem => i.Public, new {@class="chpubliccomvhdv", id = i.ID })</td>
+                <td>
+                    @Html.ActionLink("Удалить", "AdminDellCommentVhDv", "Comment", new { id = i.ID }, new { @class = "tablebut", style = "width:60px" })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<script type="text/javascript">
+    //определяем Id кликнутого элемента
+    $('.chpubliccomvhdv').click(function () {
+        var id = $(this).attr('id');
+        var temp = "?list=комментарийвходныхдверей";
+             $.ajax({//и вызываем ajax функцию
+                type: 'GET',
+                url: '/Admin/ChangePublic/' + id+temp,
+                success: function (data) {
+                }
+            });
+
+        });
+   
+    $(".admmen").removeClass("actadmin")
+    $(".m11").addClass("actadmin")
+
+</script>
+
+

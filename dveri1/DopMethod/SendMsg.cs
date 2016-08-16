@@ -2,13 +2,15 @@
 using System.Net.Mail;
 using System.Net;
 
+
 namespace dveri1.DopMethod
 {
     public class SendMsg
     {
-        
-        public static bool Message(string Body, string Them, string adresKlient)
+              
+        public static bool Message(string Body, string Them,string adresKlient)
         {
+          
             string SystemEmail = "systememail11@yandex.ru";
             string Passwword = "qazWSX123";
             try

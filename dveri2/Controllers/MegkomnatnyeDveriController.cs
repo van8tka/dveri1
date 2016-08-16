@@ -453,7 +453,7 @@ namespace dveri2.Controllers
             //создание и отправка сообщение админу
             string body;
             string them = "Cообщение от клиента: " + model.KlientName + ", тел. или email: " + model.KlientPhone;
-            string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+            string adres = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault().Email;
             //проверяем если нет такой двери
             if (model.IdDveri != 9999)
             {
@@ -593,6 +593,7 @@ namespace dveri2.Controllers
         }
 
         //акшен для возврата частичного представления с данными кликнутого фото в карточке товара
+        [HttpGet]
         public ActionResult ImgTov(int id)
         {
             try

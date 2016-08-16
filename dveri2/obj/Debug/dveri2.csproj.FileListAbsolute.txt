@@ -71,3 +71,4 @@ D:\GitHub\dveri1\dveri2\bin\Domain2.pdb
 D:\GitHub\dveri1\dveri2\bin\Ninject.xml
 D:\GitHub\dveri1\dveri2\bin\Ninject.Web.Common.xml
 D:\GitHub\dveri1\dveri2\bin\Ninject.Web.Mvc.xml
+D:\GitHub\dveri1\dveri2\obj\Debug\dveri2.csprojResolveAssemblyReference.cache

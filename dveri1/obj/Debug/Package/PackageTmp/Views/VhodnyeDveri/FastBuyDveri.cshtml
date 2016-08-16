@@ -1,0 +1,19 @@
+﻿@model dveri1.Models.ModelBuyDveri
+@{
+    ViewBag.Title = "Оставьте свой номер телефона или email и мы свяжемся с Вами в течении 15 мин";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("FastBuyDveri", "VhodnyeDveri"))
+{
+<div id="fastbuy" class="tac">
+   @Html.Partial("ViewFastBuy")
+    @if (Model.IdDveri != 9999)
+    {
+        @Html.ActionLink("Отменить", "TovarPage", "VhodnyeDveri", new { id = Model.IdDveri }, new { @class = "butcancel" })
+    }
+    else
+    {
+        @Html.ActionLink("Отменить", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "butcancel" })
+    }
+    </div>
+}

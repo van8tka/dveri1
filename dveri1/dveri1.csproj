@@ -412,7 +412,6 @@
     <Content Include="Views\Contact\ContactPage.cshtml" />
     <Content Include="Views\VhodnyeDveri\TovarPage.cshtml" />
     <Content Include="Views\VhodnyeDveri\VhodnyeDveriIndex.cshtml" />
-    <Content Include="Views\VhodnyeDveri\ImgTov.cshtml" />
     <Content Include="Views\VhodnyeDveri\HarakteristikaTovara.cshtml" />
     <Content Include="Views\VhodnyeDveri\OpisanieTov.cshtml" />
     <Content Include="Views\VhodnyeDveri\BreadCrumbs.cshtml" />
@@ -470,6 +469,8 @@
     <Content Include="Views\Articles\AdminGetArticlesMk.cshtml" />
     <Content Include="Views\Articles\CreateArticleMk.cshtml" />
     <Content Include="Views\Articles\CreateSeoArticleMk.cshtml" />
+    <Content Include="Views\Contact\CreateWorkEmail.cshtml" />
+    <Content Include="Views\VhodnyeDveri\ImgTov.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

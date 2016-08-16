@@ -67,6 +67,7 @@ namespace dveri1.Controllers
             model.ContactList = dataManager.ContactRepository.GetContacts();
             model.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
             model.YrInformationProp = dataManager.ContactRepository.GetYrInfa();
+            model.WorkEmails = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault();
             return View(model);
             }
             catch (Exception er)
@@ -190,6 +191,58 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //----------создание рабочей почты-------------------------
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateWorkEmail(int id=0)
+        {
+            CreateEmailModel model = new CreateEmailModel();
+            model.ID = id;
+            if (id==0)
+            {
+                ViewBag.CreateContact = "Добавление рабочей почты";
+            }         
+            else
+            {
+                ViewBag.CreateContact = "Изменение рабочей почты";
+                model.EmailVal = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault().Email;
+            }
+                        
+            return View(model);
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateWorkEmail(CreateEmailModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if(model.ID==0)
+                    {
+                        TableWorkingEmail em = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault();
+                        dataManager.ContactRepository.CreateWorkingEmail(0, model.EmailVal);
+                        if (em != null)
+                            dataManager.ContactRepository.DellWorkingEmail(em.ID);
+                        TempData["message"] = "Рабочая почта добавлена!";
+                    }
+                   else
+                    {
+                        dataManager.ContactRepository.CreateWorkingEmail(model.ID, model.EmailVal);
+                        TempData["message"] = "Рабочая почта изменена!";
+                    }
+                    return RedirectToAction("AdminContact");
+                }
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/CreateWorkingEmail-", er);
+                return View("Error");
+            }
+        }
+
+
 
         //============================изменение контактных данных======================================
         [Authorize]
@@ -422,6 +475,31 @@ namespace dveri1.Controllers
             catch (Exception er)
             {
                 ClassLog.Write("Contact/DellAdres-", er);
+                return View("Error");
+            }
+        }
+
+        [Authorize]
+        public ActionResult DellWorkEmail(int id)
+        {
+            try
+            {
+                IEnumerable<TableWorkingEmail> e = dataManager.ContactRepository.GetWorkingEmails();
+                if(e.Count()==1)
+                {
+                    TempData["message"] = "Осталась одна рабочая почта, удаление невозможно!";
+                    return RedirectToAction("AdminContact");
+                }
+                else
+                {
+                    dataManager.ContactRepository.DellWorkingEmail(id);
+                    TempData["message"] = "Рабочая почта удалена!";
+                    return RedirectToAction("AdminContact");
+                }             
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Contact/DellWorkEmail-", er);
                 return View("Error");
             }
         }

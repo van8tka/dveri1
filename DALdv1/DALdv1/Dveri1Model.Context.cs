@@ -51,6 +51,7 @@ namespace DALdv1
         public virtual DbSet<TableArticlesMk> TableArticlesMks { get; set; }
         public virtual DbSet<TableSeoArticle> TableSeoArticles { get; set; }
         public virtual DbSet<TableSeoArticlesMk> TableSeoArticlesMks { get; set; }
+        public virtual DbSet<TableWorkingEmail> TableWorkingEmails { get; set; }
         public virtual DbSet<TableYrInfa> TableYrInfas { get; set; }
         public virtual DbSet<TableYstanovka> TableYstanovkas { get; set; }
         public virtual DbSet<User> Users { get; set; }

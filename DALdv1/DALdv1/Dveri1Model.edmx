@@ -281,6 +281,13 @@
           <Property Name="Keywords" Type="nvarchar" MaxLength="450" />
           <Property Name="Description" Type="nvarchar" MaxLength="450" />
         </EntityType>
+        <EntityType Name="TableWorkingEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="350" />
+        </EntityType>
         <EntityType Name="TableYrInfa">
           <Key>
             <PropertyRef Name="Id" />
@@ -480,6 +487,7 @@
           <EntitySet Name="TableArticlesMk" EntityType="Self.TableArticlesMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticlesMk" EntityType="Self.TableSeoArticlesMk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableWorkingEmail" EntityType="Self.TableWorkingEmail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableYrInfa" EntityType="Self.TableYrInfa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableYstanovka" EntityType="Self.TableYstanovka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -817,6 +825,13 @@
           <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TableArticlesMk" Relationship="Self.FK_TableSeoArticlesMk_TableArticlesMk" FromRole="TableSeoArticlesMk" ToRole="TableArticlesMk" />
         </EntityType>
+        <EntityType Name="TableWorkingEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="TableYrInfa">
           <Key>
             <PropertyRef Name="Id" />
@@ -1019,6 +1034,7 @@
           <EntitySet Name="TableArticlesMks" EntityType="Self.TableArticlesMk" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
           <EntitySet Name="TableSeoArticlesMks" EntityType="Self.TableSeoArticlesMk" />
+          <EntitySet Name="TableWorkingEmails" EntityType="Self.TableWorkingEmail" />
           <EntitySet Name="TableYrInfas" EntityType="Self.TableYrInfa" />
           <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -1365,6 +1381,14 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableWorkingEmails">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableWorkingEmail">
+              <MappingFragment StoreEntitySet="TableWorkingEmail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

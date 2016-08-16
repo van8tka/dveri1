@@ -36,6 +36,39 @@ namespace Domain2.Implementations
                 context.SaveChanges();
             }
         }
+
+        public void CreateWorkingEmail(int id, string email)
+        {
+            if (id == 0)
+            {
+                TableWorkingEmail e = new TableWorkingEmail()
+                {
+                    ID = id,
+                    Email = email
+                };
+                context.TableWorkingEmails.Add(e);
+                context.SaveChanges();
+            }
+            else
+            {
+                TableWorkingEmail e = context.TableWorkingEmails.Where(i => i.ID == id).FirstOrDefault();
+                e.Email = email;
+                context.Entry(e).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void DellWorkingEmail(int id)
+        {
+            TableWorkingEmail y = context.TableWorkingEmails.Where(i => i.ID == id).FirstOrDefault();
+            context.TableWorkingEmails.Remove(y);
+            context.SaveChanges();
+        }
+
+        public IEnumerable<TableWorkingEmail> GetWorkingEmails()
+        {
+            return context.TableWorkingEmails;
+        }
         public void DellYrInfa(int id)
         {
             TableYrInfa y = context.TableYrInfas.Where(i => i.Id == id).FirstOrDefault();

@@ -142,6 +142,9 @@
     <Compile Include="TableSeoArticlesMk.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TableWorkingEmail.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TableYrInfa.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

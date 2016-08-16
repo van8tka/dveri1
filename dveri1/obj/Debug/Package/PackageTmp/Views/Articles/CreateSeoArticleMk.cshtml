@@ -1,0 +1,32 @@
+﻿@model dveri1.Models.ModelSeoArticle
+@{
+    ViewBag.Title = "Добавление информации метатегов для статьи";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="ml245">
+    <div class="tac">
+        <h3>Добавьте(измените) информацию метатегов для улучшения seo статей о межкомнатных дверях.</h3>
+    </div>
+    <div>
+
+        @using (Html.BeginForm("CreateSeoArticleMk", "Articles", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.IDart)
+            <div class="mb20 mt20">
+                <div>
+                    <label class="ml40">Введите title:</label>
+                    @Html.ValidationMessageFor(m => m.Title)
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control wid990"})
+                    <label class="ml40">Введите keywords:</label>
+                    @Html.TextAreaFor(m => m.Key, new { @class = "form-control wid990", rows = 4})
+                    <label class="ml40">Введите текст описания статьи:</label>
+                    @Html.TextAreaFor(m => m.Desc, new { @class = "form-control wid990", rows = 4})
+                </div>
+
+            </div>
+
+            <input type="submit" value="Сохранить" class="showadd mb30 ml40" />
+                @Html.ActionLink("Отмена", "AdminGetArticlesMk", "Articles")
+        }
+    </div>
+</div>

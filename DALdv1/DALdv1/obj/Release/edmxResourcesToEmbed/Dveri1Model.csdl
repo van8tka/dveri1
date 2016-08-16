@@ -291,6 +291,13 @@
     <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TableArticlesMk" Relationship="Self.FK_TableSeoArticlesMk_TableArticlesMk" FromRole="TableSeoArticlesMk" ToRole="TableArticlesMk" />
   </EntityType>
+  <EntityType Name="TableWorkingEmail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="TableYrInfa">
     <Key>
       <PropertyRef Name="Id" />
@@ -493,6 +500,7 @@
     <EntitySet Name="TableArticlesMks" EntityType="Self.TableArticlesMk" />
     <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
     <EntitySet Name="TableSeoArticlesMks" EntityType="Self.TableSeoArticlesMk" />
+    <EntitySet Name="TableWorkingEmails" EntityType="Self.TableWorkingEmail" />
     <EntitySet Name="TableYrInfas" EntityType="Self.TableYrInfa" />
     <EntitySet Name="TableYstanovkas" EntityType="Self.TableYstanovka" />
     <EntitySet Name="Users" EntityType="Self.User" />

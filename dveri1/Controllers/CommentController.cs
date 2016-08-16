@@ -104,7 +104,7 @@ namespace dveri1.Controllers
                         string body ="Количество звезд: "+model.Stars+"\r\n"+"Заголовок: "+ model.Head+"\r\n"+"Коментарий: "+ model.Comm;
                         string them = "Отзыв о компаниии от клиента: " + model.Name + ", e-mail " + model.Email;
                         //получаем адрес администратора указанный в контаках с пизнаком e-mail
-                        string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+                        string adres = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault().Email;
                         SendMsg.Message(body, them, adres);
                         return RedirectToAction("GetAllComment");                                     
                     }
@@ -122,7 +122,7 @@ namespace dveri1.Controllers
                         string body = "Отзыв о вх. дверях N: "+model.IdDv+" название: "+namedv+ "\r\n" + "Количество звезд: " + model.Stars + "\r\n" + "Заголовок: " + model.Head + "\r\n" + "Коментарий: " + model.Comm;
                         string them = "Отзыв о входных дверях, от клиента: " + model.Name + ", e-mail " + model.Email;
                         //получаем адрес администратора указанный в контаках с пизнаком e-mail
-                        string adres = dataManager.ContactRepository.GetContacts().Where(x => x.TypeSv == "e-mail").FirstOrDefault().NumberSv;
+                        string adres = dataManager.ContactRepository.GetWorkingEmails().FirstOrDefault().Email;
                         SendMsg.Message(body, them, adres);
                         return RedirectToAction("TovarPage","VhodnyeDveri",new {id=model.IdDv});
                     }

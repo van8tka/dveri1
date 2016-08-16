@@ -1,0 +1,72 @@
+﻿@model dveri1.Models.CreateAdresModel
+@{
+    ViewBag.Title = "Импорт данных из файла Exel в базу данных";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="tablecontent">
+    @if (Model.AdresName == "входные")
+    {
+        <h2>Выберите файл c каталогом входных дверей для импорта в базу данных</h2>
+    }
+    else
+    {
+        <h2>Выберите файл с каталогом межкомнатных дверей для импорта в базу данных</h2>
+    }
+   
+
+    <div>
+        <p>
+            @using (Html.BeginForm("Import", "ExpImp", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m=>m.AdresName)
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset class="fieldsetform">
+                    <legend>Выберите файл для загрузки на сервер</legend>
+                    <input class="inpset ml20" type="file" name="fileUpload[0]" />
+                  
+                    <div class="mt20 mb20">
+                        <input class="showadd ml20 wid300" id="inpload" type="submit" value="Загрузить файлы на сервер" disabled = "disabled"/>
+                       @if (Model.AdresName == "входные")
+                       {
+                            @Html.ActionLink("Отменить", "Panel", "Admin")
+                       }
+                       else
+                       {
+                            @Html.ActionLink("Отменить", "PanelMkDv", "AdminMkDv")
+                       }
+                    </div>
+                    @if (Model.AdresName == "входные")
+                    {
+                        <h6>В импортируемом файле обязательно наличие заполненных полей ID, Название, Фирма производитель.</h6>
+                    }
+                    else
+                    {
+                        <h6>В импортируемом файле обязательно наличие заполненных полей ID, Название, Фирма производитель, Материал.</h6>
+                    }
+                </fieldset>
+            }
+        </p>
+    </div>
+</div>
+@*//скрипт для разблокирования кнопки загрузки файла на сервер*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.inpset').click(function (e) {
+                    $('#inpload').prop('disabled',false);
+        })
+       
+    });
+</script>
+
+@if (Model.AdresName == "межкомнатные")
+{
+    <script>
+    //изменение текущего активного пункта меню
+    $(".admmen").removeClass("actadmin")
+    $(".m3").addClass("actadmin")
+    $(".dropspis").find("ul").slideDown(400).parents("li").children("div.drop").css({ 'background-position': "0 0" });
+    </script>
+}

@@ -1,0 +1,21 @@
+﻿@model dveri1.Models.ModelYstanovka
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbsonpage">
+    @Html.Action("BreadCrumbs", "VhodnyeDveri", new { namepart = "Установка" })
+</div>
+<div class="dostavkamain blackFont mb-40">   
+    <div class="headPageProduct">
+        <h1>@Model.SeoHead</h1>
+    </div>
+    @Html.Raw(Model.YstanovkaInfo)
+</div>
+@*//скрипт для выделения пункта меню*@
+<script>
+    $(".mainmen").removeClass("current")
+    $(".m8").addClass("current")
+</script>

@@ -1,0 +1,23 @@
+﻿@model dveri1.Models.ModelCommentCreate
+@{
+    ViewBag.Title = "Редактирование отзыва о межкомнатных дверях";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="tablecontent tac">
+    <h2>Редактирование отзыва о межкомнатных дверях</h2>
+    @using (Html.BeginForm("AdminEditCommentMkDv", "Comment", FormMethod.Post))
+    {
+        @Html.Partial("PartialEditComment")
+        <p class="fs-sm">Поле отмеченное звездочкой заполнить обязательно!</p>
+        <div class="mt20 mb20">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "AdminCommentMkDv", "Comment")
+        </div>
+
+    }
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m11").addClass("actadmin")
+</script>

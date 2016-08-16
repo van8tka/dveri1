@@ -1,0 +1,32 @@
+﻿@model dveri1.Models.CreateEmailModel
+@{
+    ViewBag.Title = "Добавление рабочего email";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="tablecontent tac blackFont">
+    <h4>@ViewBag.CreateContact</h4>
+    <hr />
+    @using (Html.BeginForm("CreateWorkEmail", "Contact", FormMethod.Post))
+    {
+        <div class="fieldset">
+            @Html.HiddenFor(m => m.ID)
+            <label>Рабочий адрес электронной почты!</label>
+            @Html.ValidationMessageFor(m => m.EmailVal)
+            @Html.TextBoxFor(m => m.EmailVal, new { @class = "form-control" })
+        </div>
+
+        <div class="mt20">
+            <input type="submit" value="Сохранить" class="showadd" />
+            @Html.ActionLink("Отменить", "AdminContact")
+        </div>
+
+    }
+
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m9").addClass("actadmin")
+</script>

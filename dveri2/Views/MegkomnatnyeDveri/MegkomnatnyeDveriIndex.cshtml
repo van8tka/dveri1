@@ -72,7 +72,7 @@
             Каталог товаров:
         </div>
         <div>
-            @Html.ActionLink("МЕЖКОМНАТНЫЕ ДВЕРИ ВЕСЬ КАТАЛОГ", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { sort = 0, brand = "весьтовар", flagMaterial = false }, new { @class = "leftMenuButton весьтовар" })
+            @Html.ActionLink("МЕЖКОМНАТНЫЕ ДВЕРИ ВЕСЬ КАТАЛОГ", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", new { sort = 0, brand = "весьтовар", id = 1, flagMaterial = false }, new { @class = "leftMenuButton весьтовар" })
             @foreach (var i in Model.Brand)
             {
                 if (i != null)

@@ -15,12 +15,12 @@ namespace dveri2
 
             routes.MapRoute(
               name: "PageSizeAllRoute",
-              url: "{controller}/{action}/{brand}/{id}/{sort}/{flagMaterial}/{pagesize}/"
+              url: "{controller}/{action}/{brand}/page{id}/sort{sort}/{flagMaterial}/num{pagesize}/"
 
           );
             routes.MapRoute(
            name: "PageSizeAllRoute2",
-           url: "{controller}/{action}/{brand}/{id}/{sort}/{flagMaterial}/"
+           url: "{controller}/{action}/{brand}/page{id}/sort{sort}/{flagMaterial}/"
 
        );
           
@@ -28,13 +28,14 @@ namespace dveri2
             //маршрут для определения товара и выдачи имени в URL и индекса товара(для сео)
             routes.MapRoute(
                 name: "TovRoute",
-                url: "{controller}/{action}/{tov}/{id}/{flag}/"
+                url: "{controller}/{action}/{tov}/num{id}/{flag}/"
          );
 
-//установим ограничение только для контроллера Articles
+         
+            //установим ограничение только для контроллера Articles
             routes.MapRoute(
          name: "ArtRoute",
-         url: "{controller}/{action}/{tov}/{id}/",
+         url: "{controller}/{action}/{tov}/num{id}/",
          defaults: new {controller= "Articles", action="Getarticle"},
          constraints: new { controller = "^Ar.*" }
          );

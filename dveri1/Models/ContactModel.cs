@@ -9,6 +9,7 @@ namespace dveri1.Models
 {
     public class ContactModel
     {
+        public TableWorkingEmail WorkEmails { get; set; }
         public TableYrInfa YrInformationProp { get; set; }
         public IEnumerable<Adresa> AdresList { get; set; }
         public IEnumerable<Contact> ContactList { get; set; }
@@ -31,7 +32,7 @@ namespace dveri1.Models
         public int? IDGrafik { get; set; }
         [Required(ErrorMessage = "Введите день, или период дней.")]
         public string Day { get; set; }
-        [Required(ErrorMessage = "Введите период времени работы")]
+        [Required(ErrorMessage = "Введите период времени работы.")]
         public string Time { get; set; }
     }
     public class CreateAdresModel
@@ -39,5 +40,12 @@ namespace dveri1.Models
         public int? IDAdres { get; set; }
         [Required(ErrorMessage = "Введите данные адрес.")]
         public string AdresName { get; set; }
+    }
+    public class CreateEmailModel
+    {
+        public int ID { get; set; }
+        [Required(ErrorMessage = "Введите адрес электронной почты!")]
+        [RegularExpression(@"^[a-zA-Z0-9.-]{1,30}@[a-zA-Z0-9]{1,20}\.[A-Za-z]{2,6}", ErrorMessage = "Неверный формат email(xxxxxx@xxx.xx).")]
+        public string EmailVal { get; set; }
     }
 }
