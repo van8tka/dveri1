@@ -8,22 +8,20 @@
     <title>@ViewBag.Title</title>
 
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/orbit.css" rel="stylesheet" />
+  
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
    
-    <script src="~/Scripts/jquery.orbit.min.js"></script>
-  
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
+   
     <script src="~/Scripts/modalwindowrecallme.js"></script>
-
-    @Scripts.Render("~/bundles/modernizr")
+       @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div class="Fon">
+
+    </div>
     <div class="body">
-        <div>
-            @Html.ActionLink("Заказать звонок", "FastBuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butcallmain" })
-        </div>
+      
         <div class="navigationfixedtop">
             <div class="content mt10">
                 <div class="brand fll">
@@ -34,13 +32,37 @@
                         <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
                     </div>
                 </div>
-                @Html.Action("ContactOnPanel", "MegkomnatnyeDveri")
+                @*@Html.Action("ContactOnPanel", "MegkomnatnyeDveri")*@
+                @*//контактные данные*@
+
+                <div class="contacts flr">
+                    <div class="elContact">
+                        <div class="fll mr10"><img src="~/Content/writeus.jpg" alt="" /> </div>
+                        <div> @Html.ActionLink("Написать нам", "BuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butwritemain"}) </div>
+
+                    </div>
+                    <div class="elContact mt10">
+                        <div class="fll mr10"> <img src="~/Content/recall.jpg" alt="" />  </div>
+                        <div> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butcallmain"}) </div>
+                    </div>
+                </div>
+
+                <div class="contacts flr">               
+                       <div class="elContact">
+                                <div class="fll mr10"> <img src="~/Content/mts.jpg" alt=""/></div>
+                                <div><span class="phoneCode">(33)</span> <span class="phoneNum">689-30-02</span> </div>                         
+                      </div>
+                        <div class="elContact mt30">
+                            <div class="fll mr10"> <img src="~/Content/vel.jpg" alt="" />  </div>
+                            <div><span class="phoneCode">(29)</span> <span class="phoneNum">689-30-02</span> </div>
+                        </div>                   
+                </div>
 
             </div>
             <div class="dMenu">
                 <div id="menu">
                     <ul>
-                        <li>@Html.ActionLink("Главная", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m1" })</li>
+                      
                         @*<li>@Html.ActionLink("Входные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m2" })</li>*@
                         <li><a href="http://52.37.80.82:81" class = "mainmen m2">Входные двери</a></li> 
                         <li>@Html.ActionLink("Межкомнатные двери", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new { @class = "mainmen m3 current" })</li>
@@ -72,11 +94,22 @@
 
         @RenderSection("scripts", required: false)
     </div>
-    <div id="modal_form_fastbuy">
-        <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
-        @Html.Action("FastBuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "входные двери" })
+    @*делаем модальное окно для оформления товара*@
+    <div id="modal_formL">
+        <!-- Сaмo oкнo -->
+        <span id="modal_closeL">X</span> <!-- Кнoпкa зaкрыть -->
+        @Html.Action("BuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" })
     </div>
-    <div id="overlay"></div><!-- Пoдлoжкa -->
+
+    <div id="modal_form_fastbuyL">
+        <span id="modal_closeL">X</span> <!-- Кнoпкa зaкрыть -->
+        @Html.Action("FastBuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" })
+    </div>
+    <div id="overlayL"></div><!-- Пoдлoжкa -->
+
+
+
+
     <footer>
         <div class="inFooter">
             <div class="footermenudiv">

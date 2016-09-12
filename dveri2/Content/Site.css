@@ -1,7 +1,16 @@
 ﻿body {
-  background-image: url('fon.jpg');
+  /*background-image: url('fon.jpg');*/
+  /*background-image: linear-gradient(to top, #f5f5f5, #ddd);*/
  width:100%;
   margin: 0 auto;
+}
+.Fon{
+    position:fixed;
+    background-image: linear-gradient(to bottom,#CFCFCF, white);
+    width:100%;
+    height:100%;
+    top:-10px;
+    z-index:-5;
 }
 
 div.body{
@@ -23,7 +32,7 @@ div.head{
     white-space: normal;
 }
 
-div.pager{text-align:center; border-top:2px solid silver; padding: .5em 0 0 0; margin-top:1em; margin-bottom:1em}
+div.pager{text-align:center; border-top:2px solid silver; padding: .5em 0 0 0; margin-top:1em; margin-bottom:1em; display:inline-block;width:100%;}
 div.pager a {font-size: 1.1em; color: #666; text-decoration:none; padding:0 .4em 0 .4em; font:bold 1em "Arial NArrow", "Franklin Gothic Medium", Arial;}
 div.pager a:hover {background-color:silver;}
 div.pager a.selected {background-color:#353535; color: white;}
@@ -55,10 +64,10 @@ div.chLine div:hover{
 }
 div.productlist{
     height:initial;
-    padding-bottom:60px;
-    width:1200px;
-    display:inline-block;
-     
+    padding-bottom:100px;
+    width:950px;
+    display:block;
+    float:right;   
 }
 div.leftMainMenu{
   
@@ -68,11 +77,12 @@ div.leftMainMenu{
      padding:10px 0 20px 10px;
  }
 /*по товару*/
-div.allspisok{
+/*div.allspisok{
     float:right;
     height:initial;
     width:960px;
-}
+    padding:0 20px 0 10px;
+}*/
 /*//на каждый товар в списке*/
  div.shortproduct{
     display:block;
@@ -155,14 +165,12 @@ div.shortChar p{
  }
 
  a.leftMenuButton{
-      /*background-color:#4682B4;*/
-      background:url(images/fm_hover_bg.jpg) repeat-x;
-     display:block;
-     width:200px;
+      background-color:	#000080;
+      display:block;
+      width:94%;
      height:21px;
-     border-radius:18px;
-     color:#D3D3D3;
-     font-size:11px;
+    font-size:11px;
+     color:	#FFFFF0;
      text-transform:uppercase;
      text-align:center;
      padding:8px 0 5px 0;
@@ -170,15 +178,14 @@ div.shortChar p{
     margin-bottom:2px;
  }
  a.leftMenuButton:hover{
-     background:url(images/fm_active_bg.jpg) repeat-x;
-      color:white;
-      opacity:1;
-      transition: .5s linear;
+  background-color:#0082B4;
+  opacity:1;
+  transition: .5s linear;
   background-position: -200% 0, 0 0;
  }
 
   a.act{      
-      background:url(images/fm_hover2_bg.jpg) repeat-x;
+      background-color:	black;
       color:white;
       opacity:1;
  }
@@ -319,9 +326,8 @@ div.timeworktop{
       min-width:280px;
    }
 div.contacts{
-      margin-left:40px;
-      min-width:330px;
-   }
+        min-width:250px;
+     }
 div.content-body{
     margin-top:-28px; 
     height:auto;
@@ -333,7 +339,7 @@ div.navigationfixedtop {
     width:inherit;
     display: block;
     height:170px;
-    background-image: url('fon.jpg');  
+    /*background-image: url('fon.jpg');*/  
     z-index:10;
 }
 div.navigation-menu{
@@ -526,12 +532,12 @@ div.socseti a{
         margin:0;
         list-style-type:none;
       }*/
-#slider {
+/*#slider {
     background: url('ControlSlider/background.png');
    width:inherit;
     min-width: 1200px;
     height: 200px;
-    /*margin: 50px auto;*/
+  
     position: relative;
      margin-top:10px;
 }
@@ -539,7 +545,7 @@ div.socseti a{
  #mask{
       width:inherit;
     min-width: 1200px;
-        /*width:100%;*/
+       
         height:100%;
         position:absolute;
         overflow:hidden;
@@ -550,33 +556,32 @@ div.socseti a{
         cursor:pointer;
       }
       #fleche_gauche{
-        /*left:-17px;*/
+     
         left:-1px;
       }
       #fleche_droite{
-        /*right: -17px;*/
+      
          right: -1px;
       }
       #image_container{
         position:absolute;
         width:800%;
         height:100%;
-        /* La transition sur tout les navigateurs */
-           /* Chrome */ 
+      
           -webkit-transition-property:all;
           -webkit-transition-duration:1s;
 
-           /* Firefox */ 
+       
           -moz-transition-property:all;
           -moz-transition-duration:1s;
           
-           /* Opera */ 
+         
           transition-property:all;
           transition-duration:1s;
 
       }
       
-      /* Les diffГ©rentes positions du slider */
+     
       .image1 #image_container{
         left:0;
       }
@@ -604,16 +609,16 @@ div.socseti a{
 
     
       
-      /* Les images */
+    
       #image_container li{
         float:left;
       }
                        
-      /* L'encart Bleu */
+     
 #encart {
     position: absolute;
     top: 170px;
-      /*background: url('ControlSlider/text.png');*/
+     
         width: inherit;
    min-width:1200px;
      
@@ -623,8 +628,7 @@ div.socseti a{
   #featured {
             width: 270px;
             height: 450px;
-            /*background: #009cff url('orbit/loading.gif') no-repeat center center;*/
-            overflow: hidden;
+               overflow: hidden;
         }
 
       #bouton{
@@ -635,13 +639,13 @@ div.socseti a{
         cursor:pointer;
       }
       
-      /* Les points de navigation */
+   
       #dots{
         width:130px;
         margin:auto;
       }
       
-      /* les points, avec leur background non selectionnГ© */
+     
         #dots li {
             float: left;
             margin: 0px 2px;
@@ -650,18 +654,18 @@ div.socseti a{
             height: 12px;
             cursor: pointer;
         }
-      /* Point au survol */
+  
         #dots li:hover {
             background: url('ControlSlider/selected-dot.png');
         }
       
-      /* Point "selectionnГ©". De la mГЄme maniГЁre que l'image, on change en fonction de la classe de slider */
+     
 .image1 #dots li.button-1, .image2 #dots li.button-2, .image3 #dots li.button-3, .image4 #dots li.button-4, .image5 #dots li.button-5, .image6 #dots li.button-6, .image7 #dots li.button-7, .image8 #dots li.button-8, .image9 #dots li.button-9 {
   
     background: url('ControlSlider/selected-dot.png');
 }
 
-      /* Un eyecandy */
+    
       #glass{
         position:absolute;
         top:0px;
@@ -671,7 +675,7 @@ div.socseti a{
 .emtypage
 {
     height:100px;
-}
+}*/
 
 
       /*===================================кнопка дозагрузки страницы=========================================*/
@@ -1338,12 +1342,23 @@ img.spisFoto:hover{
 
 /*========================================================================= хлебные крошки =====================================================/**/
 
- .breadcrumbs{
+ /*.breadcrumbs{
+    display: inline-block;
+    float: right;
+    font-size: 0.7em;
+    list-style: outside none none;
+    margin: 10px 0 0;
+    padding: 0;
+    width: 80%;
+ }*/
+ 
+  .breadcrumbs{
  margin: 0;
  padding: 0;
  list-style: none;
  }
  
+
 
 .breadcrumbs a{
  padding: .5em 1em .5em 2em;
@@ -1354,6 +1369,7 @@ img.spisFoto:hover{
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
  background-color: #ddd;
  background-image: linear-gradient(to right, #f5f5f5, #ddd);
+ font-weight: 900;
  }
 
  
@@ -1369,7 +1385,7 @@ img.spisFoto:hover{
  margin-top: -1.4em;
  border-top: 1.4em solid transparent;
  border-bottom: 1.4em solid transparent;
- border-left: 1em solid;
+ border-left: 1.1em solid;
  right: -1em;
  }
  
@@ -1380,7 +1396,7 @@ img.spisFoto:hover{
  
 .breadcrumbs a::before{
  border-left-color: #ccc;
- right: -1.1em;
+ right: -1.2em;
  z-index: 1;
  }
  
@@ -1516,7 +1532,7 @@ div.breadcrumbsonpage{
 
 /*модальное окно*/
 
-#modal_form_fastbuy{
+#modal_form_fastbuy, #modal_form_fastbuyL{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border-radius: 5px;
@@ -1533,7 +1549,7 @@ div.breadcrumbsonpage{
 	padding: 30px 10px;
 }
 
-#modal_form {
+#modal_form, #modal_formL{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border-radius: 5px;
@@ -1550,7 +1566,7 @@ div.breadcrumbsonpage{
 	padding: 30px 10px;
 }
 /* Кнoпкa зaкрыть для тех ктo в тaнке) */
- #modal_close {
+ #modal_close, #modal_closeL {
     border: 1px #000 solid;
 	padding:1px 4px;
     border-radius:3px;
@@ -1565,8 +1581,11 @@ div.breadcrumbsonpage{
 #modal_close:hover {
       background-color: #FF4500;
 }
+#modal_closeL:hover {
+      background-color: #FF4500;
+}
 /* Пoдлoжкa */
-#overlay {
+#overlay, #overlayL{
 	z-index:9; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
 	position:fixed; /* всегдa перекрывaет весь сaйт */
 	background-color:#000; /* чернaя */
@@ -1621,68 +1640,20 @@ div.breadcrumbsonpage{
 }
 /*заказать звонок*/
   .butcallmain { 
-     width: 140px; 
-     height: 60px; 
-     line-height: 30px; 
-     color: white; 
-     text-decoration: none; 
-     font-size: 14px; 
-     font-family: helvetica, arial; 
-     font-weight: bold; 
-     display: block; 
-     text-align: center; 
-     position: fixed; 
-     z-index:4;
-     top:10px;
-     right:20px;  
-     /* BACKGROUND GRADIENTS */
-     background: #014464; 
-     background: -moz-linear-gradient(top, #0D658E, #0C577A 50%, #014D71 51%, #003E5C); 
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0E658E), color-stop(.5, #0C577A), color-stop(.5, #014D71), to(#003E5C));  
-  
-     /* BORDER RADIUS */
-     -moz-border-radius: 10px; 
-     -webkit-border-radius: 10px; 
-     border-radius: 10px; 
-  
-     border: 1px solid #368DBE; 
-     border-top: 1px solid #c3d6df; 
-  
-     /* TEXT SHADOW */
-  
-     text-shadow: 1px 1px 1px black; 
-  
-     /* BOX SHADOW */
-     -moz-box-shadow: 0 1px 3px black; 
-     -webkit-box-shadow: 0 1px 3px black; 
-     box-shadow: 0 1px 3px black; 
-         -webkit-animation: pulsate 1.2s linear infinite;
-  animation: pulsate 1.2s linear infinite;
+    color:black;
+    font-size:1.1em;
     } 
+     .butcallmain:hover { 
+                  color:#2F4F4F;
+          } 
+   .butwritemain { 
+    color:black;
+    font-size:1.1em;
+    } 
+     .butwritemain:hover { 
+               color:#2F4F4F;
+          } 
   
-    /* WHILE HOVERED */
-    .butcallmain:hover { 
-        background: #014464; 
-        background: -moz-linear-gradient(top, #0c5f85, #0b5273 50%, #024869 51%, #003853); 
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c5f85), color-stop(.5, #0b5273), color-stop(.51, #024869), to(#003853)); 
-    } 
-  
-    /* WHILE BEING CLICKED */
-    .butcallmain:active { 
-        -moz-box-shadow: 0 2px 6px black; 
-        -webkit-box-shadow: 0 2px 6px black; 
-    } 
-    /* FONT GLYPH (MOSTLY FOR FUN) */
-    .butcallmain:before {
-        content:url('glyphicons-443-earphone.png');
-        color: #09232F;
-        font-size: 20px;
-        float: left;
-        margin-top:10px;
-        margin-left: 8px;
-        margin-right: 1px;
-        text-shadow: 0 1px 0 #4190AF;
-    } 
     /*//доставка и оплата*/
     div.dostavka{
           font-size:large;      
@@ -1989,7 +1960,7 @@ div.elTimeWork{
     display:block;width:60%;
 }
 div.elContact{
-    display:block;width:70%;
+    display:block;width:100%;
 }
 img.iUser{
     width:48px;height:48px;
@@ -2022,3 +1993,23 @@ div.ArtOneFon{
     padding:30px;
     margin-bottom: -40px;
 }
+/*новинки и изменения от 08.09.2016/**/
+span.phoneCode {  font-size: 1.1em;    margin-right: 8px;    color: black;    float: left; }
+span.phoneNum {    font-size: 1.4em;    margin-right: 8px;    color: black;    float: left;    margin-top: -2px; }
+
+div.MainSlider{
+    width:940px;
+    height:240px;
+    float:right;
+    display:block;
+    margin-bottom:50px;
+}
+
+div.MainBredcrumbs{
+    display: block;
+    float: right;
+    font-size: 0.7em;
+    list-style: outside none none;
+    padding: 0;
+    width:940px;
+  }

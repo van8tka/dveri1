@@ -22,26 +22,33 @@ namespace dveri1.HtmlHelpers
                     tag.AddCssClass("td");
                     tag.MergeAttribute("id","numpage");
                     tag.MergeAttribute("href", pageUrl(i-2));
-                    tag.InnerHtml = ">>"; 
+                    tag.InnerHtml = ">>";
+                
                 }
                 else
-                if (i < pagingInfo.TotalPages && i == pagingInfo.CurrentPage - 3)
-                {                  
-                    tag.AddCssClass("td");
-                    tag.MergeAttribute("id", "numpage");
-                    tag.MergeAttribute("href", pageUrl(i+2));
-                    tag.InnerHtml = "<<";                 
+                {
+                    if (i < pagingInfo.TotalPages && i == pagingInfo.CurrentPage - 3)
+                    {
+                        tag.AddCssClass("td");
+                        tag.MergeAttribute("id", "numpage");
+                        tag.MergeAttribute("href", pageUrl(i + 2));
+                        tag.InnerHtml = "<<";
+                    }
+                    else
+                    {
+                        if (i < pagingInfo.CurrentPage + 3 && i > pagingInfo.CurrentPage - 3)
+                        {
+                            tag.AddCssClass("td");
+                            tag.MergeAttribute("id", "numpage");
+                            tag.MergeAttribute("href", pageUrl(i));
+                            tag.InnerHtml = i.ToString();
+                        }
+                        else
+                        { tag.MergeAttribute("style", "display:none"); }
+                    }
+
                 }
-                else
-                if (i<pagingInfo.CurrentPage+3&&i>pagingInfo.CurrentPage-3)
-                {                  
-                    tag.AddCssClass("td");
-                    tag.MergeAttribute("id", "numpage");
-                    tag.MergeAttribute("href", pageUrl(i));
-                    tag.InnerHtml = i.ToString();                   
-                }
-                else
-                    tag.MergeAttribute("style", "display:none");
+
                 if (i == pagingInfo.CurrentPage)
                 {
                     tag.AddCssClass("selected");

@@ -125,7 +125,7 @@ namespace dveri2.Controllers
                 
                 model.PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = page>0? page :1,
                     TotalItems = TotalItemsProduct,
                     ItemsPerPage = PageSize
                 };
@@ -481,7 +481,7 @@ namespace dveri2.Controllers
             }
             else
             {
-                body = "Свяжитесь с клиентом по тел. или e-email: " + model.KlientPhone;
+                body = "Свяжитесь с клиентом по тел. или email: " + model.KlientPhone +"\r\n" + model.KlientQuestion ;
             }
             if (SendMsg.Message(body, them, adres))
             { return true; }
@@ -665,12 +665,22 @@ namespace dveri2.Controllers
         {
             try
             {
+                
                 ModelBuyDveri model = new ModelBuyDveri();
+                if (id == 9999)
+                {
+                    ViewBag.WriteUs = true;
+                }
+                else
+                {
+                    ViewBag.WriteUs = false;
+                }
                 model.IdDveri = id;
                 model.Type = type;
                 if (type == "межкомнатные двери")
                 {
-                    model.DvName = dataManager.MegkomDvRepository.GetMkDvById(id).Nazvanie;
+                    if(id!=9999)
+                        model.DvName = dataManager.MegkomDvRepository.GetMkDvById(id).Nazvanie;
                 }
                 return View(model);
             }
@@ -688,14 +698,23 @@ namespace dveri2.Controllers
             {
                 if (ModelState.IsValid)
                 {//вызов метода отправки сообщения админу
+                   
                     if (SendMessageAboutBuyDoor(model))
                     {
-                        return Json(model.KlientName + "! Вы сделали заказ на покупку товара: " + model.DvName + ". Наш менеджер свяжется с Вами в течении 15 минут! Спасибо, что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
+                        if (model.IdDveri != 9999)
+                        {
+                            return Json(model.KlientName + "! Вы сделали заказ на покупку товара: " + model.DvName + ". Наш менеджер свяжется с Вами в течении 15 минут! Спасибо, что выбрали наш магазин!", JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            return Json(model.KlientName + "! Cпасибо, что оставили свое сообщение. Мы ответим Вам в течении 15 минут.");
+                        }
                     }
                     else
                     {
                         return Json("При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!", JsonRequestBehavior.AllowGet);
                     }
+                   
                 }
                 else
                 {
@@ -715,11 +734,20 @@ namespace dveri2.Controllers
         {
             try
             {
+                if(id==9999)
+                {
+                    ViewBag.WriteUs = true;
+                }
+                else
+                {
+                    ViewBag.WriteUs = false;
+                }
                 ModelBuyDveri model = new ModelBuyDveri();
                 model.IdDveri = id;
                 model.Type = type;
                 if (type == "межкомнатные двери")
                 {
+                    if(id!=9999)
                     model.DvName = dataManager.MegkomDvRepository.GetMkDvById(id).Nazvanie;
                 }
                 return View(model);
@@ -746,7 +774,14 @@ namespace dveri2.Controllers
                     {
                         TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
                     }
-                    return RedirectToAction("TovarPage", new { id = model.IdDveri });
+                    if(model.IdDveri!=9999)
+                    {
+                        return RedirectToAction("TovarPage", new { id = model.IdDveri });
+                    }
+                    else
+                    {
+                        return RedirectToAction("MegkomnatnyeDveriIndex");
+                    }
                 }
                 else
                 {

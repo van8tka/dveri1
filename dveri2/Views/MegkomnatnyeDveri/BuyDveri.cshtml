@@ -1,0 +1,9 @@
+﻿@model dveri2.Models.ModelBuyDveri
+@{
+    ViewBag.Title = "Купить входные двери";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("BuyDveri", "MegkomnatnyeDveri"))
+{
+    @Html.Partial("ViewBuy")
+}

@@ -1,6 +1,6 @@
   $(document).ready(function () { // вся мaгия пoсле зaгрузки стрaницы
         //обработка нажатия по кнопке купить
-    $('a.butbyu').click(function (event) { // лoвим клик пo ссылки с id="go"
+      $('a.butbyu').click(function (event) { // лoвим клик пo ссылки с id="go"
 		event.preventDefault(); // выключaем стaндaртную рoль элементa
 		$('#overlay').fadeIn(400, //снaчaлa плaвнo пoкaзывaем темную пoдлoжку
 		 	function(){ //пoсле выпoлнения преддущей aнимaции
@@ -11,7 +11,7 @@
     });
         $.ajax({//инииализация ajax запроса
             type: 'POST',
-            url: '/VhodnyeDveri/BuyDveriModal',
+            url: '/MegkomnatnyeDveri/BuyDveriModal',
             dataType: 'json',//ответ ждем в формате json
             success: function (data) {
                 //событие после удачного обращения к серверу
@@ -30,7 +30,7 @@
         });
         $.ajax({//инииализация ajax запроса
             type: 'POST',
-            url: '/VhodnyeDveri/FastBuyDveriModal',
+            url: '/MegkomnatnyeDveri/FastBuyDveriModal',
             dataType: 'json',//ответ ждем в формате json
             success: function (data) {
                 //событие после удачного обращения к серверу

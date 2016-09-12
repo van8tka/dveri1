@@ -1,8 +1,18 @@
 ﻿@model dveri2.Models.ModelBuyDveri
 
 <div id="idbuy" class="tac">
-    <h3>Заказ на товар: @Model.DvName</h3>
-    <h4>Оставьте свои данные, и мы свяжемся с Вами в течении 15 минут.</h4>
+    @if (ViewBag.WriteUs)
+    {
+        <h3>Оставьте нам свое сообщение и мы обязательно ответим Вам!</h3>
+        Model.IdDveri = 9999;
+    }
+    else
+    {
+        <h3>Заказ на товар: @Model.DvName</h3>
+        <h4>Оставьте свои данные, и мы свяжемся с Вами в течении 15 минут.</h4>
+    }
+   
+  
     <div class="form-group">
         @Html.HiddenFor(m => m.Type)
         @Html.HiddenFor(m => m.IdDveri)
@@ -13,12 +23,24 @@
         <label>Номер телефона или e-mail адрес для связи*</label>
         @Html.ValidationMessageFor(m => m.KlientPhone)
         @Html.TextBoxFor(m => m.KlientPhone, null, new { @class = "form-control ma" })
+       @if (!ViewBag.WriteUs)
+       {
         <label>Адрес</label>
-        @Html.TextBoxFor(m => m.KlientAdres, null, new { @class = "form-control ma" })
+            @Html.TextBoxFor(m => m.KlientAdres, null, new { @class = "form-control ma" })
+          
+       }
         <label>Задайте интересующий Вас вопрос, или напишите любое сообщение нашему менеджеру:</label>
         @Html.TextAreaFor(m => m.KlientQuestion, new { @class = "form-control ma wid450", rows = 5})
     </div>
     <strong style="font-size:small">* - поле обязательно для заполнения!</strong><br />
     <input type="submit" value="Отправить" class="butbyu ma" />
+   @if (ViewBag.WriteUs)
+   {
+    @Html.ActionLink("Отменить", "MegkomnatnyeDveriIndex.cshtml", "MegkomnatnyeDveri", null, new { @class = "butcancel" })
+   }
+   else
+   {
     @Html.ActionLink("Отменить", "TovarPage", "MegkomnatnyeDveri", new { id = Model.IdDveri }, new { @class = "butcancel" })
+   }
+   
 </div>

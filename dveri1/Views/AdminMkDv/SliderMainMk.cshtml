@@ -11,7 +11,7 @@
     </div>
     @using (Html.BeginForm("SliderMainMk", "AdminMkDv", FormMethod.Post, new { enctype = "multipart/form-data" }))
     { <div class="form-group">
-        <h3> Изображения главного слайдера (добавляйте изображения формата 1200px*200px или кратные им для корректного отображения):</h3><br />
+        <h3> Изображения главного слайдера (добавляйте изображения формата 800px*220px или кратные им для корректного отображения):</h3><br />
         <div  class="pos-rel">
             @foreach (var item in Model.SliderMImk)
             {

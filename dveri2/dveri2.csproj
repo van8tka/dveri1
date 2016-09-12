@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -211,14 +214,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\ControlSlider\background.png" />
-    <Content Include="Content\ControlSlider\bouton.png" />
-    <Content Include="Content\ControlSlider\empty-dot.png" />
-    <Content Include="Content\ControlSlider\fleche-droite.png" />
-    <Content Include="Content\ControlSlider\fleche-gauche.png" />
-    <Content Include="Content\ControlSlider\glass.png" />
-    <Content Include="Content\ControlSlider\selected-dot.png" />
-    <Content Include="Content\ControlSlider\text.png" />
     <Content Include="Content\fon.jpg" />
     <Content Include="Content\ForSoc\facebook.png" />
     <Content Include="Content\ForSoc\google.png" />
@@ -245,18 +240,16 @@
     <Content Include="Content\KaruselTovara\prev.png" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
+    <Content Include="Content\mts.jpg" />
     <Content Include="Content\nivo-slider.css" />
-    <Content Include="Content\orbit.css" />
-    <Content Include="Content\orbit\bullets.png" />
-    <Content Include="Content\orbit\left-arrow.png" />
-    <Content Include="Content\orbit\loading.gif" />
-    <Content Include="Content\orbit\mask-black.png" />
-    <Content Include="Content\orbit\pause-black.png" />
-    <Content Include="Content\orbit\right-arrow.png" />
-    <Content Include="Content\orbit\rotator-black.png" />
-    <Content Include="Content\orbit\timer-black.png" />
+    <Content Include="Content\nyvo_arrows.png" />
+    <Content Include="Content\nyvo_bullets.png" />
+    <Content Include="Content\nyvo_loading.gif" />
+    <Content Include="Content\recall.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\thumbelina.css" />
+    <Content Include="Content\vel.jpg" />
+    <Content Include="Content\writeus.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -271,6 +264,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.imageLens.js" />
+    <Content Include="Scripts\jquery.nivo.slider.pack.js" />
     <Content Include="Scripts\jquery.orbit.js" />
     <Content Include="Scripts\jquery.orbit.min.js" />
     <Content Include="Scripts\jquery.tinymce.min.js" />
@@ -320,6 +314,7 @@
     <Content Include="Views\MegkomnatnyeDveri\BuyDveriModal.cshtml" />
     <Content Include="Views\Comment\CreateComment.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\BuyDveri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,11 +328,15 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

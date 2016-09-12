@@ -702,7 +702,7 @@ namespace dveri1.Controllers
                             image.SaveAs(path);
                             //изменим разрешение файла
                             Image img = Image.FromFile(path);
-                            Bitmap myBitmap = new Bitmap(img, new Size(1200, 200));
+                            Bitmap myBitmap = new Bitmap(img, new Size(800, 220));
                             Graphics myGraphic = Graphics.FromImage(myBitmap);
                             //новое имя и сохраним
                             string newfilename = "evrostroySlMAin" + i.ToString() + ".jpg";
