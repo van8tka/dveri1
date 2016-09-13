@@ -4,8 +4,8 @@
     ViewBag.Keywords = Model.SeoKey;
     ViewBag.Description = Model.SeoDesc;
 }
-<link href="~/Content/nivo-slider.css" rel="stylesheet" />
 
+<link href="~/Content/nivo-slider.css" rel="stylesheet" />
 
 <div class="leftMainMenu fll">
     <div class="dvSortCost">
@@ -73,15 +73,13 @@
 
 </div>
 
-
-
 <div class="MainSlider">
-    <div id="slider" class="nivoSlider">
-        @foreach (var item in Model.SliderImgMk)
-        {
-            @Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
-        }
-    </div>
+        <div id="slider" class="nivoSlider">
+            @foreach (var item in Model.SliderImgMk)
+            {
+                @Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+            }
+        </div>
 </div>
 
 <div class="MainBredcrumbs">
@@ -106,33 +104,28 @@
 </div>
 
 @section Scripts {
-   @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
+  @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
+
 <!-- Запуск слайдера -->
-@*<script type="text/javascript">
-    $(window).load(function () {
-        $("#slider").nivoSlider().parent().show();
-    });
-</script>*@
+
         <script type="text/javascript">
                     $(window).load(function () {
                         $('#slider').nivoSlider({
                             effect: 'sliceUpLeft',
                             animSpeed: 1500,
                             pauseTime: 7000,
-                            directionNav: false,
-                            directionNavHide: false,
+                            directionNav: true,
+                            directionNavHide: true,
                             controlNav: true,
-                            pauseOnHover: false,
-                            keyboardNav: true
+                            pauseOnHover: true,
+                            keyboardNav: true,
+                            controlNavThumbs: false                      
                         });
                     });
 </script>
 
 
     
-
-
-
     @*замена pagingLinks на кнопку показать еще*@
     <script type="text/javascript">
         $(document).ready(function () {

@@ -265,8 +265,6 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.imageLens.js" />
     <Content Include="Scripts\jquery.nivo.slider.pack.js" />
-    <Content Include="Scripts\jquery.orbit.js" />
-    <Content Include="Scripts\jquery.orbit.min.js" />
     <Content Include="Scripts\jquery.tinymce.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

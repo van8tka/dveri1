@@ -1,5 +1,4 @@
-
-.nivoSlider {
+О╩©.nivoSlider {
 	position:relative;
 	width:100%;
 	height:auto;
@@ -87,38 +86,41 @@
     top: 45%;
     z-index: 9;
     cursor: pointer;
+    height:30px;
+    width:30px;
     background: url('nyvo_arrows.png');
+    text-indent:-9999px;
+    display:block;
 }
-.nivo-prevNav {
-	left:0px;
+a.nivo-prevNav {
+	left:5px;
 }
-.nivo-nextNav {
-	right:0px;
+a.nivo-nextNav {
+    background-position:-30px 0;
+	right:5px;
 }
 /* Control nav styles (e.g. 1,2,3...) */
 
-.nivo-controlNav a {
+.nivo-controlNav a{
     display:block;
     width:22px;
     height:22px;
     background: url('nyvo_bullets.png') no-repeat;
     text-indent:-9999px;
     border:0;
-    margin-right:0px;  /*= мнбне =*/
+    margin-right:0px; 
     float:left;
 }
 .nivo-controlNav a.active {
     background-position:0 -22px;
 }
 
-
-
 .nivo-controlNav {
     padding: 15px 0;
     position: relative;
     text-align: center;
     top: -48px;
-    left:50%;
+    left:45%;
     display:inline-block;
     z-index: 6; 
     opacity:0.5;
@@ -126,16 +128,4 @@
     .nivo-controlNav:hover {
         opacity: 1;
     }
-/*.nivo-controlNav a {
-	cursor:pointer;
-    background: url('nyvo_bullets.png');
-}
-.nivo-controlNav a.active {
-	font-weight:bold;
-}*/
 
-
-
-
-
- 
