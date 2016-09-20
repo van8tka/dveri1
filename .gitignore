@@ -48,10 +48,3 @@ Temporary Items
 
 # Ignore (generated) files,
 *.pdb
-*.log
-*.cache
-*.ssdl
-*.csdl
-*.msl
-*.csproj
-*.user
