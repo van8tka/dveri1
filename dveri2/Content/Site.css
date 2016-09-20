@@ -1,4 +1,6 @@
-﻿body {
+﻿/*||межкомнатные двери*/
+
+body {
   /*background-image: url('fon.jpg');*/
   /*background-image: linear-gradient(to top, #f5f5f5, #ddd);*/
  width:100%;
@@ -525,157 +527,6 @@ div.socseti a{
 						text-transform:uppercase;
 						padding:0 20px;		
 					}
-
-/*===========================================слайдер======================================================*/
- /**{        
-        padding:0;
-        margin:0;
-        list-style-type:none;
-      }*/
-/*#slider {
-    background: url('ControlSlider/background.png');
-   width:inherit;
-    min-width: 1200px;
-    height: 200px;
-  
-    position: relative;
-     margin-top:10px;
-}
-
- #mask{
-      width:inherit;
-    min-width: 1200px;
-       
-        height:100%;
-        position:absolute;
-        overflow:hidden;
-      }
-      .fleche{
-        position:absolute;
-        top:145px;
-        cursor:pointer;
-      }
-      #fleche_gauche{
-     
-        left:-1px;
-      }
-      #fleche_droite{
-      
-         right: -1px;
-      }
-      #image_container{
-        position:absolute;
-        width:800%;
-        height:100%;
-      
-          -webkit-transition-property:all;
-          -webkit-transition-duration:1s;
-
-       
-          -moz-transition-property:all;
-          -moz-transition-duration:1s;
-          
-         
-          transition-property:all;
-          transition-duration:1s;
-
-      }
-      
-     
-      .image1 #image_container{
-        left:0;
-      }
-      .image2 #image_container{
-        left:-102%;
-      }
-      .image3 #image_container{
-        left:-202%;
-      }
-      .image4 #image_container{
-        left:-300%;
-      }
-       .image5 #image_container{
-        left:-400%;
-      }
-         .image6 #image_container{
-        left:-500%;
-      }
-           .image7 #image_container{
-        left:-600%;
-      }
-             .image8 #image_container{
-        left:-700%;
-      }
-
-    
-      
-    
-      #image_container li{
-        float:left;
-      }
-                       
-     
-#encart {
-    position: absolute;
-    top: 170px;
-     
-        width: inherit;
-   min-width:1200px;
-     
-    height: 20px;
-}
- 
-  #featured {
-            width: 270px;
-            height: 450px;
-               overflow: hidden;
-        }
-
-      #bouton{
-        position:relative;
-        width:244px;
-        height:55px;
-        margin: 390px 0px 0px 40px;
-        cursor:pointer;
-      }
-      
-   
-      #dots{
-        width:130px;
-        margin:auto;
-      }
-      
-     
-        #dots li {
-            float: left;
-            margin: 0px 2px;
-            background: url('ControlSlider/empty-dot.png');
-            width: 12px;
-            height: 12px;
-            cursor: pointer;
-        }
-  
-        #dots li:hover {
-            background: url('ControlSlider/selected-dot.png');
-        }
-      
-     
-.image1 #dots li.button-1, .image2 #dots li.button-2, .image3 #dots li.button-3, .image4 #dots li.button-4, .image5 #dots li.button-5, .image6 #dots li.button-6, .image7 #dots li.button-7, .image8 #dots li.button-8, .image9 #dots li.button-9 {
-  
-    background: url('ControlSlider/selected-dot.png');
-}
-
-    
-      #glass{
-        position:absolute;
-        top:0px;
-        left:0px;
-      }
-
-.emtypage
-{
-    height:100px;
-}*/
 
 
       /*===================================кнопка дозагрузки страницы=========================================*/
@@ -1531,8 +1382,24 @@ div.breadcrumbsonpage{
 }
 
 /*модальное окно*/
+#modal_form_writeus{
+	width: 600px; 
+	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
+	border-radius: 5px;
+	border: 3px #000 solid;
+	background: #fff;
+	position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+	top: 45%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+	left: 50%; /* пoлoвинa экрaнa слевa */
+	margin-top: -300px;
+	margin-left: -200px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+	display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+	opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+	z-index: 12; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+	padding: 30px 10px;
+}
 
-#modal_form_fastbuy, #modal_form_fastbuyL{
+#modal_form_fastbuy{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border-radius: 5px;
@@ -1549,7 +1416,7 @@ div.breadcrumbsonpage{
 	padding: 30px 10px;
 }
 
-#modal_form, #modal_formL{
+#modal_form{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border-radius: 5px;
@@ -1566,7 +1433,7 @@ div.breadcrumbsonpage{
 	padding: 30px 10px;
 }
 /* Кнoпкa зaкрыть для тех ктo в тaнке) */
- #modal_close, #modal_closeL {
+ #modal_close {
     border: 1px #000 solid;
 	padding:1px 4px;
     border-radius:3px;
@@ -1585,7 +1452,7 @@ div.breadcrumbsonpage{
       background-color: #FF4500;
 }
 /* Пoдлoжкa */
-#overlay, #overlayL{
+#overlay{
 	z-index:9; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
 	position:fixed; /* всегдa перекрывaет весь сaйт */
 	background-color:#000; /* чернaя */
@@ -2012,3 +1879,8 @@ div.MainBredcrumbs{
     padding: 0;
     width:940px;
   }
+div#idbuy, #fastbuy, #idWrite{
+    margin-left:auto;
+    margin-right:auto;
+    width:580px;
+}

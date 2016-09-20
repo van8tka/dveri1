@@ -17,5 +17,6 @@ namespace DALdv1
         public int Id { get; set; }
         public string MimeType { get; set; }
         public byte[] Imaging { get; set; }
+        public string LinkImage { get; set; }
     }
 }

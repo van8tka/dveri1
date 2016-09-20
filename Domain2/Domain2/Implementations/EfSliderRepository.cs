@@ -23,7 +23,8 @@ namespace Domain2.Implementations
             {
                 Id = 0,
                 MimeType = Type,
-                Imaging = Image
+                Imaging = Image,
+                LinkImage = null
             };
             context.SliderMainImgs.Add(sl);
             context.SaveChanges();
@@ -41,30 +42,17 @@ namespace Domain2.Implementations
             return context.SliderMainImgs;
         }
 
-        //==============================боковой слайдер===================================
-        public void CreateSliderLeftImg(string Type, byte[] Image)
+        public void AddLink(int id, string link)
         {
-            SliderLeftImg sl = new SliderLeftImg()
+            if(id!=0)
             {
-                Id = 0,
-                MimeType = Type,
-                Imaging = Image
-            };
-            context.SliderLeftImgs.Add(sl);
-            context.SaveChanges();
+                SliderMainImg sl = context.SliderMainImgs.Find(id);
+                sl.LinkImage = link;
+                context.Entry(sl).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
-
-        public void DellSliderLeftImg(int id)
-        {
-            context.SliderLeftImgs.Remove(context.SliderLeftImgs.Where(x => x.Id == id).FirstOrDefault());
-            context.SaveChanges();
-
-        }
-
-        public IEnumerable<SliderLeftImg> GetSliderLeftImg()
-        {
-            return context.SliderLeftImgs;
-        }
+    
         //=======================================================================для МК дверей
         //главный слайдер
         public void CreateSliderMainImgMk(string Type, byte[] Image)
@@ -73,7 +61,8 @@ namespace Domain2.Implementations
             {
                 Id = 0,
                 MimeType = Type,
-                Imaging = Image
+                Imaging = Image,
+                LinkImage = null
             };
             context.SliderMainImgMks.Add(sl);
             context.SaveChanges();
@@ -91,34 +80,15 @@ namespace Domain2.Implementations
             return context.SliderMainImgMks;
         }
 
-        //==============================боковой слайдер===================================
-        public void CreateSliderLeftImgMk(string Type, byte[] Image)
+        public void AddLinkMk(int id, string link)
         {
-            SliderLeftImgMk sl = new SliderLeftImgMk()
+            if (id != 0)
             {
-                Id = 0,
-                MimeType = Type,
-                Imaging = Image
-            };
-            context.SliderLeftImgMks.Add(sl);
-            context.SaveChanges();
+                SliderMainImgMk sl = context.SliderMainImgMks.Find(id);
+                sl.LinkImage = link;
+                context.Entry(sl).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
-
-        public void DellSliderLeftImgMk(int id)
-        {
-            context.SliderLeftImgMks.Remove(context.SliderLeftImgMks.Where(x => x.Id == id).FirstOrDefault());
-            context.SaveChanges();
-
-        }
-
-        public IEnumerable<SliderLeftImgMk> GetSliderLeftImgMk()
-        {
-            return context.SliderLeftImgMks;
-        }
-
-
-
-
-
     }
 }

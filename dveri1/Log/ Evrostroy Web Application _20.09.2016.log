@@ -1,0 +1,21 @@
+[20.09.2016 13:50:35.836] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782
+[20.09.2016 17:16:08.149] VhodnyeDveri/BuyDveri-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.VhodnyeDveriController.BuyDveri(Int32 id, String type) in D:\GitHub\dveri1\dveri1\Controllers\VhodnyeDveriController.cs:line 385
+[20.09.2016 17:41:32.839] Создание сообщения для отправки
+[20.09.2016 17:42:12.998] Создание сообщения для отправки
+[20.09.2016 17:53:43.391] Создание сообщения для отправки
+[20.09.2016 18:32:49.244] Создание сообщения для отправки
+[20.09.2016 18:33:06.092] Создание сообщения для отправки
+[20.09.2016 18:51:06.023] Создание сообщения для отправки
+[20.09.2016 18:51:23.446] Создание сообщения для отправки
+[20.09.2016 19:41:45.064] Создание сообщения для отправки
+[20.09.2016 19:41:56.439] Создание сообщения для отправки
+[20.09.2016 19:42:13.204] Создание сообщения для отправки
+[20.09.2016 19:45:56.478] Создание сообщения для отправки
+[20.09.2016 19:46:04.012] Создание сообщения для отправки
+[20.09.2016 19:48:46.853] Создание сообщения для отправки
+[20.09.2016 19:52:40.856] Создание сообщения для отправки
+[20.09.2016 19:52:58.634] Создание сообщения для отправки
+[20.09.2016 19:53:06.221] Создание сообщения для отправки

@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @*межкомн*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="@ViewBag.Keywords" />
@@ -11,11 +12,10 @@
   
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
   
-   
-
      <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
    
     <script src="~/Scripts/modalwindowrecallme.js"></script>
+    <script src="~/Scripts/modalwindowwriteus.js"></script>
        @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -40,7 +40,7 @@
                 <div class="contacts flr">
                     <div class="elContact">
                         <div class="fll mr10"><img src="~/Content/writeus.jpg" alt="" /> </div>
-                        <div> @Html.ActionLink("Написать нам", "BuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butwritemain"}) </div>
+                        <div> @Html.ActionLink("Написать нам", "WriteToUs", "MegkomnatnyeDveri", null, new { @class = "butwritemain"}) </div>
 
                     </div>
                     <div class="elContact mt10">
@@ -97,17 +97,16 @@
         @RenderSection("scripts", required: false)
     </div>
     @*делаем модальное окно для оформления товара*@
-    <div id="modal_formL">
+    <div id="modal_form_fastbuy">
         <!-- Сaмo oкнo -->
-        <span id="modal_closeL">X</span> <!-- Кнoпкa зaкрыть -->
-        @Html.Action("BuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" })
-    </div>
-
-    <div id="modal_form_fastbuyL">
-        <span id="modal_closeL">X</span> <!-- Кнoпкa зaкрыть -->
+        <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
         @Html.Action("FastBuyDveriModal", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" })
     </div>
-    <div id="overlayL"></div><!-- Пoдлoжкa -->
+    <div id="modal_form_writeus">
+        <span id="modal_close">X</span> <!-- Кнoпкa зaкрыть -->
+        @Html.Action("WriteToUsModal", "MegkomnatnyeDveri")
+    </div>
+    <div id="overlay"></div><!-- Пoдлoжкa -->
 
 
 

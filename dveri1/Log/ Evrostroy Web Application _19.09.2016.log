@@ -1,0 +1,21 @@
+[19.09.2016 21:35:00.771] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 780
+[19.09.2016 21:35:36.100] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 780
+[19.09.2016 21:59:13.230] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782
+[19.09.2016 22:00:48.612] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782
+[19.09.2016 22:06:32.910] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782
+[19.09.2016 22:06:46.082] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782
+[19.09.2016 22:07:46.914] AdminMkDv/LinkImageSlider-System.NullReferenceException: Object reference not set to an instance of an object.
+   at Domain2.Implementations.EfSliderRepository.AddLinkMk(Int32 id, String link) in D:\GitHub\dveri1\Domain2\Domain2\Implementations\EfSliderRepository.cs:line 88
+   at dveri1.Controllers.AdminMkDvController.LinkImageSlider(Int32 Id, String LinkImg) in D:\GitHub\dveri1\dveri1\Controllers\AdminMkDvController.cs:line 782

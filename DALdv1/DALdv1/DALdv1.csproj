@@ -115,12 +115,6 @@
     <Compile Include="SeoVhodnuhDverei.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="SliderLeftImg.cs">
-      <DependentUpon>Dveri1Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SliderLeftImgMk.cs">
-      <DependentUpon>Dveri1Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="SliderMainImg.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

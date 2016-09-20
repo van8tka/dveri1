@@ -24,7 +24,7 @@ namespace dveri1.Models
         public string CurrentBrand { get; set; }
         public string CurrentMaterial { get; set; }
         public IEnumerable<SliderMainImg> SliderImg { get; set; }
-        public IEnumerable<SliderLeftImg> SliderLeftImg { get; set; }
+      
         public string SeoKey { get; set; }
         public string SeoTitle { get; set; }
         public string SeoDesc { get; set; }

@@ -207,22 +207,6 @@
     <Property Name="DescriptionDveri" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="VhodnyeDveri" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="SeoVhodnuhDverei" ToRole="VhodnyeDveri" />
   </EntityType>
-  <EntityType Name="SliderLeftImg">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SliderLeftImgMk">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="SliderMainImg">
     <Key>
       <PropertyRef Name="Id" />
@@ -230,6 +214,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LinkImage" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SliderMainImgMk">
     <Key>
@@ -238,6 +223,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LinkImage" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -491,8 +477,6 @@
     <EntitySet Name="SeoMains" EntityType="Self.SeoMain" />
     <EntitySet Name="SeoMkDvereis" EntityType="Self.SeoMkDverei" />
     <EntitySet Name="SeoVhodnuhDvereis" EntityType="Self.SeoVhodnuhDverei" />
-    <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
-    <EntitySet Name="SliderLeftImgMks" EntityType="Self.SliderLeftImgMk" />
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
     <EntitySet Name="SliderMainImgMks" EntityType="Self.SliderMainImgMk" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />

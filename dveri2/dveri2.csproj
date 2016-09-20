@@ -274,6 +274,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modalwindowforharacteristicview.js" />
     <Content Include="Scripts\modalwindowrecallme.js" />
+    <Content Include="Scripts\modalwindowwriteus.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -313,6 +314,9 @@
     <Content Include="Views\Comment\CreateComment.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\MegkomnatnyeDveri\BuyDveri.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\WriteToUs.cshtml" />
+    <Content Include="Views\Shared\ViewWriteUs.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\WriteToUsModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

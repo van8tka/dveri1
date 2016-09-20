@@ -12,14 +12,10 @@ namespace Domain2.Interfaces
         IEnumerable<SliderMainImg> GetSliderMainImg();
         void CreateSliderMainImg(string Type, byte[] Image);
         void DellSliderMainImg(int id);
-        IEnumerable<SliderLeftImg> GetSliderLeftImg();
-        void CreateSliderLeftImg(string Type, byte[] Image);
-        void DellSliderLeftImg(int id);
+        void AddLink(int id, string link);
         IEnumerable<SliderMainImgMk> GetSliderMainImgMk();
         void CreateSliderMainImgMk(string Type, byte[] Image);
         void DellSliderMainImgMk(int id);
-        IEnumerable<SliderLeftImgMk> GetSliderLeftImgMk();
-        void CreateSliderLeftImgMk(string Type, byte[] Image);
-        void DellSliderLeftImgMk(int id);
+        void AddLinkMk(int id, string link);
     }
 }

@@ -37,7 +37,7 @@ namespace dveri2.Controllers
                 ForMainModel model = new ForMainModel();
                 model.SliderImgMk = dataManager.SliderRepository.GetSliderMainImgMk();
                 model.CountFile = model.SliderImgMk.Count();
-                model.SliderLeftImgMk = dataManager.SliderRepository.GetSliderLeftImgMk();
+              
                 model.Sort = sort;
                 int TotalItemsProduct;
                 if (brand == "весьтовар")
@@ -667,14 +667,7 @@ namespace dveri2.Controllers
             {
                 
                 ModelBuyDveri model = new ModelBuyDveri();
-                if (id == 9999)
-                {
-                    ViewBag.WriteUs = true;
-                }
-                else
-                {
-                    ViewBag.WriteUs = false;
-                }
+             
                 model.IdDveri = id;
                 model.Type = type;
                 if (type == "межкомнатные двери")
@@ -734,14 +727,7 @@ namespace dveri2.Controllers
         {
             try
             {
-                if(id==9999)
-                {
-                    ViewBag.WriteUs = true;
-                }
-                else
-                {
-                    ViewBag.WriteUs = false;
-                }
+              
                 ModelBuyDveri model = new ModelBuyDveri();
                 model.IdDveri = id;
                 model.Type = type;
@@ -794,6 +780,104 @@ namespace dveri2.Controllers
                 return View("Error");
             }
         }
+
+
+
+        //============================написать нам====================================================
+        [HttpGet]
+        public ActionResult WriteToUs()
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.Type = "Простое сообщение от клиента!";
+                model.IdDveri = 9999;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("MegkomnatnyeDveri/WriteToUs-" + er);
+                return View("Error");
+            }
+
+        }
+        [HttpPost]
+        public ActionResult WriteToUs(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщегия админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вам в течении 15 минут!";
+                    }
+                    else
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
+                    }
+                    return RedirectToAction("MegkomnatnyeDveriIndex");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("MegkomnatnyeDveri/WriteToUs-" + er);
+                return View("Error");
+            }
+        }
+
+
+        //===========================для модального окна написать нам =====================
+        [HttpGet]
+        public ActionResult WriteToUsModal()
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = 9999;
+                model.Type = "Простое сообщение от клиента!";
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("MegkomnatnyeDveri/WriteToUsModal-" + er);
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult WriteToUsModal(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщения админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        return Json(model.KlientName + "! Спасибо, что оставили свое сообщение, мы обязательно ответим Вам!", JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json("При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!", JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("MegkomnatnyeDveri/WriteToUsModal-" + er);
+                return View("Error");
+            }
+        }
+
+
 
     }
 }

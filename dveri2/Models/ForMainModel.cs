@@ -27,7 +27,7 @@ namespace dveri2.Models
         public bool FlagMaterial { get; set; }
     
         public IEnumerable<SliderMainImgMk> SliderImgMk { get; set; }
-        public IEnumerable<SliderLeftImgMk> SliderLeftImgMk { get; set; }
+     
         public string SeoKey { get; set; }
         public string SeoTitle { get; set; }
         public string SeoDesc { get; set; }

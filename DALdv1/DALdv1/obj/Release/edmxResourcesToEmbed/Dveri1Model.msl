@@ -214,30 +214,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SliderLeftImgs">
-      <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImg">
-        <MappingFragment StoreEntitySet="SliderLeftImg">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-          <ScalarProperty Name="Imaging" ColumnName="Imaging" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SliderLeftImgMks">
-      <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImgMk">
-        <MappingFragment StoreEntitySet="SliderLeftImgMk">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-          <ScalarProperty Name="Imaging" ColumnName="Imaging" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SliderMainImgs">
       <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImg">
         <MappingFragment StoreEntitySet="SliderMainImg">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="MimeType" ColumnName="MimeType" />
           <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+          <ScalarProperty Name="LinkImage" ColumnName="LinkImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -247,6 +230,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="MimeType" ColumnName="MimeType" />
           <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+          <ScalarProperty Name="LinkImage" ColumnName="LinkImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

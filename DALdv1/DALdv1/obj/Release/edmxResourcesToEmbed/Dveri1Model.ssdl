@@ -196,22 +196,6 @@
     <Property Name="KeywordsDveri" Type="nvarchar" MaxLength="1050" />
     <Property Name="DescriptionDveri" Type="nvarchar" MaxLength="2050" />
   </EntityType>
-  <EntityType Name="SliderLeftImg">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SliderLeftImgMk">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
-  </EntityType>
   <EntityType Name="SliderMainImg">
     <Key>
       <PropertyRef Name="Id" />
@@ -219,6 +203,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+    <Property Name="LinkImage" Type="nvarchar" MaxLength="750" />
   </EntityType>
   <EntityType Name="SliderMainImgMk">
     <Key>
@@ -227,6 +212,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+    <Property Name="LinkImage" Type="nvarchar" MaxLength="750" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -473,8 +459,6 @@
     <EntitySet Name="SeoMain" EntityType="Self.SeoMain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SeoMkDverei" EntityType="Self.SeoMkDverei" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SeoVhodnuhDverei" EntityType="Self.SeoVhodnuhDverei" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SliderLeftImgMk" EntityType="Self.SliderLeftImgMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImgMk" EntityType="Self.SliderMainImgMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />

@@ -541,8 +541,8 @@ namespace dveri1.Controllers
                         image.SaveAs(path);
                         //изменим разрешение файла
                         Image img = Image.FromFile(path);
-                        Bitmap myBitmap = new Bitmap(img, new Size(1200, 200));
-                        Graphics myGraphic = Graphics.FromImage(myBitmap);
+                            Bitmap myBitmap = new Bitmap(img, new Size(900, 250));
+                            Graphics myGraphic = Graphics.FromImage(myBitmap);
                         //теперь нарисуем логотип
                         //новое имя и сохраним
                         string newfilename = "evrostroySlMAin" + i.ToString() + ".jpg";
@@ -608,125 +608,33 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
-        //------------------------------------------------контроллер боковогослайдера--------------------------------------------------------
-        [Authorize]
-        [HttpGet]
-        public ActionResult SliderLeft()
-        {
-            try
-            {
-                SliderModel model = new SliderModel();
-                model.SliderLI = dataManager.SliderRepository.GetSliderLeftImg();
-                model.CountSlide = model.SliderLI.Count();
-                return View(model);
-            }
-            catch (Exception er)
-            {
-                ClassLog.Write("Admin/SliderLeft-"+ er);
-                return View("Error");
-            }
-        }
+     //контроллер добавления изменения и отображения ссылки на изображение слайдера
+ 
         [Authorize]
         [HttpPost]
-        public ActionResult SliderLeft(IEnumerable<HttpPostedFileBase> fileUpload = null)
+        public ActionResult LinkImageSlider(int Id, string LinkImg)
         {
             try
             {
-            SliderModel model = new SliderModel();
-            string domainpath = Server.MapPath("~/Content/ImageTemp/");
-            int i = 0;
-            bool BreakAddFiles = false;
-            int countImage = dataManager.SliderRepository.GetSliderLeftImg().Count();
-            if (countImage >= 8)
-            {
-                TempData["message"] = "Слайдер содержит 8 изображений или более, для добавления другого изображения необходимо удалить старые изображения.";
-                return RedirectToAction("SliderLeft");
-            }
-            else
-            {
-                foreach (var image in fileUpload)
+                if (LinkImg != null && LinkImg != "")
                 {
-                    if (image != null)
-                    {
-                        if (countImage == 8)
-                        {
-                            TempData["message"] = "Слайдер содержит 8 изображений, добавлено только " + i + " изображения";
-                            BreakAddFiles = true;
-                            break;
-                        }
-                        countImage++;
-                        i++;
-                        //получим ID последнего фото                  
-                        string path = Path.Combine(domainpath, image.FileName);
-                        image.SaveAs(path);
-                        //изменим разрешение файла
-                        Image img = Image.FromFile(path);
-                        Bitmap myBitmap = new Bitmap(img, new Size(200, 400));
-                        Graphics myGraphic = Graphics.FromImage(myBitmap);
-                        //новое имя и сохраним
-                        string newfilename = "evrostroySlLeft" + i.ToString() + ".jpg";
-                        string newfilepath = domainpath + newfilename;
-                            //изменим качество изображения(это новое от 12.08.2016)
-                            Encoder myEncoder = Encoder.Quality;
-                            EncoderParameters myEncoderParameters = new EncoderParameters(1);
-                            // Save the bitmap as a JPG file with zero quality level compression.
-                            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 40L);
-                            myEncoderParameters.Param[0] = myEncoderParameter;
-                            //вызов метода получения кодировки файла(из msdn)
-                            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+                    dataManager.SliderRepository.AddLink(Id, LinkImg);
+                    TempData["message"] = "Ссылка добавлена(изменена)!";
+                }
+                else
+                {
+                    TempData["message"] = "Заполните поле для добавление ссылки!";
+                }
+                return RedirectToAction("SliderMain");
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("Admin/LinkImageSlider-" + er);
+                return View("Error");
+            }
+       }
 
-                            myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
-                          
-                        //теперь запишем файл в базу данных
-                        FileStream fs = null;
-                        fs = new FileStream(newfilepath, FileMode.Open);
-                        model.ImgDataSlider = new byte[fs.Length];
-                        model.MimeTypeSlider = "image/jpg";
-                        fs.Read(model.ImgDataSlider, 0, (int)fs.Length);
-                        dataManager.SliderRepository.CreateSliderLeftImg(model.MimeTypeSlider, model.ImgDataSlider);
-                        fs.Close();
-                        //освобождаем занятый ресурс
-                        myBitmap.Dispose();
-                        myGraphic.Dispose();
-                        img.Dispose();
-                        myBitmap = null;
-                        myGraphic = null;
-                        img = null;
-                        fs = null;
-                    }
-                }
-                fileUpload = null;
-                //удалим файлы из временной папки
-               DellFilesFromDomain.DellAllFiles(domainpath);
-                if (!BreakAddFiles)
-                {
-                    TempData["message"] = "Изображения слайдера добавлены!";
-                }
-                return RedirectToAction("SliderLeft");
-            }
-            }
-            catch (Exception er)
-            {
-                ClassLog.Write("Admin/SliderLeft-"+ er);
-                return View("Error");
-            }
-        }
-        //-----------------------------------------------контроллер удаления бокового слайда-------------------------------------------------------------------
-        [Authorize]
-        public ActionResult DellSlideLeft(int id)
-        {
-            try
-            {
-                dataManager.SliderRepository.DellSliderLeftImg(id);
-                TempData["message"] = "Изображение удалено из базы данных!";
-                return RedirectToAction("SliderLeft");
-            }
-            catch (Exception er)
-            {
-                ClassLog.Write("Admin/DellSlideLeft-"+ er);
-                return View("Error");
-            }
-        }
+
         //-------------------------------action обработки сведений доставки---------------------------------
         [Authorize]
         [HttpGet]

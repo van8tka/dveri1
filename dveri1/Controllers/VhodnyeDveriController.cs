@@ -38,7 +38,7 @@ namespace dveri1.Controllers
                 ForMainModel model = new ForMainModel();
                 model.SliderImg = dataManager.SliderRepository.GetSliderMainImg();
                 model.CountFile = model.SliderImg.Count();
-                model.SliderLeftImg = dataManager.SliderRepository.GetSliderLeftImg();
+            
                 model.Sort = sort;
                 int TotalItemsProduct;
                 if (brand == "весьтовар")
@@ -99,7 +99,7 @@ namespace dveri1.Controllers
                 //model.ListVhodnDv = dataManager.VhodnyeDvRepository.GetVhodnyeDv().OrderBy(x => x.Id).Where(x => x.Publicaciya == true).Skip((page - 1) * PageSize).Take(PageSize);
                 model.PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = page>0? page :1,
                     TotalItems = TotalItemsProduct,
                     ItemsPerPage = PageSize
                 };
@@ -370,6 +370,103 @@ namespace dveri1.Controllers
                 return View("Error");
             }
         }
+        //============================написать нам====================================================
+        [HttpGet]
+        public ActionResult WriteToUs()
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.Type = "Простое сообщение от клиента!";
+                model.IdDveri = 9999;
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/WriteToUs-" + er);
+                return View("Error");
+            }
+
+        }
+        [HttpPost]
+        public ActionResult WriteToUs(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщегия админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        TempData["messageklient"] = "Ваше сообщение отправлено, наш менеджер свяжется с Вам в течении 15 минут!";
+                    }
+                    else
+                    {
+                        TempData["messageklient"] = "При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!";
+                    }
+                    return RedirectToAction("VhodnyeDveriIndex");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/WriteToUs-" + er);
+                return View("Error");
+            }
+        }
+
+
+        //===========================для модального окна написать нам =====================
+        [HttpGet]
+        public ActionResult WriteToUsModal()
+        {
+            try
+            {
+                ModelBuyDveri model = new ModelBuyDveri();
+                model.IdDveri = 9999;
+                model.Type = "Простое сообщение от клиента!";
+                return View(model);
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/WriteToUsModal-" + er);
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult WriteToUsModal(ModelBuyDveri model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {//вызов метода отправки сообщения админу
+                    if (SendMessageAboutBuyDoor(model))
+                    {
+                        return Json(model.KlientName + "! Спасибо, что оставили свое сообщение, мы обязательно ответим Вам!", JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json("При отправке сообщения возникла ошибка, сообщите пожалуйста нашему менеджеру по указанному выше номеру телефона!", JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception er)
+            {
+                ClassLog.Write("VhodnyeDveri/WriteToUsModal-" + er);
+                return View("Error");
+            }
+        }
+
+
+
+
 
         //===============================купить двери===================================================
         [HttpGet]
@@ -457,7 +554,7 @@ namespace dveri1.Controllers
             }
             else
             {
-                body = "Свяжитесь с клиентом по тел. или e-email: " + model.KlientPhone;
+                body = "Свяжитесь с клиентом по тел. или e-email: " + model.KlientPhone+"\r\n"+model.KlientQuestion;
             }
             if (SendMsg.Message(body, them, adres))
             { return true; }

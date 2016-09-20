@@ -262,6 +262,12 @@
     <Content Include="Content\KaruselTovara\ForKaruselOfGoods.css" />
     <Content Include="Content\loading.gif" />
     <Content Include="Content\logo1.png" />
+    <Content Include="Content\logoinAllImage.png" />
+    <Content Include="Content\mts.jpg" />
+    <Content Include="Content\nivo-slider.css" />
+    <Content Include="Content\nyvo_arrows.png" />
+    <Content Include="Content\nyvo_bullets.png" />
+    <Content Include="Content\nyvo_loading.gif" />
     <Content Include="Content\orbit.css" />
     <Content Include="Content\orbit\bullets.png" />
     <Content Include="Content\orbit\left-arrow.png" />
@@ -271,6 +277,8 @@
     <Content Include="Content\orbit\right-arrow.png" />
     <Content Include="Content\orbit\rotator-black.png" />
     <Content Include="Content\orbit\timer-black.png" />
+    <Content Include="Content\recall.jpg" />
+    <Content Include="Content\thumbelina.css" />
     <Content Include="Content\tinymce\jquery.tinymce.min.js" />
     <Content Include="Content\tinymce\license.txt" />
     <Content Include="Content\tinymce\plugins\advlist\plugin.min.js" />
@@ -349,6 +357,8 @@
     <Content Include="Content\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
+    <Content Include="Content\vel.jpg" />
+    <Content Include="Content\writeus.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -371,8 +381,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.imageLens.js" />
-    <Content Include="Scripts\jquery.orbit.js" />
+    <Content Include="Scripts\jquery.nivo.slider.pack.js" />
+    <Content Include="Scripts\modalwindowwriteus.js" />
     <Content Include="Scripts\jquery.orbit.min.js" />
+    <Content Include="Scripts\jquery.tinymce.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -384,6 +396,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\thumbelina.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -401,7 +414,6 @@
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\CreateVhDv.cshtml" />
     <Content Include="Views\Admin\SliderMain.cshtml" />
-    <Content Include="Views\Admin\SliderLeft.cshtml" />
     <Content Include="Views\Contact\AdminContact.cshtml" />
     <Content Include="Views\Contact\CreateContact.cshtml" />
     <Content Include="Views\Contact\CreateGrafik.cshtml" />
@@ -472,6 +484,9 @@
     <Content Include="Views\Articles\CreateSeoArticleMk.cshtml" />
     <Content Include="Views\Contact\CreateWorkEmail.cshtml" />
     <Content Include="Views\VhodnyeDveri\ImgTov.cshtml" />
+    <Content Include="Views\VhodnyeDveri\WriteToUs.cshtml" />
+    <Content Include="Views\Shared\ViewWriteUs.cshtml" />
+    <Content Include="Views\VhodnyeDveri\WriteToUsModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

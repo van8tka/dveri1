@@ -9,24 +9,34 @@
         @Html.ActionLink("Слайдер - входные двери", "SliderMain", "Admin", null, new { @class = "tablebut newdoor wid220" })
         @Html.ActionLink("Слайдер - межкомнатные двери", "SliderMainMk", "AdminMkDv", null, new { @class = "tablebutAct newdoor wid220" })
     </div>
-    @using (Html.BeginForm("SliderMainMk", "AdminMkDv", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    { <div class="form-group">
-        <h3> Изображения главного слайдера (добавляйте изображения формата 800px*220px или кратные им для корректного отображения):</h3><br />
-        <div  class="pos-rel">
+
+    <div class="form-group">
+        <h3> Изображения главного слайдера (добавляйте изображения формата 940px*250px или кратные им для корректного отображения):</h3><br />
+        <div class="pos-rel">
             @foreach (var item in Model.SliderMImk)
             {
+                using (Html.BeginForm("LinkImageSlider", "AdminMkDv", FormMethod.Post, new { }))
+                {
                 <div class="mar20">
                     @Html.Raw("<img class='slimg' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
                     <br />
-                    @Html.ActionLink("Удалить изображение " + item.Id, "DellSlideMk", "AdminMkDv", new { id = item.Id }, new { @class = "tablebut wid170"})
+                    @Html.ActionLink("Удалить изображение " + item.Id, "DellSlideMk", "AdminMkDv", new { id = item.Id }, new { @class = "mt10 tablebut wid170 fll" })
+                    @*для формы внутри формы по отправке данных*@
+                    <input type="submit" value="Добавить ссылку" class="fll wid170 ml20 mt10 showadd" id="addlink" />
+                    <input id=LinkImg class="fll mb20 form-control" type="text" value=@item.LinkImage name="LinkImg">
+                    <input id=Id class="form-control" type="hidden" value=@item.Id name="Id">
                 </div>
-            }
-            @for (int i = 0; i < 8 - Model.CountSlide; i++)
-            {
-                <input type="file" name="fileUpload[@i]" /><br />
+                }
             }
         </div>
     </div>
+    @using (Html.BeginForm("SliderMainMk", "AdminMkDv", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        for (int i = 0; i < 8 - Model.CountSlide; i++)
+        {
+            <input type="file" name="fileUpload[@i]" /><br />
+        }
+
         if (Model.CountSlide < 8)
         {
             <div class="mb20">
@@ -36,6 +46,7 @@
         }
     }
 </div>
+
 <script>
     $(".admmen").removeClass("actadmin")
     $(".m4").addClass("actadmin")

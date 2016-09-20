@@ -201,22 +201,6 @@
           <Property Name="KeywordsDveri" Type="nvarchar" MaxLength="1050" />
           <Property Name="DescriptionDveri" Type="nvarchar" MaxLength="2050" />
         </EntityType>
-        <EntityType Name="SliderLeftImg">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SliderLeftImgMk">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="SliderMainImg">
           <Key>
             <PropertyRef Name="Id" />
@@ -224,6 +208,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+          <Property Name="LinkImage" Type="nvarchar" MaxLength="750" />
         </EntityType>
         <EntityType Name="SliderMainImgMk">
           <Key>
@@ -232,6 +217,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imaging" Type="varbinary(max)" Nullable="false" />
+          <Property Name="LinkImage" Type="nvarchar" MaxLength="750" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -478,8 +464,6 @@
           <EntitySet Name="SeoMain" EntityType="Self.SeoMain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeoMkDverei" EntityType="Self.SeoMkDverei" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeoVhodnuhDverei" EntityType="Self.SeoVhodnuhDverei" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SliderLeftImg" EntityType="Self.SliderLeftImg" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SliderLeftImgMk" EntityType="Self.SliderLeftImgMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderMainImgMk" EntityType="Self.SliderMainImgMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -741,22 +725,6 @@
           <Property Name="DescriptionDveri" Type="String" MaxLength="2050" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VhodnyeDveri" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="SeoVhodnuhDverei" ToRole="VhodnyeDveri" />
         </EntityType>
-        <EntityType Name="SliderLeftImg">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SliderLeftImgMk">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="SliderMainImg">
           <Key>
             <PropertyRef Name="Id" />
@@ -764,6 +732,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="LinkImage" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SliderMainImgMk">
           <Key>
@@ -772,6 +741,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Imaging" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="LinkImage" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1025,8 +995,6 @@
           <EntitySet Name="SeoMains" EntityType="Self.SeoMain" />
           <EntitySet Name="SeoMkDvereis" EntityType="Self.SeoMkDverei" />
           <EntitySet Name="SeoVhodnuhDvereis" EntityType="Self.SeoVhodnuhDverei" />
-          <EntitySet Name="SliderLeftImgs" EntityType="Self.SliderLeftImg" />
-          <EntitySet Name="SliderLeftImgMks" EntityType="Self.SliderLeftImgMk" />
           <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
           <EntitySet Name="SliderMainImgMks" EntityType="Self.SliderMainImgMk" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -1295,30 +1263,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SliderLeftImgs">
-            <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImg">
-              <MappingFragment StoreEntitySet="SliderLeftImg">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-                <ScalarProperty Name="Imaging" ColumnName="Imaging" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SliderLeftImgMks">
-            <EntityTypeMapping TypeName="dbdveri1Model.SliderLeftImgMk">
-              <MappingFragment StoreEntitySet="SliderLeftImgMk">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-                <ScalarProperty Name="Imaging" ColumnName="Imaging" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SliderMainImgs">
             <EntityTypeMapping TypeName="dbdveri1Model.SliderMainImg">
               <MappingFragment StoreEntitySet="SliderMainImg">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MimeType" ColumnName="MimeType" />
                 <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+                <ScalarProperty Name="LinkImage" ColumnName="LinkImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1328,6 +1279,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MimeType" ColumnName="MimeType" />
                 <ScalarProperty Name="Imaging" ColumnName="Imaging" />
+                <ScalarProperty Name="LinkImage" ColumnName="LinkImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
