@@ -1,0 +1,10 @@
+﻿@model dveri2.Models.ModelBuyDveri
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("WriteToUsModal", new AjaxOptions { UpdateTargetId = "idWrite", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.Partial("ViewWriteUs")
+}
+
