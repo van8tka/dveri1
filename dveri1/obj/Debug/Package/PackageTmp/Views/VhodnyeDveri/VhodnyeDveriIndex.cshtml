@@ -6,97 +6,82 @@
 }
 
 <!-- Непосредственный код слайдера -->
-<div id="slider">
-    <div id="mask">
-        <ul id="image_container">
-            @foreach (var item in Model.SliderImg)
-            {
-                @Html.Raw("<img class='slMain' alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
-            }
 
-        </ul>
+<link href="~/Content/nivo-slider.css" rel="stylesheet" />
+
+    <div class="leftMainMenu">
+    <div class="dvSortCost">
+        Cортировать по цене:
     </div>
-    <img src="~/Content/ControlSlider/glass.png" id="glass" alt="" class="Glas" />
-
-    @*переключатель слайдов*@
-    @*<div id="encart">
-
-            <ul id="dots">
-                @for (int i = 1; i <= Model.CountFile; i++)
+    <div class="buttonsort">
+        @switch (Model.Sort)
+        {
+            case 0:
                 {
-                    <li class="button-@i" onClick="changeImage(@i)"></li>
+                    @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })
+                    @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })
+                    break;
+                }
+            case 1:
+                {
+                    @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort actsortup" })
+                    @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })
+                    break;
+                }
+            case 2:
+                {
+                    @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })
+                    @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort actsortdown" })
+                    break;
                 }
 
-            </ul>
-        </div>*@
-    <img src="~/Content/ControlSlider/fleche-gauche.png" alt="" id="fleche_gauche" class="fleche" onClick=" prevImage()" />
-    <img src="~/Content/ControlSlider/fleche-droite.png" alt="" id="fleche_droite" class="fleche" onClick=" nextImage()" />
-</div>
-<div>
-    @Html.Action("BreadCrumbs", "VhodnyeDveri", new {mainmodel = Model,namepart = "Входные двери" })
-</div>
-<div class="productlist" id="listproduct">
-    <div class="leftMainMenu">
-        <div class="dvSortCost">
-           Cортировать по цене:
-        </div>
-        <div class = "buttonsort">
-            @switch (Model.Sort)
-            {
-                case 0:
-                    {                       
-                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand },new {@class = "upsort"})
-                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })                      
-                        break;
-                    }
-                case 1:
-                    {                     
-                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort actsortup" })
-                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort" })                     
-                      break;
-                    }
-                case 2:
-                    {                   
-                            @Html.ActionLink("по возрастанию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 1, brand = Model.CurrentBrand }, new { @class = "upsort" })      
-                            @Html.ActionLink("по убыванию", "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 2, brand = Model.CurrentBrand }, new { @class = "downsort actsortdown" })                     
-                        break;
-                    }
-                                
-                default:
-                    break;
+            default:
+                break;
 
-            }
-        </div>
-        @*меню выбора брэнда*@
+        }
+    </div>
+    @*меню выбора брэнда*@
+    <div>
         <div class="MenKataltext">
             Каталог товаров:
         </div>
         <div>
-            @Html.ActionLink("ВХОДНЫЕ ДВЕРИ ВЕСЬ СПИСОК", "VhodnyeDveriIndex", "VhodnyeDveri", new {brand = "весьтовар",id=1, sort = 0 }, new { @class = "leftMenuButton весьтовар" })
-           @foreach (var i in Model.Brand)
+            @Html.ActionLink("ВХОДНЫЕ ДВЕРИ ВЕСЬ СПИСОК", "VhodnyeDveriIndex", "VhodnyeDveri", new { brand = "весьтовар", id = 1, sort = 0 }, new { @class = "leftMenuButton весьтовар" })
+            @foreach (var i in Model.Brand)
             {
                 if (i != null)
                 {
-                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new {id=1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i.Replace(" ",string.Empty) })
-                 }
-             }
+                    @Html.ActionLink("Входные двери " + i, "VhodnyeDveriIndex", "VhodnyeDveri", new { id = 1, sort = 0, brand = i }, new { @class = "leftMenuButton " + i.Replace(" ", string.Empty) })
+                }
+            }
         </div>
-        @*слайдер левый боковой orbit*@
-        <div class="LeftSlider mt20">
-            <div id="featured">
-                @foreach (var item in Model.SliderLeftImg)
+    </div>
+    @*статьи 5 последних с сылками на их же*@
+    <div>
+        @Html.Action("GetFiveArticles", "Articles")
+    </div>
+</div>
+
+@*слайдер*@
+        <div class="MainSlider">
+            <div id="slider" class="nivoSlider">
+                @foreach (var item in Model.SliderImg)
                 {
-                    @Html.Raw("<img class='imLeftSl' alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+                    <a style="display:block;" href=@item.LinkImage>
+                        @Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+                    </a>
+                  
                 }
             </div>
         </div>
-        @*статьи 5 последних с сылками на их же*@
-        <div>
-            @Html.Action("GetFiveArticles","Articles")
+@*хлебные крошки*@
+        <div class="MainBredcrumbs">
+            @Html.Action("BreadCrumbs", "VhodnyeDveri", new { mainmodel = Model, namepart = "Входные двери" })
         </div>
 
 
-    </div>
+   
+<div class="productlist" id="listproduct">
     @Html.Partial("ProductList")
 </div>
 <div style="clear:both">
@@ -112,24 +97,32 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/jquery.orbit.min.js")
+    @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
 
-    @*замена pagingLinks на кнопку показать еще*@
+    <!-- Запуск слайдера -->
+
     <script type="text/javascript">
-        $(document).ready(function(){
-
-
-            //выделение текущего брэнда(.Replace(" ", string.Empty)-метод замены пробелов)
-            $('.@Model.CurrentBrand.Replace(" ", string.Empty)').addClass("act");
-
-        //скрипт слайдера левого (орбит)
-        $(window).load(function() {
-            $("#featured").orbit({
-                'bullets': false,
-                'timer' : true,
-                'animation' : 'horizontal-slide'
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                effect: 'sliceUpLeft',
+                animSpeed: 1500,
+                pauseTime: 7000,
+                directionNav: true,
+                directionNavHide: true,
+                controlNav: true,
+                pauseOnHover: true,
+                keyboardNav: true,
+                controlNavThumbs: false
             });
         });
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+          //выделение текущего брэнда(.Replace(" ", string.Empty)-метод замены пробелов)
+            $('.@Model.CurrentBrand.Replace(" ", string.Empty)').addClass("act");
+    })
+
 
 
         @*$('.pager').replaceWith($('<div class="addpage" style="text-align:center;margin-bottom:1em"><button class="showadd" value="@Model.PagingInfo.TotalPages">  Показать еще  </button>' +
@@ -137,7 +130,7 @@
         var page = 1;*@
         //выделение текущего брэнда
 
-    
+
         @*$('.showadd').click(
         function loadItems() {
                var totalpages = $(".showadd").val();
@@ -168,72 +161,8 @@
                  $('.addpage').replaceWith($('<div class="emtypage"> </div>  '));
              }
         }  )*@
-    })
-    </script>
-
-    @*//скрипт для слайдера главного*@
-    <script>
-        var secDuration = 6;
-        var image = 1;
-        var maxImages = @Model.CountFile;
-        var slider = document.getElementById('slider');
-        var timeout
-        var flag=false;
-
-        function changeImage(requiredImage) {
-
-            if (!requiredImage && requiredImage != 0)
-            {
-
-                if(image < maxImages && !flag)
-                {
-                    image++;
-                }
-                else
-                {
-                    if(image==maxImages)
-                    {
-                        flag=true;
-                        image--;
-                    }
-                    else
-                        if(flag)
-                        {
-                            image--;
-                            if(image==1)
-                            {flag=false;}
-                        }
-
-                }
-            }
-            else
-            {
-                if(requiredImage > maxImages)
-                {
-                    image = 1;
-                }
-                else
-                    if(requiredImage < 1)
-                    {
-                        image = maxImages;
-                    }
-                    else
-                    {
-                        image = requiredImage;
-                    }
-            }
-            slider.className = "image"+image;
-            clearTimeout(timeout)
-            timeout = setTimeout("changeImage()",secDuration*1000);
-        }
-        function nextImage(){
-            changeImage(image+1);
-        }
-        function prevImage(){
-            changeImage(image-1);
-        }
-        changeImage(1);
-    </script>
+   
+</script>
 
 }
 

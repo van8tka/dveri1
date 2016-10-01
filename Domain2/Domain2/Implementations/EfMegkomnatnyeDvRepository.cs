@@ -31,7 +31,7 @@ namespace Domain2.Implementations
             }
         }
 
-        public void CreateMkDv(int id, string naz, string pr, string strpr, string cvet, string material, string pokryt, string karkas, string typdv, string vnytrnapoln, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar)
+        public void CreateMkDv(int id, string naz, string pr, string strpr, int? cvet, string material, string pokryt, string karkas, string typdv, string vnytrnapoln, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar)
         {
             if (id == 0)
             {
@@ -41,7 +41,7 @@ namespace Domain2.Implementations
                     Nazvanie = naz,
                     Proizvoditel = pr,
                     Strana = strpr,
-                    Cvet = cvet,
+                    IdColor = cvet,
                     Material = material,
                     Pokrytie = pokryt,
                     Karkas = karkas,
@@ -63,7 +63,7 @@ namespace Domain2.Implementations
                 vd.Nazvanie = naz;
                 vd.Proizvoditel = pr;
                 vd.Strana = strpr;
-                vd.Cvet = cvet;
+                vd.IdColor = cvet;
                 vd.Material = material;
                 vd.Pokrytie = pokryt;
                 vd.Karkas = karkas;

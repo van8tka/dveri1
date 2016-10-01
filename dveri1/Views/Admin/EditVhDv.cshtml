@@ -29,7 +29,7 @@
             @Html.HiddenFor(m => m.ID)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                if (property.PropertyName == "ID" || property.PropertyName == "ImageData" || property.PropertyName == "ImageMimeType" || property.PropertyName == "FotoVhDvList")
+                if (property.PropertyName == "ID" || property.PropertyName == "ImageData" || property.PropertyName == "ImageMimeType" || property.PropertyName == "FotoVhDvList" || property.PropertyName == "Cvet" || property.PropertyName == "SpisokColors")
                 {
                 }
                 else
@@ -71,6 +71,10 @@
                     </div>
                 }
             }
+            <div>
+                @Html.Label("Выберите цвет:")
+                @Html.DropDownListFor(model => model.Cvet, Model.SpisokColors, "Выберите цвет двери", new { id = "idcolor", @class = "form-control" })
+            </div>
         </div>
         <div class="form-group">
             <div class="dinb">

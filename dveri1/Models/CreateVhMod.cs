@@ -4,10 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using DALdv1;
+using System.Web.Mvc;
+
 namespace dveri1.Models
 {
     public class CreateVhMod
     {
+      
+
         public int? ID { get; set; }
         [Required(ErrorMessage ="Введите название товара")]
         [Display(Name = "Название")]
@@ -17,8 +21,15 @@ namespace dveri1.Models
         public string Proizvoditel { get; set; }
         [Display(Name = "Страна производитель")]
         public string StranaProizv { get; set; }
-        [Display(Name = "Цвет")]
-        public string Cvet { get; set; }
+
+       
+        public int? Cvet { get; set; }
+
+        //для выпадающего списка цветов
+        [Display(Name = "Выберите цвет:")]
+        public IEnumerable<SelectListItem> SpisokColors { get; set; }
+
+
         [Display(Name = "Наполнитель")]
         public string Napolnitel { get; set; }
         [Display(Name = "Уплотнитель")]
@@ -59,6 +70,7 @@ namespace dveri1.Models
         public string DescriptionVhDv { get; set; }
 
 
+       
 
         public IEnumerable<FotoVhodnyhDverey> FotoVhDvList { get; set; } 
         public string ImageMimeType{ get; set; }

@@ -6,7 +6,8 @@
     <hr class="razdTov">
    
        @*//для страницы главная*@
-                     @Html.ActionLink("Главная", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "homebreadcrumbs" })
+                     @*@Html.ActionLink("Главная", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "homebreadcrumbs" })*@
+    <a class="homebreadcrumbs" href="/VhodnyeDveri/MetallicheskieVhodnyeDveri"> <span class="glyphicon glyphicon-home"></span></a>
       @*другие главные разделы сайта*@
         @if (Model.NamePartSite != null)
         {
@@ -33,7 +34,7 @@
             }
             if (Model.NamePartSite == "Входные двери")
             {
-                 @Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri")
+                 @Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri")
             }
             if (Model.NamePartSite == "Установка")
             {
@@ -52,7 +53,7 @@
         @if (Model.NameCategory != null)
         {
 
-             @Html.ActionLink(Model.NameCategory, "VhodnyeDveriIndex", "VhodnyeDveri", new { brand = Model.NameCategory }, null)
+             @Html.ActionLink(Model.NameCategory, "MetallicheskieVhodnyeDveri", "VhodnyeDveri", new { firma = Model.NameCategory }, null)
             if (Model.NameProduct != null)
             {
                 <a>@Model.NameProduct</a>

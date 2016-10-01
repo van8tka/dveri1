@@ -27,7 +27,7 @@ namespace DALdv1
         public string Material { get; set; }
         public string Pokrytie { get; set; }
         public string Karkas { get; set; }
-        public string Cvet { get; set; }
+        public Nullable<int> IdColor { get; set; }
         public string TypDveri { get; set; }
         public string VnytrenneeNapolnenie { get; set; }
         public Nullable<decimal> Cena { get; set; }
@@ -39,6 +39,7 @@ namespace DALdv1
     
         public virtual ICollection<CommentMkDv> CommentMkDvs { get; set; }
         public virtual ICollection<FotoMegkomnDverey> FotoMegkomnDvereys { get; set; }
+        public virtual TableColor TableColor { get; set; }
         public virtual SeoMkDverei SeoMkDverei { get; set; }
     }
 }

@@ -130,6 +130,9 @@
     <Compile Include="TableArticlesMk.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TableColor.cs">
+      <DependentUpon>Dveri1Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TableSeoArticle.cs">
       <DependentUpon>Dveri1Model.tt</DependentUpon>
     </Compile>

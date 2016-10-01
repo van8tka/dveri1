@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using DALdv1;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace dveri1.Models
 {
@@ -18,8 +19,13 @@ namespace dveri1.Models
         public string Proizvoditel { get; set; }
         [Display(Name = "Страна производитель")]
         public string StranaProizv { get; set; }
-        [Display(Name = "Цвет")]
-        public string Cvet { get; set; }
+       
+
+        public int? Cvet { get; set; }
+        //для выпадающего списка цветов
+        [Display(Name = "Выберите цвет:")]
+        public IEnumerable<SelectListItem> SpisokColors { get; set; }
+
         [Required(ErrorMessage = "Введите название материала товара")]
         [Display(Name = "Материал")]
         public string Material { get; set; }

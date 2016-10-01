@@ -19,7 +19,7 @@
     }
     else
     {
-        <table class="table_dark fs07e wid980">
+        <table class="table_dark">
             <tr>
                 <th class="tac">Номер</th>
                 <th class="tac">Дата</th>
@@ -34,8 +34,8 @@
                     <td class="tac">@i.Date</td>
                       <td>@i.Name</td>
                     <td>@i.Headings</td>
-                    <td>@Html.ActionLink("Удалить", "DellArticle", "Articles", new { id = i.ID }, new { @class = "tablebut wid100 mb5"})
-                       @Html.ActionLink("Мета тэги", "CreateSeoArticle", "Articles", new { id = i.ID }, new { @class = "tablebut wid100"})
+                    <td>@Html.ActionLink("Удалить", "DellArticle", "Articles", new { id = i.ID }, new { @class = "tablebut mb5"})
+                       @Html.ActionLink("Мета тэги", "CreateSeoArticle", "Articles", new { id = i.ID }, new { @class = "tablebut"})
                     </td>
                 </tr>
             }

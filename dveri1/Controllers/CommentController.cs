@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DALdv1;
 using dveri1.Models;
 using dveri1.DopMethod;
 using Domain2;
-using dveri1.DopMethod;
 
 
 namespace dveri1.Controllers

@@ -24,7 +24,7 @@ namespace DALdv1
         public string Nazvanie { get; set; }
         public string Proizvoditel { get; set; }
         public string Strana { get; set; }
-        public string Cvet { get; set; }
+        public Nullable<int> IdColor { get; set; }
         public string Napolnitel { get; set; }
         public string Yplotnitel { get; set; }
         public Nullable<double> TolschinaMetalla { get; set; }
@@ -43,5 +43,6 @@ namespace DALdv1
         public virtual ICollection<CommentVhDveri> CommentVhDveris { get; set; }
         public virtual ICollection<FotoVhodnyhDverey> FotoVhodnyhDvereys { get; set; }
         public virtual SeoVhodnuhDverei SeoVhodnuhDverei { get; set; }
+        public virtual TableColor TableColor { get; set; }
     }
 }

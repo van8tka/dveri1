@@ -47,6 +47,7 @@ namespace DALdv1
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TableArticle> TableArticles { get; set; }
         public virtual DbSet<TableArticlesMk> TableArticlesMks { get; set; }
+        public virtual DbSet<TableColor> TableColors { get; set; }
         public virtual DbSet<TableSeoArticle> TableSeoArticles { get; set; }
         public virtual DbSet<TableSeoArticlesMk> TableSeoArticlesMks { get; set; }
         public virtual DbSet<TableWorkingEmail> TableWorkingEmails { get; set; }

@@ -31,6 +31,7 @@ namespace dveri1.Infrastructure
             kernel.Bind<ISeoMainRepository>().To<EfSeoMainRepository>();
             kernel.Bind<IArticlesRepository>().To<EfArticlesRepository>();
             kernel.Bind<IMegkomnatnyeDvRepository>().To<EfMegkomnatnyeDvRepository>();
+            kernel.Bind<IColorsRepository>().To<EfColorsRepository>();
         }
 
         public object GetService(Type serviceType)

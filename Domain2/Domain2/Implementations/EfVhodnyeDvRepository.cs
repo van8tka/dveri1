@@ -32,7 +32,7 @@ namespace Domain2.Implementations
             }
         }
 
-        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, double? tmet, string furn, string petli, string osn, string ovn, double? tdpol, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar)
+        public void CreateVhodnyeDv(int id, string naz, string pr, string strpr, int? cvet, string napoln, string yplotnit, double? tmet, string furn, string petli, string osn, string ovn, double? tdpol, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar)
         {
             if (id == 0)
             {
@@ -42,7 +42,7 @@ namespace Domain2.Implementations
                     Nazvanie = naz,
                     Proizvoditel = pr,
                     Strana = strpr,
-                    Cvet = cvet,
+                    IdColor = cvet,
                     Napolnitel = napoln,
                     Yplotnitel = yplotnit,
                     TolschinaMetalla = tmet,
@@ -67,7 +67,7 @@ namespace Domain2.Implementations
                 vd.Nazvanie = naz;
                 vd.Proizvoditel = pr;
                 vd.Strana = strpr;
-                vd.Cvet = cvet;
+                vd.IdColor = cvet;
                 vd.Napolnitel = napoln;
                 vd.Yplotnitel = yplotnit;
                 vd.TolschinaMetalla = tmet;

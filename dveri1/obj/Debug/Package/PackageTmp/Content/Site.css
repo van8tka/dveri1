@@ -1,16 +1,21 @@
-﻿body {
-  background-image: url('fon.jpg');
+﻿/*||входные двери*/
+
+body {
  width:100%;
   margin: 0 auto;
 }
+.Fon{
+    position:fixed;
+    background-image: linear-gradient(to bottom,#CFCFCF, white);
+    width:100%;
+    height:100%;
+    top:-10px;
+    z-index:-5;
+}
 
 div.body{
-    /*width:92%;*/
-    width:1200px;
-    /*min-width:1200px;*/
-     /*padding-left: 40px;
-    padding-right: 40px;*/
-    min-height:500px; 
+   width:1200px;
+   min-height:500px; 
     margin: 0 auto;
 }
 div.head{
@@ -23,7 +28,7 @@ div.head{
     white-space: normal;
 }
 
-div.pager{text-align:center; border-top:2px solid silver; padding: .5em 0 0 0; margin-top:1em; margin-bottom:1em}
+div.pager{text-align:center; border-top:2px solid silver; padding: .5em 0 0 0; margin-top:1em; margin-bottom:1em; display:inline-block;width:100%;}
 div.pager a {font-size: 1.1em; color: #666; text-decoration:none; padding:0 .4em 0 .4em; font:bold 1em "Arial NArrow", "Franklin Gothic Medium", Arial;}
 div.pager a:hover {background-color:silver;}
 div.pager a.selected {background-color:#353535; color: white;}
@@ -37,6 +42,7 @@ select
 }
  
 
+
 a {
     color:blue;
     text-decoration:none;
@@ -47,31 +53,115 @@ a:hover
 }
 
 div{
-    color:blue;
+    color:#4F4F4F;
+    /*color:blue;*/
 }
 div.chLine div:hover{
     background-color:gray;
 }
 div.productlist{
     height:initial;
-    padding-bottom:60px;
-    width:1200px;
-    display:inline-block;
-     
+    padding-bottom:100px;
+    width:950px;
+    display:block;
+    float:right;   
 }
-div.leftMainMenu{
+    div.leftMainMenu {
+        width: 230px;
+        height: auto;
+        float: left;
+        padding: 10px 0 20px 10px;
+    }
+
   
-     width:230px;
-     height:auto;
-     float:left;
-     padding:10px 0 20px 10px;
- }
-/*по товару*/
-div.allspisok{
-    float:right;
-    height:initial;
-    width:960px;
+
+
+.MenuFilter
+{
+    width:inherit;
+    height:auto;
+    /*margin-top:-5px;*/
+    padding-left:5px;
+    background-image: linear-gradient(to left,darkgray, #2F4F4F);
+    /*margin-left: -10px;*/
+    margin:-5px 0 20px -10px;
 }
+.MenuFilter ul{
+    list-style: none;
+}
+.wrfirma{
+    color: white;
+    display: block;
+    font-size: 1em;
+    padding: 3px;
+}
+.unactive ul{
+    display:none;
+}
+
+.ddclfirma{
+   background-color: white;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    display: block;
+    font-size: 1.0em;
+    margin-left: -9px;
+    padding: 10px 0;
+    width: 106%;    
+}
+
+
+.wrfirma span{
+  color:black; 
+  margin-left:10px;
+}
+.iconleft{
+    font-size:1.2em;
+    font-weight:900;
+    display:block;
+    font-style:oblique;
+    width:10px;
+    float:left;
+}
+
+.ulfirma{
+    color:green;
+}
+.ulfirma li{
+    color:white;
+
+}
+.ulfirma li input{
+    color:black;
+    cursor:pointer;
+}
+
+.filtrspan{
+    color:black;
+     font-size: 1.1em;
+}
+
+.butfiltr{
+    display:block;
+    padding:5px;
+    background-color:green;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+    font-size:1.0em;
+    cursor:pointer;
+}
+
+.butfiltr:hover {
+    border: 2px solid darkgray;
+    background-color:#0F640F;
+    color:gray;
+}
+
+
+
+
 /*//на каждый товар в списке*/
  div.shortproduct{
     display:block;
@@ -154,14 +244,12 @@ div.shortChar p{
  }
 
  a.leftMenuButton{
-      /*background-color:#4682B4;*/
-      background:url(images/fm_hover_bg.jpg) repeat-x;
-     display:block;
-     width:200px;
+      background-color:	#000080;
+      display:block;
+      width:94%;
      height:21px;
-     border-radius:18px;
-     color:#D3D3D3;
-     font-size:11px;
+    font-size:11px;
+     color:	#FFFFF0;
      text-transform:uppercase;
      text-align:center;
      padding:8px 0 5px 0;
@@ -169,15 +257,14 @@ div.shortChar p{
     margin-bottom:2px;
  }
  a.leftMenuButton:hover{
-     background:url(images/fm_active_bg.jpg) repeat-x;
-      color:white;
-      opacity:1;
-      transition: .5s linear;
+  background-color:#0082B4;
+  opacity:1;
+  transition: .5s linear;
   background-position: -200% 0, 0 0;
  }
 
   a.act{      
-      background:url(images/fm_hover2_bg.jpg) repeat-x;
+      background-color:	black;
       color:white;
       opacity:1;
  }
@@ -257,7 +344,7 @@ color:white;
  float:right;
  padding:5px;
  position:absolute;
- margin-left:350px;
+ margin-left:250px;
  margin-top:2px;
 
  }
@@ -313,14 +400,13 @@ div.brand{
    font-size:1.0em;
     display:inline-block;
 }
-div.timeworktop{
+/*div.timeworktop{
       margin-left:65px;
       min-width:280px;
-   }
+   }*/
 div.contacts{
-      margin-left:40px;
-      min-width:330px;
-   }
+      width:200px;
+     }
 div.content-body{
     margin-top:-28px; 
     height:auto;
@@ -332,7 +418,7 @@ div.navigationfixedtop {
     width:inherit;
     display: block;
     height:170px;
-    background-image: url('fon.jpg');  
+    /*background-image: url('fon.jpg');*/  
     z-index:10;
 }
 div.navigation-menu{
@@ -519,159 +605,6 @@ div.socseti a{
 						padding:0 20px;		
 					}
 
-/*===========================================слайдер======================================================*/
- /**{        
-        padding:0;
-        margin:0;
-        list-style-type:none;
-      }*/
-#slider {
-    background: url('ControlSlider/background.png');
-   width:inherit;
-    min-width: 1200px;
-    height: 200px;
-    /*margin: 50px auto;*/
-    position: relative;
-     margin-top:10px;
-}
-
- #mask{
-      width:inherit;
-    min-width: 1200px;
-        /*width:100%;*/
-        height:100%;
-        position:absolute;
-        overflow:hidden;
-      }
-      .fleche{
-        position:absolute;
-        top:145px;
-        cursor:pointer;
-      }
-      #fleche_gauche{
-        /*left:-17px;*/
-        left:-1px;
-      }
-      #fleche_droite{
-        /*right: -17px;*/
-         right: -1px;
-      }
-      #image_container{
-        position:absolute;
-        width:800%;
-        height:100%;
-        /* La transition sur tout les navigateurs */
-           /* Chrome */ 
-          -webkit-transition-property:all;
-          -webkit-transition-duration:1s;
-
-           /* Firefox */ 
-          -moz-transition-property:all;
-          -moz-transition-duration:1s;
-          
-           /* Opera */ 
-          transition-property:all;
-          transition-duration:1s;
-
-      }
-      
-      /* Les diffГ©rentes positions du slider */
-      .image1 #image_container{
-        left:0;
-      }
-      .image2 #image_container{
-        left:-102%;
-      }
-      .image3 #image_container{
-        left:-202%;
-      }
-      .image4 #image_container{
-        left:-300%;
-      }
-       .image5 #image_container{
-        left:-400%;
-      }
-         .image6 #image_container{
-        left:-500%;
-      }
-           .image7 #image_container{
-        left:-600%;
-      }
-             .image8 #image_container{
-        left:-700%;
-      }
-
-    
-      
-      /* Les images */
-      #image_container li{
-        float:left;
-      }
-                       
-      /* L'encart Bleu */
-#encart {
-    position: absolute;
-    top: 170px;
-      /*background: url('ControlSlider/text.png');*/
-        width: inherit;
-   min-width:1200px;
-     
-    height: 20px;
-}
- 
-  #featured {
-            width: 270px;
-            height: 450px;
-            /*background: #009cff url('orbit/loading.gif') no-repeat center center;*/
-            overflow: hidden;
-        }
-
-      #bouton{
-        position:relative;
-        width:244px;
-        height:55px;
-        margin: 390px 0px 0px 40px;
-        cursor:pointer;
-      }
-      
-      /* Les points de navigation */
-      #dots{
-        width:130px;
-        margin:auto;
-      }
-      
-      /* les points, avec leur background non selectionnГ© */
-        #dots li {
-            float: left;
-            margin: 0px 2px;
-            background: url('ControlSlider/empty-dot.png');
-            width: 12px;
-            height: 12px;
-            cursor: pointer;
-        }
-      /* Point au survol */
-        #dots li:hover {
-            background: url('ControlSlider/selected-dot.png');
-        }
-      
-      /* Point "selectionnГ©". De la mГЄme maniГЁre que l'image, on change en fonction de la classe de slider */
-.image1 #dots li.button-1, .image2 #dots li.button-2, .image3 #dots li.button-3, .image4 #dots li.button-4, .image5 #dots li.button-5, .image6 #dots li.button-6, .image7 #dots li.button-7, .image8 #dots li.button-8, .image9 #dots li.button-9 {
-  
-    background: url('ControlSlider/selected-dot.png');
-}
-
-      /* Un eyecandy */
-      #glass{
-        position:absolute;
-        top:0px;
-        left:0px;
-      }
-
-.emtypage
-{
-    height:100px;
-}
-
 
       /*===================================кнопка дозагрузки страницы=========================================*/
 .showadd {
@@ -811,21 +744,31 @@ cursor:pointer;
 
 
 .buttonsort{
- margin: 0;
- padding: 0;
+ margin-left: 10px;
+ padding: 8px 10px 14px 10px;
  list-style: none;
+ width:97%;
+ height:20px;
+ background-image:linear-gradient(to left, #9C9C9C,#CFCFCF)
  }
- 
+ .spsort{
+     color:	#363636;
+     font-size:1.0em;
+     font-weight:700;
+     margin-right:30px;
+     padding-top:2px;
+ }
+
 .buttonsort a.upsort{
-  padding: 5px 10px;
+  padding: 5px 20px;
  font-size:small;
  float: left;
  text-decoration: none;
  color: #444;
  position: relative;
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
- background-color: 		#00BFFF;
- background-image: linear-gradient(to bottom,#E0FFFF,#00BFFF);
+ /*background-color: 	white;*/
+ background-image: linear-gradient(to bottom,#E0FFFF,#9C9C9C);
  border-right:none;
    box-shadow:
    inset 0 1px rgba(101,114,126,1),
@@ -840,15 +783,15 @@ cursor:pointer;
 
 /*другая кнопка*/
 .buttonsort a.downsort{
- padding: 5px 15px;
+ padding: 5px 25px;
  font-size:small;
  float: left;
  text-decoration: none;
  color: #444;
  position: relative;
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
- background-color: 	#00BFFF;
- background-image: linear-gradient(to bottom,#E0FFFF, #00BFFF);
+
+  background-image: linear-gradient(to bottom,#E0FFFF,#9C9C9C);
    box-shadow:
    inset 0 1px rgba(101,114,126,1),
    inset 0 0 1px rgba(140,150,170,.8),
@@ -877,12 +820,14 @@ cursor:pointer;
 .table_dark {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 11px;
-  width: 640px;
+  width: 100%;
   text-align: left;
   /*border-collapse: collapse;*/
   /*background: #252F48;*/
   margin: 10px;
   color:black;
+  margin-left:auto;
+  margin-right:auto;
 }
 .table_dark th {
   color: #EDB749;  
@@ -908,18 +853,19 @@ cursor:pointer;
 }
 .table_dark a{
     display: block;
-   }
+    width:90%;
+  }
 
 
  a.tablebut {
-    background: lightgreen none repeat scroll 0 0;
-    border-radius: 3px;
-    box-shadow: 0px 2px 2px 1px black;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 10px;
-    text-align: center;
-    margin:2px;
+  display: inline-block;
+  padding: 5px 10px;
+  background:lightgreen;
+  box-shadow: 2px 2px 0 0 black;
+  position: relative;
+  text-align:center;
+  cursor: pointer;
+  border-radius: 3px; 
 }
  a.tablebut:hover {
        background:green;
@@ -928,17 +874,7 @@ cursor:pointer;
   left: 2px;
 }
 
- a.tablebutAct{
-     background:green;
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 10px;
-    text-align: center;
-    margin:2px;
-  color:darkblue;
-    text-decoration-color:none;
- }
+
 
 
  /*================================= info and errors =====================================*/
@@ -1070,7 +1006,6 @@ label {
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -1199,7 +1134,7 @@ div.alertmessage{
 /*======================================карточка товара===============================================================================*/
 div.cartochkatovara{
     display:inline-block;
-    width:100%;
+    width:100%;   
   }
 h1.nametovar{
     float:left;
@@ -1207,16 +1142,18 @@ h1.nametovar{
     width:98%;
     font-size:x-large;
     text-shadow: 0 1px 0 black;
+     color:gray;
     }
 div.ferstsect{
     display:inline-block;
     width:100%;
-    min-height:650px;
+    min-height:450px;
 }
 
 div.sectionabout{
        text-align:center;
-     }
+     
+}
 div.opisanie{
     text-align:justify;
     color:black;
@@ -1230,11 +1167,29 @@ div.opisanie:first-line{
 }
 
 div.sectionfoto{
-    width:45%;
+    width:35%;
     display:inline-block;
     float:left;
-    height:565px;
+    height:440px;
+    margin-left:75px;
 }
+
+div.charakteritics{
+    color:darkgray;
+    display:block;
+    height:auto;
+    width:85%;
+    margin-top:40px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.labelchar{
+    width:100%;
+    text-align:center;
+    color:darkgrey;
+    font-size:2.4em;
+}
+
 
 div.blocktabov{
     display:block;
@@ -1246,27 +1201,27 @@ div #sliderVert {
     display: inline-block;
     margin: 10px;
     width:80px;
-}
+   }
 div.sectionhartk{
     width:55%;
     height:100%;
     float:left;
 }
 img.spisFoto{   
-    width:49px;
-    height:84px;
-    margin-bottom:10px;  
+    width:45px;
+    height:74px;
+    margin-bottom:5px;  
   }
 img.spisFoto:hover{
     border: 3px solid orange; 
     position:relative;
     z-index:4;
-    height:78px;  
+    height:69px;  
     border-radius:5px;  
 }
    ul.sliderVertUl {  
     padding: 15px; /* Отступ слева в браузере Firefox, Safari, Chrome */
-    margin-top:15px;
+    margin-top:-7px;
      }
   ul.sliderVertUl li {
     list-style-type: none; /* Убираем маркеры */
@@ -1278,13 +1233,14 @@ img.spisFoto:hover{
   }
   img.MainFoto{
       margin-left:30px;
-      width:300px;
-      height:520px;
+      width:230px;
+      height:420px;
   }
-    img.MainFotoDef{
+
+   img.MainFotoDef{
       margin-left:140px;
-      width:300px;
-      height:520px;
+      width:230px;
+      height:420px;
    }
   span.pr{
       width:100px;
@@ -1295,11 +1251,48 @@ img.spisFoto:hover{
   }
   
   div.blhar{
-      margin:3px;
+     background-image : linear-gradient(to right,#E8E8E8,#CFCFCF);
+    margin: 5px 0;
+   height:30px;
+   font-size:1.1em;
+    width: 100%;
   }
+
+  .namechart{
+      float:left;
+      width:40%;
+      display:block;
+      margin-left:20px;
+      height:100%;
+      padding-top:2px;
+        color:#4F4F4F;
+  } 
+    .itemchart{
+        float:left;
+        width:55%;
+        display:block;
+        height:100%;
+        padding-top:2px;
+        margin-left:20px;
+    }          
+    .dopchar{
+     background-image : linear-gradient(to right,#E8E8E8,#CFCFCF);
+    margin: 5px 0;
+   height:auto;;
+   font-size:1.1em;
+    width: 98%;
+     color:#4F4F4F;
+     padding:2px 0 5px 20px;
+    }
+
+
+
   /*===========================================делаем tab (вкладки на css)==============================================*/
 #raz{
     margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    width:85%;
 }
 #raz > div { 
   background-color:#fff;
@@ -1313,7 +1306,16 @@ img.spisFoto:hover{
 #raz #tab4:target ~ a:nth-of-type(1),
 #raz > div { padding: 5px; border: 1px solid #aaa; }
 
-#raz > a { line-height: 28px; background: #E6E6FA; text-decoration: none; width:23%;display:inline-block;margin-bottom:-2px;}
+#raz > a { 
+       line-height: 28px;
+       background: #E6E6FA;
+       text-decoration: none;
+       width:23%;
+       display:inline-block;
+       margin-bottom:-2px;
+       color:	#4F4F4F;
+       font-weight:900;
+}
 
 #tab2,
 #tab3,
@@ -1345,12 +1347,25 @@ img.spisFoto:hover{
 
 /*========================================================================= хлебные крошки =====================================================/**/
 
- .breadcrumbs{
- margin: 0;
- padding: 0;
- list-style: none;
+ /*.breadcrumbs{
+    display: inline-block;
+    float: right;
+    font-size: 0.7em;
+    list-style: outside none none;
+    margin: 10px 0 0;
+    padding: 0;
+    width: 80%;
+ }*/
+ 
+  .breadcrumbs{
+ display: block;
+    font-size: 0.8em;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
  }
  
+
 
 .breadcrumbs a{
  padding: .5em 1em .5em 2em;
@@ -1361,6 +1376,7 @@ img.spisFoto:hover{
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
  background-color: #ddd;
  background-image: linear-gradient(to right, #f5f5f5, #ddd);
+ font-weight: 900;
  }
 
  
@@ -1374,10 +1390,10 @@ img.spisFoto:hover{
  position: absolute;
  top: 50%;
  margin-top: -1.4em;
- border-top: 1.4em solid transparent;
+ border-top: 1.5em solid transparent;
  border-bottom: 1.4em solid transparent;
- border-left: 1em solid;
- right: -1em;
+ border-left: 1.1em solid;
+ right: -1.1em;
  }
  
 .breadcrumbs a::after{
@@ -1387,7 +1403,7 @@ img.spisFoto:hover{
  
 .breadcrumbs a::before{
  border-left-color: #ccc;
- right: -1.1em;
+ right: -1.2em;
  z-index: 1;
  }
  
@@ -1400,8 +1416,9 @@ div.breadcrumbsonpage{
 
   /*===========кнопка быстрая покупка двери===============*/
   div.boxbutton{
-       text-align:center;
-      padding:5px;
+    width:220px;
+    text-align:center;
+    padding:5px;
   }
  a.butcall {
   position: relative;
@@ -1442,6 +1459,7 @@ div.breadcrumbsonpage{
       50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
     }
 
+/*==================кнопка купить======================*/
 /*==================кнопка купить======================*/
  .butbyu {
   position: relative;
@@ -1522,6 +1540,22 @@ div.breadcrumbsonpage{
 }
 
 /*модальное окно*/
+#modal_form_writeus{
+	width: 600px; 
+	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
+	border-radius: 5px;
+	border: 3px #000 solid;
+	background: #fff;
+	position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+	top: 45%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+	left: 50%; /* пoлoвинa экрaнa слевa */
+	margin-top: -300px;
+	margin-left: -200px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+	display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+	opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+	z-index: 12; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+	padding: 30px 10px;
+}
 
 #modal_form_fastbuy{
 	width: 600px; 
@@ -1540,7 +1574,7 @@ div.breadcrumbsonpage{
 	padding: 30px 10px;
 }
 
-#modal_form {
+#modal_form{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border-radius: 5px;
@@ -1572,8 +1606,11 @@ div.breadcrumbsonpage{
 #modal_close:hover {
       background-color: #FF4500;
 }
+#modal_closeL:hover {
+      background-color: #FF4500;
+}
 /* Пoдлoжкa */
-#overlay {
+#overlay{
 	z-index:9; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
 	position:fixed; /* всегдa перекрывaет весь сaйт */
 	background-color:#000; /* чернaя */
@@ -1628,75 +1665,25 @@ div.breadcrumbsonpage{
 }
 /*заказать звонок*/
   .butcallmain { 
-     width: 140px; 
-     height: 60px; 
-     line-height: 30px; 
-     color: white; 
-     text-decoration: none; 
-     font-size: 14px; 
-     font-family: helvetica, arial; 
-     font-weight: bold; 
-     display: block; 
-     text-align: center; 
-     position: fixed; 
-     z-index:4;
-     top:10px;
-     right:20px;  
-     /* BACKGROUND GRADIENTS */
-     background: #014464; 
-     background: -moz-linear-gradient(top, #0D658E, #0C577A 50%, #014D71 51%, #003E5C); 
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0E658E), color-stop(.5, #0C577A), color-stop(.5, #014D71), to(#003E5C));  
-  
-     /* BORDER RADIUS */
-     -moz-border-radius: 10px; 
-     -webkit-border-radius: 10px; 
-     border-radius: 10px; 
-  
-     border: 1px solid #368DBE; 
-     border-top: 1px solid #c3d6df; 
-  
-     /* TEXT SHADOW */
-  
-     text-shadow: 1px 1px 1px black; 
-  
-     /* BOX SHADOW */
-     -moz-box-shadow: 0 1px 3px black; 
-     -webkit-box-shadow: 0 1px 3px black; 
-     box-shadow: 0 1px 3px black; 
-         -webkit-animation: pulsate 1.2s linear infinite;
-  animation: pulsate 1.2s linear infinite;
+    color:black;
+    font-size:1.1em;
     } 
+     .butcallmain:hover { 
+                  color:#2F4F4F;
+          } 
+   .butwritemain { 
+    color:black;
+    font-size:1.1em;
+    } 
+     .butwritemain:hover { 
+               color:#2F4F4F;
+          } 
   
-    /* WHILE HOVERED */
-    .butcallmain:hover { 
-        background: #014464; 
-        background: -moz-linear-gradient(top, #0c5f85, #0b5273 50%, #024869 51%, #003853); 
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0c5f85), color-stop(.5, #0b5273), color-stop(.51, #024869), to(#003853)); 
-    } 
-  
-    /* WHILE BEING CLICKED */
-    .butcallmain:active { 
-        -moz-box-shadow: 0 2px 6px black; 
-        -webkit-box-shadow: 0 2px 6px black; 
-    } 
-    /* FONT GLYPH (MOSTLY FOR FUN) */
-    .butcallmain:before {
-        content:url('glyphicons-443-earphone.png');
-        color: #09232F;
-        font-size: 20px;
-        float: left;
-        margin-top:10px;
-        margin-left: 8px;
-        margin-right: 1px;
-        text-shadow: 0 1px 0 #4190AF;
-    } 
     /*//доставка и оплата*/
     div.dostavka{
-          font-size:large;      
-          padding:20px;
-          margin-bottom:10px;
-          height:353px;
-          overflow-y: scroll;
+         font-size: large;
+    height: 100%;
+    margin-bottom: 10px;
     }
     div.oplata{
         font-size:large;
@@ -1708,15 +1695,15 @@ div.breadcrumbsonpage{
      div.dostavkamain{
         font-size:large;
         background-color:white;
-        padding:40px;
-        height:auto;
+        padding:20px;
+          margin-bottom:10px;
+          height:auto;
     }
     div.oplatamain{
         font-size:large;
-        background-color:#F0FFF0;
-        padding:40px;
+        background-color:	#FfFFFF;
+        padding:20px;
         height:auto;
-        margin-bottom:-40px;
     }
 
 
@@ -1828,20 +1815,19 @@ div.bootharticles{
      margin-left:-10px;
      display:block;
      padding:5px;
-     text-align:justify
+     text-align:justify;
+     background-image: linear-gradient(to bottom, lightgray,gray);
+     opacity:0.7;
+         
 }
 div.bootharticles a{
    text-decoration:none;
+   color:#363636;
 }
-
-
-
 div.bootharticles:hover{
-    border: 1px solid gray;
-    border-radius: 3px;
-    box-shadow: 1px 3px 6px black;
-    color:black !important;
+    color:black;
     cursor:pointer;
+    opacity:1;
 }
 div.article2{
      display:block;
@@ -1854,6 +1840,7 @@ div.article2 a{
 .article2 .artmain:hover, .entren:hover{   
     color:black;
    }
+
 /*добавленные классы VhDvind MkDv*/
 img.slMain{
      width:1211px; height:190px;margin-left:-15px;margin-top:-5px;
@@ -1929,9 +1916,6 @@ ul.footermenu{
 .wid450{
     width:450px;
 }
-.wid990{
-    width:990px;
-}
 .hei40{
     height:40px;
 }
@@ -1945,7 +1929,7 @@ hr.razdTov{
     float: left;height: 3px; width: 100%;
 }
 span.OpisDoor{
-    color:black;font-size:x-large; font-weight:700;
+    color:	#4F4F4F;font-size:x-large; font-weight:700;
 }
 .hei3{
     height:3px;
@@ -1957,16 +1941,17 @@ div.headKarus{
    text-align:center;font-size:1.4em;color:darkblue;opacity:0.9;
 }
 .CenaGreen{
-  color:green; font-size:small;
+    /*//был green стал orange*/
+  color:	#FF8C00; font-size:small;
 }
 .CenaBlack{
   color:black; font-size:small;
 }
 .CenaGreenMed{
-  color:green; font-size:medium;
+  color:	#FF8C00; font-size:medium;
 }
 .CenaGreenL{
-  color:green; font-size:large;
+  color:	#FF8C00; font-size:large;
 }
 .CenaBlackL{
   color:black; font-size:large;
@@ -1974,34 +1959,47 @@ div.headKarus{
 .CenaBlackMed{
   color:black; font-size:medium;
 }
-/*заголовок для всех страниц*/
+
 div.headPageProduct{
-   text-align:center;font-size:0.8em;
-   text-shadow: 0.1em 0.07em black;
+   text-align:center;
+   font-size:0.8em;
+   text-shadow: 0.05em 0.07em lightblue;
+   	color:#363636;
 }
 div.shOpisTov{
     width:100%;height:86px;overflow:hidden;
 }
 .redCena{
-  color:red; font-size:x-large; font-weight:800;
+  color:#FF8C00; font-size:x-large; font-weight:800;
 }
 .grayFont{
     color:gray;
-}
-.blackFont{
-    color:black;
 }
 .skidkaOrange{
    color:white;background-color:orangered;
 }
 div.hTimeWork{
-    width:auto;font-style:italic;
+     text-decoration:underline;
+     color:black;
+    float:right;
+    font-size:1.0em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:600;
 }
 div.elTimeWork{
-    display:block;width:60%;
+   
+    display:block;
+    color:#363636;
+     float:right;
+   }
+span.tw{
+    color:#FF8C00;
+    font-weight:800;
+    font-size:1.0em;
 }
+
 div.elContact{
-    display:block;width:70%;
+    display:block;width:98%;height:25px;
 }
 img.iUser{
     width:48px;height:48px;
@@ -2019,9 +2017,6 @@ img.iUser{
 .fs-sm{
      font-size:small;
 }
-.fs-lg{
-     font-size:large;
-}
 .db{
     display:block;
 }
@@ -2032,11 +2027,23 @@ div.ArtOneHeader{
     text-align:justify;font-style:oblique;font-size:medium;
 }
 div.ArtOneFon{
-    background-color:white;
     color:black;
     padding:30px;
     margin-bottom: -40px;
 }
+/*новинки и изменения от 08.09.2016/**/
+span.phoneCode {  font-size: 1.1em;    margin-right: 8px;    color: black;    float: left; }
+span.phoneNum {    font-size: 1.4em;    margin-right: 8px;    color: black;    float: left;    margin-top: -2px; }
+
+div.MainSlider{
+    width:940px;
+    height:240px;
+    float:right;
+    display:block;
+    margin-bottom:50px;
+}
+
+
 /*отсюда только в главном сайте VhDv*/
 .ml245{
     margin-left:245px;
@@ -2099,7 +2106,7 @@ background-color:#00FF7F;
     margin:20px;
 }
 img.slimg{
-   width:1000px; height:200px;
+   width:940px; height:250px;
 }
 .wid170{
     width:170px;
@@ -2150,4 +2157,117 @@ a.wid70{
     width:880px;
 }
 
+/*новинки и изменения от 08.09.2016/**/
+span.phoneCode {  font-size: 1.1em;    margin-right: 8px;    color: black;    float: left; }
+span.phoneNum {    font-size: 1.4em;    margin-right: 8px;    color: black;    float: left;    margin-top: -2px; }
 
+div.MainSlider{
+    width:940px;
+    height:240px;
+    float:right;
+    display:block;
+    margin-bottom:50px;
+}
+
+div.MainBredcrumbs{
+    display: block;
+    float: right;
+    list-style: outside none none;
+    padding: 0;
+    width:940px;
+  }
+/*adminka*/
+a.tablebutAct{
+   background: green none repeat scroll 0 0;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+  color:darkblue;
+}
+div#idbuy, #fastbuy, #idWrite{
+    margin-left:auto;
+    margin-right:auto;
+    width:580px;
+}
+
+/*//для применения иконок из бутстрап*/ 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+ src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-shopping-cart:before {
+  content: "\e116";
+}
+
+.glyphicon-home:before {
+  content: "\e021";
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+
+
+.butbyu2 {
+    position: relative;
+    display: inline-block;
+    font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: rgb(245,245,245);
+    text-shadow: 0 -1px rgba(0,0,0,.1);
+    text-decoration: none;
+    user-select: none;
+    padding: .3em 1em;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: #008B45 linear-gradient(#eee9e9, #00EE00);
+   
+    box-shadow: inset #008B45 0 -1px 1px, inset 0 1px 1px #00FF7F, #00EE00 0 0 0 1px, rgba(0,0,0,.3) 0 2px 5px;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
+    width: 180px;
+}
+.buttbyu2:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  cursor: pointer;
+  box-shadow: inset #008B45 0 -2px 2px, inset 0 2px 2px #00FF7F,  #00EE00 0 0 0 2px, rgba(0,0,0,.3) 0 2px 5px;
+  color: darkgray;
+}
+.butbyu2:active {
+  top: 1px;
+  color: #fff;
+  text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.3), 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+@-webkit-keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+@keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}

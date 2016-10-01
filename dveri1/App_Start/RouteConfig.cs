@@ -14,18 +14,12 @@ namespace dveri1
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            routes.MapRoute(
-             name: "PageSizeAllRoute",
-             url: "{controller}/{action}/{brand}/page{id}/sort{sort}/num{pagesize}/"
-             );
+            //routes.MapRoute(
+            // name: "PageSizeAllRoute",
+            // url: "{controller}/{action}/{page}/{pagesize}/{*catchccall}"
+            // );
 
-            routes.MapRoute(
-               name: "BrandAllRoute",
-               url: "{controller}/{action}/{brand}/page{id}/sort{sort}/"
-
-           );
-
-            //маршрут для определения товара и выдачи имени в URL и индекса товара(для сео)
+           //маршрут для определения товара и выдачи имени в URL и индекса товара(для сео)
             routes.MapRoute(
                 name: "TovArtRoute",
                 url: "{controller}/{action}/{tov}/num{id}/"
@@ -36,21 +30,16 @@ namespace dveri1
             url: "{controller}/{action}/{id}/"
             
        );
-            routes.MapRoute(
-           name: "OtherRoute2",
-           url: "{controller}/{action}/{page}/"
+      //      routes.MapRoute(
+      //     name: "OtherRoute2",
+      //     url: "{controller}/{action}/{page}/"
            
-      );
+      //);
 
-            routes.MapRoute(
-          name: "BrandRoute",
-          url: "{controller}/{action}/{brand}/"
-          );
-
-            routes.MapRoute(
+              routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/",
-                defaults: new { controller = "VhodnyeDveri", action = "VhodnyeDveriIndex"}
+                defaults: new { controller = "VhodnyeDveri", action = "MetallicheskieVhodnyeDveri" }
           );
             //устанавливаем url в нижний регистр
             routes.LowercaseUrls = true;

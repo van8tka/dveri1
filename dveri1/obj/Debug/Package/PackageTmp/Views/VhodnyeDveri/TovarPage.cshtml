@@ -43,18 +43,58 @@
            }
 </div>
         <div class="sectionhartk">
-            <h1 class="nametovar">@Model.Tovar.Nazvanie</h1>         
-            <hr class="razdTov">
-            <div class="blocktabov">
-                @Html.Partial("HarakteristikaTovara")
-            </div>
-       
+                
+            <div class="ml40 mt30">
+    <h1 class="nametovar">@Model.Tovar.Nazvanie</h1>  
+    <div class="mt20">
+        <span class="pr valtov">Артикул:</span>
+        <span class="valtov">@Model.Tovar.Id</span>
+    </div>
+    @*<br />*@
+    @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
+    {
+        <div>
+            @if (Model.Tovar.Cena == 0 || Model.Tovar.Cena == null)
+            {
+                <span class="valpr redCena" > Цену уточняйте у менеджера.</span>
+            }
+            else
+            {
+                <span class="pr valtov">Цена:</span>
+                <span class="valpr redCena"> @Model.Tovar.Cena.Value.ToString("C")</span><span class="grayFont"> /шт </span>
+            }
         </div>
+    }
+    else
+    {
+        <div>
+            <span class="pr valtov">Цена: </span>
+            <span class="valpr CenaBlackL"><strike> @Model.Tovar.Cena.Value.ToString("C")</strike></span><span class="grayFont"> /шт </span>
+        </div>
+        <div>
+            <span class="pr valtov">Цена со скидкой: </span>
+            <span class="valpr redCena">@Model.Tovar.CenaSoSkidcoy.Value.ToString("C")</span><span class="grayFont"> /шт </span>
+            <span class="skidkaOrange"> @Model.Tovar.Skidka% off </span>
+        </div>
+    }
+    <div class="boxbutton mt30">
+           <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="glyphicon glyphicon-shopping-cart"></span><span class="ml20">Купить</span> </a>
+    </div>
+  
 
+</div>
 
+        </div>
     </div>
 
 <div class="secondsect">
+    @Html.Partial("OpisanieTov")
+    <div class="blocktabov">
+        @Html.Partial("HarakteristikaTovara")
+    </div>
+
+
+
     @if (Model.Tovar.Opisanie == "" || Model.Tovar.Opisanie == null)
     {
     }

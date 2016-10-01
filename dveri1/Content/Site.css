@@ -1,8 +1,6 @@
-﻿/*||межкомнатные двери*/
+﻿/*||входные двери*/
 
 body {
-  /*background-image: url('fon.jpg');*/
-  /*background-image: linear-gradient(to top, #f5f5f5, #ddd);*/
  width:100%;
   margin: 0 auto;
 }
@@ -16,12 +14,8 @@ body {
 }
 
 div.body{
-    /*width:92%;*/
-    width:1200px;
-    /*min-width:1200px;*/
-     /*padding-left: 40px;
-    padding-right: 40px;*/
-    min-height:500px; 
+   width:1200px;
+   min-height:500px; 
     margin: 0 auto;
 }
 div.head{
@@ -59,7 +53,8 @@ a:hover
 }
 
 div{
-    color:blue;
+    color:#4F4F4F;
+    /*color:blue;*/
 }
 div.chLine div:hover{
     background-color:gray;
@@ -71,20 +66,102 @@ div.productlist{
     display:block;
     float:right;   
 }
-div.leftMainMenu{
+    div.leftMainMenu {
+        width: 230px;
+        height: auto;
+        float: left;
+        padding: 10px 0 20px 10px;
+    }
+
   
-     width:230px;
-     height:auto;
-     float:left;
-     padding:10px 0 20px 10px;
- }
-/*по товару*/
-/*div.allspisok{
-    float:right;
-    height:initial;
-    width:960px;
-    padding:0 20px 0 10px;
-}*/
+
+
+.MenuFilter
+{
+    width:inherit;
+    height:auto;
+    /*margin-top:-5px;*/
+    padding-left:5px;
+    background-image: linear-gradient(to left,darkgray, #2F4F4F);
+    /*margin-left: -10px;*/
+    margin:-5px 0 20px -10px;
+}
+.MenuFilter ul{
+    list-style: none;
+}
+.wrfirma{
+    color: white;
+    display: block;
+    font-size: 1em;
+    padding: 3px;
+}
+.unactive ul{
+    display:none;
+}
+
+.ddclfirma{
+   background-color: white;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    display: block;
+    font-size: 1.0em;
+    margin-left: -9px;
+    padding: 10px 0;
+    width: 106%;    
+}
+
+
+.wrfirma span{
+  color:black; 
+  margin-left:10px;
+}
+.iconleft{
+    font-size:1.2em;
+    font-weight:900;
+    display:block;
+    font-style:oblique;
+    width:10px;
+    float:left;
+}
+
+.ulfirma{
+    color:green;
+}
+.ulfirma li{
+    color:white;
+
+}
+.ulfirma li input{
+    color:black;
+    cursor:pointer;
+}
+
+.filtrspan{
+    color:black;
+     font-size: 1.1em;
+}
+
+.butfiltr{
+    display:block;
+    padding:5px;
+    background-color:green;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+    font-size:1.0em;
+    cursor:pointer;
+}
+
+.butfiltr:hover {
+    border: 2px solid darkgray;
+    background-color:#0F640F;
+    color:gray;
+}
+
+
+
+
 /*//на каждый товар в списке*/
  div.shortproduct{
     display:block;
@@ -267,7 +344,7 @@ color:white;
  float:right;
  padding:5px;
  position:absolute;
- margin-left:350px;
+ margin-left:250px;
  margin-top:2px;
 
  }
@@ -323,12 +400,12 @@ div.brand{
    font-size:1.0em;
     display:inline-block;
 }
-div.timeworktop{
+/*div.timeworktop{
       margin-left:65px;
       min-width:280px;
-   }
+   }*/
 div.contacts{
-        min-width:250px;
+      width:200px;
      }
 div.content-body{
     margin-top:-28px; 
@@ -667,21 +744,31 @@ cursor:pointer;
 
 
 .buttonsort{
- margin: 0;
- padding: 0;
+ margin-left: 10px;
+ padding: 8px 10px 14px 10px;
  list-style: none;
+ width:97%;
+ height:20px;
+ background-image:linear-gradient(to left, #9C9C9C,#CFCFCF)
  }
- 
+ .spsort{
+     color:	#363636;
+     font-size:1.0em;
+     font-weight:700;
+     margin-right:30px;
+     padding-top:2px;
+ }
+
 .buttonsort a.upsort{
-  padding: 5px 10px;
+  padding: 5px 20px;
  font-size:small;
  float: left;
  text-decoration: none;
  color: #444;
  position: relative;
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
- background-color: 		#00BFFF;
- background-image: linear-gradient(to bottom,#E0FFFF,#00BFFF);
+ /*background-color: 	white;*/
+ background-image: linear-gradient(to bottom,#E0FFFF,#9C9C9C);
  border-right:none;
    box-shadow:
    inset 0 1px rgba(101,114,126,1),
@@ -696,15 +783,15 @@ cursor:pointer;
 
 /*другая кнопка*/
 .buttonsort a.downsort{
- padding: 5px 15px;
+ padding: 5px 25px;
  font-size:small;
  float: left;
  text-decoration: none;
  color: #444;
  position: relative;
  text-shadow: 0 1px 0 rgba(255,255,255,.5);
- background-color: 	#00BFFF;
- background-image: linear-gradient(to bottom,#E0FFFF, #00BFFF);
+
+  background-image: linear-gradient(to bottom,#E0FFFF,#9C9C9C);
    box-shadow:
    inset 0 1px rgba(101,114,126,1),
    inset 0 0 1px rgba(140,150,170,.8),
@@ -733,12 +820,14 @@ cursor:pointer;
 .table_dark {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 11px;
-  width: 640px;
+  width: 100%;
   text-align: left;
   /*border-collapse: collapse;*/
   /*background: #252F48;*/
   margin: 10px;
   color:black;
+  margin-left:auto;
+  margin-right:auto;
 }
 .table_dark th {
   color: #EDB749;  
@@ -764,7 +853,7 @@ cursor:pointer;
 }
 .table_dark a{
     display: block;
-    width:100%;
+    width:90%;
   }
 
 
@@ -1045,7 +1134,7 @@ div.alertmessage{
 /*======================================карточка товара===============================================================================*/
 div.cartochkatovara{
     display:inline-block;
-    width:100%;
+    width:100%;   
   }
 h1.nametovar{
     float:left;
@@ -1053,11 +1142,12 @@ h1.nametovar{
     width:98%;
     font-size:x-large;
     text-shadow: 0 1px 0 black;
+     color:gray;
     }
 div.ferstsect{
     display:inline-block;
     width:100%;
-    min-height:650px;
+    min-height:450px;
 }
 
 div.sectionabout{
@@ -1077,11 +1167,29 @@ div.opisanie:first-line{
 }
 
 div.sectionfoto{
-    width:45%;
+    width:35%;
     display:inline-block;
     float:left;
-    height:565px;
+    height:440px;
+    margin-left:75px;
 }
+
+div.charakteritics{
+    color:darkgray;
+    display:block;
+    height:auto;
+    width:85%;
+    margin-top:40px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.labelchar{
+    width:100%;
+    text-align:center;
+    color:darkgrey;
+    font-size:2.4em;
+}
+
 
 div.blocktabov{
     display:block;
@@ -1093,27 +1201,27 @@ div #sliderVert {
     display: inline-block;
     margin: 10px;
     width:80px;
-}
+   }
 div.sectionhartk{
     width:55%;
     height:100%;
     float:left;
 }
 img.spisFoto{   
-    width:49px;
-    height:84px;
-    margin-bottom:10px;  
+    width:45px;
+    height:74px;
+    margin-bottom:5px;  
   }
 img.spisFoto:hover{
     border: 3px solid orange; 
     position:relative;
     z-index:4;
-    height:78px;  
+    height:69px;  
     border-radius:5px;  
 }
    ul.sliderVertUl {  
     padding: 15px; /* Отступ слева в браузере Firefox, Safari, Chrome */
-    margin-top:15px;
+    margin-top:-7px;
      }
   ul.sliderVertUl li {
     list-style-type: none; /* Убираем маркеры */
@@ -1125,14 +1233,14 @@ img.spisFoto:hover{
   }
   img.MainFoto{
       margin-left:30px;
-      width:300px;
-      height:520px;
+      width:230px;
+      height:420px;
   }
 
    img.MainFotoDef{
       margin-left:140px;
-      width:300px;
-      height:520px;
+      width:230px;
+      height:420px;
    }
   span.pr{
       width:100px;
@@ -1143,11 +1251,48 @@ img.spisFoto:hover{
   }
   
   div.blhar{
-      margin:3px;
+     background-image : linear-gradient(to right,#E8E8E8,#CFCFCF);
+    margin: 5px 0;
+   height:30px;
+   font-size:1.1em;
+    width: 100%;
   }
+
+  .namechart{
+      float:left;
+      width:40%;
+      display:block;
+      margin-left:20px;
+      height:100%;
+      padding-top:2px;
+        color:#4F4F4F;
+  } 
+    .itemchart{
+        float:left;
+        width:55%;
+        display:block;
+        height:100%;
+        padding-top:2px;
+        margin-left:20px;
+    }          
+    .dopchar{
+     background-image : linear-gradient(to right,#E8E8E8,#CFCFCF);
+    margin: 5px 0;
+   height:auto;;
+   font-size:1.1em;
+    width: 98%;
+     color:#4F4F4F;
+     padding:2px 0 5px 20px;
+    }
+
+
+
   /*===========================================делаем tab (вкладки на css)==============================================*/
 #raz{
     margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    width:85%;
 }
 #raz > div { 
   background-color:#fff;
@@ -1161,7 +1306,16 @@ img.spisFoto:hover{
 #raz #tab4:target ~ a:nth-of-type(1),
 #raz > div { padding: 5px; border: 1px solid #aaa; }
 
-#raz > a { line-height: 28px; background: #E6E6FA; text-decoration: none; width:23%;display:inline-block;margin-bottom:-2px;}
+#raz > a { 
+       line-height: 28px;
+       background: #E6E6FA;
+       text-decoration: none;
+       width:23%;
+       display:inline-block;
+       margin-bottom:-2px;
+       color:	#4F4F4F;
+       font-weight:900;
+}
 
 #tab2,
 #tab3,
@@ -1204,9 +1358,11 @@ img.spisFoto:hover{
  }*/
  
   .breadcrumbs{
- margin: 0;
- padding: 0;
- list-style: none;
+ display: block;
+    font-size: 0.8em;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
  }
  
 
@@ -1234,10 +1390,10 @@ img.spisFoto:hover{
  position: absolute;
  top: 50%;
  margin-top: -1.4em;
- border-top: 1.4em solid transparent;
+ border-top: 1.5em solid transparent;
  border-bottom: 1.4em solid transparent;
  border-left: 1.1em solid;
- right: -1em;
+ right: -1.1em;
  }
  
 .breadcrumbs a::after{
@@ -1260,8 +1416,9 @@ div.breadcrumbsonpage{
 
   /*===========кнопка быстрая покупка двери===============*/
   div.boxbutton{
-       text-align:center;
-      padding:5px;
+    width:220px;
+    text-align:center;
+    padding:5px;
   }
  a.butcall {
   position: relative;
@@ -1302,6 +1459,7 @@ div.breadcrumbsonpage{
       50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
     }
 
+/*==================кнопка купить======================*/
 /*==================кнопка купить======================*/
  .butbyu {
   position: relative;
@@ -1382,7 +1540,6 @@ div.breadcrumbsonpage{
 }
 
 /*модальное окно*/
-
 #modal_form_writeus{
 	width: 600px; 
 	height: auto; /* Рaзмеры дoлжны быть фиксирoвaны */
@@ -1524,11 +1681,9 @@ div.breadcrumbsonpage{
   
     /*//доставка и оплата*/
     div.dostavka{
-          font-size:large;      
-          padding:20px;
-          margin-bottom:10px;
-          height:353px;
-          overflow-y: scroll;
+         font-size: large;
+    height: 100%;
+    margin-bottom: 10px;
     }
     div.oplata{
         font-size:large;
@@ -1660,20 +1815,19 @@ div.bootharticles{
      margin-left:-10px;
      display:block;
      padding:5px;
-     text-align:justify
+     text-align:justify;
+     background-image: linear-gradient(to bottom, lightgray,gray);
+     opacity:0.7;
+         
 }
 div.bootharticles a{
    text-decoration:none;
+   color:#363636;
 }
-
-
-
 div.bootharticles:hover{
-    border: 1px solid gray;
-    border-radius: 3px;
-    box-shadow: 1px 3px 6px black;
-    color:black !important;
+    color:black;
     cursor:pointer;
+    opacity:1;
 }
 div.article2{
      display:block;
@@ -1775,7 +1929,7 @@ hr.razdTov{
     float: left;height: 3px; width: 100%;
 }
 span.OpisDoor{
-    color:black;font-size:x-large; font-weight:700;
+    color:	#4F4F4F;font-size:x-large; font-weight:700;
 }
 .hei3{
     height:3px;
@@ -1787,16 +1941,17 @@ div.headKarus{
    text-align:center;font-size:1.4em;color:darkblue;opacity:0.9;
 }
 .CenaGreen{
-  color:green; font-size:small;
+    /*//был green стал orange*/
+  color:	#FF8C00; font-size:small;
 }
 .CenaBlack{
   color:black; font-size:small;
 }
 .CenaGreenMed{
-  color:green; font-size:medium;
+  color:	#FF8C00; font-size:medium;
 }
 .CenaGreenL{
-  color:green; font-size:large;
+  color:	#FF8C00; font-size:large;
 }
 .CenaBlackL{
   color:black; font-size:large;
@@ -1806,14 +1961,16 @@ div.headKarus{
 }
 
 div.headPageProduct{
-   text-align:center;font-size:0.8em;
-   text-shadow: 0.1em 0.07em black;
+   text-align:center;
+   font-size:0.8em;
+   text-shadow: 0.05em 0.07em lightblue;
+   	color:#363636;
 }
 div.shOpisTov{
     width:100%;height:86px;overflow:hidden;
 }
 .redCena{
-  color:red; font-size:x-large; font-weight:800;
+  color:#FF8C00; font-size:x-large; font-weight:800;
 }
 .grayFont{
     color:gray;
@@ -1822,13 +1979,27 @@ div.shOpisTov{
    color:white;background-color:orangered;
 }
 div.hTimeWork{
-    width:auto;font-style:italic;
+     text-decoration:underline;
+     color:black;
+    float:right;
+    font-size:1.0em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:600;
 }
 div.elTimeWork{
-    display:block;width:60%;
+   
+    display:block;
+    color:#363636;
+     float:right;
+   }
+span.tw{
+    color:#FF8C00;
+    font-weight:800;
+    font-size:1.0em;
 }
+
 div.elContact{
-    display:block;width:100%;
+    display:block;width:98%;height:25px;
 }
 img.iUser{
     width:48px;height:48px;
@@ -1872,14 +2043,6 @@ div.MainSlider{
     margin-bottom:50px;
 }
 
-div.MainBredcrumbs{
-    display: block;
-    float: right;
-    font-size: 0.7em;
-    list-style: outside none none;
-    padding: 0;
-    width:940px;
-  }
 
 /*отсюда только в главном сайте VhDv*/
 .ml245{
@@ -2009,7 +2172,6 @@ div.MainSlider{
 div.MainBredcrumbs{
     display: block;
     float: right;
-    font-size: 0.7em;
     list-style: outside none none;
     padding: 0;
     width:940px;
@@ -2029,4 +2191,83 @@ div#idbuy, #fastbuy, #idWrite{
     margin-left:auto;
     margin-right:auto;
     width:580px;
+}
+
+/*//для применения иконок из бутстрап*/ 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+ src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-shopping-cart:before {
+  content: "\e116";
+}
+
+.glyphicon-home:before {
+  content: "\e021";
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+
+
+.butbyu2 {
+    position: relative;
+    display: inline-block;
+    font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: rgb(245,245,245);
+    text-shadow: 0 -1px rgba(0,0,0,.1);
+    text-decoration: none;
+    user-select: none;
+    padding: .3em 1em;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: #008B45 linear-gradient(#eee9e9, #00EE00);
+   
+    box-shadow: inset #008B45 0 -1px 1px, inset 0 1px 1px #00FF7F, #00EE00 0 0 0 1px, rgba(0,0,0,.3) 0 2px 5px;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
+    width: 180px;
+}
+.buttbyu2:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  cursor: pointer;
+  box-shadow: inset #008B45 0 -2px 2px, inset 0 2px 2px #00FF7F,  #00EE00 0 0 0 2px, rgba(0,0,0,.3) 0 2px 5px;
+  color: darkgray;
+}
+.butbyu2:active {
+  top: 1px;
+  color: #fff;
+  text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.3), 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+@-webkit-keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
+}
+@keyframes pulsate {
+  50% {color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff;}
 }

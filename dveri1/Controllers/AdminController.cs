@@ -104,12 +104,16 @@ namespace dveri1.Controllers
         [HttpGet]
         public ActionResult CreateVhDv(int id=0)
         {
-            if(id!=0)
+            CreateVhMod model = new CreateVhMod();
+            //вместо поля цвет сделаем выпадающий спиок
+            model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                 select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
+            if (id!=0)
             {
-                CreateVhMod model = new CreateVhMod();
+              
                 VhodnyeDveri v = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
                 model.Cena = v.Cena;
-                model.Cvet = v.Cvet;
+                //model.Cvet = v.IdColor;          
                 model.Furnitura = v.Furnitura;
                 model.ID = id;
                 model.Napolnitel = v.Napolnitel;
@@ -135,7 +139,7 @@ namespace dveri1.Controllers
                 }
                 return View(model);
             }
-            return View();
+            return View(model);
            
         }
         //------------------------------------пост метод создание товара с передачей модели параметров и списка файлов(фото)----------------------
@@ -144,8 +148,10 @@ namespace dveri1.Controllers
         public ActionResult CreateVhDv(CreateVhMod model, IEnumerable<HttpPostedFileBase> fileUpload = null)
         {
             try
-            {        
-            decimal? CenaSoSkidkoy=null;
+            {
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
+                decimal? CenaSoSkidkoy=null;
             if (ModelState.IsValid)
             {
                     //если ввели отрицательное значение цены
@@ -291,9 +297,13 @@ namespace dveri1.Controllers
             try
             {
                 CreateVhMod model = new CreateVhMod();
+                //создание списка цветов
+              
                 VhodnyeDveri v = dataManager.VhodnyeDvRepository.GetVhodnyeDvById(id);
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
                 model.Cena = v.Cena;
-                model.Cvet = v.Cvet;            
+                model.Cvet = v.IdColor;            
                 model.Furnitura = v.Furnitura;
                 model.ID = id;            
                 model.Napolnitel = v.Napolnitel;
@@ -331,6 +341,8 @@ namespace dveri1.Controllers
         {
             try
             {
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
                 decimal? CenaSoSkidkoy = null;
                     if (ModelState.IsValid)
                     {
@@ -773,7 +785,7 @@ namespace dveri1.Controllers
                     {
                         vh.Publicaciya = true;
                     }//перезаписали
-                    dataManager.VhodnyeDvRepository.CreateVhodnyeDv(vh.Id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Napolnitel,
+                    dataManager.VhodnyeDvRepository.CreateVhodnyeDv(vh.Id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.IdColor, vh.Napolnitel,
                                  vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna,
                                   vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
                 }
@@ -891,7 +903,7 @@ namespace dveri1.Controllers
                     vh.Skidka = null;
                 }
           //изменяем данные товара
-            dataManager.VhodnyeDvRepository.CreateVhodnyeDv(id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Napolnitel, vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna, vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
+            dataManager.VhodnyeDvRepository.CreateVhodnyeDv(id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.IdColor, vh.Napolnitel, vh.Yplotnitel, vh.TolschinaMetalla, vh.Furnitura, vh.Petli, vh.OtdelkaSnarugi, vh.OtdelkaVnutri, vh.TolschinaDvPolotna, vh.Cena, vh.Skidka, vh.CenaSoSkidcoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
 //создадим массив для передачи на страницу с ценами и скидкой
                 string[] price = new string[2];
                 if (vh.Cena != null)

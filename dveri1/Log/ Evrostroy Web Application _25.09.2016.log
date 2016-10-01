@@ -1,0 +1,21 @@
+[25.09.2016 15:52:21.793] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'int?'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 700
+[25.09.2016 16:03:09.159] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'string' to 'int?'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 700
+[25.09.2016 16:07:02.142] ExpImpController/Import(ImportToDataBase)- Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'double' to 'int?'. An explicit conversion exists (are you missing a cast?)
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at dveri1.Controllers.ExpImpController.ImportToDataBase(String whatdoors, String pathfile, Int32& flagerr) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 700
+[25.09.2016 16:11:34.731] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$¬ходные_двери (1).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1230
+[25.09.2016 18:55:14.669] ExpImpController/Import(DellAllFiles)- System.IO.IOException: The process cannot access the file '~$¬ходные_двери (2).xlsx' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileInfo.Delete()
+   at dveri1.Controllers.ExpImpController.DellAllFiles(String domainpath) in D:\GitHub\dveri1\dveri1\Controllers\ExpImpController.cs:line 1230
+[25.09.2016 22:15:48.016] —оздание сообщени€ дл€ отправки

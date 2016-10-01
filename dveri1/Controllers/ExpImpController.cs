@@ -168,7 +168,7 @@ namespace dveri1.Controllers
                             {
                                 for (int stroka = 2; stroka < countDv + 2; stroka++)
                                 {
-                                    excelworksheet.Cells[stroka, currentCellHead] = VhDvList.ElementAt(stroka - 2).Cvet;
+                                    excelworksheet.Cells[stroka, currentCellHead] = VhDvList.ElementAt(stroka - 2).IdColor;
                                 }
                             }
                             if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == "Наполнитель")
@@ -433,7 +433,7 @@ namespace dveri1.Controllers
                 return RedirectToAction("Error");
             }
         }
-        //метод считывания и загрузки инфы из файла excel в бд
+        //метод считывания и загрузки инфы из файла excel в бд для входных и для межкомнатных дверей
 # region Метод считывания и загрузки инфы из файла excel в бд
         private bool ImportToDataBase(string whatdoors,string pathfile,ref int flagerr)
         {
@@ -696,15 +696,15 @@ namespace dveri1.Controllers
                         if (model.Cvet)
                         {
                             if (excelworksheet.Cells[str, icvet].Value != null)
-                            {
-                                m.Cvet = excelworksheet.Cells[str, icvet].Value2.ToString();
+                            {   
+                                    m.Cvet = (int?)excelworksheet.Cells[str, icvet].Value2;                          
                             }
                         }
                         else
                         {
                             if (vh != null)
                             {
-                                m.Cvet = vh.Cvet;
+                                m.Cvet = vh.IdColor;
                             }
                         }
                         if (model.Napolnitel)
@@ -997,14 +997,14 @@ namespace dveri1.Controllers
                         {
                             if (excelworksheet.Cells[str, icvet].Value != null)
                             {
-                                m.Cvet = excelworksheet.Cells[str, icvet].Value2.ToString();
+                                m.Cvet = (int?)excelworksheet.Cells[str, icvet].Value2;
                             }
                         }
                         else
                         {
                             if (vh != null)
                             {
-                                m.Cvet = vh.Cvet;
+                                m.Cvet = vh.IdColor;
                             }
                         }
                         if (model.Material)
@@ -1350,7 +1350,7 @@ namespace dveri1.Controllers
                             {
                                 for (int stroka = 2; stroka < countDv + 2; stroka++)
                                 {
-                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).Cvet;
+                                    excelworksheet.Cells[stroka, currentCellHead] = MkDvList.ElementAt(stroka - 2).IdColor;
                                 }
                             }
                             if (ListOfHeaders.ElementAt(IndexNameCell).Value == true && ListOfHeaders.ElementAt(IndexNameCell).Key == material)

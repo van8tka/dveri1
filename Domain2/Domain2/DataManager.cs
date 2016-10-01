@@ -16,9 +16,11 @@ namespace Domain2
         private IYstanovkaRepository ystanovkaRepository;
         private IArticlesRepository articlesRepository;
         private IMegkomnatnyeDvRepository megkomDvRepository;
+        private IColorsRepository colorsRepository;
 
-        public DataManager(IMegkomnatnyeDvRepository megkomDvRepository, IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IColorsRepository colorsRepository, IMegkomnatnyeDvRepository megkomDvRepository, IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
+            this.colorsRepository = colorsRepository;
             this.megkomDvRepository = megkomDvRepository;
             this.articlesRepository = articlesRepository;
             this.klientRepository = klientRepository;
@@ -32,6 +34,10 @@ namespace Domain2
             this.ystanovkaRepository = ystanovkaRepository;
         }
         //св-ва через которые будет происх вызов
+        public IColorsRepository ColorsRepository
+        {
+            get { return colorsRepository; }
+        }
         public IMegkomnatnyeDvRepository MegkomDvRepository
         {
             get { return megkomDvRepository; }

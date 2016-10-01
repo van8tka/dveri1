@@ -1,0 +1,2 @@
+[21.09.2016 12:38:04.047] AdminColor/ColorAct-System.NullReferenceException: Object reference not set to an instance of an object.
+   at dveri1.Controllers.AdminColorController.ColorAct(IEnumerable`1 fileUpload) in D:\GitHub\dveri1\dveri1\Controllers\AdminColorController.cs:line 97

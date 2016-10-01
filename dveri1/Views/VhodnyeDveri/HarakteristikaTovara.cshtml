@@ -1,55 +1,14 @@
 ﻿@model dveri1.Models.KartochkaTovaraModel
 <script src="~/Scripts/modalwindowforharacteristicview.js"></script>
-<div>
-    <div>
-        <span class="pr">Код товара:</span>
-        <span class="valtov">@Model.Tovar.Id</span>
-    </div>
-    @*<br />*@
-    @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
-    {
-        <div>
-            @if (Model.Tovar.Cena == 0 || Model.Tovar.Cena == null)
-            {
-                <span class="valpr redCena" > Цену уточняйте у менеджера.</span>
-            }
-            else
-            {
-                <span class="pr">Цена:</span>
-                <span class="valpr redCena"> @Model.Tovar.Cena.Value.ToString("C")</span><span class="grayFont"> /шт </span>
-            }
-        </div>
-    }
-    else
-    {
-        <div>
-            <span class="pr">Цена: </span>
-            <span class="valpr CenaBlackL"><strike> @Model.Tovar.Cena.Value.ToString("C")</strike></span><span class="grayFont"> /шт </span>
-        </div>
-        <div>
-            <span class="pr">Цена со скидкой: </span>
-            <span class="valpr redCena">@Model.Tovar.CenaSoSkidcoy.Value.ToString("C")</span><span class="grayFont"> /шт </span>
-            <span class="skidkaOrange"> @Model.Tovar.Skidka% off </span>
-        </div>
-    }
-    <div class="boxbutton">
-        @Html.ActionLink("Купить", "BuyDveri", "VhodnyeDveri", new { id = Model.Tovar.Id, type = "входные двери" }, new { @class = "butbyu" })
-        @Html.ActionLink("Быстрая покупка", "FastBuyDveri", "VhodnyeDveri", new { id = Model.Tovar.Id, type = "входные двери" }, new { @class = "butcall" })
-    </div>
 
-
-</div>
 
 <div id="raz">
-    <br id="tab2" /><br id="tab3" /><br id="tab4" />  
-        <a href="#tab1">Характеристики</a><a href="#tab2">Доставка</a><a href="#tab3">Оплата</a><a href="#tab4">Отзывы (всего: @Model.CommentVhDvList.Count())</a>  
+    <br id="tab2" /><br id="tab3" /> 
+        <a href="#tab1">Доставка</a><a href="#tab2">Оплата</a><a href="#tab3">Отзывы (всего: @Model.CommentVhDvList.Count())</a> 
          <div class="dostavka">
-        @Html.Partial("OpisanieTov")
+             @Html.Raw(Model.InfoDostavka)
     </div>
-    <div class="dostavka">
-        @Html.Raw(Model.InfoDostavka)
-    </div>
-    <div class="dostavka">
+      <div class="dostavka">
         @Html.Raw(Model.InfoOplata)
     </div>
     <div class="dostavka">

@@ -20,14 +20,14 @@
             <span class="valtov"> @Model.Tovar.Strana</span>
         </div>
     }
-    @if (Model.Tovar.Cvet == "" || Model.Tovar.Cvet == null)
+    @if (Model.Tovar.IdColor == null)
     {
     }
     else
     {
         <div class="blhar">
             <span class="pr">Цвет двери:</span>
-            <span class="valtov"> @Model.Tovar.Cvet</span>
+            <span class="valtov"> @Model.Tovar.TableColor.NameColor.ToString()</span>
         </div>
     }
     @if (Model.Tovar.Material == "" || Model.Tovar.Material == null)

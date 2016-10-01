@@ -7,7 +7,7 @@ namespace Domain2.Interfaces
     {
         IEnumerable<VhodnyeDveri> GetVhodnyeDv();
         VhodnyeDveri GetVhodnyeDvById(int id);
-        void CreateVhodnyeDv(int id, string naz, string pr, string strpr, string cvet, string napoln, string yplotnit, double? tmet, string furn, string petli, string osn, string ovn, double? tdpol, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar);
+        void CreateVhodnyeDv(int id, string naz, string pr, string strpr, int? cvet, string napoln, string yplotnit, double? tmet, string furn, string petli, string osn, string ovn, double? tdpol, decimal? cena, int? skidka, decimal? csskid, string opis, bool publ, string dopchar);
         void SaveVhodnyeDv(VhodnyeDveri temp);
         void DeleteVhodnyeDv(int id);
         IEnumerable<FotoVhodnyhDverey> GetFotoVhDv();

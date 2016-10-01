@@ -223,7 +223,6 @@
     <Content Include="Content\ForSoc\twitter.png" />
     <Content Include="Content\ForSoc\vk.png" />
     <Content Include="Content\ForSoc\yandex.png" />
-    <Content Include="Content\glyphicons-443-earphone.png" />
     <Content Include="Content\imageDefault.jpg" />
     <Content Include="Content\images\fm_active_bg.jpg" />
     <Content Include="Content\images\fm_hover2_bg.jpg" />
@@ -245,11 +244,11 @@
     <Content Include="Content\nyvo_arrows.png" />
     <Content Include="Content\nyvo_bullets.png" />
     <Content Include="Content\nyvo_loading.gif" />
-    <Content Include="Content\recall.jpg" />
+    <Content Include="Content\recall.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\thumbelina.css" />
     <Content Include="Content\vel.jpg" />
-    <Content Include="Content\writeus.jpg" />
+    <Content Include="Content\writeus.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -154,7 +154,7 @@
           <Property Name="Material" Type="nvarchar" MaxLength="550" />
           <Property Name="Pokrytie" Type="nvarchar" MaxLength="550" />
           <Property Name="Karkas" Type="nvarchar" MaxLength="550" />
-          <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdColor" Type="int" />
           <Property Name="TypDveri" Type="nvarchar" MaxLength="550" />
           <Property Name="VnytrenneeNapolnenie" Type="nvarchar" MaxLength="450" />
           <Property Name="Cena" Type="money" />
@@ -249,6 +249,15 @@
           <Property Name="Articles" Type="nvarchar(max)" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
+        <EntityType Name="TableColor">
+          <Key>
+            <PropertyRef Name="IdColor" />
+          </Key>
+          <Property Name="IdColor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameColor" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="TableSeoArticles">
           <Key>
             <PropertyRef Name="ID" />
@@ -304,7 +313,7 @@
           <Property Name="Nazvanie" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Proizvoditel" Type="nvarchar" MaxLength="250" />
           <Property Name="Strana" Type="nvarchar" MaxLength="250" />
-          <Property Name="Cvet" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdColor" Type="int" />
           <Property Name="Napolnitel" Type="nvarchar" MaxLength="250" />
           <Property Name="Yplotnitel" Type="nvarchar" MaxLength="250" />
           <Property Name="TolschinaMetalla" Type="float" />
@@ -390,6 +399,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MegkomnatnyeDveri_TableColor">
+          <End Role="TableColor" Type="Self.TableColor" Multiplicity="0..1" />
+          <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableColor">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="MegkomnatnyeDveri">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SeoMkDverei_MegkomnatnyeDveri">
           <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -446,6 +467,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VhodnyeDveri_TableColor">
+          <End Role="TableColor" Type="Self.TableColor" Multiplicity="0..1" />
+          <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableColor">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="VhodnyeDveri">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbdveri1ModelStoreContainer">
           <EntitySet Name="Adresa" EntityType="Self.Adresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentCompany" EntityType="Self.CommentCompany" Schema="dbo" store:Type="Tables" />
@@ -469,6 +502,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableArticlesMk" EntityType="Self.TableArticlesMk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableColor" EntityType="Self.TableColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableSeoArticlesMk" EntityType="Self.TableSeoArticlesMk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TableWorkingEmail" EntityType="Self.TableWorkingEmail" Schema="dbo" store:Type="Tables" />
@@ -496,6 +530,10 @@
             <End Role="VhodnyeDveri" EntitySet="VhodnyeDveri" />
             <End Role="FotoVhodnyhDverey" EntitySet="FotoVhodnyhDverey" />
           </AssociationSet>
+          <AssociationSet Name="FK_MegkomnatnyeDveri_TableColor" Association="Self.FK_MegkomnatnyeDveri_TableColor">
+            <End Role="TableColor" EntitySet="TableColor" />
+            <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveri" />
+          </AssociationSet>
           <AssociationSet Name="FK_SeoMkDverei_MegkomnatnyeDveri" Association="Self.FK_SeoMkDverei_MegkomnatnyeDveri">
             <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveri" />
             <End Role="SeoMkDverei" EntitySet="SeoMkDverei" />
@@ -511,6 +549,10 @@
           <AssociationSet Name="FK_TableSeoArticlesMk_TableArticlesMk" Association="Self.FK_TableSeoArticlesMk_TableArticlesMk">
             <End Role="TableArticlesMk" EntitySet="TableArticlesMk" />
             <End Role="TableSeoArticlesMk" EntitySet="TableSeoArticlesMk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VhodnyeDveri_TableColor" Association="Self.FK_VhodnyeDveri_TableColor">
+            <End Role="TableColor" EntitySet="TableColor" />
+            <End Role="VhodnyeDveri" EntitySet="VhodnyeDveri" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -673,7 +715,7 @@
           <Property Name="Material" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="Pokrytie" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="Karkas" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
-          <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdColor" Type="Int32" />
           <Property Name="TypDveri" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
           <Property Name="VnytrenneeNapolnenie" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
           <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" />
@@ -684,6 +726,7 @@
           <Property Name="DopCharacteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CommentMkDvs" Relationship="Self.FK_CommentMkDv_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="CommentMkDv" />
           <NavigationProperty Name="FotoMegkomnDvereys" Relationship="Self.FK_FotoMegkomnDverey_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="FotoMegkomnDverey" />
+          <NavigationProperty Name="TableColor" Relationship="Self.FK_MegkomnatnyeDveri_TableColor" FromRole="MegkomnatnyeDveri" ToRole="TableColor" />
           <NavigationProperty Name="SeoMkDverei" Relationship="Self.FK_SeoMkDverei_MegkomnatnyeDveri" FromRole="MegkomnatnyeDveri" ToRole="SeoMkDverei" />
         </EntityType>
         <EntityType Name="Oplata">
@@ -775,6 +818,17 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TableSeoArticlesMk" Relationship="Self.FK_TableSeoArticlesMk_TableArticlesMk" FromRole="TableArticlesMk" ToRole="TableSeoArticlesMk" />
         </EntityType>
+        <EntityType Name="TableColor">
+          <Key>
+            <PropertyRef Name="IdColor" />
+          </Key>
+          <Property Name="IdColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameColor" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MegkomnatnyeDveris" Relationship="Self.FK_MegkomnatnyeDveri_TableColor" FromRole="TableColor" ToRole="MegkomnatnyeDveri" />
+          <NavigationProperty Name="VhodnyeDveris" Relationship="Self.FK_VhodnyeDveri_TableColor" FromRole="TableColor" ToRole="VhodnyeDveri" />
+        </EntityType>
         <EntityType Name="TableSeoArticle">
           <Key>
             <PropertyRef Name="ID" />
@@ -832,7 +886,7 @@
           <Property Name="Nazvanie" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Proizvoditel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Strana" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Cvet" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdColor" Type="Int32" />
           <Property Name="Napolnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Yplotnitel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TolschinaMetalla" Type="Double" />
@@ -850,6 +904,7 @@
           <NavigationProperty Name="CommentVhDveris" Relationship="Self.FK_CommentVhDveri_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="CommentVhDveri" />
           <NavigationProperty Name="FotoVhodnyhDvereys" Relationship="Self.FK_FotoVhodnyhDverey_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="FotoVhodnyhDverey" />
           <NavigationProperty Name="SeoVhodnuhDverei" Relationship="Self.FK_SeoVhodnuhDverei_VhodnyeDveri" FromRole="VhodnyeDveri" ToRole="SeoVhodnuhDverei" />
+          <NavigationProperty Name="TableColor" Relationship="Self.FK_VhodnyeDveri_TableColor" FromRole="VhodnyeDveri" ToRole="TableColor" />
         </EntityType>
         <Association Name="FK_CommentMkDv_MegkomnatnyeDveri">
           <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
@@ -921,6 +976,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MegkomnatnyeDveri_TableColor">
+          <End Role="TableColor" Type="Self.TableColor" Multiplicity="0..1" />
+          <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableColor">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="MegkomnatnyeDveri">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SeoMkDverei_MegkomnatnyeDveri">
           <End Role="MegkomnatnyeDveri" Type="Self.MegkomnatnyeDveri" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -977,6 +1044,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VhodnyeDveri_TableColor">
+          <End Role="TableColor" Type="Self.TableColor" Multiplicity="0..1" />
+          <End Role="VhodnyeDveri" Type="Self.VhodnyeDveri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableColor">
+              <PropertyRef Name="IdColor" />
+            </Principal>
+            <Dependent Role="VhodnyeDveri">
+              <PropertyRef Name="IdColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adresas" EntityType="Self.Adresa" />
           <EntitySet Name="CommentCompanies" EntityType="Self.CommentCompany" />
@@ -1000,6 +1079,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
           <EntitySet Name="TableArticlesMks" EntityType="Self.TableArticlesMk" />
+          <EntitySet Name="TableColors" EntityType="Self.TableColor" />
           <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
           <EntitySet Name="TableSeoArticlesMks" EntityType="Self.TableSeoArticlesMk" />
           <EntitySet Name="TableWorkingEmails" EntityType="Self.TableWorkingEmail" />
@@ -1027,6 +1107,10 @@
             <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
             <End Role="FotoVhodnyhDverey" EntitySet="FotoVhodnyhDvereys" />
           </AssociationSet>
+          <AssociationSet Name="FK_MegkomnatnyeDveri_TableColor" Association="Self.FK_MegkomnatnyeDveri_TableColor">
+            <End Role="TableColor" EntitySet="TableColors" />
+            <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveris" />
+          </AssociationSet>
           <AssociationSet Name="FK_SeoMkDverei_MegkomnatnyeDveri" Association="Self.FK_SeoMkDverei_MegkomnatnyeDveri">
             <End Role="MegkomnatnyeDveri" EntitySet="MegkomnatnyeDveris" />
             <End Role="SeoMkDverei" EntitySet="SeoMkDvereis" />
@@ -1042,6 +1126,10 @@
           <AssociationSet Name="FK_TableSeoArticlesMk_TableArticlesMk" Association="Self.FK_TableSeoArticlesMk_TableArticlesMk">
             <End Role="TableArticlesMk" EntitySet="TableArticlesMks" />
             <End Role="TableSeoArticlesMk" EntitySet="TableSeoArticlesMks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VhodnyeDveri_TableColor" Association="Self.FK_VhodnyeDveri_TableColor">
+            <End Role="TableColor" EntitySet="TableColors" />
+            <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1210,7 +1298,7 @@
                 <ScalarProperty Name="Material" ColumnName="Material" />
                 <ScalarProperty Name="Pokrytie" ColumnName="Pokrytie" />
                 <ScalarProperty Name="Karkas" ColumnName="Karkas" />
-                <ScalarProperty Name="Cvet" ColumnName="Cvet" />
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
                 <ScalarProperty Name="TypDveri" ColumnName="TypDveri" />
                 <ScalarProperty Name="VnytrenneeNapolnenie" ColumnName="VnytrenneeNapolnenie" />
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
@@ -1316,6 +1404,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TableColors">
+            <EntityTypeMapping TypeName="dbdveri1Model.TableColor">
+              <MappingFragment StoreEntitySet="TableColor">
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+                <ScalarProperty Name="NameColor" ColumnName="NameColor" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TableSeoArticles">
             <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticle">
               <MappingFragment StoreEntitySet="TableSeoArticles">
@@ -1376,7 +1474,7 @@
                 <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
                 <ScalarProperty Name="Proizvoditel" ColumnName="Proizvoditel" />
                 <ScalarProperty Name="Strana" ColumnName="Strana" />
-                <ScalarProperty Name="Cvet" ColumnName="Cvet" />
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
                 <ScalarProperty Name="Napolnitel" ColumnName="Napolnitel" />
                 <ScalarProperty Name="Yplotnitel" ColumnName="Yplotnitel" />
                 <ScalarProperty Name="TolschinaMetalla" ColumnName="TolschinaMetalla" />

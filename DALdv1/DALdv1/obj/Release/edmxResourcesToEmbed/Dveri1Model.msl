@@ -161,7 +161,7 @@
           <ScalarProperty Name="Material" ColumnName="Material" />
           <ScalarProperty Name="Pokrytie" ColumnName="Pokrytie" />
           <ScalarProperty Name="Karkas" ColumnName="Karkas" />
-          <ScalarProperty Name="Cvet" ColumnName="Cvet" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
           <ScalarProperty Name="TypDveri" ColumnName="TypDveri" />
           <ScalarProperty Name="VnytrenneeNapolnenie" ColumnName="VnytrenneeNapolnenie" />
           <ScalarProperty Name="Cena" ColumnName="Cena" />
@@ -267,6 +267,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableColors">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableColor">
+        <MappingFragment StoreEntitySet="TableColor">
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="NameColor" ColumnName="NameColor" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableSeoArticles">
       <EntityTypeMapping TypeName="dbdveri1Model.TableSeoArticle">
         <MappingFragment StoreEntitySet="TableSeoArticles">
@@ -327,7 +337,7 @@
           <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
           <ScalarProperty Name="Proizvoditel" ColumnName="Proizvoditel" />
           <ScalarProperty Name="Strana" ColumnName="Strana" />
-          <ScalarProperty Name="Cvet" ColumnName="Cvet" />
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
           <ScalarProperty Name="Napolnitel" ColumnName="Napolnitel" />
           <ScalarProperty Name="Yplotnitel" ColumnName="Yplotnitel" />
           <ScalarProperty Name="TolschinaMetalla" ColumnName="TolschinaMetalla" />

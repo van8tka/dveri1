@@ -1,7 +1,7 @@
 ﻿@model dveri1.Models.ContactModel
 
-    <div class="timeworktop fll">
-        <div class="hTimeWork"> Время работы: </div>
+    @*<div class="timeworktop fll">*@
+        <div class="hTimeWork"> График работы </div>
       
         @foreach (var i in Model.GrafikWorkList)
         {
@@ -13,11 +13,11 @@
             {
                 ViewBag.Count++;
                 <div class="elTimeWork">
-                    <div class="fll">@i.NameDay: </div>
-                    <div>@i.TimeWork </div>
+                    <span>@i.NameDay: </span>
+                    <span class="tw">@i.TimeWork </span><br/>
                 </div>
             }
         }
-    </div>
-@Html.Action("ContactOnFoter","VhodnyeDveri")
+    @*</div>*@
+@*@Html.Action("ContactOnFoter","VhodnyeDveri")*@
   

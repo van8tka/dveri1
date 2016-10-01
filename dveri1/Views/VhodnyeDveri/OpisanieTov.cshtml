@@ -1,13 +1,21 @@
 ﻿@model dveri1.Models.KartochkaTovaraModel
 <div class="charakteritics">
+    <div class="labelchar">
+        <span>Характеристики</span>
+    </div>
+  
     @if (Model.Tovar.Proizvoditel == "" || Model.Tovar.Proizvoditel == null)
     {
     }
     else
     {
         <div class="blhar">
-            <span class="pr">Фирма производитель:</span>
-            <span class="valtov"> @Model.Tovar.Proizvoditel</span>
+            <div class="namechart">
+                <span class="pr">Фирма производитель:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Proizvoditel</span>
+            </div>          
         </div>
     }
     @if (Model.Tovar.Strana == "" || Model.Tovar.Strana == null)
@@ -16,18 +24,27 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Страна производитель:</span>
-            <span class="valtov"> @Model.Tovar.Strana</span>
-        </div>
+            <div class="namechart">
+                <span class="pr">Страна производитель:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Strana</span>
+            </div>
+            </div>
     }
-    @if (Model.Tovar.Cvet == "" || Model.Tovar.Cvet == null)
+    @if (Model.Tovar.IdColor == null)
     {
+
     }
     else
     {
         <div class="blhar">
-            <span class="pr">Цвет двери:</span>
-            <span class="valtov"> @Model.Tovar.Cvet</span>
+            <div class="namechart">
+                <span class="pr">Цвет двери:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.TableColor.NameColor.ToString() </span>
+            </div>
         </div>
     }
     @if (Model.Tovar.Napolnitel == "" || Model.Tovar.Napolnitel == null)
@@ -36,8 +53,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Наполнитель:</span>
-            <span class="valtov"> @Model.Tovar.Napolnitel</span>
+            <div class="namechart">
+                <span class="pr">Наполнитель:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Napolnitel</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.Yplotnitel == "" || Model.Tovar.Yplotnitel == null)
@@ -46,8 +67,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Уплотнитель:</span>
-            <span class="valtov"> @Model.Tovar.Yplotnitel</span>
+            <div class="namechart">
+                <span class="pr">Уплотнитель:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Yplotnitel</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.TolschinaMetalla == 0 || Model.Tovar.TolschinaMetalla == null)
@@ -56,8 +81,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Толщина металла:</span>
-            <span class="valtov"> @Model.Tovar.TolschinaMetalla мм.</span>
+            <div class="namechart">
+                <span class="pr">Толщина металла:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.TolschinaMetalla мм.</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.Furnitura == "" || Model.Tovar.Furnitura == null)
@@ -66,8 +95,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Фурнитура:</span>
-            <span class="valtov"> @Model.Tovar.Furnitura</span>
+            <div class="namechart">
+                <span class="pr">Фурнитура:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Furnitura</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.Petli == "" || Model.Tovar.Petli == null)
@@ -76,8 +109,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Петли:</span>
-            <span class="valtov"> @Model.Tovar.Petli</span>
+            <div class="namechart">
+                <span class="pr">Петли:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.Petli</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.OtdelkaVnutri == "" || Model.Tovar.OtdelkaVnutri == null)
@@ -86,8 +123,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Отделка внутри:</span>
-            <span class="valtov"> @Model.Tovar.OtdelkaVnutri</span>
+            <div class="namechart">
+                <span class="pr">Отделка внутри:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.OtdelkaVnutri</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.OtdelkaSnarugi == "" || Model.Tovar.OtdelkaSnarugi == null)
@@ -96,8 +137,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Отделка снаружи:</span>
-            <span class="valtov"> @Model.Tovar.OtdelkaSnarugi</span>
+            <div class="namechart">
+                <span class="pr">Отделка снаружи:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.OtdelkaSnarugi</span>
+            </div>
         </div>
     }
     @if (Model.Tovar.TolschinaDvPolotna == 0 || Model.Tovar.TolschinaDvPolotna == null)
@@ -106,8 +151,12 @@
     else
     {
         <div class="blhar">
-            <span class="pr">Толщина дверного полотна:</span>
-            <span class="valtov"> @Model.Tovar.TolschinaDvPolotna мм.</span>
+            <div class="namechart">
+                <span class="pr">Толщина дверного полотна:</span>
+            </div>
+            <div class="itemchart">
+                <span class="valtov"> @Model.Tovar.TolschinaDvPolotna мм.</span>
+            </div>
         </div>
     }
 
@@ -117,8 +166,11 @@
     }
     else
     {
-        <div class="blhar dopchar">
-            <h4>Дополнительные характеристики:</h4>
+        <div class="dopchar">
+            <div class="labelchar">
+                <span>Дополнительные характеристики:</span>
+            </div>
+           
             @Html.Raw(Model.Tovar.DopCharacteristics)
         </div>
     }

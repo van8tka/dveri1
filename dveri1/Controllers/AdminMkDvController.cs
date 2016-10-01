@@ -156,12 +156,15 @@ namespace dveri1.Controllers
         [HttpGet]
         public ActionResult CreateMkDv(int id = 0)
         {
+            CreateMkMod model = new CreateMkMod();
+            model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                 select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
             if (id != 0)
             {
-                CreateMkMod model = new CreateMkMod();
+               
                 MegkomnatnyeDveri v = dataManager.MegkomDvRepository.GetMkDvById(id);
                 model.Cena = v.Cena;
-                model.Cvet = v.Cvet;
+                //model.Cvet = v.IdColor;
                 model.Material = v.Material;
                 model.ID = id;
                 model.VnNapoln = v.VnytrenneeNapolnenie;
@@ -186,7 +189,7 @@ namespace dveri1.Controllers
                 }
                 return View(model);
             }
-            return View();
+            return View(model);
 
         }
       
@@ -197,7 +200,8 @@ namespace dveri1.Controllers
         {
             try
             {
-               
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
                 if (ModelState.IsValid)
                 {
                     decimal? CenaSoSkidkoy = null;
@@ -331,9 +335,11 @@ namespace dveri1.Controllers
 
               
                     CreateMkMod model = new CreateMkMod();
-                    MegkomnatnyeDveri v = dataManager.MegkomDvRepository.GetMkDvById(id);
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
+                MegkomnatnyeDveri v = dataManager.MegkomDvRepository.GetMkDvById(id);
                     model.Cena = v.Cena;
-                    model.Cvet = v.Cvet;
+                    model.Cvet = v.IdColor;
                     model.Material = v.Material;
                     model.ID = id;
                     model.VnNapoln = v.VnytrenneeNapolnenie;
@@ -368,6 +374,8 @@ namespace dveri1.Controllers
         {
             try
             {
+                model.SpisokColors = from TableColor in dataManager.ColorsRepository.GetColors().OrderBy(x => x.NameColor)
+                                     select new SelectListItem { Text = TableColor.NameColor, Value = TableColor.IdColor.ToString() };
                 decimal? CenaSoSkidkoy = null;
                 if (ModelState.IsValid)
                 {
@@ -549,7 +557,7 @@ namespace dveri1.Controllers
                     {
                         vh.Publicaciya = true;
                     }//перезаписали
-                    dataManager.MegkomDvRepository.CreateMkDv(vh.Id,vh.Nazvanie,vh.Proizvoditel,vh.Strana,vh.Cvet,vh.Material,vh.Pokrytie,vh.Karkas,
+                    dataManager.MegkomDvRepository.CreateMkDv(vh.Id,vh.Nazvanie,vh.Proizvoditel,vh.Strana,vh.IdColor,vh.Material,vh.Pokrytie,vh.Karkas,
                         vh.TypDveri,vh.VnytrenneeNapolnenie,vh.Cena,vh.Skidka,vh.CenaSoSkidkoy,vh.Opisanie,vh.Publicaciya,vh.DopCharacteristics);
 
                 }
@@ -624,7 +632,7 @@ namespace dveri1.Controllers
                     vh.Skidka = null;
                 }
                 //изменяем данные товара
-                dataManager.MegkomDvRepository.CreateMkDv(vh.Id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.Cvet, vh.Material, vh.Pokrytie, vh.Karkas,
+                dataManager.MegkomDvRepository.CreateMkDv(vh.Id, vh.Nazvanie, vh.Proizvoditel, vh.Strana, vh.IdColor, vh.Material, vh.Pokrytie, vh.Karkas,
                         vh.TypDveri, vh.VnytrenneeNapolnenie, vh.Cena, vh.Skidka, vh.CenaSoSkidkoy, vh.Opisanie, vh.Publicaciya, vh.DopCharacteristics);
                 //создадим массив для передачи на страницу с ценами и скидкой
                 string[] price = new string[2];

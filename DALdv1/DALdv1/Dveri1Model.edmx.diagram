@@ -4,45 +4,48 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b10e38705164179827e4d3aa31fb7a4" Name="Diagram1">
-        <EntityTypeShape EntityType="dbdveri1Model.Adresa" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.CommentCompany" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.CommentMkDv" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.CommentVhDveri" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.Contact" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.Dostavka" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.FotoFyrnitury" Width="1.5" PointX="13" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.FotoMegkomnDverey" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.FotoVhodnyhDverey" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.Furnitura" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.GrafikWork" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+      <Diagram DiagramId="7d284eb532d24f4491dabe32b5fe2ee0" Name="Diagram1">
+        <EntityTypeShape EntityType="dbdveri1Model.Adresa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.CommentCompany" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.CommentMkDv" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.CommentVhDveri" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.Contact" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.Dostavka" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.FotoFyrnitury" Width="1.5" PointX="10" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.FotoMegkomnDverey" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.FotoVhodnyhDverey" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.Furnitura" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.GrafikWork" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.Klient" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.MegkomnatnyeDveri" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.MegkomnatnyeDveri" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbdveri1Model.Oplata" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.SeoMain" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.SeoMkDverei" Width="1.5" PointX="8" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.SeoVhodnuhDverei" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.SliderMainImg" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.SliderMainImgMk" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.sysdiagram" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableArticle" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableArticlesMk" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableSeoArticle" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableSeoArticlesMk" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableWorkingEmail" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableYrInfa" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.TableYstanovka" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.User" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbdveri1Model.VhodnyeDveri" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.SeoMain" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.SeoMkDverei" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.SeoVhodnuhDverei" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.SliderMainImg" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.SliderMainImgMk" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.sysdiagram" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableArticle" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableArticlesMk" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableColor" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableSeoArticle" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableSeoArticlesMk" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableWorkingEmail" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableYrInfa" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.TableYstanovka" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.User" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbdveri1Model.VhodnyeDveri" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <AssociationConnector Association="dbdveri1Model.FK_CommentMkDv_MegkomnatnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_CommentVhDveri_VhodnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_FotoFyrnitury_Furnitura" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_FotoMegkomnDverey_MegkomnatnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_FotoVhodnyhDverey_VhodnyeDveri" ManuallyRouted="false" />
+        <AssociationConnector Association="dbdveri1Model.FK_MegkomnatnyeDveri_TableColor" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_SeoMkDverei_MegkomnatnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_SeoVhodnuhDverei_VhodnyeDveri" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_TableSeoArticles_TableArticles1" ManuallyRouted="false" />
         <AssociationConnector Association="dbdveri1Model.FK_TableSeoArticlesMk_TableArticlesMk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbdveri1Model.FK_VhodnyeDveri_TableColor" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutYstanovkaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminColorController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminMkDvController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\ModelArticles.cs" />
     <Compile Include="Models\ModelBreadCrumbs.cs" />
     <Compile Include="Models\ModelBuyDveri.cs" />
+    <Compile Include="Models\ModelColors.cs" />
     <Compile Include="Models\ModelComment.cs" />
     <Compile Include="Models\ModelExpImp.cs" />
     <Compile Include="Models\ModelFind.cs" />
@@ -233,14 +235,6 @@
     <Compile Include="Providers\CustomMembershipProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\ControlSlider\background.png" />
-    <Content Include="Content\ControlSlider\bouton.png" />
-    <Content Include="Content\ControlSlider\empty-dot.png" />
-    <Content Include="Content\ControlSlider\fleche-droite.png" />
-    <Content Include="Content\ControlSlider\fleche-gauche.png" />
-    <Content Include="Content\ControlSlider\glass.png" />
-    <Content Include="Content\ControlSlider\selected-dot.png" />
-    <Content Include="Content\ControlSlider\text.png" />
     <Content Include="Content\fon.jpg" />
     <Content Include="Content\ForSoc\facebook.png" />
     <Content Include="Content\ForSoc\google.png" />
@@ -250,7 +244,6 @@
     <Content Include="Content\ForSoc\twitter.png" />
     <Content Include="Content\ForSoc\vk.png" />
     <Content Include="Content\ForSoc\yandex.png" />
-    <Content Include="Content\glyphicons-443-earphone.png" />
     <Content Include="Content\imageDefault.jpg" />
     <Content Include="Content\ImgComment\stargold.png" />
     <Content Include="Content\ImgComment\stargold24.png" />
@@ -268,16 +261,7 @@
     <Content Include="Content\nyvo_arrows.png" />
     <Content Include="Content\nyvo_bullets.png" />
     <Content Include="Content\nyvo_loading.gif" />
-    <Content Include="Content\orbit.css" />
-    <Content Include="Content\orbit\bullets.png" />
-    <Content Include="Content\orbit\left-arrow.png" />
-    <Content Include="Content\orbit\loading.gif" />
-    <Content Include="Content\orbit\mask-black.png" />
-    <Content Include="Content\orbit\pause-black.png" />
-    <Content Include="Content\orbit\right-arrow.png" />
-    <Content Include="Content\orbit\rotator-black.png" />
-    <Content Include="Content\orbit\timer-black.png" />
-    <Content Include="Content\recall.jpg" />
+    <Content Include="Content\recall.png" />
     <Content Include="Content\thumbelina.css" />
     <Content Include="Content\tinymce\jquery.tinymce.min.js" />
     <Content Include="Content\tinymce\license.txt" />
@@ -358,7 +342,7 @@
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
     <Content Include="Content\vel.jpg" />
-    <Content Include="Content\writeus.jpg" />
+    <Content Include="Content\writeus.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -398,7 +382,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\thumbelina.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -487,6 +473,9 @@
     <Content Include="Views\VhodnyeDveri\WriteToUs.cshtml" />
     <Content Include="Views\Shared\ViewWriteUs.cshtml" />
     <Content Include="Views\VhodnyeDveri\WriteToUsModal.cshtml" />
+    <Content Include="Views\AdminColor\ColorAct.cshtml" />
+    <Content Include="Views\VhodnyeDveri\MetallicheskieVhodnyeDveri.cshtml" />
+    <Content Include="Views\VhodnyeDveri\PartialMenuFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

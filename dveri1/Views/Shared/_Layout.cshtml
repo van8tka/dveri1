@@ -38,12 +38,12 @@
                  
                     <div class="contacts flr">
                         <div class="elContact">
-                            <div class="fll mr10"><img src="~/Content/writeus.jpg" alt="" /> </div>
+                            <div class="fll mr10"><img src="~/Content/writeus.png" style="width:34px;height:34px;margin-top:-7px;" alt="" /> </div>
                             <div> @Html.ActionLink("Написать нам", "WriteToUs", "VhodnyeDveri", null, new { @class = "butwritemain" }) </div>
 
                         </div>
                         <div class="elContact mt10">
-                            <div class="fll mr10"> <img src="~/Content/recall.jpg" alt="" />  </div>
+                            <div class="fll mr10"> <img src="~/Content/recall.png" style="width:34px;height:34px;margin-top:-5px;" alt="" />  </div>
                             <div> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "VhodnyeDveri", new { id = 9999, type = "входные двери" }, new { @class = "butcallmain" }) </div>
                         </div>
                     </div>
@@ -53,10 +53,13 @@
                             <div class="fll mr10"> <img src="~/Content/mts.jpg" alt="" /></div>
                             <div><span class="phoneCode">(33)</span> <span class="phoneNum">689-30-02</span> </div>
                         </div>
-                        <div class="elContact mt30">
+                        <div class="elContact mt10">
                             <div class="fll mr10"> <img src="~/Content/vel.jpg" alt="" />  </div>
                             <div><span class="phoneCode">(29)</span> <span class="phoneNum">689-30-02</span> </div>
                         </div>
+                    </div>
+                    <div class="contacts flr mr40">
+                        @Html.Action("ContactOnPanel","VhodnyeDveri")
                     </div>
 
                 </div>
@@ -65,7 +68,7 @@
                     <div id="menu">
                         <ul>
                          
-                            <li>@Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "mainmen m2 current" })</li>
+                            <li>@Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "mainmen m2 current" })</li>
                             @*<li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m3" })</li>*@
                             <li><a href="http://52.37.80.82:703" class="mainmen m3">Межкомнатные двери</a></li>
                             <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "mainmen m5" })</li>
@@ -108,7 +111,7 @@
         <div class="footermenudiv">
              <h4 class="tac">КАРТА САЙТА</h4>
              <ul class="footermenu fll">
-                 <li>@Html.ActionLink("Входные двери", "VhodnyeDveriIndex", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
                  @*<li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>*@
                  <li><a href="http://52.37.80.82:703" class="footermenuitem">Межкомнатные двери</a></li>
                  <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
