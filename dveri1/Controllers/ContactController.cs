@@ -17,46 +17,7 @@ namespace dveri1.Controllers
         {
             this.dataManager = dataManager;
         }
-        [HttpGet]
-        public ActionResult ContactPage()
-        {
-            try
-            {
-            ContactModel mod = new ContactModel();
-            mod.AdresList = dataManager.ContactRepository.GetAdres();
-            mod.ContactList = dataManager.ContactRepository.GetContacts();
-            mod.GrafikWorkList = dataManager.ContactRepository.GetGrafikWork();
-                SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage("Контакты");
-                if (s != null)
-                {
-                    mod.SeoTitle = s.Title;
-                    mod.SeoKey = s.Keywords;
-                    mod.SeoDesc = s.Description;
-                    if (s.Header != null)
-                    {
-                        mod.SeoHead = s.Header;
-                    }
-                    else
-                    {
-                        mod.SeoHead = "Контактные данные";
-                    }
-                }
-                else
-                {
-                    mod.SeoTitle = "Люксеврострой - контакты";
-                    mod.SeoHead = "Контактные данные";
-                }
-                return View(mod);
-            }
-            catch (Exception er)
-            {
-                ClassLog.Write(er);
-                return View("Error");
-            }
-        }
-      
-
-
+     
       [Authorize]
         public ActionResult AdminContact()
         {

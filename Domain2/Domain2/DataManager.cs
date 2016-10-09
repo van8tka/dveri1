@@ -17,9 +17,13 @@ namespace Domain2
         private IArticlesRepository articlesRepository;
         private IMegkomnatnyeDvRepository megkomDvRepository;
         private IColorsRepository colorsRepository;
+        private IAboutUsRepository aboutusRepository;
+        private IOurWorksRepository ourworksRepository;
 
-        public DataManager(IColorsRepository colorsRepository, IMegkomnatnyeDvRepository megkomDvRepository, IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
+        public DataManager(IOurWorksRepository ourworksRepository,IAboutUsRepository aboutusRepository, IColorsRepository colorsRepository, IMegkomnatnyeDvRepository megkomDvRepository, IArticlesRepository articlesRepository, IYstanovkaRepository ystanovkaRepository, ICommentRepository commentRepository, ISeoMainRepository seoMainRepository, IUserRepository userRepository, IOplataDostavkaRepository opldostRepository, IKlientRepository klientRepository, IVhodnyeDvRepository vhodnDvRepository, ISliderRepository sliderRepository, IContactRepository contactRepository)
         {
+            this.ourworksRepository = ourworksRepository;
+            this.aboutusRepository = aboutusRepository;
             this.colorsRepository = colorsRepository;
             this.megkomDvRepository = megkomDvRepository;
             this.articlesRepository = articlesRepository;
@@ -34,6 +38,14 @@ namespace Domain2
             this.ystanovkaRepository = ystanovkaRepository;
         }
         //св-ва через которые будет происх вызов
+        public IOurWorksRepository OurWorksRepository
+        {
+            get { return ourworksRepository; }
+        }
+        public IAboutUsRepository AboutUsRepository
+        {
+            get { return aboutusRepository; }
+        }
         public IColorsRepository ColorsRepository
         {
             get { return colorsRepository; }

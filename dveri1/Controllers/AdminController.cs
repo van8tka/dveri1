@@ -415,9 +415,6 @@ namespace dveri1.Controllers
                             //вызов метода получения кодировки файла(из msdn)
                             ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
 
-
-
-
                             myBitmap.Save(newfilepath, jpgEncoder, myEncoderParameters);
                                 //теперь запишем файл в базу данных
                                 FileStream fs = null;

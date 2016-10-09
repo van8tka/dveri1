@@ -27,16 +27,13 @@ namespace dveri1.Models
      public IEnumerable<string> OtdNaryg {get;set;}
      public IEnumerable<string> OtdVnytri {get;set;}
      public List<string> Cost { get; set; }
-     //public IEnumerable<string>  {get;set;}
-     //public IEnumerable<string>  {get;set;}
+   
      public int Sort { get; set; }
      //чекнутые элементы
         public List<string> CurrentBrand { get; set; }
         public List<string> CurrentCountry { get; set; }
         public List<string> CurrentNapolnitel { get; set; }
-        public List<string> CurrentYplotnitel { get; set; }
-        public List<string> CurrentOtdSnar { get; set; }
-        public List<string> CurrentOtdVnutr { get; set; }
+     
         public List<string> CurrentColor { get; set; }
         public List<string> CurrentCost { get; set; }
 

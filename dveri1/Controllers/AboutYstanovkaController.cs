@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DALdv1;
 using dveri1.Models;
-using dveri1.Infrastructure;
 using Domain2;
 using dveri1.DopMethod;
 
@@ -47,7 +44,7 @@ namespace dveri1.Controllers
             try
             {
                 dataManager.YstanovkaRepository.CreateYstanovka(0, model.YstanovkaInfo);
-                TempData["message"] = "Информация о установке обновлена!";
+                TempData["message"] = "Информация об услугах обновлена!";
                 return View(model);
             }
             catch (Exception er)
@@ -64,7 +61,7 @@ namespace dveri1.Controllers
                 ModelYstanovka model = new ModelYstanovka();
                 TableYstanovka ty = dataManager.YstanovkaRepository.GetYstanovka().FirstOrDefault();
                 model.YstanovkaInfo = ty != null ? ty.Ystanovka : "информация отсутствует..";
-                SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage("Установка");
+                SeoMain s = dataManager.SeoMainRepository.GetSeoMainByPage("Услуги");
                 if (s != null)
                 {
                     model.SeoTitle = s.Title;
@@ -76,13 +73,13 @@ namespace dveri1.Controllers
                     }
                     else
                     {
-                        model.SeoHead = "Информация об становке дверей и не только";
+                        model.SeoHead = "Информация об услугах компании и не только";
                     }
                 }
                 else
                 {
-                    model.SeoTitle = "Установка дверей компанией Люксеврострой";
-                    model.SeoHead = "Установка металлических и межкомнатных дверей";
+                    model.SeoTitle = "Услуги компании";
+                    model.SeoHead = "Информация об услугах компании и не только";
                 }
                 return View(model);
             }

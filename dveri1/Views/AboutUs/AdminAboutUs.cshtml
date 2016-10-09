@@ -1,0 +1,40 @@
+﻿@model dveri1.Models.ModelYstanovka
+@{
+    ViewBag.Title = "Информация о компании";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode: "textareas",
+        theme: "modern",
+        plugins: "image, imagetools ,media ,contextmenu,link,textcolor"
+    });
+</script>
+<div class="ml245 pad25">
+    <div class="tac">
+        <h2>Информация для страницы "О нас.."</h2>
+    </div>
+    <div class="dYstInf">
+        @Html.Raw(Model.YstanovkaInfo)
+    </div>
+    @using (Html.BeginForm("AdminAboutUs"))
+    {
+        <div class="mb20 mt20">
+            <div class="tac">
+                <label>Изменить сведения:</label>
+            </div>
+
+            @Html.TextAreaFor(m => m.YstanovkaInfo, new { @class = "areas", rows = 22 })
+        </div>
+
+        <input type="submit" value="Сохранить" class="showadd mb30" />
+        @Html.ActionLink("Отменить", "Panel", "Admin")
+    }
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m13").addClass("actadmin")
+</script>

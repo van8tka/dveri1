@@ -224,6 +224,13 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TableAboutUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TextAboutUs" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="TableArticles">
     <Key>
       <PropertyRef Name="ID" />
@@ -252,6 +259,22 @@
     <Property Name="NameColor" Type="nvarchar" MaxLength="350" Nullable="false" />
     <Property Name="Image" Type="varbinary(max)" Nullable="false" />
     <Property Name="MimeType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TableFotoOurWorks">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+    </Key>
+    <Property Name="IdFoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="MymeType" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TableOurWorks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TextOurWorks" Type="nvarchar" MaxLength="3050" />
   </EntityType>
   <EntityType Name="TableSeoArticles">
     <Key>
@@ -434,6 +457,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TableFotoOurWorks_TableOurWorks">
+    <End Role="TableOurWorks" Type="Self.TableOurWorks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TableFotoOurWorks" Type="Self.TableFotoOurWorks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableOurWorks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TableFotoOurWorks">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TableSeoArticles_TableArticles1">
     <End Role="TableArticles" Type="Self.TableArticles" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -495,9 +532,12 @@
     <EntitySet Name="SliderMainImg" EntityType="Self.SliderMainImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SliderMainImgMk" EntityType="Self.SliderMainImgMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableAboutUs" EntityType="Self.TableAboutUs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableArticles" EntityType="Self.TableArticles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableArticlesMk" EntityType="Self.TableArticlesMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableColor" EntityType="Self.TableColor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableFotoOurWorks" EntityType="Self.TableFotoOurWorks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TableOurWorks" EntityType="Self.TableOurWorks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableSeoArticlesMk" EntityType="Self.TableSeoArticlesMk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TableWorkingEmail" EntityType="Self.TableWorkingEmail" Schema="dbo" store:Type="Tables" />
@@ -536,6 +576,10 @@
     <AssociationSet Name="FK_SeoVhodnuhDverei_VhodnyeDveri" Association="Self.FK_SeoVhodnuhDverei_VhodnyeDveri">
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveri" />
       <End Role="SeoVhodnuhDverei" EntitySet="SeoVhodnuhDverei" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableFotoOurWorks_TableOurWorks" Association="Self.FK_TableFotoOurWorks_TableOurWorks">
+      <End Role="TableOurWorks" EntitySet="TableOurWorks" />
+      <End Role="TableFotoOurWorks" EntitySet="TableFotoOurWorks" />
     </AssociationSet>
     <AssociationSet Name="FK_TableSeoArticles_TableArticles1" Association="Self.FK_TableSeoArticles_TableArticles1">
       <End Role="TableArticles" EntitySet="TableArticles" />

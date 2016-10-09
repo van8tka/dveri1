@@ -236,6 +236,13 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="TableAboutU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TextAboutUs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="TableArticle">
     <Key>
       <PropertyRef Name="ID" />
@@ -268,6 +275,24 @@
     <Property Name="MimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="MegkomnatnyeDveris" Relationship="Self.FK_MegkomnatnyeDveri_TableColor" FromRole="TableColor" ToRole="MegkomnatnyeDveri" />
     <NavigationProperty Name="VhodnyeDveris" Relationship="Self.FK_VhodnyeDveri_TableColor" FromRole="TableColor" ToRole="VhodnyeDveri" />
+  </EntityType>
+  <EntityType Name="TableFotoOurWork">
+    <Key>
+      <PropertyRef Name="IdFoto" />
+    </Key>
+    <Property Name="IdFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="MymeType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TableOurWork" Relationship="Self.FK_TableFotoOurWorks_TableOurWorks" FromRole="TableFotoOurWorks" ToRole="TableOurWorks" />
+  </EntityType>
+  <EntityType Name="TableOurWork">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TextOurWorks" Type="String" MaxLength="3050" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TableFotoOurWorks" Relationship="Self.FK_TableFotoOurWorks_TableOurWorks" FromRole="TableOurWorks" ToRole="TableFotoOurWorks" />
   </EntityType>
   <EntityType Name="TableSeoArticle">
     <Key>
@@ -496,6 +521,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TableFotoOurWorks_TableOurWorks">
+    <End Role="TableOurWorks" Type="Self.TableOurWork" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TableFotoOurWorks" Type="Self.TableFotoOurWork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableOurWorks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TableFotoOurWorks">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="dbdveri1Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adresas" EntityType="Self.Adresa" />
     <EntitySet Name="CommentCompanies" EntityType="Self.CommentCompany" />
@@ -517,9 +556,12 @@
     <EntitySet Name="SliderMainImgs" EntityType="Self.SliderMainImg" />
     <EntitySet Name="SliderMainImgMks" EntityType="Self.SliderMainImgMk" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TableAboutUs" EntityType="Self.TableAboutU" />
     <EntitySet Name="TableArticles" EntityType="Self.TableArticle" />
     <EntitySet Name="TableArticlesMks" EntityType="Self.TableArticlesMk" />
     <EntitySet Name="TableColors" EntityType="Self.TableColor" />
+    <EntitySet Name="TableFotoOurWorks" EntityType="Self.TableFotoOurWork" />
+    <EntitySet Name="TableOurWorks" EntityType="Self.TableOurWork" />
     <EntitySet Name="TableSeoArticles" EntityType="Self.TableSeoArticle" />
     <EntitySet Name="TableSeoArticlesMks" EntityType="Self.TableSeoArticlesMk" />
     <EntitySet Name="TableWorkingEmails" EntityType="Self.TableWorkingEmail" />
@@ -570,6 +612,10 @@
     <AssociationSet Name="FK_VhodnyeDveri_TableColor" Association="Self.FK_VhodnyeDveri_TableColor">
       <End Role="TableColor" EntitySet="TableColors" />
       <End Role="VhodnyeDveri" EntitySet="VhodnyeDveris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableFotoOurWorks_TableOurWorks" Association="Self.FK_TableFotoOurWorks_TableOurWorks">
+      <End Role="TableOurWorks" EntitySet="TableOurWorks" />
+      <End Role="TableFotoOurWorks" EntitySet="TableFotoOurWorks" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

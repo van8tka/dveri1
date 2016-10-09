@@ -193,6 +193,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AboutYstanovkaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminColorController.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ExpImpController.cs" />
     <Compile Include="Controllers\MetaTagsController.cs" />
+    <Compile Include="Controllers\OurWorksController.cs" />
     <Compile Include="Controllers\VhodnyeDveriController.cs" />
     <Compile Include="DopMethod\ClassLog.cs" />
     <Compile Include="DopMethod\DellFilesFromDomain.cs" />
@@ -225,6 +227,7 @@
     <Compile Include="Models\ModelComment.cs" />
     <Compile Include="Models\ModelExpImp.cs" />
     <Compile Include="Models\ModelFind.cs" />
+    <Compile Include="Models\ModelOurWorks.cs" />
     <Compile Include="Models\ModelSeoMain.cs" />
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\ModelYstanovka.cs" />
@@ -235,7 +238,6 @@
     <Compile Include="Providers\CustomMembershipProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\fon.jpg" />
     <Content Include="Content\ForSoc\facebook.png" />
     <Content Include="Content\ForSoc\google.png" />
     <Content Include="Content\ForSoc\mail.png" />
@@ -254,14 +256,12 @@
     <Content Include="Content\KaruselTovara\prev.png" />
     <Content Include="Content\KaruselTovara\ForKaruselOfGoods.css" />
     <Content Include="Content\loading.gif" />
-    <Content Include="Content\logo1.png" />
     <Content Include="Content\logoinAllImage.png" />
     <Content Include="Content\mts.jpg" />
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\nyvo_arrows.png" />
     <Content Include="Content\nyvo_bullets.png" />
     <Content Include="Content\nyvo_loading.gif" />
-    <Content Include="Content\recall.png" />
     <Content Include="Content\thumbelina.css" />
     <Content Include="Content\tinymce\jquery.tinymce.min.js" />
     <Content Include="Content\tinymce\license.txt" />
@@ -342,7 +342,6 @@
     <Content Include="Content\tinymce\themes\modern\theme.min.js" />
     <Content Include="Content\tinymce\tinymce.min.js" />
     <Content Include="Content\vel.jpg" />
-    <Content Include="Content\writeus.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -408,7 +407,6 @@
     <Content Include="Views\Contact\ChangeGrafik.cshtml" />
     <Content Include="Views\Contact\ChangeAdres.cshtml" />
     <Content Include="Views\VhodnyeDveri\ContactOnPanel.cshtml" />
-    <Content Include="Views\Contact\ContactPage.cshtml" />
     <Content Include="Views\VhodnyeDveri\TovarPage.cshtml" />
     <Content Include="Views\VhodnyeDveri\VhodnyeDveriIndex.cshtml" />
     <Content Include="Views\VhodnyeDveri\HarakteristikaTovara.cshtml" />
@@ -476,6 +474,11 @@
     <Content Include="Views\AdminColor\ColorAct.cshtml" />
     <Content Include="Views\VhodnyeDveri\MetallicheskieVhodnyeDveri.cshtml" />
     <Content Include="Views\VhodnyeDveri\PartialMenuFilter.cshtml" />
+    <Content Include="Views\AboutUs\AdminAboutUs.cshtml" />
+    <Content Include="Views\AboutUs\AboutUsInfo.cshtml" />
+    <Content Include="Views\OurWorks\AdminOurWorks.cshtml" />
+    <Content Include="Views\OurWorks\CreateOurWork.cshtml" />
+    <Content Include="Views\OurWorks\OurWorksAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

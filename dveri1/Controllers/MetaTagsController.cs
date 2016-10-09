@@ -27,11 +27,11 @@ namespace dveri1.Controllers
                 {
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Входные двери", null, "Главная");
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Межкомнатные двери", null, "Главная");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Доставка и оплата", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "О нас", null, "Главная");
                     dataManager.SeoMainRepository.CreateSeo(0, null, null, null, "Отзывы", null, "Главная");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Контакты", null, "Главная");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Установка", null, "Главная");
-                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Статьи", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Наши работы", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Услуги", null, "Главная");
+                    dataManager.SeoMainRepository.CreateSeo(0, null, null, null,  "Полезное", null, "Главная");
                 }
                 ModelSeoMain model = new ModelSeoMain();
                 model.SeoList = dataManager.SeoMainRepository.GetSeoMain().OrderBy(x=>x.Category);

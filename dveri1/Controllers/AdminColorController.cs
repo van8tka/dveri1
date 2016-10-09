@@ -130,13 +130,14 @@ namespace dveri1.Controllers
         {
             try
             {
+               
                 dataManager.ColorsRepository.DelColor(id);
                 TempData["message"] = "Изображение удалено из базы данных!";
                 return RedirectToAction("ColorAct");
             }
             catch (Exception er)
             {
-                ClassLog.Write("AdminAct/DellColor-" + er);
+                ClassLog.Write("AdminColor/DellColor-" + er);
                 return View("Error");
             }
         }

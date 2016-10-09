@@ -77,10 +77,24 @@
             <span class="skidkaOrange"> @Model.Tovar.Skidka% off </span>
         </div>
     }
-    <div class="boxbutton mt30">
+               @*================================кнопка купить==========================*@
+    @*<div class="boxbutton mt30">
            <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="glyphicon glyphicon-shopping-cart"></span><span class="ml20">Купить</span> </a>
-    </div>
-  
+    </div>*@
+
+
+                <div class="hex hex-3">
+                    <div class="inner">
+                       
+                    </div>
+                    <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+              <div class="divbutbuy">
+                  <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="ml20">Купить</span> </a>
+              </div>
+                
 
 </div>
 

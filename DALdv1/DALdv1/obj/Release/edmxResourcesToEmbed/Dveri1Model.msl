@@ -245,6 +245,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TableAboutUs">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableAboutU">
+        <MappingFragment StoreEntitySet="TableAboutUs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TextAboutUs" ColumnName="TextAboutUs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TableArticles">
       <EntityTypeMapping TypeName="dbdveri1Model.TableArticle">
         <MappingFragment StoreEntitySet="TableArticles">
@@ -274,6 +282,24 @@
           <ScalarProperty Name="NameColor" ColumnName="NameColor" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableFotoOurWorks">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableFotoOurWork">
+        <MappingFragment StoreEntitySet="TableFotoOurWorks">
+          <ScalarProperty Name="IdFoto" ColumnName="IdFoto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="MymeType" ColumnName="MymeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableOurWorks">
+      <EntityTypeMapping TypeName="dbdveri1Model.TableOurWork">
+        <MappingFragment StoreEntitySet="TableOurWorks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TextOurWorks" ColumnName="TextOurWorks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

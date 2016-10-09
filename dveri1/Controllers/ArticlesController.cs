@@ -153,7 +153,7 @@ namespace dveri1.Controllers
         public ActionResult GetArticles(int page=1)
         {
             ModelArticles model = new ModelArticles();
-            SeoMain seo = dataManager.SeoMainRepository.GetSeoMainByPage("Статьи");
+            SeoMain seo = dataManager.SeoMainRepository.GetSeoMainByPage("Полезное");
             model.SeoTitle = seo.Title != null ? seo.Title : "Лучшие статьи про двери, установку дверей и правильный подбор";
             model.SeoKey = seo.Keywords;
             model.SeoHead = seo.Header != null ? seo.Header : "Самая полезная информация про установку, монтаж, выбор межкомнатных и входных дверей.";

@@ -34,14 +34,14 @@ namespace dveri1.Controllers
         const decimal cS2 = 200;
         const decimal cTh2 = 300;
         const decimal cFo2 = 400;
-        const string cena1 = "50-120р.";
-        const string cena2 = "120-200р.";
-        const string cena3 = "200-300р.";
+        const string cena1 = "150-250р.";
+        const string cena2 = "250-400р.";
+        const string cena3 = "400-600р.";
         const string cena4 = "300-400р.";
-        const string cena5 = "больше 400р.";
+        const string cena5 = "больше 600р.";
 
         [HttpGet]
-        public ActionResult MetallicheskieVhodnyeDveri(int page = 1, int sort = 0, List<string> firma = null, List<string> country = null, List<string> color = null, List<string> napoln = null, List<string> yplotn = null, List<string> otdnaryg = null, List<string> otdvnyt = null, List<string> cena = null)
+        public ActionResult MetallicheskieVhodnyeDveri(int page = 1, int sort = 0, List<string> firma = null, List<string> country = null, List<string> color = null, List<string> napoln = null, List<string> cena = null)
         {
             ForMainModel model = new ForMainModel();
             model.SliderImg = dataManager.SliderRepository.GetSliderMainImg();
@@ -52,7 +52,7 @@ namespace dveri1.Controllers
             //выбор чекнутых фирм производителей 
             //метод фильтровки данных
            
-             IEnumerable<VhodnyeDveri> vhd = GetFilter(page,model,firma,country,color,napoln,yplotn,otdnaryg,otdvnyt,cena);
+             IEnumerable<VhodnyeDveri> vhd = GetFilter(page,model,firma,country,color,napoln,cena);
                 
 
             //заполняем модель товаров
@@ -108,7 +108,7 @@ namespace dveri1.Controllers
 
 
 
-        private IEnumerable<VhodnyeDveri> GetFilter(int page,ForMainModel model, List<string> firma, List<string> country, List<string> color, List<string> napoln, List<string> yplotn, List<string> otdnaryg, List<string> otdvnyt, List<string> cena)
+        private IEnumerable<VhodnyeDveri> GetFilter(int page,ForMainModel model, List<string> firma, List<string> country, List<string> color, List<string> napoln, List<string> cena)
         {
             IEnumerable<VhodnyeDveri> vhd = dataManager.VhodnyeDvRepository.GetVhodnyeDv();
           if (firma != null || TempData["firma"] != null)
@@ -240,100 +240,7 @@ namespace dveri1.Controllers
                 model.CurrentNapolnitel = null;
                 TempData["napol"] = null;
             }
-            //проверка чекнутого уплотнителя
-            if (yplotn != null || TempData["ypl"] != null)           
-            {
-               if (yplotn == null)
-                  yplotn = (List<string>)TempData["ypl"];
-                IEnumerable<VhodnyeDveri> temp1 = null;
-                IEnumerable<VhodnyeDveri> temp2 = null;
-                bool a = true;//переменная для приравнивания temp1 и temp2
-                foreach (string i in yplotn)//проход по списку checkнутых элементов списка меню
-                {
-                    temp1 = vhd.Where(x => x.Yplotnitel == i.Replace("/"," "));//отбираем с каждоко элемента
-                    if (a)
-                    {
-                        temp2 = temp1;
-                        a = false;
-                    }
-                    else
-                    {
-                        temp2 = temp2.Union<VhodnyeDveri>(temp1);//объединяем интерфейсы
-                    }
-                }
-                vhd = temp2;//присваиваем выходному интерфейсу   
-                model.CurrentYplotnitel = yplotn;
-                TempData["ypl"] = yplotn;
-            }
-            else
-            {
-                model.CurrentYplotnitel = null;
-                TempData["ypl"] = null;
-            }
-
-            //проверка чекнутых отделки с наружи
-            if (otdnaryg != null || TempData["onar"] != null)
-            { 
-                if (otdnaryg == null)
-                    otdnaryg = (List<string>)TempData["onar"];
-                IEnumerable<VhodnyeDveri> temp1 = null;
-                IEnumerable<VhodnyeDveri> temp2 = null;
-                bool a = true;//переменная для приравнивания temp1 и temp2
-                foreach (string i in otdnaryg)//проход по списку checkнутых элементов списка меню
-                {
-                    temp1 = vhd.Where(x => x.OtdelkaSnarugi == i.Replace("/"," "));//отбираем с каждоко элемента
-                    if (a)
-                    {
-                        temp2 = temp1;
-                        a = false;
-                    }
-                    else
-                    {
-                        temp2 = temp2.Union<VhodnyeDveri>(temp1);//объединяем интерфейсы
-                    }
-                }
-                vhd = temp2;//присваиваем выходному интерфейсу   
-                model.CurrentOtdSnar = otdnaryg;
-                TempData["onar"] = otdnaryg;
-            }
-            else
-            {
-                model.CurrentOtdSnar = null;
-                TempData["onar"] = null;
-            }
-
-            //проверка чекнутой отделки внутри
-            if (otdvnyt != null || TempData["ovny"] != null)            
-            {
-                if (otdvnyt == null)
-                    otdvnyt = (List<string>)TempData["ovny"];
-                IEnumerable<VhodnyeDveri> temp1 = null;
-                IEnumerable<VhodnyeDveri> temp2 = null;
-                bool a = true;//переменная для приравнивания temp1 и temp2
-                foreach (string i in otdvnyt)//проход по списку checkнутых элементов списка меню
-                {
-
-                    temp1 = vhd.Where(x => x.OtdelkaVnutri == i.Replace("/"," "));//отбираем с каждоко элемента
-                    if (a)
-                    {
-                        temp2 = temp1;
-                        a = false;
-                    }
-                    else
-                    {
-                        temp2 = temp2.Union<VhodnyeDveri>(temp1);//объединяем интерфейсы
-                    }
-                }
-                vhd = temp2;//присваиваем выходному интерфейсу   
-                model.CurrentOtdVnutr = otdvnyt;
-                TempData["ovny"] = otdvnyt;
-            }
-            else
-            {
-                model.CurrentOtdVnutr = null;
-                TempData["ovny"] = null;
-            }
-
+         
             //проверяем цену товара
             if (cena != null || TempData["cena"] != null)
             {
@@ -413,10 +320,7 @@ namespace dveri1.Controllers
             model.Country = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.Strana).Distinct().OrderBy(z => z);
             model.Color = dataManager.ColorsRepository.GetColors();
             model.Napolnitel = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.Napolnitel).Distinct().OrderBy(z => z);
-            model.Yplotnitel = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.Yplotnitel).Distinct().OrderBy(z => z);
-            model.OtdNaryg = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.OtdelkaSnarugi).Distinct().OrderBy(z => z);
-            model.OtdVnytri = dataManager.VhodnyeDvRepository.GetVhodnyeDv().Select(z => z.OtdelkaVnutri).Distinct().OrderBy(z => z);
-            model.Cost = new List<string> {cena1, cena2, cena3, cena4, cena5 };
+              model.Cost = new List<string> {cena1, cena2, cena3, cena4, cena5 };
         }
 
 
@@ -426,10 +330,7 @@ namespace dveri1.Controllers
             TempData["country"] = country;
             TempData["color"] = color;
             TempData["napol"] = napoln;
-            TempData["ypl"] = yplotn;
-            TempData["onar"] = otdnaryg;
-            TempData["ovny"] = otdvnyt;
-            TempData["cena"] = cena;
+              TempData["cena"] = cena;
 
             ForMainModel model = new ForMainModel();
             model.SliderImg = dataManager.SliderRepository.GetSliderMainImg();
@@ -437,7 +338,7 @@ namespace dveri1.Controllers
             GetIemsForFilter(model);
             //отбираем  двери по фильтру
             //метод фильтровки данных
-            IEnumerable<VhodnyeDveri> vhd = GetFilter(1,model, firma, country, color, napoln, yplotn, otdnaryg, otdvnyt, cena);
+            IEnumerable<VhodnyeDveri> vhd = GetFilter(1,model, firma, country, color, napoln, cena);
 
             //заполняем модель товаров
             model.ListVhodnDv = vhd.Where(x => x.Publicaciya == true).OrderBy(x => x.Id).Skip((1 - 1) * PageSize).Take(PageSize);
@@ -464,13 +365,7 @@ namespace dveri1.Controllers
             }
             //для страницы
             int z = vhd.Where(x => x.Publicaciya == true).Count();
-            //model.PagingInfo = new PagingInfo
-            //{
-            //    CurrentPage = 1,
-            //    TotalItems = z,
-            //    ItemsPerPage = PageSize
-            //};
-
+         
             return View(model);
         }
 

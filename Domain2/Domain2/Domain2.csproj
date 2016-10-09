@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="Implementations\EfAboutUsRepository.cs" />
     <Compile Include="Implementations\EfArticlesRepository.cs" />
     <Compile Include="Implementations\EfColorsRepository.cs" />
     <Compile Include="Implementations\EfCommentRepository.cs" />
@@ -60,11 +61,13 @@
     <Compile Include="Implementations\EfKlientRepository.cs" />
     <Compile Include="Implementations\EfMegkomnatnyeDvRepository.cs" />
     <Compile Include="Implementations\EfOplataDostavkaRepository.cs" />
+    <Compile Include="Implementations\EfOurWorksRepository.cs" />
     <Compile Include="Implementations\EfSeoMainRepository.cs" />
     <Compile Include="Implementations\EfSliderRepository.cs" />
     <Compile Include="Implementations\EfUserRepository.cs" />
     <Compile Include="Implementations\EfVhodnyeDvRepository.cs" />
     <Compile Include="Implementations\EfYstanovkaRepository.cs" />
+    <Compile Include="Interfaces\IAboutUsRepository.cs" />
     <Compile Include="Interfaces\IArticlesRepository.cs" />
     <Compile Include="Interfaces\IColorsRepository.cs" />
     <Compile Include="Interfaces\ICommentRepository.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Interfaces\IKlientRepository.cs" />
     <Compile Include="Interfaces\IMegkomnatnyeDvRepository.cs" />
     <Compile Include="Interfaces\IOplataDostavkaRepository.cs" />
+    <Compile Include="Interfaces\IOurWorksRepository.cs" />
     <Compile Include="Interfaces\ISeoMainRepository.cs" />
     <Compile Include="Interfaces\ISliderRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />

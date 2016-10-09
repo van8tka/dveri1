@@ -27,40 +27,57 @@
         <div class="navigationfixedtop">
             <div class="content mt10">
                 <div class="brand fll">
-                    <div class="fll mr10">
-                        <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex"> <img src="~/Content/logo1.png" alt="" class="iLogo" /></a>
-                    </div>
                     <div class="LeftHead">
-                        <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                        <a href="/MegkomnatnyeDveri/MegkomnatnyeDveriIndex">
+                            <span class="lablux">Люкс</span><span class="labevros">еврострой</span><br /><span class="labother">интернет магазин входных и межкомнатных дверей</span>
+                        </a>
                     </div>
                 </div>
-                @*@Html.Action("ContactOnPanel", "MegkomnatnyeDveri")*@
-                @*//контактные данные*@
 
                 <div class="contacts flr">
                     <div class="elContact">
-                        <div class="fll mr10"><img src="~/Content/writeus.png" style="width:34px;height:34px;margin-top:-7px;" alt="" /> </div>
-                        <div> @Html.ActionLink("Написать нам", "WriteToUs", "MegkomnatnyeDveri", null, new { @class = "butwritemain"}) </div>
+
+                        <div class="hexw hex-3">
+                            <a href="/MegkomnatnyeDveri/WriteToUs"><span class="glyphicon glyphicon-envelope"></span></a>
+                            <div class="corner-1"></div>
+                            <div class="corner-2"></div>
+                        </div>
+                        <div class="wrus">
+                            @Html.ActionLink("Написать нам", "WriteToUs", "MegkomnatnyeDveri", null, new { @class = "butwritemain" })
+
+                        </div>
+
+
 
                     </div>
                     <div class="elContact mt10">
-                        <div class="fll mr10"> <img src="~/Content/recall.png" style="width:34px;height:34px;margin-top:-5px;" alt="" />  </div>
-                        <div> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butcallmain"}) </div>
+                        <div class="hexw hex-3">
+                            <a href="/MegkomnatnyeDveri/FastBuyDveri"><span class="glyphicon glyphicon-earphone"></span></a>
+                            <div class="corner-1"></div>
+                            <div class="corner-2"></div>
+                        </div>
+                        <div class="wrus"> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "MegkomnatnyeDveri", new { id = 9999, type = "межкомнатные двери" }, new { @class = "butcallmain" }) </div>
                     </div>
                 </div>
 
-                <div class="contacts flr">               
-                       <div class="elContact">
-                                <div class="fll mr10"> <img src="~/Content/mts.jpg" alt=""/></div>
-                                <div><span class="phoneCode">(33)</span> <span class="phoneNum">689-30-02</span> </div>                         
-                      </div>
-                        <div class="elContact mt10">
-                            <div class="fll mr10"> <img src="~/Content/vel.jpg" alt="" />  </div>
-                            <div><span class="phoneCode">(29)</span> <span class="phoneNum">689-30-02</span> </div>
-                        </div>                   
+                <div class="contacts flr">
+                    <div class="elContact">
+                        <div class="fll mr10"> <img src="~/Content/mts.jpg" alt="" /></div>
+                        <div><span class="phoneCode">(33)</span> <span class="phoneNum">689-30-02</span> </div>
+                    </div>
+                    <div class="elContact mt10">
+                        <div class="fll mr10"> <img src="~/Content/vel.jpg" alt="" />  </div>
+                        <div><span class="phoneCode">(29)</span> <span class="phoneNum">689-30-02</span> </div>
+                    </div>
+                </div>
+                <div class="contacts flr mr40">
+                    @Html.Action("ContactOnPanel", "MegkomnatnyeDveri")
                 </div>
 
             </div>
+
+         
+             
             <div class="dMenu">
                 <div id="menu">
                     <ul>
