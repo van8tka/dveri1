@@ -1,0 +1,247 @@
+﻿@model dveri2.Models.ForMainModel
+@using (Html.BeginForm("DveriMegkomnatnye", "MegkomnatnyeDveri", FormMethod.Post))
+{
+    //в этом диве используется код для отмены выделения текста курсором
+    <div class="MenuFilter" onmousedown="return false" onselectstart="return false">
+        <div class="MenKataltext">
+            <span class="filtrspan">Фильтр товаров</span>
+        </div>
+        <div class="wrfirma" id="idwrfirma">
+            <div class="ddclfirma" id="ddfirma"> <span class="iconleft" id="idiconfirma">˅</span><span>Производитель</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @*проход по списку всех брэндов (фирм производителей товара)*@
+
+                @foreach (string i in Model.Brand)
+                {
+                    if (i != null)
+                    {
+                        //если нет брэндов выделенных (чекнутых)
+                        if (Model.CurrentBrand != null)
+                        {
+                            //если есть чекнутые брэнды, проверяем на совпадение
+                            if (Model.CurrentBrand.Contains(i.Replace(" ", "/")))
+                            {
+                                //если совпали, то присваиваем признак checked, и заменяем пробел на знак / для передачи параметра в URL
+                                <li><input type="checkbox" name="firma" class="firma" checked value=@i.Replace(" ","/")>@i</li>
+                            }
+                            else
+                            {
+                                <li><input type="checkbox" name="firma" class="firma" value=@i.Replace(" ","/")>@i</li>
+                            }
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="firma" class="firma" value=@i.Replace(" ","/")>@i</li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+
+        <div class="wrfirma unactive" id="idwrcountry">
+            <div class="ddclfirma" id="ddcountry"> <span class="iconleft" id="idiconcountry">></span><span>Страна</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (string i in Model.Country)
+                {
+                    if (i != null)
+                    {
+                        if (Model.CurrentCountry != null)
+                        {
+                            if (Model.CurrentCountry.Contains(i.Replace(" ", "/")))
+                            {
+                                <li><input type="checkbox" name="country" checked value=@i.Replace(" ", "/")>@i</li>
+                            }
+                            else
+                            {
+                                <li><input type="checkbox" name="country" value=@i.Replace(" ", "/")>@i</li>
+                            }
+
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="country" value=@i.Replace(" ", "/")>@i</li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+
+        <div class="wrfirma unactive" id="idwrtyp">
+            <div class="ddclfirma" id="ddtyp"> <span class="iconleft" id="idicontyp">></span><span>Тип двери</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (string i in Model.TypDv)
+                {
+                    if (i != null)
+                    {
+                        if (Model.CurrentTypDv != null)
+                        {
+                            if (Model.CurrentTypDv.Contains(i.Replace(" ", "/")))
+                            {
+                                <li><input type="checkbox" name="typdv" checked value=@i.Replace(" ", "/")>@i</li>
+                            }
+                            else
+                            {
+                                <li><input type="checkbox" name="typdv" value=@i.Replace(" ", "/")>@i</li>
+                            }
+
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="typdv" value=@i.Replace(" ", "/")>@i</li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+
+        <div class="wrfirma unactive" id="idwrmat">
+            <div class="ddclfirma" id="ddmat"> <span class="iconleft" id="idiconmat">></span><span>Материал</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (string i in Model.Material)
+                {
+                    if (i != null)
+                    {
+                        if (Model.CurrentMaterial != null)
+                        {
+                            if (Model.CurrentMaterial.Contains(i.Replace(" ", "/")))
+                            {
+                                <li><input type="checkbox" name="material" checked value=@i.Replace(" ", "/")>@i</li>
+                            }
+                            else
+                            {
+                                <li><input type="checkbox" name="material" value=@i.Replace(" ", "/")>@i</li>
+                            }
+
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="material" value=@i.Replace(" ", "/")>@i</li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+
+        <div class="wrfirma unactive" id="idwrcolor">
+            <div class="ddclfirma" id="ddcolor"> <span class="iconleft" id="idiconcolor">></span><span>Цвет внутренней отделки</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (var i in Model.Color)
+                {
+                    if (Model.CurrentColor != null)
+                    {
+                        if (Model.CurrentColor.Contains(i.IdColor.ToString()))
+                        {
+                            <li><input type="checkbox" name="color" checked value=@i.IdColor.ToString() /><span>@i.NameColor</span><br />@Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Image) + "\" />")</li>
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="color" value=@i.IdColor.ToString() /><span>@i.NameColor</span><br />@Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Image) + "\" />")</li>
+                        }
+
+                    }
+                    else
+                    {
+                        <li><input type="checkbox" name="color" value=@i.IdColor.ToString() /><span>@i.NameColor</span><br />@Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Image) + "\" />")</li>
+                    }
+                }
+            </ul>
+        </div>
+
+
+
+
+        @*цена товара*@
+        <div class="wrfirma" id="idwrcen">
+            <div class="ddclfirma" id="ddcen"> <span class="iconleft" id="idiconcen">˅</span><span>Цена</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (string i in Model.Cost)
+                {
+                    if (Model.CurrentCost != null)
+                    {
+                        if (Model.CurrentCost.Contains(i.Replace(" ", "/")))
+                        {
+                            <li><input type="checkbox" name="cena" checked value=@i.Replace(" ", "/")>@i</li>
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="cena" value=@i.Replace(" ", "/")>@i</li>
+                        }
+                    }
+                    else
+                    {
+                        <li><input type="checkbox" name="cena" value=@i.Replace(" ", "/")>@i</li>
+                    }
+                }
+            </ul>
+        </div>
+        @*для обновления страницы при применении нового фильтра*@
+
+        <input type="submit" value="Применить" class="butfiltr" />
+    </div>
+}
+<script>
+    $('body').on('click', 'div#ddfirma', function (e) {//а это работает
+          $("#idwrfirma").toggleClass("unactive")
+          if ($("#idiconfirma").text() == '>')
+            {
+              $("#idiconfirma").text('˅')
+            }
+            else
+            {
+              $("#idiconfirma").text('>')
+            }
+    });
+    $('body').on('click', 'div#ddcountry', function (e) {//а это работает
+        $("#idwrcountry").toggleClass("unactive")
+        if ($("#idiconcountry").text() == '>') {
+            $("#idiconcountry").text('˅')
+        }
+        else {
+            $("#idiconcountry").text('>')
+        }
+    });
+
+    $('body').on('click', 'div#ddmat', function (e) {//а это работает
+        $("#idwrmat").toggleClass("unactive")
+        if ($("#idiconmat").text() == '>') {
+            $("#idiconmat").text('˅')
+        }
+        else {
+            $("#idiconmat").text('>')
+        }
+    });
+
+    $('body').on('click', 'div#ddcolor', function (e) {//а это работает
+        $("#idwrcolor").toggleClass("unactive")
+        if ($("#idiconcolor").text() == '>') {
+            $("#idiconcolor").text('˅')
+        }
+        else {
+            $("#idiconcolor").text('>')
+        }
+    });
+    $('body').on('click', 'div#ddtyp', function (e) {//а это работает
+        $("#idwrtyp").toggleClass("unactive")
+        if ($("#idicontyp").text() == '>') {
+            $("#idicontyp").text('˅')
+        }
+        else {
+            $("#idicontyp").text('>')
+        }
+    });
+
+    $('body').on('click', 'div#ddcen', function (e) {//а это работает
+        $("#idwrcen").toggleClass("unactive")
+        if ($("#idiconcen").text() == '>') {
+            $("#idiconcen").text('˅')
+        }
+        else {
+            $("#idiconcen").text('>')
+        }
+    });
+</script>
+

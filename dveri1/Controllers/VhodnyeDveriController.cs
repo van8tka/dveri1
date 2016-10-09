@@ -29,16 +29,16 @@ namespace dveri1.Controllers
 
         public int PageSize = 32;
         //цена      
-        const decimal cF1 = 50;
-        const decimal cF2 = 120;
-        const decimal cS2 = 200;
-        const decimal cTh2 = 300;
-        const decimal cFo2 = 400;
+        const decimal cF1 = 150;
+        const decimal cF2 = 250;
+        const decimal cS2 = 400;
+        const decimal cTh2 = 600;
+        const decimal cFo2 = 800;
         const string cena1 = "150-250р.";
         const string cena2 = "250-400р.";
         const string cena3 = "400-600р.";
-        const string cena4 = "300-400р.";
-        const string cena5 = "больше 600р.";
+        const string cena4 = "600-800р.";
+        const string cena5 = "больше 800р.";
 
         [HttpGet]
         public ActionResult MetallicheskieVhodnyeDveri(int page = 1, int sort = 0, List<string> firma = null, List<string> country = null, List<string> color = null, List<string> napoln = null, List<string> cena = null)
@@ -295,12 +295,12 @@ namespace dveri1.Controllers
                 }
                 vhd = temp2;//присваиваем выходному интерфейсу   
                 model.CurrentCost = cena;
-                //TempData["cena"] = cena;
+                TempData["cena"] = cena;
             }
             else
             {
                 model.CurrentCost = null;
-                //TempData["cena"] = null;
+                TempData["cena"] = null;
             }
 
             //для страницы
@@ -323,7 +323,7 @@ namespace dveri1.Controllers
               model.Cost = new List<string> {cena1, cena2, cena3, cena4, cena5 };
         }
 
-
+        [HttpPost]
         public ActionResult MetallicheskieVhodnyeDveri(List<string> firma = null, List<string> country = null, List<string> color = null, List<string> napoln = null, List<string> yplotn = null, List<string> otdnaryg = null, List<string> otdvnyt = null, List<string> cena = null)
         {
             TempData["firma"] = firma;
@@ -363,9 +363,7 @@ namespace dveri1.Controllers
                 model.SeoTitle = "Купить входные металлические двери в Минске с бесплатной доставкой";
                 model.SeoHead = "Входные двери от лучших производителей! Вы здесь найдете как металлические двери так и стальные, как дешевые двери так и качественные двери!";
             }
-            //для страницы
-            int z = vhd.Where(x => x.Publicaciya == true).Count();
-         
+                   
             return View(model);
         }
 

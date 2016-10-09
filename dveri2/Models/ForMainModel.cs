@@ -20,10 +20,18 @@ namespace dveri2.Models
         //для выбора товара по брэнду
         public IEnumerable<string> Brand { get; set; }
         public IEnumerable<string> Material { get; set; }
+        public IEnumerable<TableColor> Color { get; set; }
+        public IEnumerable<string> Country { get; set; }
+        public IEnumerable<string>TypDv { get; set; }
+        public List<string> Cost { get; set; }
 
-        public string CurrentBrand { get; set; }
-        public string CurrentMaterial { get; set; }
-
+         //чекнутые элементы
+        public List<string> CurrentBrand { get; set; }
+        public List<string> CurrentCountry { get; set; }
+        public List<string> CurrentTypDv { get; set; }
+        public List<string> CurrentMaterial { get; set; }
+        public List<string> CurrentColor { get; set; }
+        public List<string> CurrentCost { get; set; }
         public bool FlagMaterial { get; set; }
     
         public IEnumerable<SliderMainImgMk> SliderImgMk { get; set; }

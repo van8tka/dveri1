@@ -313,6 +313,8 @@
     <Content Include="Views\MegkomnatnyeDveri\WriteToUs.cshtml" />
     <Content Include="Views\Shared\ViewWriteUs.cshtml" />
     <Content Include="Views\MegkomnatnyeDveri\WriteToUsModal.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\DveriMegkomnatnye.cshtml" />
+    <Content Include="Views\MegkomnatnyeDveri\PartialMenuFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

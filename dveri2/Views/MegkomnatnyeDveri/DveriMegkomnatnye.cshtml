@@ -1,0 +1,120 @@
+﻿@model dveri2.Models.ForMainModel
+@{
+    ViewBag.Title = Model.SeoTitle;
+    ViewBag.Keywords = Model.SeoKey;
+    ViewBag.Description = Model.SeoDesc;
+}
+
+<!-- Непосредственный код слайдера -->
+
+<link href="~/Content/nivo-slider.css" rel="stylesheet" />
+@*меню фильтр*@
+<div class="leftMainMenu">
+    @Html.Partial("PartialMenuFilter")
+
+
+
+    @*статьи 5 последних с сылками на их же*@
+    <div>
+        @Html.Action("GetFiveArticles", "Articles")
+    </div>
+</div>
+
+@*слайдер*@
+<div class="MainSlider">
+    <div id="slider" class="nivoSlider">
+        @foreach (var item in Model.SliderImgMk)
+        {
+            <a style="display:block;" href=@item.LinkImage>
+                @Html.Raw("<img alt='' title='' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.Imaging) + "\" />")
+            </a>
+
+        }
+    </div>
+</div>
+@*хлебные крошки*@
+<div class="MainBredcrumbs">
+    @Html.Action("BreadCrumbs", "MegkomnatnyeDveri", new { mainmodel = Model, namepart = "Межкомнатные двери" })
+</div>
+
+
+<div class="productlist" id="listproduct">
+
+    <div class="buttonsort">
+        <div class="spsort">
+            <span class="spsort fll">Сортировать товар по:</span>
+        </div>
+
+        @switch (Model.Sort)
+            {
+                case 0:
+                    {
+                    @Html.ActionLink("возрастанию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 1 }, new { @class = "upsort" })
+                    @Html.ActionLink("убыванию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 2 }, new { @class = "downsort" })
+                    break;
+                }
+            case 1:
+                {
+                    @Html.ActionLink("возрастанию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 1 }, new { @class = "upsort actsortup" })
+                    @Html.ActionLink("убыванию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 2 }, new { @class = "downsort" })
+                    break;
+                }
+            case 2:
+                {
+                    @Html.ActionLink("возрастанию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 1 }, new { @class = "upsort" })
+                    @Html.ActionLink("убыванию", "DveriMegkomnatnye", "MegkomnatnyeDveri", new { sort = 2 }, new { @class = "downsort actsortdown" })
+                    break;
+                }
+
+            default:
+                break;
+
+        }
+    </div>
+
+
+
+    @Html.Partial("ProductList")
+    <div style="width:100%;text-align:center;">
+        @if (Model.ListMkDv.Count() == 0)
+        {
+            <h3 style="color:black;">К сожалению выбранным критериям не удовлетворяет ни один товар!</h3>
+        }
+    </div>
+
+</div>
+
+
+<div style="clear:both">
+
+</div>
+
+@*разбиение на страничный режим*@
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("DveriMegkomnatnye", new { page = x, sort = Model.Sort, PageSize = Model.PagingInfo.ItemsPerPage }))
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
+
+    <!-- Запуск слайдера -->
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                effect: 'sliceUpLeft',
+                animSpeed: 1500,
+                pauseTime: 7000,
+                directionNav: true,
+                directionNavHide: true,
+                controlNav: true,
+                pauseOnHover: true,
+                keyboardNav: true,
+                controlNavThumbs: false
+            });
+        });
+    </script>
+}
+
+
+

@@ -408,7 +408,6 @@
     <Content Include="Views\Contact\ChangeAdres.cshtml" />
     <Content Include="Views\VhodnyeDveri\ContactOnPanel.cshtml" />
     <Content Include="Views\VhodnyeDveri\TovarPage.cshtml" />
-    <Content Include="Views\VhodnyeDveri\VhodnyeDveriIndex.cshtml" />
     <Content Include="Views\VhodnyeDveri\HarakteristikaTovara.cshtml" />
     <Content Include="Views\VhodnyeDveri\OpisanieTov.cshtml" />
     <Content Include="Views\VhodnyeDveri\BreadCrumbs.cshtml" />
