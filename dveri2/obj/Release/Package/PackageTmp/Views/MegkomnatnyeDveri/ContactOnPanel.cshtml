@@ -1,0 +1,22 @@
+﻿@model dveri2.Models.ContactModel
+
+
+
+<div class="hTimeWork"> График работы </div>
+
+@foreach (var i in Model.GrafikWorkList)
+{
+    if (ViewBag.Count > 3)
+    {
+        break;
+    }
+    else
+    {
+        ViewBag.Count++;
+        <div class="elTimeWork">
+            <span>@i.NameDay: </span>
+            <span class="tw">@i.TimeWork </span><br />
+        </div>
+    }
+}
+

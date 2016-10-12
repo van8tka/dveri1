@@ -1,0 +1,80 @@
+﻿@model dveri1.Models.ModelCreateOurWorks
+@{
+    ViewBag.Title = "Добавление работы";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Content/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Content/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        mode: "textareas",
+        theme: "modern",
+        plugins: "image, imagetools ,media ,contextmenu,link,textcolor"
+    });
+</script>
+
+<div class="tablecontent tac blackFont">
+
+   
+        @if (Model.IdWork == 0)
+        {
+            <h4>  Добавить новую работу</h4>
+        }
+        else
+        {
+         <h4>Изменить работу</h4>
+        }
+
+        <hr />
+        @using (Html.BeginForm("CreateOurWork", "OurWorks", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.HiddenFor(m => m.IdWork)
+            @Html.ValidationMessageFor(m => m.Descriptwork)
+            @Html.TextAreaFor(m => m.Descriptwork, new { @class = "areas", rows = 10 })
+            <div class="form-group">
+                <div class="pos-rel">
+                    <label>Выберите фотографии(фотографии будут загружены в натуральную величину):</label><br />
+                    @if(Model.IdWork==0)
+                    {
+                    <input type="file" name="fileUpload[0]" /><br />
+                    <input type="file" name="fileUpload[1]" /><br />
+                    <input type="file" name="fileUpload[2]" /><br />
+                    <input type="file" name="fileUpload[3]" /><br />
+                    <input type="file" name="fileUpload[4]" /><br />
+                    <input type="file" name="fileUpload[5]" /><br />
+                    <input type="file" name="fileUpload[6]" /><br />
+                    <input type="file" name="fileUpload[7]" /><br />
+                    <input type="file" name="fileUpload[8]" /><br />
+                    <input type="file" name="fileUpload[9]" /><br />
+                    }
+                    else
+                    {
+                        foreach (var i in Model.ListFoto)
+                        {
+                            <div class="imgOurWorkChange">
+                                @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(i.Image) + "\"/>")<br />
+                            </div>
+                            <div class="butDellImgWorkChange">
+                                @Html.ActionLink("Удалить", "DellFotoOurWork", new { idf = i.IdFoto,create=true,idow=Model.IdWork }, new { @class = "tablebut", style = "background-color:#7AC5CD" })
+                            </div>
+                        }
+
+                        for (int i = 0; i < 10 - Model.ListFoto.Count(); i++)
+                        {
+                            <input type="file" name="fileUpload[@i]" /><br />
+                        }                     
+                    }
+                    <div class="mb20">
+                        <input type="submit" value="Сохранить" class="showadd" />
+                        @Html.ActionLink("Отменить", "AdminOurWorks")
+                    </div>
+                </div>
+            </div>
+        }
+</div>
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m14").addClass("actadmin")
+</script>

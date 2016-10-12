@@ -24,7 +24,7 @@
                 <div class="content mt10">
                     <div class="brand fll">
                        <div class="LeftHead">
-                            <a href="/VhodnyeDveri/VhodnyeDveriIndex">
+                            <a href="/VhodnyeDveri/MetallicheskieVhodnyeDveri">
                             <span class="lablux">Люкс</span><span class="labevros">еврострой</span><br /><span class="labother">интернет магазин входных и межкомнатных дверей</span></a>
                             <br /> @Html.ActionLink("Админ", "Panel", "Admin", null, new { style = "display:block;width:100px;background-color:silver;" })
                        </div>
@@ -34,7 +34,7 @@
                         <div class="elContact">
                           
                             <div class="hexw hex-3">
-                               <a href="/vhodnyedveri/WriteToUs"><span class="glyphicon glyphicon-envelope"></span></a>
+                               <a href="/vhodnyedveri/WriteToUs"><span class="glyphicon glyphicon-envelope font08em"></span></a>
                                 <div class="corner-1"></div>
                                 <div class="corner-2"></div>
                             </div>
@@ -45,7 +45,7 @@
                     </div>
                         <div class="elContact mt10">
                            <div class="hexw hex-3">
-                                <a href="/vhodnyedveri/FastBuyDveri"><span class="glyphicon glyphicon-earphone"></span></a>
+                                <a href="/vhodnyedveri/FastBuyDveri"><span class="glyphicon glyphicon-earphone font08em"></span></a>
                                 <div class="corner-1"></div>
                                 <div class="corner-2"></div>
                             </div>
@@ -116,11 +116,13 @@
                  <li>@Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
                  @*<li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>*@
                  <li><a href="http://52.37.80.82:703" class="footermenuitem">Межкомнатные двери</a></li>
-                 <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Услуги", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "footermenuitem" })</li>
                  <li>@Html.ActionLink("Отзывы", "GetAllComment", "Comment", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Наши работы", "OurWorksAll", "OurWorks", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Полезное", "GetArticles", "Articles", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("О нас", "AboutUsInfo", "AboutUs", null, new { @class = "footermenuitem" })</li>
+
+
              </ul>
          </div>
          <div class="socseti">

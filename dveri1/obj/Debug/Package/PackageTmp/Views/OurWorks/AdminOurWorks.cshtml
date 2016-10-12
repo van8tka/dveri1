@@ -1,0 +1,51 @@
+﻿@model dveri1.Models.ModelOurWorks
+@{
+    ViewBag.Title = "Наши работы, полный список";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="tablecontent">
+    <h2>Наши работы - полный список</h2>
+    <div class="marg1e">
+        @Html.ActionLink("Добавить работу", "CreateOurWork", "OurWorks", null, new { @class = "tablebut wid150" })
+    </div>
+    <div>
+        @if(Model.ListOurWorks.Count()==0)
+        {
+            <span>На сайте еще не добавлено ни одной работы..</span>
+        }
+        @foreach(var i in Model.ListOurWorks)
+        {
+            <div class="blockOurWorks">
+                <div class="textInBlockWorks">
+                   @Html.Raw(i.TextOurWorks)
+                </div>
+                <div class="blockImgWorks">
+                    @foreach (var f in i.TableFotoOurWorks)
+                {
+                        <div class="blockImgWork">
+                            @Html.Raw("<img class='iconImgWork' src=\"data:image/jpeg;base64," + Convert.ToBase64String(f.Image) + "\"/>")
+                           <div class="btnDellImgWork">
+                               @Html.ActionLink("Удалить", "DellFotoOurWork", new { idf = f.IdFoto }, new { @class = "tablebut", style= "background-color:	#7AC5CD" })
+                           </div>
+                            
+                        </div>
+                    }
+                </div> 
+                <div class="fll" style="width:inherit;height:auto;">
+                    @Html.ActionLink("Удалить работу", "DellOurWork", new { id = i.Id }, new { @class = "mt10 tablebut wid170 fll" })
+                    @Html.ActionLink("Изменить работу", "CreateOurWork", new { id = i.Id }, new { @class = "mt10 ml20 tablebut wid170 fll" })
+                </div>             
+            </div>
+           
+           
+        }
+    </div>
+</div>
+
+<script>
+    $(".admmen").removeClass("actadmin")
+    $(".m14").addClass("actadmin")
+</script>

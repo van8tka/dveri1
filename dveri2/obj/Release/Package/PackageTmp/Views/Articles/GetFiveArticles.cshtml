@@ -1,0 +1,18 @@
+﻿@model dveri2.Models.ModelArticles
+@{
+    Layout = null;
+}
+<div class="fll db">
+    @if (Model.ArticlesList.Count() > 0)
+    {
+        foreach (var i in Model.ArticlesList)
+        {
+            <div class="bootharticles fll">
+                 <a class="Linkarticleleftbooth" href="@Url.Action("GetArticle","Articles", new { tov=i.Name.Substring(0, i.Name.Length<64?i.Name.Length:54).Replace(',','_').Replace('.','_') ,id = i.ID })">
+                       <h4>@i.Name </h4>
+                        <span>@i.Headings</span>
+                    </a>
+            </div>
+        }
+    }
+</div>

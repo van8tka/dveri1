@@ -1,0 +1,86 @@
+﻿@using dveri2.HtmlHelpers;
+
+@model dveri2.Models.ForMainModel
+<div class="allspisok">
+    <div class="headPageProduct">
+        <h1>@Model.SeoHead</h1>
+    </div>
+    @foreach (var i in Model.ListMkDv)
+    {
+
+        <div class="shortproduct">
+            <a href="@Url.Action("TovarPage","MegkomnatnyeDveri", new {tov = i.Nazvanie, id=i.Id, flag=Model.FlagMaterial.ToString()})">
+              
+                    <div class="imageshort">
+                        @if (i.Skidka == null || i.Skidka == 0)
+                        {
+                            if (i.FotoMegkomnDvereys.FirstOrDefault() == null)
+                            {
+                                <img class="img-thumbnail" src="~/Content/imageDefault.jpg" alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует" />
+                            }
+                            else
+                            {
+                                <img class="img-thumbnail" src="@Url.Action("GetImage", "MegkomnatnyeDveri", new { i.Id })" alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
+                            }
+                        }
+                        else
+                        {
+                            if (i.FotoMegkomnDvereys.FirstOrDefault() == null)
+                            {
+                                <div class="blockpercent">
+                                    <span class="percent">@i.Skidka%</span>
+                                </div>
+                                <img class="img-thumbnail" src="~/Content/imageDefault.jpg" alt="фото @i.Nazvanie отсутствует" title="фото @i.Nazvanie отсутствует" />
+                            }
+                            else
+                            {
+                                <div class="blockpercent">
+                                    <span class="percent">@i.Skidka%</span>
+                                </div>
+                                <img class="img-thumbnail" src="@Url.Action("GetImage", "MegkomnatnyeDveri", new { i.Id })" alt="фото @i.Nazvanie" title="фото @i.Nazvanie" />
+                            }
+                        }
+                    </div>
+                    <div>
+                        <div class="shOpisTov">
+                            <p>@i.Nazvanie</p>
+                            <p>@i.Proizvoditel</p>
+                            <p>@i.Strana</p>
+                        </div>
+
+                        @if (i.Skidka == null || i.Skidka == 0)
+                        {
+                            if (i.Cena == 0 || i.Cena == null)
+                            {
+                                <p class="CenaGreenMed">Цену уточняйте у менеджера.</p>
+                            }
+                            else
+                            {
+                                <p class="CenaGreenL">@i.Cena.Value.ToString("C")</p>
+                            }
+
+                        }
+                        else
+                        {
+                            if (i.Cena == 0 || i.Cena == null)
+                            {
+                                <p class="CenaGreenMed">Цену уточняйте у менеджера.</p>
+                            }
+                            else
+                            {
+                                <p class="CenaBlackL"><strike>@i.Cena.Value.ToString("C")</strike></p>
+                                <p class="CenaGreenL">@i.CenaSoSkidkoy.Value.ToString("C")</p>
+                            }
+
+
+                        }
+                    </div>
+                </a>
+</div>
+
+    }
+</div>
+<div style="clear:both">
+
+</div>
+

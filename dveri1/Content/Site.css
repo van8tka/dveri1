@@ -2357,8 +2357,8 @@ div#idbuy, #fastbuy, #idWrite{
     }
     /*кнопка перезвонить и написать нам*/
       .hexw {
-    width:27px;
-    height:15px;
+    width:23px;
+    height:13px;
     background-color: darkgray;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -2378,7 +2378,7 @@ div#idbuy, #fastbuy, #idWrite{
         height:100%;
         color:white;
         position:absolute;
-        margin-top:-3px;
+        margin-top:-0.2em;
         top:0;
         left:0;
         font-size:1.0em;
@@ -2437,7 +2437,10 @@ div#idbuy, #fastbuy, #idWrite{
     }  
     .mra {
         margin-right:auto;
-    }     
+    }    
+    .font08em{
+        font-size:0.8em;
+    } 
     /*добавлено от 9.10.2016 в межкомнатные ненадо*/
     div.textOurWorks{
         display:block; width:90%;height:auto;margin:10px auto;

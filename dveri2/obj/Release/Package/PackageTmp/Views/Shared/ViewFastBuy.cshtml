@@ -1,0 +1,12 @@
+﻿@model dveri2.Models.ModelBuyDveri
+<h2>Оставьте свой номер телефона или e-mail и мы свяжемся с Вам в течении 15 минут.</h2>
+<div class="form-group">
+    @Html.HiddenFor(m => m.Type)
+    @Html.HiddenFor(m => m.IdDveri)
+    @Html.HiddenFor(m => m.DvName)
+    @Html.HiddenFor(m=>m.KlientName)
+    <label>Номер телефона или e-mail адрес для связи*</label>
+    @Html.ValidationMessageFor(m => m.KlientPhone)
+    @Html.TextBoxFor(m => m.KlientPhone, null, new { @class = "form-control" })
+</div>
+<input type="submit" value="Отправить" class="butfastbyu ma" />

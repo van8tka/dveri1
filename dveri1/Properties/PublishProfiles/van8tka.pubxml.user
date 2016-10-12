@@ -22,22 +22,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/10/2016 19:32:22</publishTime>
     </File>
     <File Include="bin/DALdv1.dll">
-      <publishTime>09/21/2016 10:47:48</publishTime>
+      <publishTime>10/06/2016 19:05:16</publishTime>
     </File>
     <File Include="bin/DALdv1.pdb">
-      <publishTime>09/21/2016 10:47:48</publishTime>
+      <publishTime>10/06/2016 19:05:16</publishTime>
     </File>
     <File Include="bin/Domain2.dll">
-      <publishTime>09/21/2016 11:23:32</publishTime>
+      <publishTime>10/07/2016 13:50:42</publishTime>
     </File>
     <File Include="bin/Domain2.pdb">
-      <publishTime>09/21/2016 11:23:32</publishTime>
+      <publishTime>10/07/2016 13:50:42</publishTime>
     </File>
     <File Include="bin/dveri1.dll">
-      <publishTime>10/01/2016 21:54:52</publishTime>
+      <publishTime>10/12/2016 13:56:35</publishTime>
     </File>
     <File Include="bin/dveri1.pdb">
-      <publishTime>10/01/2016 21:54:52</publishTime>
+      <publishTime>10/12/2016 13:56:35</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/10/2016 20:05:44</publishTime>
@@ -178,34 +178,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2016 19:45:18</publishTime>
     </File>
     <File Include="Content/ForSoc/facebook.png">
-      <publishTime>08/03/2016 22:42:23</publishTime>
+      <publishTime>10/03/2016 19:28:54</publishTime>
     </File>
     <File Include="Content/ForSoc/google.png">
-      <publishTime>08/03/2016 22:41:16</publishTime>
+      <publishTime>10/03/2016 19:18:48</publishTime>
     </File>
     <File Include="Content/ForSoc/mail.png">
-      <publishTime>08/03/2016 21:18:48</publishTime>
+      <publishTime>10/03/2016 19:37:11</publishTime>
     </File>
     <File Include="Content/ForSoc/odnoklasniki.png">
-      <publishTime>08/03/2016 22:36:46</publishTime>
+      <publishTime>10/03/2016 19:34:28</publishTime>
     </File>
     <File Include="Content/ForSoc/rss.png">
-      <publishTime>08/03/2016 22:36:02</publishTime>
+      <publishTime>10/06/2016 17:27:15</publishTime>
     </File>
     <File Include="Content/ForSoc/twitter.png">
-      <publishTime>08/03/2016 22:35:23</publishTime>
+      <publishTime>10/03/2016 19:26:08</publishTime>
     </File>
     <File Include="Content/ForSoc/vk.png">
-      <publishTime>08/03/2016 22:49:50</publishTime>
+      <publishTime>10/03/2016 19:23:01</publishTime>
     </File>
     <File Include="Content/ForSoc/yandex.png">
-      <publishTime>08/03/2016 22:52:59</publishTime>
+      <publishTime>10/03/2016 19:30:59</publishTime>
     </File>
     <File Include="Content/glyphicons-443-earphone.png">
       <publishTime>06/12/2016 20:05:40</publishTime>
     </File>
     <File Include="Content/imageDefault.jpg">
-      <publishTime>02/15/2016 17:05:37</publishTime>
+      <publishTime>10/03/2016 17:02:16</publishTime>
     </File>
     <File Include="Content/ImgComment/stargold.png">
       <publishTime>06/20/2016 17:23:10</publishTime>
@@ -244,7 +244,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/08/2016 13:43:54</publishTime>
     </File>
     <File Include="Content/nivo-slider.css">
-      <publishTime>09/13/2016 18:07:51</publishTime>
+      <publishTime>10/01/2016 22:41:38</publishTime>
     </File>
     <File Include="Content/nyvo_arrows.png">
       <publishTime>11/15/2011 15:59:48</publishTime>
@@ -286,10 +286,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/25/2016 17:06:27</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/01/2016 21:48:17</publishTime>
+      <publishTime>10/12/2016 16:30:32</publishTime>
     </File>
     <File Include="Content/thumbelina.css">
-      <publishTime>05/15/2013 13:46:42</publishTime>
+      <publishTime>10/01/2016 22:40:42</publishTime>
     </File>
     <File Include="Content/tinymce/jquery.tinymce.min.js">
       <publishTime>06/08/2016 22:16:30</publishTime>
@@ -645,11 +645,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/_references.js">
       <publishTime>09/20/2016 18:25:38</publishTime>
     </File>
+    <File Include="Views/AboutUs/AboutUsInfo.cshtml">
+      <publishTime>10/06/2016 20:24:06</publishTime>
+    </File>
+    <File Include="Views/AboutUs/AdminAboutUs.cshtml">
+      <publishTime>10/06/2016 20:03:57</publishTime>
+    </File>
     <File Include="Views/AboutYstanovka/AdminYstanovka.cshtml">
-      <publishTime>08/14/2016 13:08:50</publishTime>
+      <publishTime>10/06/2016 20:48:41</publishTime>
     </File>
     <File Include="Views/AboutYstanovka/YstanovkaInfo.cshtml">
-      <publishTime>08/13/2016 21:56:55</publishTime>
+      <publishTime>10/06/2016 17:50:21</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>09/27/2016 09:26:46</publishTime>
@@ -691,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2016 21:20:29</publishTime>
     </File>
     <File Include="Views/AdminColor/ColorAct.cshtml">
-      <publishTime>09/25/2016 16:24:34</publishTime>
+      <publishTime>10/03/2016 15:05:42</publishTime>
     </File>
     <File Include="Views/AdminMkDv/CreateMkDv.cshtml">
       <publishTime>09/21/2016 14:47:38</publishTime>
@@ -706,7 +712,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/06/2016 16:57:20</publishTime>
     </File>
     <File Include="Views/AdminMkDv/PanelMkDv.cshtml">
-      <publishTime>09/21/2016 14:53:32</publishTime>
+      <publishTime>10/12/2016 17:11:07</publishTime>
     </File>
     <File Include="Views/AdminMkDv/SliderLeftMk.cshtml">
       <publishTime>08/14/2016 12:48:09</publishTime>
@@ -733,10 +739,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2016 16:37:10</publishTime>
     </File>
     <File Include="Views/Articles/GetArticle.cshtml">
-      <publishTime>08/13/2016 16:29:22</publishTime>
+      <publishTime>10/06/2016 18:08:36</publishTime>
     </File>
     <File Include="Views/Articles/GetArticles.cshtml">
-      <publishTime>08/15/2016 16:45:09</publishTime>
+      <publishTime>10/06/2016 18:08:13</publishTime>
     </File>
     <File Include="Views/Articles/GetFiveArticles.cshtml">
       <publishTime>08/15/2016 17:52:26</publishTime>
@@ -822,6 +828,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/MetaTags/SeoGet.cshtml">
       <publishTime>08/13/2016 22:13:14</publishTime>
     </File>
+    <File Include="Views/OurWorks/AdminOurWorks.cshtml">
+      <publishTime>10/09/2016 16:05:04</publishTime>
+    </File>
+    <File Include="Views/OurWorks/CreateOurWork.cshtml">
+      <publishTime>10/09/2016 15:56:11</publishTime>
+    </File>
+    <File Include="Views/OurWorks/OurWorksAll.cshtml">
+      <publishTime>10/09/2016 15:47:39</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/20/2016 17:36:43</publishTime>
     </File>
@@ -835,13 +850,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2016 09:23:37</publishTime>
     </File>
     <File Include="Views/Shared/_AdminLayout.cshtml">
-      <publishTime>09/27/2016 09:23:09</publishTime>
+      <publishTime>10/08/2016 21:39:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/01/2016 15:32:42</publishTime>
+      <publishTime>10/12/2016 16:33:30</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/BreadCrumbs.cshtml">
-      <publishTime>10/01/2016 14:40:09</publishTime>
+      <publishTime>10/09/2016 19:35:04</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/BuyDveri.cshtml">
       <publishTime>06/12/2016 14:33:23</publishTime>
@@ -853,10 +868,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/13/2016 15:58:52</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/ContactOnFoter.cshtml">
-      <publishTime>08/13/2016 15:53:42</publishTime>
+      <publishTime>10/03/2016 19:05:37</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/ContactOnPanel.cshtml">
-      <publishTime>10/01/2016 15:37:14</publishTime>
+      <publishTime>10/05/2016 21:56:43</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/FastBuyDveri.cshtml">
       <publishTime>09/27/2016 09:22:23</publishTime>
@@ -874,13 +889,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2016 16:29:55</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/OpisanieTov.cshtml">
-      <publishTime>10/01/2016 21:22:14</publishTime>
+      <publishTime>10/12/2016 15:40:59</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/OplataDostavka.cshtml">
       <publishTime>08/13/2016 21:59:23</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/PartialMenuFilter.cshtml">
-      <publishTime>09/30/2016 17:44:22</publishTime>
+      <publishTime>10/02/2016 14:53:59</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/ProductList.cshtml">
       <publishTime>08/15/2016 15:32:17</publishTime>
@@ -889,7 +904,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2016 16:54:40</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/TovarPage.cshtml">
-      <publishTime>10/01/2016 18:02:13</publishTime>
+      <publishTime>10/12/2016 15:35:59</publishTime>
     </File>
     <File Include="Views/VhodnyeDveri/VhodnyeDveriIndex.cshtml">
       <publishTime>09/20/2016 13:56:51</publishTime>

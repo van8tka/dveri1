@@ -1,6 +1,6 @@
 ﻿@model dveri1.Models.ModelYstanovka
 @{
-    ViewBag.Title = "Информация о установке дверных конструкций и нетолько";
+    ViewBag.Title = "Информация об услугах компании и нетолько";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -15,7 +15,7 @@
 </script>
 <div class="ml245 pad25">
     <div class="tac">
-        <h2>Информация для страницы "Установка"</h2>
+        <h2>Информация для страницы "Услуги"</h2>
     </div>
     <div class="dYstInf">
         @Html.Raw(Model.YstanovkaInfo)
@@ -27,7 +27,7 @@
                 <label>Изменить сведения:</label>
             </div>
 
-            @Html.TextAreaFor(m => m.YstanovkaInfo, new { @class = "areas", rows = 12 })
+            @Html.TextAreaFor(m => m.YstanovkaInfo, new { @class = "areas", rows = 22 })
         </div>
 
         <input type="submit" value="Сохранить" class="showadd mb30" />

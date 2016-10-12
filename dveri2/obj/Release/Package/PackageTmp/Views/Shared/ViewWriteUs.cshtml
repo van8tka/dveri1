@@ -1,0 +1,23 @@
+﻿@model dveri2.Models.ModelBuyDveri
+
+<div id="idWrite" class="tac">
+   <h3>Напишите нам письмо и мы обязательно ответим Вам.</h3>
+    <div class="form-group">
+        @Html.HiddenFor(m => m.Type)
+        @Html.HiddenFor(m => m.IdDveri)
+        @Html.HiddenFor(m => m.DvName)
+        @Html.HiddenFor(m => m.KlientAdres)
+        <label>Имя*</label>
+        @Html.ValidationMessageFor(m => m.KlientName)
+        @Html.TextBoxFor(m => m.KlientName, null, new { @class = "form-control ma" })
+        <label>Номер телефона или e-mail адрес для связи*</label>
+        @Html.ValidationMessageFor(m => m.KlientPhone)
+        @Html.TextBoxFor(m => m.KlientPhone, null, new { @class = "form-control ma" })
+       <label>Текст сообщения</label>
+        @Html.TextAreaFor(m => m.KlientQuestion, new { @class = "form-control ma wid450", rows = 5 })
+    </div>
+    <strong style="font-size:small">* - поле обязательно для заполнения!</strong><br />
+    <input type="submit" value="Отправить" class="butbyu ma" />
+    @Html.ActionLink("Отменить", "MegkomnatnyeDveriIndex", "MegkomnatnyeDveri", null, new {@class="butcancel" })
+ </div>
+

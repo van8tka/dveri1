@@ -7,13 +7,9 @@
     <meta name="keywords" content="@ViewBag.Keywords" />
     <meta name="description" content="@ViewBag.Description" />
     <title>@ViewBag.Title</title>
-  
     <link href="~/Content/Site.css" rel="stylesheet" />
-   
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-  
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
- 
     <script src="~/Scripts/modalwindowrecallme.js"></script>
     <script src="~/Scripts/modalwindowwriteus.js"></script>
      
@@ -27,24 +23,33 @@
            <div class="navigationfixedtop">
                 <div class="content mt10">
                     <div class="brand fll">
-                        <div class="fll mr10">
-                            <a href="/VhodnyeDveri/VhodnyeDveriIndex"> <img src="~/Content/logo1.png" alt="" class="iLogo" /></a>
-                        </div>
-                        <div class="LeftHead">
-                            <a href="/VhodnyeDveri/VhodnyeDveriIndex">Люксеврострой - входные двери, межкомнатные двери, фурнитура, напольные покрытия</a>
+                       <div class="LeftHead">
+                            <a href="/VhodnyeDveri/MetallicheskieVhodnyeDveri">
+                            <span class="lablux">Люкс</span><span class="labevros">еврострой</span><br /><span class="labother">интернет магазин входных и межкомнатных дверей</span></a>
                             <br /> @Html.ActionLink("Админ", "Panel", "Admin", null, new { style = "display:block;width:100px;background-color:silver;" })
                        </div>
                     </div>
                  
                     <div class="contacts flr">
                         <div class="elContact">
-                            <div class="fll mr10"><img src="~/Content/writeus.png" style="width:34px;height:34px;margin-top:-7px;" alt="" /> </div>
-                            <div> @Html.ActionLink("Написать нам", "WriteToUs", "VhodnyeDveri", null, new { @class = "butwritemain" }) </div>
-
-                        </div>
+                          
+                            <div class="hexw hex-3">
+                               <a href="/vhodnyedveri/WriteToUs"><span class="glyphicon glyphicon-envelope font08em"></span></a>
+                                <div class="corner-1"></div>
+                                <div class="corner-2"></div>
+                            </div>
+                           <div class="wrus">
+                               @Html.ActionLink("Написать нам", "WriteToUs", "VhodnyeDveri", null, new { @class = "butwritemain" })
+                               
+                           </div>
+                    </div>
                         <div class="elContact mt10">
-                            <div class="fll mr10"> <img src="~/Content/recall.png" style="width:34px;height:34px;margin-top:-5px;" alt="" />  </div>
-                            <div> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "VhodnyeDveri", new { id = 9999, type = "входные двери" }, new { @class = "butcallmain" }) </div>
+                           <div class="hexw hex-3">
+                                <a href="/vhodnyedveri/FastBuyDveri"><span class="glyphicon glyphicon-earphone font08em"></span></a>
+                                <div class="corner-1"></div>
+                                <div class="corner-2"></div>
+                            </div>
+                            <div class="wrus"> @Html.ActionLink("Заказать обратный звонок", "FastBuyDveri", "VhodnyeDveri", new { id = 9999, type = "входные двери" }, new { @class = "butcallmain" }) </div>
                         </div>
                     </div>
 
@@ -66,17 +71,14 @@
             
                 <div class="dMenu">
                     <div id="menu">
-                        <ul>
-                         
+                        <ul>                        
                             <li>@Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "mainmen m2 current" })</li>
-                            @*<li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "mainmen m3" })</li>*@
                             <li><a href="http://52.37.80.82:703" class="mainmen m3">Межкомнатные двери</a></li>
-                            <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "mainmen m5" })</li>
+                            <li>@Html.ActionLink("Услуги", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "mainmen m8" })</li>                         
                             <li>@Html.ActionLink("Отзывы", "GetAllComment", "Comment", null, new { @class = "mainmen m6" })</li>
-                            <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "mainmen m7" })</li>
-                            <li>@Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "mainmen m8" })</li>
-                            <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "mainmen m9" })</li>
-
+                            <li>@Html.ActionLink("Наши работы", "OurWorksAll", "OurWorks", null, new { @class = "mainmen m5" })</li>                        
+                            <li>@Html.ActionLink("Полезное", "GetArticles", "Articles", null, new { @class = "mainmen m9" })</li>
+                            <li>@Html.ActionLink("О нас","AboutUsInfo","AboutUs",null,new {@class="mainmen m7"})</li>
                         </ul>
                     </div>
                 </div>
@@ -110,15 +112,17 @@
      <div class="inFooter">
         <div class="footermenudiv">
              <h4 class="tac">КАРТА САЙТА</h4>
-             <ul class="footermenu fll">
+             <ul class="footermenu">
                  <li>@Html.ActionLink("Входные двери", "MetallicheskieVhodnyeDveri", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
                  @*<li>@Html.ActionLink("Межкомнатные двери", "Contact", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>*@
                  <li><a href="http://52.37.80.82:703" class="footermenuitem">Межкомнатные двери</a></li>
-                 <li>@Html.ActionLink("Доставка и оплата", "OplataDostavka", "VhodnyeDveri", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Услуги", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "footermenuitem" })</li>
                  <li>@Html.ActionLink("Отзывы", "GetAllComment", "Comment", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Контакты", "ContactPage", "Contact", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Установка", "YstanovkaInfo", "AboutYstanovka", null, new { @class = "footermenuitem" })</li>
-                 <li>@Html.ActionLink("Статьи", "GetArticles", "Articles", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Наши работы", "OurWorksAll", "OurWorks", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("Полезное", "GetArticles", "Articles", null, new { @class = "footermenuitem" })</li>
+                 <li>@Html.ActionLink("О нас", "AboutUsInfo", "AboutUs", null, new { @class = "footermenuitem" })</li>
+
+
              </ul>
          </div>
          <div class="socseti">
@@ -128,17 +132,17 @@
            
              <div class="blSoc">
                  <div class="undBlSoc1">
-                     <a class="fll Asocseti" href="https://plus.google.com/" rel="nofollow"> <img src="~/Content/ForSoc/google.png" alt="" class="iSoc" /> <div class="textSoc">Google+</div> </a>
-                     <a class="fll Asocseti" href="https://www.facebook.com/" rel="nofollow"> <img src="~/Content/ForSoc/facebook.png" class="iSoc" alt=""/> <div class="textSoc">Facebook</div>  </a>
-                     <a class="fll Asocseti" href="https://my.mail.ru/" rel="nofollow"> <img src="~/Content/ForSoc/mail.png" class="iSoc" alt=""/><div class="textSoc"> Mail </div></a>
-                     <a class="fll Asocseti" href="https://ok.ru/" rel="nofollow"> <img src="~/Content/ForSoc/odnoklasniki.png" class="iSoc" alt="" /><div class="textSoc"> Odnoklassniki  </div> </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/google.png" alt="" class="iSoc" /> <div class="textSoc">Google+</div> </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/facebook.png" class="iSoc" alt=""/> <div class="textSoc">Facebook</div>  </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/mail.png" class="iSoc" alt=""/><div class="textSoc"> Mail </div></a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/yandex.png" class="iSoc" alt="" /> <div class="textSoc">Yandex  </div> </a>
                  </div>
                  <div class="undBlSoc2">
-                     @*<a class="fll" href="https://plus.google.com/" rel="nofollow"> <img src="~/Content/ForSoc/rss.png" style="width:24px;height24px" alt="" /> RSS  </a>*@
-                     <a class="fll Asocseti" href="https://twitter.com/" rel="nofollow"> <img src="~/Content/ForSoc/twitter.png" class="iSoc" alt=""/> <div class="textSoc">Twitter </div>  </a>
-                     <a class="fll Asocseti" href="https://new.vk.com/" rel="nofollow"> <img src="~/Content/ForSoc/vk.png" class="iSoc" alt=""/> <div class="textSoc">VK </div>  </a>
-                     <a class="fll Asocseti" href="https://www.yandex.by/" rel="nofollow"> <img src="~/Content/ForSoc/yandex.png" class="iSoc" alt="" /> <div class="textSoc">Yandex  </div> </a>
-                 </div>
+                     <a class="fll Asocseti" > <img src="~/Content/ForSoc/rss.png" class="iSoc" alt="" /><div class="textSoc"> RSS</div>  </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/twitter.png" class="iSoc" alt=""/> <div class="textSoc">Twitter </div>  </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/vk.png" class="iSoc" alt=""/> <div class="textSoc">VK </div>  </a>
+                     <a class="fll Asocseti"> <img src="~/Content/ForSoc/odnoklasniki.png" class="iSoc" alt="" /><div class="textSoc"> Odnoklassniki  </div> </a>
+               </div>
                
              </div>
 
@@ -146,7 +150,10 @@
 
 
          <div class="footcontact">
-             <h4 class="hFootC">КОНТАКТЫ</h4>
+             <div class="tac">
+                 <h4 class="mr40">НАШИ КОНТАКТЫ</h4>
+             </div>
+            
              <div class="KontPageF">
                  @Html.Action("ContactOnFoter", "VhodnyeDveri", new { contact = false })
              </div>

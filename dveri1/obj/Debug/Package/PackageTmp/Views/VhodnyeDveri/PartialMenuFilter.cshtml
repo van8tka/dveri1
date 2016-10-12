@@ -66,8 +66,42 @@
                         }
                     </ul>
                 </div>
+
+
+        <div class="wrfirma unactive" id="idwrnap">
+            <div class="ddclfirma" id="ddnap"> <span class="iconleft" id="idiconnap">></span><span>Наполнитель</span></div>
+            <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
+                @foreach (string i in Model.Napolnitel)
+                {
+                    if (i != null)
+                    {
+                        if (Model.CurrentNapolnitel != null)
+                        {
+                            if (Model.CurrentNapolnitel.Contains(i.Replace(" ", "/")))
+                            {
+                                <li><input type="checkbox" name="napoln" checked value=@i.Replace(" ", "/")>@i</li>
+                            }
+                            else
+                            {
+                                <li><input type="checkbox" name="napoln" value=@i.Replace(" ", "/")>@i</li>
+                            }
+
+                        }
+                        else
+                        {
+                            <li><input type="checkbox" name="napoln" value=@i.Replace(" ", "/")>@i</li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+
+
+
+
                 <div class="wrfirma unactive" id="idwrcolor">
-                    <div class="ddclfirma" id="ddcolor"> <span class="iconleft" id="idiconcolor">></span><span>Цвет</span></div>
+                    <div class="ddclfirma" id="ddcolor"> <span class="iconleft" id="idiconcolor">></span><span>Цвет внутренней отделки</span></div>
                     <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
                         @foreach (var i in Model.Color)
                         {
@@ -92,115 +126,8 @@
                 </div>
 
 
-                <div class="wrfirma unactive" id="idwrnap">
-                    <div class="ddclfirma" id="ddnap"> <span class="iconleft" id="idiconnap">></span><span>Наполнитель</span></div>
-                    <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
-                        @foreach (string i in Model.Napolnitel)
-                        {
-                            if (i != null)
-                            {
-                                if (Model.CurrentNapolnitel != null)
-                                {
-                                    if (Model.CurrentNapolnitel.Contains(i.Replace(" ", "/")))
-                                    {
-                                        <li><input type="checkbox" name="napoln" checked value=@i.Replace(" ", "/")>@i</li>
-                                    }
-                                    else
-                                    {
-                                        <li><input type="checkbox" name="napoln" value=@i.Replace(" ", "/")>@i</li>
-                                    }
-
-                                }
-                                else
-                                {
-                                    <li><input type="checkbox" name="napoln" value=@i.Replace(" ", "/")>@i</li>
-                                }
-                            }
-                        }
-                    </ul>
-                </div>
-                <div class="wrfirma unactive" id="idwrypl">
-                    <div class="ddclfirma" id="ddypl"> <span class="iconleft" id="idiconypl">></span><span>Уплотнитель</span></div>
-                    <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
-                        @foreach (string i in Model.Yplotnitel)
-                        {
-                            if (i != null)
-                            {
-                                if (Model.CurrentYplotnitel != null)
-                                {
-                                    if (Model.CurrentYplotnitel.Contains(i.Replace(" ", "/")))
-                                    {
-                                        <li><input type="checkbox" name="yplotn" checked value=@i.Replace(" ", "/")>@i</li>
-                                    }
-                                    else
-                                    {
-                                        <li><input type="checkbox" name="yplotn" value=@i.Replace(" ", "/")>@i</li>
-                                    }
-
-                                }
-                                else
-                                {
-                                    <li><input type="checkbox" name="yplotn" value=@i.Replace(" ", "/")>@i</li>
-                                }
-                            }
-
-                        }
-                    </ul>
-                </div>
-                <div class="wrfirma unactive" id="idwrotn">
-                    <div class="ddclfirma" id="ddotn"> <span class="iconleft" id="idiconotn">></span><span>Отделка наружной стороны</span></div>
-                    <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
-                        @foreach (string i in Model.OtdNaryg)
-                        {
-                            if (i != null)
-                            {
-                                if (Model.CurrentOtdSnar != null)
-                                {
-                                    if (Model.CurrentOtdSnar.Contains(i.Replace(" ", "/")))
-                                    {
-                                        <li><input type="checkbox" name="otdnaryg" checked value=@i.Replace(" ", "/")>@i</li>
-                                    }
-                                    else
-                                    {
-                                        <li><input type="checkbox" name="otdnaryg" value=@i.Replace(" ", "/")>@i</li>
-                                    }
-
-                                }
-                                else
-                                {
-                                    <li><input type="checkbox" name="otdnaryg" value=@i.Replace(" ", "/")>@i</li>
-                                }
-                            }
-
-                        }
-                    </ul>
-                </div>
-                <div class="wrfirma unactive" id="idwrotv">
-                    <div class="ddclfirma" id="ddotv"> <span class="iconleft" id="idiconotv">></span><span>Отделка внутренней стороны</span></div>
-                    <ul class="ulfirma" onmousedown="return false" onselectstart="return false">
-                        @foreach (string i in Model.OtdVnytri)
-                        {
-                            if (i != null)
-                            {
-                                if (Model.CurrentOtdVnutr != null)
-                                {
-                                    if (Model.CurrentOtdVnutr.Contains(i.Replace(" ", "/")))
-                                    {
-                                        <li><input type="checkbox" name="otdvnyt" checked value=@i.Replace(" ", "/")>@i</li>
-                                    }
-                                    else
-                                    {
-                                        <li><input type="checkbox" name="otdvnyt" value=@i.Replace(" ", "/")>@i</li>
-                                    }
-                                }
-                                else
-                                {
-                                    <li><input type="checkbox" name="otdvnyt" value=@i.Replace(" ", "/")>@i</li>
-                                }
-                            }
-                        }
-                    </ul>
-                </div>
+         
+             
                 @*цена товара*@
                 <div class="wrfirma" id="idwrcen">
                     <div class="ddclfirma" id="ddcen"> <span class="iconleft" id="idiconcen">˅</span><span>Цена</span></div>
@@ -269,33 +196,7 @@
             $("#idiconnap").text('>')
         }
     });
-    $('body').on('click', 'div#ddypl', function (e) {//а это работает
-        $("#idwrypl").toggleClass("unactive")
-        if ($("#idiconypl").text() == '>') {
-            $("#idiconypl").text('˅')
-        }
-        else {
-            $("#idiconypl").text('>')
-        }
-    });
-    $('body').on('click', 'div#ddotn', function (e) {//а это работает
-        $("#idwrotn").toggleClass("unactive")
-        if ($("#idiconotn").text() == '>') {
-            $("#idiconotn").text('˅')
-        }
-        else {
-            $("#idiconotn").text('>')
-        }
-    });
-    $('body').on('click', 'div#ddotv', function (e) {//а это работает
-        $("#idwrotv").toggleClass("unactive")
-        if ($("#idiconotv").text() == '>') {
-            $("#idiconotv").text('˅')
-        }
-        else {
-            $("#idiconotv").text('>')
-        }
-    });
+   
     $('body').on('click', 'div#ddcen', function (e) {//а это работает
         $("#idwrcen").toggleClass("unactive")
         if ($("#idiconcen").text() == '>') {

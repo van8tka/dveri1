@@ -42,15 +42,14 @@
            
            }
 </div>
-        <div class="sectionhartk">
-                
-            <div class="ml40 mt30">
+<div class="sectionhartk">                
+          <div class="ml40 mt30">
     <h1 class="nametovar">@Model.Tovar.Nazvanie</h1>  
     <div class="mt20">
         <span class="pr valtov">Артикул:</span>
         <span class="valtov">@Model.Tovar.Id</span>
     </div>
-    @*<br />*@
+  
     @if (Model.Tovar.Skidka == null || Model.Tovar.Skidka == 0)
     {
         <div>
@@ -77,10 +76,19 @@
             <span class="skidkaOrange"> @Model.Tovar.Skidka% off </span>
         </div>
     }
-    <div class="boxbutton mt30">
-           <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="glyphicon glyphicon-shopping-cart"></span><span class="ml20">Купить</span> </a>
-    </div>
-  
+           
+                <div class="hex hex-3">
+                    <div class="inner">
+                       
+                    </div>
+                    <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                    <div class="corner-1"></div>
+                    <div class="corner-2"></div>
+                </div>
+              <div class="divbutbuy">
+                  <a class="butbyu2" href="/vhodnyedveri/buydveri/?id=@Model.Tovar.Id&type=входные двери"><span class="ml20">Купить</span> </a>
+              </div>
+                
 
 </div>
 
@@ -122,14 +130,11 @@
           var id = $(this).attr('id');
           //загрузка частичного представления с фото
           $('.sliderMainFoto').load("/VhodnyeDveri/ImgTov/"+id)
-     });
+      });
+        //лупа
+      $('.lp').imageLens({ lensSize: 200, borderSize: 1 });
 });
 </script>
 
-
-  
-<script type="text/javascript">  
-    //лупа
-        $('.lp').imageLens({ lensSize: 200, borderSize: 1 }); 
-</script>
+ 
 

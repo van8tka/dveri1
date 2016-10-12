@@ -1,0 +1,10 @@
+﻿@model dveri2.Models.ModelBuyDveri
+@{
+    ViewBag.Title = "Купить межкомнатные двери";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("WriteToUs", "MegkomnatnyeDveri"))
+{
+    @Html.Partial("ViewWriteUs")
+}
+
